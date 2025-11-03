@@ -1,0 +1,129 @@
+'use client'
+
+import { BLOCK_CONTEXT_MENU_ID, BlockMenuPlugin, BlockSelectionPlugin } from '@platejs/selection/react'
+import { KEYS } from 'platejs'
+import { useEditorPlugin, usePlateState, usePluginOption } from 'platejs/react'
+import * as React from 'react'
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuGroup,
+  ContextMenuItem,
+  ContextMenuSub,
+  ContextMenuSubContent,
+  ContextMenuSubTrigger,
+  ContextMenuTrigger,
+} from '@/components/ui/context-menu'
+import { useIsTouchDevice } from '@/hooks/use-is-touch-device'
+import { getContent } from '@/i18n'
+
+export function BlockContextMenu({ children }: { children: React.ReactNode }) {
+  const { api, editor } = useEditorPlugin(BlockMenuPlugin)
+  const isTouch = useIsTouchDevice()
+  const [readOnly] = usePlateState('readOnly')
+  const openId = usePluginOption(BlockMenuPlugin, 'openId')
+  const isOpen = openId === BLOCK_CONTEXT_MENU_ID
+
+  const handleTurnInto = React.useCallback(
+    (type: string) => {
+      editor
+        .getApi(BlockSelectionPlugin)
+        .blockSelection?.getNodes()
+        .forEach(([node, path]) => {
+          if (node[KEYS.listType]) {
+            editor.tf.unsetNodes([KEYS.listType, 'indent'], {
+              at: path,
+            })
+          }
+
+          editor.tf.toggleBlock(type, { at: path })
+        })
+    },
+    [editor],
+  )
+
+  if (isTouch) {
+    return children
+  }
+
+  return (
+    <ContextMenu
+      onOpenChange={(open) => {
+        if (!open) {
+          api.blockMenu.hide()
+        }
+      }}
+      modal={false}
+    >
+      <ContextMenuTrigger
+        asChild
+        onContextMenu={(event) => {
+          const dataset = (event.target as HTMLElement).dataset
+          const disabled = dataset?.slateEditor === 'true' || readOnly || dataset?.plateOpenContextMenu === 'false'
+
+          if (disabled) return event.preventDefault()
+
+          setTimeout(() => {
+            api.blockMenu.show(BLOCK_CONTEXT_MENU_ID, {
+              x: event.clientX,
+              y: event.clientY,
+            })
+          }, 0)
+        }}
+      >
+        <div className="w-full">{children}</div>
+      </ContextMenuTrigger>
+      {isOpen && (
+        <ContextMenuContent
+          className="w-64"
+          onCloseAutoFocus={(e) => {
+            e.preventDefault()
+            editor.getApi(BlockSelectionPlugin).blockSelection?.focus()
+          }}
+        >
+          <ContextMenuGroup>
+            <ContextMenuItem
+              onClick={() => {
+                editor.getTransforms(BlockSelectionPlugin).blockSelection?.removeNodes()
+                editor.tf.focus()
+              }}
+            >
+              {getContent('editor.delete')}
+            </ContextMenuItem>
+            <ContextMenuItem
+              onClick={() => {
+                editor.getTransforms(BlockSelectionPlugin).blockSelection?.duplicate()
+              }}
+            >
+              {getContent('editor.duplicate')}
+              {/* <ContextMenuShortcut>⌘ + D</ContextMenuShortcut> */}
+            </ContextMenuItem>
+            <ContextMenuSub>
+              <ContextMenuSubTrigger>{getContent('editor.turninto')}</ContextMenuSubTrigger>
+              <ContextMenuSubContent className="w-48">
+                <ContextMenuItem onClick={() => handleTurnInto(KEYS.p)}>
+                  {getContent('editor.paragraph')}
+                </ContextMenuItem>
+                <ContextMenuItem onClick={() => handleTurnInto(KEYS.h1)}>{getContent('editor.h1')}</ContextMenuItem>
+                <ContextMenuItem onClick={() => handleTurnInto(KEYS.h2)}>{getContent('editor.h2')}</ContextMenuItem>
+                <ContextMenuItem onClick={() => handleTurnInto(KEYS.h3)}>{getContent('editor.h3')}</ContextMenuItem>
+                <ContextMenuItem onClick={() => handleTurnInto(KEYS.blockquote)}>
+                  {getContent('editor.quote')}
+                </ContextMenuItem>
+              </ContextMenuSubContent>
+            </ContextMenuSub>
+          </ContextMenuGroup>
+
+          <ContextMenuGroup>
+            <ContextMenuItem onClick={() => editor.getTransforms(BlockSelectionPlugin).blockSelection?.setIndent(1)}>
+              {getContent('editor.indent')}
+            </ContextMenuItem>
+            <ContextMenuItem onClick={() => editor.getTransforms(BlockSelectionPlugin).blockSelection?.setIndent(-1)}>
+              {getContent('editor.outdent')}
+            </ContextMenuItem>
+          </ContextMenuGroup>
+        </ContextMenuContent>
+      )}
+    </ContextMenu>
+  )
+}
