@@ -9,11 +9,11 @@ import { MarkdownKit } from '@/components/editor/plugins/markdown-kit'
 import { TableKit } from '@/components/editor/plugins/table-kit'
 import { ToggleKit } from '@/components/editor/plugins/toggle-kit'
 import { CalloutElement } from '@/components/ui/callout-node'
-import { BaseBasicBlocksKit } from './plugins/basic-blocks-base-kit'
-import { BaseBasicMarksKit } from './plugins/basic-marks-base-kit'
+import { BasicBlocksKit } from './plugins/basic-blocks-kit'
+import { BasicMarksKit } from './plugins/basic-marks-kit'
 
-export const BaseEditorKit = [
-  ...BaseBasicBlocksKit,
+export const EditorKit = [
+  ...BasicBlocksKit,
 
   CalloutPlugin.withComponent(CalloutElement),
 
@@ -21,7 +21,7 @@ export const BaseEditorKit = [
 
   ...CodeBlockKit,
 
-  ...BaseBasicMarksKit,
+  ...BasicMarksKit,
 
   FontColorPlugin,
 

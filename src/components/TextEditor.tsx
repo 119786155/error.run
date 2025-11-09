@@ -1,7 +1,7 @@
 import { Baseline, Bold, Italic, PaintBucket } from 'lucide-react'
 import type { Value } from 'platejs'
 import { Plate, usePlateEditor } from 'platejs/react'
-import { BaseEditorKit } from '@/components/editor/editor-base-kit'
+import { EditorKit } from '@/components/editor'
 import { Editor, EditorContainer } from '@/components/ui/editor'
 import { EmojiToolbarButton } from '@/components/ui/emoji-toolbar-button'
 import { ExportToolbarButton } from '@/components/ui/export-toolbar-button'
@@ -26,7 +26,7 @@ const Separator = () => <ToolbarSeparator className="h-[20px]" />
 
 export const TextEditor = ({ placeholder, initialValue }: { placeholder: string; initialValue: Value }) => {
   const editor = usePlateEditor({
-    plugins: [...BaseEditorKit],
+    plugins: [...EditorKit],
     value: initialValue,
   })
 
