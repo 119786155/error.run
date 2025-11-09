@@ -170,6 +170,12 @@ importers:
       react-day-picker:
         specifier: 8.10.1
         version: 8.10.1(date-fns@4.1.0)(react@19.2.0)
+      react-dnd:
+        specifier: ^16.0.1
+        version: 16.0.1(@types/node@24.10.0)(@types/react@19.2.2)(react@19.2.0)
+      react-dnd-html5-backend:
+        specifier: ^16.0.1
+        version: 16.0.1
       react-dom:
         specifier: ^19.1.1
         version: 19.2.0(react@19.2.0)
