@@ -29,6 +29,12 @@ const Separator = () => <ToolbarSeparator className="h-[20px]" />
 export const TextEditor = ({ placeholder, initialValue }: { placeholder: string; initialValue: Value }) => {
   const editor = usePlateEditor({
     plugins: [...EditorKit],
+
+    // Required Editor Configuration
+    // It's crucial to set skipInitialization: true when creating the editor.
+    // Yjs manages the initial document state, so Plate's default value initialization should be skipped to avoid conflicts.
+    skipInitialization: true,
+
     value: initialValue,
   })
 

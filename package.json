@@ -38,6 +38,7 @@
     "@platejs/table": "^51.0.0",
     "@platejs/toc": "^51.0.0",
     "@platejs/toggle": "^51.0.0",
+    "@platejs/yjs": "^51.1.0",
     "@radix-ui/react-avatar": "^1.1.11",
     "@radix-ui/react-checkbox": "^1.3.3",
     "@radix-ui/react-dialog": "^1.1.15",
@@ -50,6 +51,7 @@
     "@radix-ui/react-toggle-group": "^1.1.11",
     "@radix-ui/react-toolbar": "^1.1.11",
     "@radix-ui/react-tooltip": "^1.2.8",
+    "@slate-yjs/react": "^1.1.0",
     "@tanstack/react-router": "^1.134.4",
     "@udecode/cn": "^49.0.15",
     "class-variance-authority": "^0.7.1",
@@ -63,6 +65,7 @@
     "lucide-react": "^0.552.0",
     "pdf-lib": "^1.17.1",
     "platejs": "^51.0.0",
+    "randomcolor": "^0.6.2",
     "react": "^19.1.1",
     "react-day-picker": "9.11.1",
     "react-dnd": "^16.0.1",
@@ -75,7 +78,8 @@
     "remark-math": "^6.0.0",
     "tailwind-merge": "^3.3.1",
     "tailwind-scrollbar-hide": "^4.0.0",
-    "use-file-picker": "2.1.2"
+    "use-file-picker": "2.1.2",
+    "y-webrtc": "^10.3.0"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.2",
@@ -84,6 +88,7 @@
     "@types/lodash": "^4.17.20",
     "@types/node": "^24.6.0",
     "@types/quill": "^2.0.14",
+    "@types/randomcolor": "^0.5.9",
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",
     "@vitejs/plugin-react": "^5.0.4",

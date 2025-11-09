@@ -11,10 +11,13 @@ import { MarkdownKit } from '@/components/editor/plugins/markdown-kit'
 import { MathKit } from '@/components/editor/plugins/math-kit'
 import { TableKit } from '@/components/editor/plugins/table-kit'
 import { ToggleKit } from '@/components/editor/plugins/toggle-kit'
+import { YjsKit } from '@/components/editor/plugins/yjs-kit'
 import { BasicBlocksKit } from './plugins/basic-blocks-kit'
 import { BasicMarksKit } from './plugins/basic-marks-kit'
 
 export const EditorKit = [
+  ...YjsKit,
+
   ...BasicBlocksKit,
 
   ...TableKit,
