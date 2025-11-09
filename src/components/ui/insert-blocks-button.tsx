@@ -5,7 +5,6 @@ import { TablePlugin } from '@platejs/table/react'
 import {
   CodeXml,
   FileCode,
-  Highlighter,
   Keyboard,
   Lightbulb,
   Plus,
@@ -81,11 +80,6 @@ export function InsertBlocksButton(props: { editor: PlateEditor; toggle: (type: 
         <DropdownMenuItem>
           <MarkToolbarButton nodeType="strikethrough">
             <Strikethrough /> {getContent('editor.strikethrough')}
-          </MarkToolbarButton>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <MarkToolbarButton nodeType="highlight">
-            <Highlighter /> {getContent('editor.highlight')}
           </MarkToolbarButton>
         </DropdownMenuItem>
         <DropdownMenuItem>

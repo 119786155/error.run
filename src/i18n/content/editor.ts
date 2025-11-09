@@ -46,4 +46,5 @@ export const editor = {
   },
   indent: { zh: '缩进', en: 'Indent' },
   outdent: { zh: '取消缩进', en: 'Outdent' },
+  comment: { zh: '评论', en: 'Comment' },
 }

@@ -1,7 +1,8 @@
-import { Baseline, Bold, Italic, PaintBucket } from 'lucide-react'
+import { Baseline, Bold, Highlighter, Italic, PaintBucket } from 'lucide-react'
 import type { Value } from 'platejs'
 import { Plate, usePlateEditor } from 'platejs/react'
 import { BaseEditorKit } from '@/components/editor/editor-base-kit'
+import { CommentToolbarButton } from '@/components/ui/comment-toolbar-button'
 import { Editor, EditorContainer } from '@/components/ui/editor'
 import { EmojiToolbarButton } from '@/components/ui/emoji-toolbar-button'
 import { ExportToolbarButton } from '@/components/ui/export-toolbar-button'
@@ -68,6 +69,14 @@ export const TextEditor = ({ placeholder, initialValue }: { placeholder: string;
         </FontColorToolbarButton>
 
         <EmojiToolbarButton />
+
+        <Separator />
+
+        <MarkToolbarButton nodeType="highlight" tooltip={getContent('editor.highlight')}>
+          <Highlighter />
+        </MarkToolbarButton>
+
+        <CommentToolbarButton />
 
         <Separator />
 
