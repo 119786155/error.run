@@ -52,4 +52,5 @@ export const editor = {
   equation: { zh: '公式', en: 'Equation' },
   columns: { zh: '布局：3列', en: '3 columns' },
   date: { zh: '日期', en: 'Date' },
+  canvas: { zh: '画布', en: 'Canvas' },
 }

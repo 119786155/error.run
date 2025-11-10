@@ -23,6 +23,7 @@
     "@platejs/date": "^51.0.0",
     "@platejs/dnd": "^51.0.0",
     "@platejs/emoji": "^51.0.0",
+    "@platejs/excalidraw": "^51.0.0",
     "@platejs/floating": "^51.0.0",
     "@platejs/indent": "^51.0.0",
     "@platejs/layout": "^51.0.0",

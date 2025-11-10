@@ -47,6 +47,9 @@ importers:
       '@platejs/emoji':
         specifier: ^51.0.0
         version: 51.0.0(@emoji-mart/data@1.2.1)(platejs@51.0.0(@types/react@19.2.2)(immer@10.2.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(scheduler@0.27.0)(use-sync-external-store@1.6.0(react@19.2.0)))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@platejs/excalidraw':
+        specifier: ^51.0.0
+        version: 51.0.0(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(immer@10.2.0)(platejs@51.0.0(@types/react@19.2.2)(immer@10.2.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(scheduler@0.27.0)(use-sync-external-store@1.6.0(react@19.2.0)))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@platejs/floating':
         specifier: ^51.0.0
         version: 51.0.0(platejs@51.0.0(@types/react@19.2.2)(immer@10.2.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(scheduler@0.27.0)(use-sync-external-store@1.6.0(react@19.2.0)))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -799,6 +802,13 @@ packages:
     resolution: {integrity: sha512-HFD6trqOZSTTb7JegES13qoLvIVCrZg+zogcjl1Yt/3J33pSN6GUyVON2v1A65swhXgb5q46dK0M+LfW/xOd5A==}
     peerDependencies:
       '@emoji-mart/data': '>=1.2.0'
+      platejs: '>=51.0.0'
+      react: '>=18.0.0'
+      react-dom: '>=18.0.0'
+
+  '@platejs/excalidraw@51.0.0':
+    resolution: {integrity: sha512-vhB32csynw9tzn6+gYM/pGNEVlfPxfp6Q2V0d0UAL4iebAPKh2mzukFHoVj2GGk2ivrI2kpqxtQpTOXha3dG6Q==}
+    peerDependencies:
       platejs: '>=51.0.0'
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
@@ -4386,6 +4396,19 @@ snapshots:
       platejs: 51.0.0(@types/react@19.2.2)(immer@10.2.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(scheduler@0.27.0)(use-sync-external-store@1.6.0(react@19.2.0))
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
+
+  '@platejs/excalidraw@51.0.0(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(immer@10.2.0)(platejs@51.0.0(@types/react@19.2.2)(immer@10.2.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(scheduler@0.27.0)(use-sync-external-store@1.6.0(react@19.2.0)))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+    dependencies:
+      '@excalidraw/excalidraw': 0.18.0(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(immer@10.2.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      lodash: 4.17.21
+      platejs: 51.0.0(@types/react@19.2.2)(immer@10.2.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(scheduler@0.27.0)(use-sync-external-store@1.6.0(react@19.2.0))
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
+    transitivePeerDependencies:
+      - '@types/react'
+      - '@types/react-dom'
+      - immer
+      - supports-color
 
   '@platejs/floating@51.0.0(platejs@51.0.0(@types/react@19.2.2)(immer@10.2.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(scheduler@0.27.0)(use-sync-external-store@1.6.0(react@19.2.0)))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:

@@ -2,6 +2,7 @@
 import { insertCallout } from '@platejs/callout'
 import { insertCodeBlock } from '@platejs/code-block'
 import { insertDate } from '@platejs/date'
+import { insertExcalidraw } from '@platejs/excalidraw'
 import { insertColumnGroup } from '@platejs/layout'
 import { TablePlugin } from '@platejs/table/react'
 import {
@@ -12,6 +13,7 @@ import {
   Highlighter,
   Keyboard,
   Lightbulb,
+  PenTool,
   Plus,
   Strikethrough,
   Subscript,
@@ -87,6 +89,11 @@ export function InsertBlocksButton(props: { editor: PlateEditor; toggle: (type: 
         <DropdownMenuItem>
           <ToolbarButton onClick={() => insertColumnGroup(props.editor, { columns: 3, select: true })}>
             <Columns3 /> {getContent('editor.columns')}
+          </ToolbarButton>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <ToolbarButton onClick={() => insertExcalidraw(props.editor, {}, { select: true })}>
+            <PenTool /> {getContent('editor.canvas')}
           </ToolbarButton>
         </DropdownMenuItem>
 
