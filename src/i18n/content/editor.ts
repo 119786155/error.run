@@ -39,6 +39,7 @@ export const editor = {
     pdf: { zh: '导出为 PDF', en: 'Export as PDF' },
     img: { zh: '导出为 图片', en: 'Export as Image' },
     md: { zh: '导出为 MarkDown', en: 'Export as MarkDown' },
+    json: { zh: '导出为 JSON', en: 'Export as JSON' },
   },
   importFile: {
     html: { zh: '从 HTML 导入', en: 'Import from HTML' },

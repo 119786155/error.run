@@ -100,6 +100,13 @@ export function ExportToolbarButton(props: DropdownMenuProps) {
     await downloadFile(url, getName('md'))
   }
 
+  const exportToJson = async () => {
+    const json = ((editor.value as Record<string, string>[]) || []).map(({ id, ...items }) => items)
+    const str = JSON.stringify(json, null, ' ')
+    const url = `data:text/json;charset=utf-8,${encodeURIComponent(str)}`
+    await downloadFile(url, getName('json'))
+  }
+
   const exportToHtml = async () => {
     const editorStatic = createSlateEditor({
       plugins: EditorKit,
@@ -159,6 +166,7 @@ export function ExportToolbarButton(props: DropdownMenuProps) {
           <DropdownMenuItem onSelect={exportToPdf}>{getContent('editor.exportFile.pdf')}</DropdownMenuItem>
           <DropdownMenuItem onSelect={exportToImage}>{getContent('editor.exportFile.img')}</DropdownMenuItem>
           <DropdownMenuItem onSelect={exportToMarkDown}>{getContent('editor.exportFile.md')}</DropdownMenuItem>
+          <DropdownMenuItem onSelect={exportToJson}>{getContent('editor.exportFile.json')}</DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
