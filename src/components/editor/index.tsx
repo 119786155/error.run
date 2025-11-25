@@ -40,120 +40,133 @@ import { get, KEY_PATH, put } from '@/models/doc'
 
 const Separator = () => <ToolbarSeparator className="h-[20px]" />
 
-const DOC_ID = 'your_doc'
-
 type Doc = {
   [KEY_PATH]: string
   content: Value
 }
 
-export const Editor = ({ placeholder }: { placeholder: string }) => {
-  const [readOnly, setReadOnly] = useState(false)
+type EditorProps = {
+  id?: string
+  placeholder?: string
+  staticValue?: Value
+}
+
+export const Editor = ({ id, placeholder, staticValue }: EditorProps) => {
+  const [readOnly, setReadOnly] = useState(!!staticValue)
+
+  const asyncValue = async () => {
+    await init()
+
+    const doc = (await get(id as string)) as Doc
+
+    return doc?.content || []
+  }
 
   const editor = usePlateEditor({
     plugins: [...EditorKit],
-    value: async () => {
-      await init()
-
-      const doc = (await get(DOC_ID)) as Doc
-
-      return doc?.content || []
-    },
+    value: staticValue ? staticValue : asyncValue,
   })
 
-  const onChange = useCallback(({ editor, value }: { editor: PlateEditor; value: Value }) => {
-    const isAstChange = editor.operations.some((op) => 'set_selection' !== op.type)
+  const onChange = useCallback(
+    ({ editor, value }: { editor: PlateEditor; value: Value }) => {
+      if (!id) return
 
-    if (!isAstChange || !value) return
+      const isAstChange = editor.operations.some((op) => 'set_selection' !== op.type)
 
-    put({ [KEY_PATH]: DOC_ID, content: value } as Doc)
-  }, [])
+      if (!isAstChange || !value) return
+
+      put({ [KEY_PATH]: id, content: value } as Doc)
+    },
+    [id],
+  )
 
   return (
     <Plate editor={editor} readOnly={readOnly} onChange={onChange}>
-      <FixedToolbar className="justify-start rounded-t-lg">
-        <ModeToolbarButton readOnly={readOnly} setReadOnly={setReadOnly} />
+      {!staticValue && (
+        <FixedToolbar className="justify-start rounded-t-lg">
+          <ModeToolbarButton readOnly={readOnly} setReadOnly={setReadOnly} />
 
-        <Separator />
+          <Separator />
 
-        <UndoToolbarButton />
+          <UndoToolbarButton />
 
-        <RedoToolbarButton />
+          <RedoToolbarButton />
 
-        <Separator />
+          <Separator />
 
-        <ExportToolbarButton />
+          <ExportToolbarButton />
 
-        <ImportToolbarButton />
+          <ImportToolbarButton />
 
-        <Separator />
+          <Separator />
 
-        <InsertToolbarButton />
+          <InsertToolbarButton />
 
-        <TurnIntoToolbarButton />
+          <TurnIntoToolbarButton />
 
-        <FontSizeToolbarButton />
+          <FontSizeToolbarButton />
 
-        <Separator />
+          <Separator />
 
-        <MarkToolbarButton nodeType="bold" tooltip={getContent('editor.bold')}>
-          <Bold />
-        </MarkToolbarButton>
+          <MarkToolbarButton nodeType="bold" tooltip={getContent('editor.bold')}>
+            <Bold />
+          </MarkToolbarButton>
 
-        <MarkToolbarButton nodeType="italic" tooltip={getContent('editor.italic')}>
-          <Italic />
-        </MarkToolbarButton>
+          <MarkToolbarButton nodeType="italic" tooltip={getContent('editor.italic')}>
+            <Italic />
+          </MarkToolbarButton>
 
-        <MarkToolbarButton nodeType="underline" tooltip={getContent('editor.underline')}>
-          <Underline />
-        </MarkToolbarButton>
+          <MarkToolbarButton nodeType="underline" tooltip={getContent('editor.underline')}>
+            <Underline />
+          </MarkToolbarButton>
 
-        <MarkToolbarButton nodeType="strikethrough" tooltip={getContent('editor.strikethrough')}>
-          <Strikethrough />
-        </MarkToolbarButton>
+          <MarkToolbarButton nodeType="strikethrough" tooltip={getContent('editor.strikethrough')}>
+            <Strikethrough />
+          </MarkToolbarButton>
 
-        <MarkToolbarButton nodeType="code" tooltip={getContent('editor.code')}>
-          <Code />
-        </MarkToolbarButton>
+          <MarkToolbarButton nodeType="code" tooltip={getContent('editor.code')}>
+            <Code />
+          </MarkToolbarButton>
 
-        <MarkToolbarButton nodeType="kbd" tooltip={getContent('editor.kbd')}>
-          <Keyboard />
-        </MarkToolbarButton>
+          <MarkToolbarButton nodeType="kbd" tooltip={getContent('editor.kbd')}>
+            <Keyboard />
+          </MarkToolbarButton>
 
-        <MarkToolbarButton nodeType="superscript" tooltip={getContent('editor.superscript')}>
-          <Superscript />
-        </MarkToolbarButton>
+          <MarkToolbarButton nodeType="superscript" tooltip={getContent('editor.superscript')}>
+            <Superscript />
+          </MarkToolbarButton>
 
-        <MarkToolbarButton nodeType="subscript" tooltip={getContent('editor.subscript')}>
-          <Subscript />
-        </MarkToolbarButton>
+          <MarkToolbarButton nodeType="subscript" tooltip={getContent('editor.subscript')}>
+            <Subscript />
+          </MarkToolbarButton>
 
-        <FontColorToolbarButton nodeType="color" tooltip={getContent('editor.txtcolor')}>
-          <Baseline />
-        </FontColorToolbarButton>
+          <FontColorToolbarButton nodeType="color" tooltip={getContent('editor.txtcolor')}>
+            <Baseline />
+          </FontColorToolbarButton>
 
-        <FontColorToolbarButton nodeType="backgroundColor" tooltip={getContent('editor.bgcolor')}>
-          <PaintBucket />
-        </FontColorToolbarButton>
+          <FontColorToolbarButton nodeType="backgroundColor" tooltip={getContent('editor.bgcolor')}>
+            <PaintBucket />
+          </FontColorToolbarButton>
 
-        <EmojiToolbarButton />
+          <EmojiToolbarButton />
 
-        <MediaToolbarButton nodeType={KEYS.img} />
+          <MediaToolbarButton nodeType={KEYS.img} />
 
-        <Separator />
+          <Separator />
 
-        <LineHeightToolbarButton />
+          <LineHeightToolbarButton />
 
-        <AlignToolbarButton />
+          <AlignToolbarButton />
 
-        <IndentToolbarButton />
+          <IndentToolbarButton />
 
-        <OutdentToolbarButton />
+          <OutdentToolbarButton />
 
-        <Separator />
+          <Separator />
 
-        <ThemeToggle />
-      </FixedToolbar>
+          <ThemeToggle />
+        </FixedToolbar>
+      )}
       <EditorContainer>
         <MyPlateEditor placeholder={placeholder} />
       </EditorContainer>

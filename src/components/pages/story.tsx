@@ -1,23 +1,130 @@
+import { Editor } from '@/components/editor'
 import { getContent } from '@/i18n'
 
 export const Story = () => {
+  const staticValue = [
+    {
+      type: 'h1',
+      children: [
+        {
+          text: getContent('story.title'),
+        },
+      ],
+    },
+    {
+      type: 'p',
+      children: [
+        {
+          text: `${getContent('story.author')} ${getContent('story.createtime')}`,
+        },
+      ],
+      color: '#999999',
+      fontSize: '14px',
+      italic: true,
+    },
+    {
+      type: 'p',
+      children: [
+        {
+          text: getContent('story.paragraph1'),
+        },
+      ],
+      lineHeight: 3,
+    },
+    {
+      type: 'p',
+      children: [
+        {
+          text: getContent('story.paragraph2'),
+        },
+      ],
+      lineHeight: 3,
+    },
+    {
+      type: 'p',
+      children: [
+        {
+          text: getContent('story.paragraph3'),
+        },
+      ],
+      lineHeight: 3,
+    },
+    {
+      type: 'p',
+      children: [
+        {
+          text: getContent('story.paragraph4'),
+        },
+      ],
+      lineHeight: 3,
+    },
+    {
+      type: 'p',
+      children: [
+        {
+          text: getContent('story.paragraph5'),
+        },
+      ],
+      lineHeight: 3,
+    },
+    {
+      type: 'p',
+      children: [
+        {
+          text: getContent('story.paragraph6'),
+        },
+      ],
+      lineHeight: 3,
+    },
+    {
+      type: 'p',
+      children: [
+        {
+          text: getContent('story.paragraph7'),
+        },
+      ],
+      lineHeight: 3,
+    },
+    {
+      type: 'p',
+      children: [
+        {
+          text: getContent('story.paragraph8'),
+        },
+      ],
+      lineHeight: 3,
+    },
+    {
+      type: 'p',
+      children: [
+        {
+          text: getContent('story.paragraph9'),
+        },
+      ],
+      lineHeight: 3,
+    },
+    {
+      type: 'p',
+      children: [
+        {
+          text: getContent('story.paragraph10'),
+        },
+      ],
+      lineHeight: 3,
+    },
+    {
+      type: 'p',
+      children: [
+        {
+          text: getContent('story.paragraph11'),
+        },
+      ],
+      lineHeight: 3,
+    },
+  ]
   return (
-    <div className="w-66 md:w-88 lg:w-188 mx-auto my-5 leading-[250%]">
-      <p className="text-lg font-bold">{getContent('story.title')}</p>
-      <p className="text-xs italic text-gray-700 dark:text-gray-400 leading-[300%]">
-        {getContent('story.author')} {getContent('story.createtime')}
-      </p>
-      <p>{getContent('story.paragraph1')}</p>
-      <p>{getContent('story.paragraph2')}</p>
-      <p>{getContent('story.paragraph3')}</p>
-      <p>{getContent('story.paragraph4')}</p>
-      <p>{getContent('story.paragraph5')}</p>
-      <p>{getContent('story.paragraph6')}</p>
-      <p>{getContent('story.paragraph7')}</p>
-      <p>{getContent('story.paragraph8')}</p>
-      <p>{getContent('story.paragraph9')}</p>
-      <p>{getContent('story.paragraph10')}</p>
-      <p>{getContent('story.paragraph11')}</p>
+    <div className="mx-5 min-h-dvh">
+      <Editor staticValue={staticValue} />
     </div>
   )
 }
