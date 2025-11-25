@@ -8,7 +8,7 @@ import { createSlateEditor } from 'platejs'
 import { useEditorRef } from 'platejs/react'
 import { serializeHtml } from 'platejs/static'
 import * as React from 'react'
-import { EditorKit } from '@/components/editor/plugins'
+import { getEditorKit } from '@/components/editor/plugins'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -109,7 +109,7 @@ export function ExportToolbarButton(props: DropdownMenuProps) {
 
   const exportToHtml = async () => {
     const editorStatic = createSlateEditor({
-      plugins: EditorKit,
+      plugins: getEditorKit(),
       value: editor.children,
     })
 

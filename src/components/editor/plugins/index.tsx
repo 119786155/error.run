@@ -11,6 +11,7 @@ import { DndKit } from '@/components/editor/plugins/dnd-kit'
 import { EmojiKit } from '@/components/editor/plugins/emoji-kit'
 import { ExcalidrawKit } from '@/components/editor/plugins/excalidraw-kit'
 import { ExitBreakKit } from '@/components/editor/plugins/exit-break-kit'
+import { FixedToolbarKit } from '@/components/editor/plugins/fixed-toolbar-kit'
 import { IndentKit } from '@/components/editor/plugins/indent-kit'
 import { LineHeightKit } from '@/components/editor/plugins/line-height-kit'
 import { LinkKit } from '@/components/editor/plugins/link-kit'
@@ -23,52 +24,62 @@ import { TableKit } from '@/components/editor/plugins/table-kit'
 import { TocKit } from '@/components/editor/plugins/toc-kit'
 import { ToggleKit } from '@/components/editor/plugins/toggle-kit'
 
-export const EditorKit = [
-  ...BasicBlocksKit,
+type Options = {
+  disableToolbar: boolean
+}
 
-  ...TableKit,
+export const getEditorKit = (options?: Options) => {
+  const kits = [
+    ...BasicBlocksKit,
 
-  ...CodeBlockKit,
+    ...TableKit,
 
-  ...BasicMarksKit,
+    ...CodeBlockKit,
 
-  ...LineHeightKit,
+    ...BasicMarksKit,
 
-  ...MarkdownKit,
+    ...LineHeightKit,
 
-  ...EmojiKit,
+    ...MarkdownKit,
 
-  ...ListKit,
+    ...EmojiKit,
 
-  ...ToggleKit,
+    ...ListKit,
 
-  ...IndentKit,
+    ...ToggleKit,
 
-  ...DndKit,
+    ...IndentKit,
 
-  ...LinkKit,
+    ...DndKit,
 
-  ...MathKit,
+    ...LinkKit,
 
-  ...ColumnKit,
+    ...MathKit,
 
-  ...DateKit,
+    ...ColumnKit,
 
-  ...ExcalidrawKit,
+    ...DateKit,
 
-  ...TocKit,
+    ...ExcalidrawKit,
 
-  ...ExitBreakKit,
+    ...TocKit,
 
-  ...AutoformatKit,
+    ...ExitBreakKit,
 
-  ...BlockSelectionKit,
+    ...AutoformatKit,
 
-  ...BlockMenuKit,
+    ...BlockSelectionKit,
 
-  ...SlashKit,
+    ...BlockMenuKit,
 
-  ...CursorOverlayKit,
+    ...SlashKit,
 
-  ...MediaKit,
-]
+    ...CursorOverlayKit,
+
+    ...MediaKit,
+  ]
+
+  if (options?.disableToolbar) return kits
+
+  return [...kits, ...FixedToolbarKit]
+}
