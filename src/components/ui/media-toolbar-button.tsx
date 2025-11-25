@@ -1,7 +1,6 @@
 'use client'
 
 import { PlaceholderPlugin } from '@platejs/media/react'
-
 import type { DropdownMenuProps } from '@radix-ui/react-dropdown-menu'
 import { AudioLinesIcon, FileUpIcon, FilmIcon, ImageIcon, LinkIcon } from 'lucide-react'
 import { isUrl, KEYS } from 'platejs'
@@ -28,8 +27,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Input } from '@/components/ui/input'
 import { getContent } from '@/i18n'
-
-import { ToolbarButton, ToolbarSplitButton, ToolbarSplitButtonSecondary } from './toolbar'
+import { ToolbarSplitButton, ToolbarSplitButtonSecondary } from './toolbar'
 
 const MEDIA_CONFIG: Record<
   string,
@@ -94,8 +92,9 @@ export function MediaToolbarButton({ nodeType, ...props }: DropdownMenuProps & {
           }
         }}
         pressed={open}
+        tooltip={currentConfig.tooltip}
       >
-        <ToolbarButton tooltip={currentConfig.tooltip}>{currentConfig.icon}</ToolbarButton>
+        {currentConfig.icon}
 
         <DropdownMenu open={open} onOpenChange={setOpen} modal={false} {...props}>
           <DropdownMenuTrigger asChild>

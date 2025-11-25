@@ -26,10 +26,10 @@ export const BlockDraggable: RenderNodeWrapper = (props) => {
   const enabled = React.useMemo(() => {
     if (editor.dom.readOnly) return false
 
-    if (path.length === 1 && !isType(editor, element, UNDRAGGABLE_KEYS)) {
+    if (path?.length === 1 && !isType(editor, element, UNDRAGGABLE_KEYS)) {
       return true
     }
-    if (path.length === 3 && !isType(editor, element, UNDRAGGABLE_KEYS)) {
+    if (path?.length === 3 && !isType(editor, element, UNDRAGGABLE_KEYS)) {
       const block = editor.api.some({
         at: path,
         match: {
