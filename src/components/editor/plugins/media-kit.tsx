@@ -17,7 +17,17 @@ export const MediaKit = [
   }),
   MediaEmbedPlugin.withComponent(MediaEmbedElement),
   PlaceholderPlugin.configure({
-    options: { disableEmptyPlaceholder: true },
+    options: {
+      disableEmptyPlaceholder: true,
+      uploadConfig: {
+        image: {
+          maxFileCount: 10,
+          maxFileSize: '1GB',
+          mediaType: KEYS.img,
+          minFileCount: 1,
+        },
+      },
+    },
     render: { afterEditable: MediaUploadToast, node: PlaceholderElement },
   }),
   CaptionPlugin.configure({
