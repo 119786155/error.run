@@ -42,41 +42,9 @@ export function useUploadFile({ onUploadComplete, onUploadError }: UseUploadFile
 
       return uploadedFile
     } catch (error) {
-      const errorMessage = getErrorMessage(error)
-
-      const message = errorMessage.length > 0 ? errorMessage : 'Something went wrong, please try again later.'
-
-      toast.error(message)
+      showErrorToast(error)
 
       onUploadError?.(error)
-
-      // Mock upload for unauthenticated users
-      // toast.info('User not logged in. Mocking upload process.');
-      const mockUploadedFile = {
-        key: 'mock-key-0',
-        appUrl: `https://mock-app-url.com/${file.name}`,
-        name: file.name,
-        size: file.size,
-        type: file.type,
-        url: URL.createObjectURL(file),
-      } as UploadedFile
-
-      // Simulate upload progress
-      let progress = 0
-
-      const simulateProgress = async () => {
-        while (progress < 100) {
-          await new Promise((resolve) => setTimeout(resolve, 50))
-          progress += 2
-          setProgress(Math.min(progress, 100))
-        }
-      }
-
-      await simulateProgress()
-
-      setUploadedFile(mockUploadedFile)
-
-      return mockUploadedFile
     } finally {
       setProgress(0)
       setIsUploading(false)
@@ -105,5 +73,7 @@ export function getErrorMessage(err: unknown) {
 export function showErrorToast(err: unknown) {
   const errorMessage = getErrorMessage(err)
 
-  return toast.error(errorMessage)
+  const message = errorMessage.length > 0 ? errorMessage : 'Something went wrong, please try again later.'
+
+  return toast.error(message)
 }
