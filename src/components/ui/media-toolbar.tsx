@@ -19,11 +19,10 @@ import {
   useSelected,
 } from 'platejs/react'
 import * as React from 'react'
-
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Popover, PopoverAnchor, PopoverContent } from '@/components/ui/popover'
 import { Separator } from '@/components/ui/separator'
-
+import { getContent } from '@/i18n'
 import { CaptionButton } from './caption'
 
 const inputVariants = cva(
@@ -72,11 +71,11 @@ export function MediaToolbar({ children, plugin }: { children: React.ReactNode; 
         ) : (
           <div className="box-content flex items-center">
             <FloatingMediaPrimitive.EditButton className={buttonVariants({ size: 'sm', variant: 'ghost' })}>
-              Edit link
+              {getContent('editor.editlink')}
             </FloatingMediaPrimitive.EditButton>
 
             <CaptionButton size="sm" variant="ghost">
-              Caption
+              {getContent('editor.caption')}
             </CaptionButton>
 
             <Separator orientation="vertical" className="mx-1 h-6" />

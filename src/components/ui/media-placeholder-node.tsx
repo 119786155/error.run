@@ -9,6 +9,7 @@ import { PlateElement, useEditorPlugin, withHOC } from 'platejs/react'
 import * as React from 'react'
 import { useFilePicker } from 'use-file-picker'
 import { useUploadFile } from '@/hooks/use-upload-file'
+import { getContent } from '@/i18n'
 import { cn } from '@/lib/utils'
 
 const CONTENT: Record<
@@ -21,22 +22,22 @@ const CONTENT: Record<
 > = {
   [KEYS.audio]: {
     accept: ['audio/*'],
-    content: 'Add an audio file',
+    content: getContent('editor.upload.audio'),
     icon: <AudioLines />,
   },
   [KEYS.file]: {
     accept: ['*'],
-    content: 'Add a file',
+    content: getContent('editor.upload.file'),
     icon: <FileUp />,
   },
   [KEYS.img]: {
     accept: ['image/*'],
-    content: 'Add an image',
+    content: getContent('editor.upload.image'),
     icon: <ImageIcon />,
   },
   [KEYS.video]: {
     accept: ['video/*'],
-    content: 'Add a video',
+    content: getContent('editor.upload.video'),
     icon: <Film />,
   },
 }

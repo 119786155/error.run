@@ -18,6 +18,7 @@ import { useEditorRef, useEditorSelection, useFormInputProps, usePluginOption } 
 import * as React from 'react'
 import { buttonVariants } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
+import { getContent } from '@/i18n'
 
 const popoverVariants = cva(
   'z-50 w-auto rounded-md border bg-popover p-1 text-popover-foreground shadow-md outline-hidden',
@@ -91,7 +92,7 @@ export function LinkFloatingToolbar({ state }: { state?: LinkFloatingToolbarStat
   ) : (
     <div className="box-content flex items-center">
       <button className={buttonVariants({ size: 'sm', variant: 'ghost' })} type="button" {...editButtonProps}>
-        Edit link
+        {getContent('editor.editlink')}
       </button>
 
       <Separator orientation="vertical" />

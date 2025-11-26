@@ -78,5 +78,8 @@ export const editor = {
     file: { zh: '插入文件', en: 'Insert File' },
     image: { zh: '插入图片', en: 'Insert Image' },
     video: { zh: '插入视频', en: 'Insert Video' },
+    unknownError: { zh: '出问题啦，请稍后再试试', en: 'Something went wrong, please try again later.' },
   },
+  editlink: { zh: '编辑链接', en: 'Edit link' },
+  caption: { zh: '设置标题', en: 'Caption' },
 }

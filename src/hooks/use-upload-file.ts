@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { toast } from 'sonner'
 import type { ClientUploadedFileData, UploadFilesOptions } from 'uploadthing/types'
+import { getContent } from '@/i18n'
 import type { OurFileRouter } from '@/lib/uploadthing'
 import { getDataURL } from '@/lib/utils'
 
@@ -62,18 +63,16 @@ export function useUploadFile({ onUploadComplete, onUploadError }: UseUploadFile
 }
 
 export function getErrorMessage(err: unknown) {
-  const unknownError = 'Something went wrong, please try again later.'
-
   if (err instanceof Error) {
     return err.message
   }
-  return unknownError
+  return getContent('editor.upload.unknownError')
 }
 
 export function showErrorToast(err: unknown) {
   const errorMessage = getErrorMessage(err)
 
-  const message = errorMessage.length > 0 ? errorMessage : 'Something went wrong, please try again later.'
+  const message = errorMessage.length > 0 ? errorMessage : getContent('editor.upload.unknownError')
 
   return toast.error(message)
 }
