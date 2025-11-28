@@ -100,7 +100,15 @@ export const FixedToolbarButtons = () => {
 
       <EmojiToolbarButton />
 
+      <Separator />
+
+      {/* <MediaToolbarButton nodeType={KEYS.audio} /> */}
+
+      {/* <MediaToolbarButton nodeType={KEYS.file} /> */}
+
       <MediaToolbarButton nodeType={KEYS.img} />
+
+      {/* <MediaToolbarButton nodeType={KEYS.video} /> */}
 
       <Separator />
 

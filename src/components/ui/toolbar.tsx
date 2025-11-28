@@ -135,7 +135,7 @@ export const ToolbarButton = withTooltip(function ToolbarButton({
 })
 
 export function ToolbarSplitButton({ className, ...props }: React.ComponentPropsWithoutRef<typeof ToolbarButton>) {
-  return <ToolbarButton className={cn('group flex gap-0 px-0 hover:bg-transparent', className)} {...props} />
+  return <ToolbarButton className={cn('group flex gap-0 px-1 hover:bg-transparent', className)} {...props} />
 }
 
 type ToolbarSplitButtonPrimaryProps = Omit<React.ComponentPropsWithoutRef<typeof ToolbarToggleItem>, 'value'> &
