@@ -142,4 +142,4 @@ vite.config.ts.timestamp-*
 .tanstack
 
 # others
-.t
+.r.json

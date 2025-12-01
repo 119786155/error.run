@@ -1,5 +1,6 @@
 import { createRootRoute, HeadContent, Outlet } from '@tanstack/react-router'
 import { useEffect } from 'react'
+import { Footer } from '@/components/footer'
 import { ThemeProvider } from '@/components/ui/theme-provider'
 
 const RootLayout = () => {
@@ -13,6 +14,7 @@ const RootLayout = () => {
     <ThemeProvider storageKey="theme">
       <HeadContent />
       <Outlet />
+      <Footer />
     </ThemeProvider>
   )
 }

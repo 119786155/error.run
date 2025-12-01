@@ -1,6 +1,7 @@
 import { app } from './app'
 import { editor } from './editor'
 import { model } from './model'
+import { recordation } from './recordation'
 import { story } from './story'
 
 export const content = {
@@ -8,4 +9,5 @@ export const content = {
   story,
   editor,
   model,
+  recordation,
 }

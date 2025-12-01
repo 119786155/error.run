@@ -7,6 +7,29 @@
   </head>
   <body>
     <div id="root"></div>
+    <div id="beforeRender" style="animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;padding-inline: 1rem;">
+      <style>
+        @keyframes pulse {
+          50% {
+            opacity: 0.5;
+          }
+        }
+
+        body {
+          background-color: #fff;
+          color: #333;
+        }
+
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+          } 
+        }
+      </style>
+      <div style="height:384px;margin-bottom:1rem;background-color:oklch(87.2% 0.01 258.338);border-radius:3px"></div>
+      <div style="height:36px;margin-bottom:1rem;background-color:oklch(87.2% 0.01 258.338);border-radius:3px"></div>
+    </div>
     <script type="module" src="/src/main.tsx"></script> 
   </body>
 </html>
