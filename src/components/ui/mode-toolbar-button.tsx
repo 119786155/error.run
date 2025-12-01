@@ -8,6 +8,7 @@ export function ModeToolbarButton() {
 
   return (
     <ToolbarButton
+      id="step-2"
       onClick={() => setReadOnly(!readOnly)}
       tooltip={readOnly ? getContent('editor.mode.viewing') : getContent('editor.mode.editing')}
     >

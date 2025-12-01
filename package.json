@@ -54,6 +54,7 @@
     "@radix-ui/react-toggle-group": "^1.1.11",
     "@radix-ui/react-toolbar": "^1.1.11",
     "@radix-ui/react-tooltip": "^1.2.8",
+    "@reactour/tour": "^3.8.0",
     "@tanstack/react-router": "^1.134.4",
     "@udecode/cn": "^49.0.15",
     "@uploadthing/react": "7.3.3",

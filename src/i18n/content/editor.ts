@@ -82,4 +82,5 @@ export const editor = {
   },
   editlink: { zh: '编辑链接', en: 'Edit link' },
   caption: { zh: '设置标题', en: 'Caption' },
+  tutorial: { zh: '教程', en: 'Tutorial' },
 }
