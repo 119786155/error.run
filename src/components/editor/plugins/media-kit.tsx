@@ -1,19 +1,28 @@
 'use client'
 
 import { CaptionPlugin } from '@platejs/caption/react'
-import { ImagePlugin, MediaEmbedPlugin, PlaceholderPlugin } from '@platejs/media/react'
+import { AudioPlugin, ImagePlugin, MediaEmbedPlugin, PlaceholderPlugin, VideoPlugin } from '@platejs/media/react'
 import { KEYS } from 'platejs'
-
+import { AudioElement } from '@/components/ui/media-audio-node'
 import { MediaEmbedElement } from '@/components/ui/media-embed-node'
 import { ImageElement } from '@/components/ui/media-image-node'
 import { PlaceholderElement } from '@/components/ui/media-placeholder-node'
 import { MediaPreviewDialog } from '@/components/ui/media-preview-dialog'
 import { MediaUploadToast } from '@/components/ui/media-upload-toast'
+import { VideoElement } from '@/components/ui/media-video-node'
 
 export const MediaKit = [
   ImagePlugin.configure({
     options: { disableUploadInsert: true },
     render: { afterEditable: MediaPreviewDialog, node: ImageElement },
+  }),
+  AudioPlugin.configure({
+    options: { disableUploadInsert: true },
+    render: { afterEditable: MediaPreviewDialog, node: AudioElement },
+  }),
+  VideoPlugin.configure({
+    options: { disableUploadInsert: true },
+    render: { afterEditable: MediaPreviewDialog, node: VideoElement },
   }),
   MediaEmbedPlugin.withComponent(MediaEmbedElement),
   PlaceholderPlugin.configure({
@@ -63,7 +72,7 @@ export const MediaKit = [
   CaptionPlugin.configure({
     options: {
       query: {
-        allow: [KEYS.img, KEYS.mediaEmbed],
+        allow: [KEYS.img, KEYS.video, KEYS.audio, KEYS.mediaEmbed],
       },
     },
   }),

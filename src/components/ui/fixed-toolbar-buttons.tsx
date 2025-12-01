@@ -102,13 +102,13 @@ export const FixedToolbarButtons = () => {
 
       <Separator />
 
-      {/* <MediaToolbarButton nodeType={KEYS.audio} /> */}
+      <MediaToolbarButton nodeType={KEYS.audio} />
 
       {/* <MediaToolbarButton nodeType={KEYS.file} /> */}
 
       <MediaToolbarButton nodeType={KEYS.img} />
 
-      {/* <MediaToolbarButton nodeType={KEYS.video} /> */}
+      <MediaToolbarButton nodeType={KEYS.video} />
 
       <Separator />
 
