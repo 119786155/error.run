@@ -1,9 +1,12 @@
+import { YjsPlugin } from '@platejs/yjs/react'
 import type { Value } from 'platejs'
 import type { PlateEditor } from 'platejs/react'
 import { Plate, usePlateEditor } from 'platejs/react'
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 import { getEditorKit } from '@/components/editor/plugins'
 import { EditorContainer, Editor as MyPlateEditor } from '@/components/ui/editor'
+import { EditorStatus } from '@/components/ui/editor-status'
+import { useMounted } from '@/hooks/use-mounted'
 import { init } from '@/models'
 import { get, KEY_PATH, put } from '@/models/doc'
 
@@ -16,9 +19,12 @@ type EditorProps = {
   id?: string
   placeholder?: string
   staticValue?: Value
+  enableCollaboration?: boolean
 }
 
-export const Editor = ({ id, placeholder, staticValue }: EditorProps) => {
+export const Editor = ({ id, placeholder, staticValue, enableCollaboration }: EditorProps) => {
+  const mounted = useMounted()
+
   const asyncValue = async () => {
     await init()
 
@@ -30,6 +36,8 @@ export const Editor = ({ id, placeholder, staticValue }: EditorProps) => {
   const editor = usePlateEditor({
     plugins: [...getEditorKit({ disableToolbar: !!staticValue })],
     value: staticValue ? staticValue : asyncValue,
+    // Important: Skip Plate's default initialization when using Yjs
+    // skipInitialization: !!enableCollaboration,
   })
 
   const onChange = useCallback(
@@ -45,10 +53,25 @@ export const Editor = ({ id, placeholder, staticValue }: EditorProps) => {
     [id],
   )
 
+  useEffect(() => {
+    if (!mounted || !enableCollaboration) return
+
+    // Initialize Yjs connection, sync document, and set initial editor state
+    editor.getApi(YjsPlugin).yjs.init({
+      id,
+    })
+
+    // Clean up: Destroy connection when component unmounts
+    return () => {
+      editor.getApi(YjsPlugin).yjs.destroy()
+    }
+  }, [editor, mounted, enableCollaboration])
+
   return (
     <Plate editor={editor} onChange={onChange} readOnly={!!staticValue}>
       <EditorContainer className="h-dvh">
         <MyPlateEditor placeholder={placeholder} />
+        {enableCollaboration && <EditorStatus />}
       </EditorContainer>
     </Plate>
   )

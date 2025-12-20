@@ -23,6 +23,7 @@ import { SlashKit } from '@/components/editor/plugins/slash-kit'
 import { TableKit } from '@/components/editor/plugins/table-kit'
 import { TocKit } from '@/components/editor/plugins/toc-kit'
 import { ToggleKit } from '@/components/editor/plugins/toggle-kit'
+import { YjsKit } from '@/components/editor/plugins/yjs-kit'
 
 type Options = {
   disableToolbar: boolean
@@ -77,6 +78,8 @@ export const getEditorKit = (options?: Options) => {
     ...CursorOverlayKit,
 
     ...MediaKit,
+
+    ...YjsKit,
   ]
 
   if (options?.disableToolbar) return kits
