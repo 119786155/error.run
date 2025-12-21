@@ -35,14 +35,14 @@ export const Editor = ({ id, placeholder, staticValue, enableCollaboration }: Ed
 
   const editor = usePlateEditor({
     plugins: [...getEditorKit({ disableToolbar: !!staticValue })],
-    value: staticValue ? staticValue : asyncValue,
+    value: staticValue ? staticValue : enableCollaboration ? [] : asyncValue,
     // Important: Skip Plate's default initialization when using Yjs
     // skipInitialization: !!enableCollaboration,
   })
 
   const onChange = useCallback(
     ({ editor, value }: { editor: PlateEditor; value: Value }) => {
-      if (!id) return
+      if (!id || enableCollaboration) return
 
       const isAstChange = editor.operations.some((op) => 'set_selection' !== op.type)
 
@@ -69,9 +69,9 @@ export const Editor = ({ id, placeholder, staticValue, enableCollaboration }: Ed
 
   return (
     <Plate editor={editor} onChange={onChange} readOnly={!!staticValue}>
+      {enableCollaboration && <EditorStatus />}
       <EditorContainer className="h-dvh">
         <MyPlateEditor placeholder={placeholder} />
-        {enableCollaboration && <EditorStatus />}
       </EditorContainer>
     </Plate>
   )

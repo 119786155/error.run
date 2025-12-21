@@ -2,6 +2,7 @@
 
 import { YjsPlugin } from '@platejs/yjs/react'
 import { RemoteCursorOverlay } from '@/components/ui/remote-cursor-overlay'
+import { getRandomCursor, ROOM_ID, SIGNALING } from '@/lib/yjs'
 
 export const YjsKit = [
   YjsPlugin.configure({
@@ -10,17 +11,14 @@ export const YjsKit = [
     },
     options: {
       cursors: {
-        data: {
-          name: 'User Name',
-          color: '#aabbcc',
-        },
+        data: getRandomCursor(),
       },
       providers: [
         {
           type: 'webrtc',
           options: {
-            roomName: 'your_doc',
-            signaling: ['ws://localhost:4444'],
+            roomName: ROOM_ID,
+            signaling: [SIGNALING],
           },
         },
       ],
