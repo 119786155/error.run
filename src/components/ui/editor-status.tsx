@@ -7,7 +7,7 @@ export const EditorStatus = () => {
   const isConnected = usePluginOption(YjsPlugin, '_isConnected')
 
   return (
-    <div className="fixed top-15 z-[51] text-gray-600 text-xs">
+    <div className="text-gray-600 text-xs">
       {providers.map((provider) => (
         <span key={provider.type}>
           {provider.type}: {isConnected ? 'Connected' : 'Disconnected'} ({provider.isSynced ? 'Synced' : 'Syncing'})

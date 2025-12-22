@@ -5,7 +5,6 @@ import { Plate, usePlateEditor } from 'platejs/react'
 import { useCallback, useEffect } from 'react'
 import { getEditorKit } from '@/components/editor/plugins'
 import { EditorContainer, Editor as MyPlateEditor } from '@/components/ui/editor'
-import { EditorStatus } from '@/components/ui/editor-status'
 import { useMounted } from '@/hooks/use-mounted'
 import { init } from '@/models'
 import { get, KEY_PATH, put } from '@/models/doc'
@@ -69,7 +68,6 @@ export const Editor = ({ id, placeholder, staticValue, enableCollaboration }: Ed
 
   return (
     <Plate editor={editor} onChange={onChange} readOnly={!!staticValue}>
-      {enableCollaboration && <EditorStatus />}
       <EditorContainer className="h-dvh">
         <MyPlateEditor placeholder={placeholder} />
       </EditorContainer>
