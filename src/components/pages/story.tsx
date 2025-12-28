@@ -1,4 +1,5 @@
 import { Editor } from '@/components/editor'
+import { Footer } from '@/components/footer'
 import { getContent } from '@/i18n'
 
 export const Story = () => {
@@ -125,6 +126,7 @@ export const Story = () => {
   return (
     <div className="mx-5 min-h-dvh">
       <Editor staticValue={staticValue} />
+      <Footer />
     </div>
   )
 }
