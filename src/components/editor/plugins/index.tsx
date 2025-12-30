@@ -27,6 +27,7 @@ import { YjsKit } from '@/components/editor/plugins/yjs-kit'
 
 type Options = {
   disableToolbar: boolean
+  enableCollaboration: boolean
 }
 
 export const getEditorKit = (options?: Options) => {
@@ -78,9 +79,10 @@ export const getEditorKit = (options?: Options) => {
     ...CursorOverlayKit,
 
     ...MediaKit,
-
-    ...YjsKit,
   ]
+
+  //@ts-expect-error
+  if (options?.enableCollaboration) kits.push(...YjsKit)
 
   if (options?.disableToolbar) return kits
 

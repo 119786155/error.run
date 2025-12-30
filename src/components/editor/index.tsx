@@ -33,7 +33,12 @@ export const Editor = ({ id, placeholder, staticValue, enableCollaboration }: Ed
   }
 
   const editor = usePlateEditor({
-    plugins: [...getEditorKit({ disableToolbar: !!staticValue })],
+    plugins: [
+      ...getEditorKit({
+        disableToolbar: !!staticValue,
+        enableCollaboration: !!enableCollaboration,
+      }),
+    ],
     value: staticValue ? staticValue : enableCollaboration ? [] : asyncValue,
     // Important: Skip Plate's default initialization when using Yjs
     // skipInitialization: !!enableCollaboration,
