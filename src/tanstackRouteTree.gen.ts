@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WriteRouteImport } from './routes/write'
 import { Route as RoomRouteImport } from './routes/room'
 import { Route as DrawRouteImport } from './routes/draw'
+import { Route as AiRouteImport } from './routes/ai'
 import { Route as IndexRouteImport } from './routes/index'
 
 const WriteRoute = WriteRouteImport.update({
@@ -29,6 +30,11 @@ const DrawRoute = DrawRouteImport.update({
   path: '/draw',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AiRoute = AiRouteImport.update({
+  id: '/ai',
+  path: '/ai',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -37,12 +43,14 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ai': typeof AiRoute
   '/draw': typeof DrawRoute
   '/room': typeof RoomRoute
   '/write': typeof WriteRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ai': typeof AiRoute
   '/draw': typeof DrawRoute
   '/room': typeof RoomRoute
   '/write': typeof WriteRoute
@@ -50,20 +58,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ai': typeof AiRoute
   '/draw': typeof DrawRoute
   '/room': typeof RoomRoute
   '/write': typeof WriteRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/draw' | '/room' | '/write'
+  fullPaths: '/' | '/ai' | '/draw' | '/room' | '/write'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/draw' | '/room' | '/write'
-  id: '__root__' | '/' | '/draw' | '/room' | '/write'
+  to: '/' | '/ai' | '/draw' | '/room' | '/write'
+  id: '__root__' | '/' | '/ai' | '/draw' | '/room' | '/write'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AiRoute: typeof AiRoute
   DrawRoute: typeof DrawRoute
   RoomRoute: typeof RoomRoute
   WriteRoute: typeof WriteRoute
@@ -92,6 +102,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DrawRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ai': {
+      id: '/ai'
+      path: '/ai'
+      fullPath: '/ai'
+      preLoaderRoute: typeof AiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -104,6 +121,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AiRoute: AiRoute,
   DrawRoute: DrawRoute,
   RoomRoute: RoomRoute,
   WriteRoute: WriteRoute,

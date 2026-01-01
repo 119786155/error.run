@@ -1,3 +1,4 @@
+import { AIKit } from '@/components/editor/plugins/ai-kit'
 import { AutoformatKit } from '@/components/editor/plugins/autoformat-kit'
 import { BasicBlocksKit } from '@/components/editor/plugins/basic-blocks-kit'
 import { BasicMarksKit } from '@/components/editor/plugins/basic-marks-kit'
@@ -28,6 +29,7 @@ import { YjsKit } from '@/components/editor/plugins/yjs-kit'
 type Options = {
   disableToolbar: boolean
   enableCollaboration: boolean
+  enableAI: boolean
 }
 
 export const getEditorKit = (options?: Options) => {
@@ -83,6 +85,9 @@ export const getEditorKit = (options?: Options) => {
 
   //@ts-expect-error
   if (options?.enableCollaboration) kits.push(...YjsKit)
+
+  //@ts-expect-error
+  if (options?.enableAI) kits.push(...AIKit)
 
   if (options?.disableToolbar) return kits
 

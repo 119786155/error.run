@@ -8,6 +8,10 @@ export const app = {
       title: { zh: '写一写', en: 'Write something' },
       desc: { zh: '写一写', en: 'Write something' },
     },
+    ai: {
+      title: { zh: '写一写', en: 'Write something' },
+      desc: { zh: '写一写', en: 'Write something' },
+    },
     room: {
       title: { zh: '协作', en: 'Collaboration' },
       desc: { zh: '协作', en: 'Collaboration' },

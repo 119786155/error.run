@@ -19,9 +19,10 @@ type EditorProps = {
   placeholder?: string
   staticValue?: Value
   enableCollaboration?: boolean
+  enableAI?: boolean
 }
 
-export const Editor = ({ id, placeholder, staticValue, enableCollaboration }: EditorProps) => {
+export const Editor = ({ id, placeholder, staticValue, enableCollaboration, enableAI }: EditorProps) => {
   const mounted = useMounted()
 
   const asyncValue = async () => {
@@ -37,6 +38,7 @@ export const Editor = ({ id, placeholder, staticValue, enableCollaboration }: Ed
       ...getEditorKit({
         disableToolbar: !!staticValue,
         enableCollaboration: !!enableCollaboration,
+        enableAI: !!enableAI,
       }),
     ],
     value: staticValue ? staticValue : enableCollaboration ? [] : asyncValue,
