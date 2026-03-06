@@ -86,42 +86,6 @@ export const Story = () => {
       ],
       lineHeight: 3,
     },
-    {
-      type: 'p',
-      children: [
-        {
-          text: getContent('story.paragraph8'),
-        },
-      ],
-      lineHeight: 3,
-    },
-    {
-      type: 'p',
-      children: [
-        {
-          text: getContent('story.paragraph9'),
-        },
-      ],
-      lineHeight: 3,
-    },
-    {
-      type: 'p',
-      children: [
-        {
-          text: getContent('story.paragraph10'),
-        },
-      ],
-      lineHeight: 3,
-    },
-    {
-      type: 'p',
-      children: [
-        {
-          text: getContent('story.paragraph11'),
-        },
-      ],
-      lineHeight: 3,
-    },
   ]
   return (
     <div className="mx-5 min-h-dvh">
