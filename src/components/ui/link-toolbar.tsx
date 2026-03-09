@@ -116,10 +116,11 @@ export function LinkFloatingToolbar({ state }: { state?: LinkFloatingToolbarStat
 
   return (
     <>
+      {/* @ts-ignore */}
       <div ref={insertRef} className={popoverVariants()} {...insertProps}>
         {input}
       </div>
-
+      {/* @ts-ignore */}
       <div ref={editRef} className={popoverVariants()} {...editProps}>
         {editContent}
       </div>

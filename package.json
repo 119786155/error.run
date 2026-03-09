@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev": "bunx --bun vite",
+    "build": "tsc -b && bunx --bun vite build",
     "format": "biome check --write",
     "preview": "vite preview",
     "webrtc": "PORT=4444 node ./node_modules/y-webrtc/bin/server.js"
