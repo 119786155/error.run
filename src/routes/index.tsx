@@ -1,9 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { Story } from '@/components/pages/story'
+import { Poem } from '@/components/pages/poem'
 import { getContent } from '@/i18n'
 
 export const Route = createFileRoute('/')({
-  component: Story,
+  component: Poem,
   head: () => {
     return {
       meta: [{ title: getContent('app.title') }, { content: getContent('app.desc'), name: 'description' }],
