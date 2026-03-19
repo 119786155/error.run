@@ -23,8 +23,8 @@ export const Poem = () => {
       <div className="poem-container">
         <h1>{getContent('poem.title')}</h1>
         {paragraphs}
+        <Footer />
       </div>
-      <Footer />
     </div>
   )
 }
