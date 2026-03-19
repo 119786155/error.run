@@ -15,21 +15,6 @@
   color: white;
 }
 
-.background h1,
-.background p {
-  text-align: center;
-}
-
-.background h1 {
-  font-size: 325%;
-  line-height: 4;
-}
-
-.background p {
-  font-size: 175%;
-  line-height: 3;
-}
-
 .background span {
   width: 1vmin;
   height: 1vmin;
@@ -491,4 +476,15 @@
   animation-delay: -100s;
   transform-origin: -12vw -20vh;
   box-shadow: -2vmin 0 0.8269739454621797vmin currentColor;
+}
+
+.poem-container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.poem-container h1 {
+  font-size: 200%;
 }

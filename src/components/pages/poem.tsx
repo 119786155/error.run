@@ -20,8 +20,10 @@ export const Poem = () => {
   return (
     <div className="background">
       {dots}
-      <h1>{getContent('poem.title')}</h1>
-      {paragraphs}
+      <div className="poem-container">
+        <h1>{getContent('poem.title')}</h1>
+        {paragraphs}
+      </div>
       <Footer />
     </div>
   )
