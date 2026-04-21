@@ -17,7 +17,7 @@ import {
 import { getContent } from '@/i18n'
 import { ToolbarButton } from './toolbar'
 
-type ImportType = 'html' | 'markdown'
+type ImportType = 'html' | 'markdown' | 'json'
 
 export function ImportToolbarButton(props: DropdownMenuProps) {
   const editor = useEditorRef()
@@ -35,6 +35,10 @@ export function ImportToolbarButton(props: DropdownMenuProps) {
 
     if (type === 'markdown') {
       return editor.getApi(MarkdownPlugin).markdown.deserialize(text)
+    }
+
+    if (type === 'json') {
+      return JSON.parse(text)
     }
 
     return []
@@ -64,6 +68,18 @@ export function ImportToolbarButton(props: DropdownMenuProps) {
     },
   })
 
+  const { openFilePicker: openJsonFilePicker } = useFilePicker({
+    accept: ['.json'],
+    multiple: false,
+    onFilesSelected: async ({ plainFiles }) => {
+      const text = await plainFiles[0].text()
+
+      const nodes = getFileNodes(text, 'json')
+
+      editor.tf.insertNodes(nodes)
+    },
+  })
+
   return (
     <DropdownMenu open={open} onOpenChange={setOpen} modal={false} {...props}>
       <DropdownMenuTrigger asChild>
@@ -88,6 +104,14 @@ export function ImportToolbarButton(props: DropdownMenuProps) {
             }}
           >
             {getContent('editor.importFile.md')}
+          </DropdownMenuItem>
+
+          <DropdownMenuItem
+            onSelect={() => {
+              openJsonFilePicker()
+            }}
+          >
+            {getContent('editor.importFile.json')}
           </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>

@@ -44,6 +44,7 @@ export const editor = {
   importFile: {
     html: { zh: '从 HTML 导入', en: 'Import from HTML' },
     md: { zh: '从 MarkDown 导入', en: 'Import from MarkDown' },
+    json: { zh: '从 JSON 导入', en: 'Import from JSON' },
   },
   list: {
     ordered: { zh: '有序列表', en: 'Ordered List' },
