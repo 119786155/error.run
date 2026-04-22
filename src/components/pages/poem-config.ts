@@ -50,7 +50,7 @@ export const themes = {
 
 export const defaultConfig: ParticleConfig = {
   count: 50,
-  colors: themes.purple.colors,
+  colors: ['#ff0000', '#ff7f00', '#ffff00', '#00ff00', '#0000ff', '#4b0082', '#9400d3'],
   minSize: 0.5,
   maxSize: 1.5,
   minDuration: 10,
