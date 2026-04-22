@@ -12,7 +12,7 @@
     "test": "vitest",
     "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage",
-    "deploy": "pnpm run format && pnpm run test && pnpm run build"
+    "deploy": "sh scripts/deploy.sh"
   },
   "dependencies": {
     "@ariakit/react": "^0.4.19",
