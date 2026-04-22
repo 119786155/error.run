@@ -11,7 +11,8 @@
     "webrtc": "PORT=4444 node ./node_modules/y-webrtc/bin/server.js",
     "test": "vitest",
     "test:watch": "vitest watch",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "deploy": "pnpm run format && pnpm run test && pnpm run build"
   },
   "dependencies": {
     "@ariakit/react": "^0.4.19",
