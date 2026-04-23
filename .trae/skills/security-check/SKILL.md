@@ -16,6 +16,7 @@ This skill scans and analyzes code to identify potential security vulnerabilitie
 - Check for insecure configurations
 - Identify potential injection vulnerabilities
 - Detect overly permissive file permissions
+- Detect local absolute paths that affect skill portability
 
 ## When to Use
 
@@ -35,6 +36,7 @@ Invoke this skill when:
 | Private Info | Email addresses, phone numbers, SSNs in plain text |
 | IP Addresses | Internal IPs, server IPs, database IPs in code/config |
 | Config Issues | Debug mode enabled, CORS misconfigurations |
+| Local Paths | Absolute paths like `/Users/`, `/home/`, `C:\Users\` that affect portability |
 
 ## Output Format
 
