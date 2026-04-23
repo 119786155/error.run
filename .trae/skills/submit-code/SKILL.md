@@ -55,12 +55,7 @@ Example commit messages the AI might generate:
 
 ## Usage
 
-### Step 1: Navigate to project directory
-```bash
-cd /Users/jarone/WorkSpace/error.run
-```
-
-### Step 2: Run the submission process
+### Run the submission process
 ```bash
 #!/bin/bash
 set -e
