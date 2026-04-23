@@ -16,11 +16,12 @@ This skill helps you submit code changes to git with intelligent commit messages
 The skill runs the following steps:
 
 1. **Format code** - Runs `pnpm run format` to ensure code consistency
-2. **Run tests** - Runs `pnpm run test` to ensure code quality
-3. **Build project** - Runs `pnpm run build` to verify build success
-4. **Analyze changes** - Detects changed files and generates appropriate commit message
-5. **Commit changes** - Commits changes with intelligent commit message
-6. **Push to remote** - Pushes changes to remote git repository
+2. **Security check** - Invokes security-check skill to scan for vulnerabilities
+3. **Run tests** - Runs `pnpm run test` to ensure code quality
+4. **Build project** - Runs `pnpm run build` to verify build success
+5. **Analyze changes** - Detects changed files and generates appropriate commit message
+6. **Commit changes** - Commits changes with intelligent commit message
+7. **Push to remote** - Pushes changes to remote git repository
 
 ## Analyze Changes Process
 
@@ -71,13 +72,18 @@ log() {
 log "=== Step 1: Running format ==="
 pnpm run format
 
-log "=== Step 2: Running tests ==="
+log "=== Step 2: Running security check ==="
+# Invoke security-check skill to scan for vulnerabilities
+# This will check for password leaks, API key leaks, and other security issues
+npx trae run security-check
+
+log "=== Step 3: Running tests ==="
 pnpm run test
 
-log "=== Step 3: Building project ==="
+log "=== Step 4: Building project ==="
 pnpm run build
 
-log "=== Step 4: Analyzing changes ==="
+log "=== Step 5: Analyzing changes ==="
 
 # Get changed files with status
 CHANGED_FILES=$(git status --porcelain)
@@ -93,7 +99,7 @@ echo "$CHANGED_FILES"
 # Get git diff to understand changes
 git diff --stat
 
-log "\n=== Step 5: AI generates commit message ==="
+log "\n=== Step 6: AI generates commit message ==="
 
 log "Changed files and diff summary displayed above."
 log "AI assistant will analyze this information and generate a precise commit message."
@@ -103,11 +109,11 @@ log "AI assistant will analyze this information and generate a precise commit me
 # - Changed files analysis
 # - Conventional commits best practices
 
-log "=== Step 6: Committing changes ==="
+log "=== Step 7: Committing changes ==="
 git add -A
 git commit -m "chore: update changes"  # AI will replace this with precise message
 
-log "=== Step 7: Pushing to remote ==="
+log "=== Step 8: Pushing to remote ==="
 git push
 
 log "=== Code submission completed successfully ==="
@@ -117,6 +123,9 @@ log "=== Code submission completed successfully ==="
 
 ### No changes to commit
 If you see "No changes to commit", it means there are no files modified or staged.
+
+### Security check failures
+If security check fails, the process will stop. Review the security issues reported and fix them before running the skill again.
 
 ### Test failures
 If tests fail, the process will stop. Fix the test issues and run the skill again.
