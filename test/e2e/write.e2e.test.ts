@@ -267,9 +267,22 @@ test.describe('Equation Block', () => {
     await expect(equations).toHaveCount(1)
   })
 
-  test.skip('should delete equation block', async ({ page }) => {
+  test('should delete equation block', async ({ page }) => {
     await insertBlock(page, 'equation')
-    await deleteBlock(page, '.slate-equation')
+    // Equation block has contentEditable=false, so we need to position cursor before it and press Delete twice
+    await page.click('[data-slate-editor="true"]')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('ArrowDown')
+    await page.waitForTimeout(200)
+    await page.click('.slate-p')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('End')
+    await page.waitForTimeout(200)
+    // First Delete removes the empty paragraph, second Delete removes the equation
+    await page.keyboard.press('Delete')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('Delete')
+    await page.waitForTimeout(200)
     const equations = page.locator('.slate-equation')
     await expect(equations).toHaveCount(0)
   })
@@ -282,9 +295,22 @@ test.describe('Excalidraw Block', () => {
     await expect(excalidraws).toHaveCount(1)
   })
 
-  test.skip('should delete excalidraw block', async ({ page }) => {
+  test('should delete excalidraw block', async ({ page }) => {
     await insertBlock(page, 'whiteboard')
-    await deleteBlock(page, '.slate-excalidraw')
+    // Excalidraw block has contentEditable=false, so we need to position cursor before it and press Delete twice
+    await page.click('[data-slate-editor="true"]')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('ArrowDown')
+    await page.waitForTimeout(200)
+    await page.click('.slate-p')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('End')
+    await page.waitForTimeout(200)
+    // First Delete removes the empty paragraph, second Delete removes the excalidraw
+    await page.keyboard.press('Delete')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('Delete')
+    await page.waitForTimeout(200)
     const excalidraws = page.locator('.slate-excalidraw')
     await expect(excalidraws).toHaveCount(0)
   })
@@ -305,7 +331,7 @@ test.describe('Date Inline Element', () => {
     await expect(dates).toHaveCount(1)
   })
 
-  test.skip('should delete date inline element', async ({ page }) => {
+  test('should delete date inline element', async ({ page }) => {
     await page.click('[data-slate-editor="true"]')
     await page.keyboard.type('/')
     await page.waitForSelector('[role="listbox"]', { timeout: 5000 })
@@ -313,14 +339,22 @@ test.describe('Date Inline Element', () => {
     await page.waitForTimeout(300)
     await page.keyboard.press('Enter')
     await page.waitForTimeout(500)
-    await deleteBlock(page, '.slate-date')
+    // Date inline element needs special handling: focus editor, go to end, press Backspace twice
+    await page.click('[data-slate-editor="true"]')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('End')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('Backspace')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('Backspace')
+    await page.waitForTimeout(200)
     const dates = page.locator('.slate-date')
     await expect(dates).toHaveCount(0)
   })
 })
 
 test.describe('Keyboard Input Inline Element', () => {
-  test.skip('should add keyboard input inline element', async ({ page }) => {
+  test('should add keyboard input inline element', async ({ page }) => {
     await page.click('[data-slate-editor="true"]')
     await page.keyboard.type('/')
     await page.waitForSelector('[role="listbox"]', { timeout: 5000 })
@@ -332,7 +366,7 @@ test.describe('Keyboard Input Inline Element', () => {
     await expect(kbds).toHaveCount(1)
   })
 
-  test.skip('should delete keyboard input inline element', async ({ page }) => {
+  test('should delete keyboard input inline element', async ({ page }) => {
     await page.click('[data-slate-editor="true"]')
     await page.keyboard.type('/')
     await page.waitForSelector('[role="listbox"]', { timeout: 5000 })
@@ -340,7 +374,13 @@ test.describe('Keyboard Input Inline Element', () => {
     await page.waitForTimeout(300)
     await page.keyboard.press('Enter')
     await page.waitForTimeout(500)
-    await deleteBlock(page, '.slate-kbd')
+    // KBD inline element needs special handling: focus editor, go to end, press Delete
+    await page.click('[data-slate-editor="true"]')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('End')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('Delete')
+    await page.waitForTimeout(200)
     const kbds = page.locator('.slate-kbd')
     await expect(kbds).toHaveCount(0)
   })

@@ -53,6 +53,9 @@ const insertBlockMap: Record<string, (editor: PlateEditor, type: string) => void
 const insertInlineMap: Record<string, (editor: PlateEditor, type: string) => void> = {
   [KEYS.date]: (editor) => insertDate(editor, { select: true }),
   [KEYS.inlineEquation]: (editor) => insertInlineEquation(editor, '', { select: true }),
+  [KEYS.kbd]: (editor) => {
+    editor.tf.toggleMark(KEYS.kbd)
+  },
   [KEYS.link]: (editor) => triggerFloatingLink(editor, { focused: true }),
 }
 
