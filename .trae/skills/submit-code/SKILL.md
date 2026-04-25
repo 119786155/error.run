@@ -128,7 +128,8 @@ LATEST_COMMIT_MSG=$(git log --oneline -1 | cut -d ' ' -f 2-)
 
 # Check if commit message is already in AI_LOG.md
 if ! grep -q "- \`$LATEST_COMMIT_MSG\`" AI_LOG.md; then
-    # Add commit message to AI_LOG.md
+    # Add commit message to AI_LOG.md with proper newline
+    echo "" >> AI_LOG.md  # Ensure there's a blank line before adding new commit
     echo "- \`$LATEST_COMMIT_MSG\`" >> AI_LOG.md
     log "Added commit message to AI_LOG.md"
 else
