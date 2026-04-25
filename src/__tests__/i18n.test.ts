@@ -30,11 +30,26 @@ describe('i18n Module', () => {
   })
 
   describe('getContent behavior', () => {
-    it('should return empty string when no locale is stored', async () => {
+    it('should return translation based on browser locale when no locale stored', async () => {
       const { getContent } = await import('@/i18n')
       mockLocalStorage.store = {}
+      Object.defineProperty(globalThis, 'navigator', {
+        value: { language: 'en-US' },
+        writable: true,
+      })
       const result = getContent('editor.placeholder')
-      expect(result).toBe('')
+      expect(result).toBe('Type something...')
+    })
+
+    it('should return zh translation when browser locale is zh-CN', async () => {
+      const { getContent } = await import('@/i18n')
+      mockLocalStorage.store = {}
+      Object.defineProperty(globalThis, 'navigator', {
+        value: { language: 'zh-CN' },
+        writable: true,
+      })
+      const result = getContent('editor.placeholder')
+      expect(result).toBe('写一写...')
     })
 
     it('should return truthy value for existing key with en locale', async () => {
@@ -51,11 +66,25 @@ describe('i18n Module', () => {
       expect(result).toBeTruthy()
     })
 
-    it('should return undefined for nonexistent key', async () => {
+    it('should return truthy value for es locale', async () => {
+      const { getContent } = await import('@/i18n')
+      mockLocalStorage.store = { locale: 'es' }
+      const result = getContent('editor.placeholder')
+      expect(result).toBe('Escribe algo...')
+    })
+
+    it('should return truthy value for ja locale', async () => {
+      const { getContent } = await import('@/i18n')
+      mockLocalStorage.store = { locale: 'ja' }
+      const result = getContent('editor.placeholder')
+      expect(result).toBe('何か書いてください...')
+    })
+
+    it('should return empty string for nonexistent key', async () => {
       const { getContent } = await import('@/i18n')
       mockLocalStorage.store = { locale: 'en' }
       const result = getContent('nonexistent.key')
-      expect(result).toBeUndefined()
+      expect(result).toBe('')
     })
   })
 
@@ -110,6 +139,86 @@ describe('i18n Module', () => {
       expect(mockLocalStorage.setItem).toHaveBeenCalledWith('locale', 'en')
     })
 
+    it('should set locale to es for es-ES browser language', async () => {
+      const { init } = await import('@/i18n')
+      Object.defineProperty(globalThis, 'navigator', {
+        value: { language: 'es-ES' },
+        writable: true,
+      })
+      init()
+      expect(mockLocalStorage.setItem).toHaveBeenCalledWith('locale', 'es')
+    })
+
+    it('should set locale to ja for ja-JP browser language', async () => {
+      const { init } = await import('@/i18n')
+      Object.defineProperty(globalThis, 'navigator', {
+        value: { language: 'ja-JP' },
+        writable: true,
+      })
+      init()
+      expect(mockLocalStorage.setItem).toHaveBeenCalledWith('locale', 'ja')
+    })
+
+    it('should set locale to ko for ko-KR browser language', async () => {
+      const { init } = await import('@/i18n')
+      Object.defineProperty(globalThis, 'navigator', {
+        value: { language: 'ko-KR' },
+        writable: true,
+      })
+      init()
+      expect(mockLocalStorage.setItem).toHaveBeenCalledWith('locale', 'ko')
+    })
+
+    it('should set locale to ru for ru-RU browser language', async () => {
+      const { init } = await import('@/i18n')
+      Object.defineProperty(globalThis, 'navigator', {
+        value: { language: 'ru-RU' },
+        writable: true,
+      })
+      init()
+      expect(mockLocalStorage.setItem).toHaveBeenCalledWith('locale', 'ru')
+    })
+
+    it('should set locale to de for de-DE browser language', async () => {
+      const { init } = await import('@/i18n')
+      Object.defineProperty(globalThis, 'navigator', {
+        value: { language: 'de-DE' },
+        writable: true,
+      })
+      init()
+      expect(mockLocalStorage.setItem).toHaveBeenCalledWith('locale', 'de')
+    })
+
+    it('should set locale to hi for hi-IN browser language', async () => {
+      const { init } = await import('@/i18n')
+      Object.defineProperty(globalThis, 'navigator', {
+        value: { language: 'hi-IN' },
+        writable: true,
+      })
+      init()
+      expect(mockLocalStorage.setItem).toHaveBeenCalledWith('locale', 'hi')
+    })
+
+    it('should set locale to pt for pt-BR browser language', async () => {
+      const { init } = await import('@/i18n')
+      Object.defineProperty(globalThis, 'navigator', {
+        value: { language: 'pt-BR' },
+        writable: true,
+      })
+      init()
+      expect(mockLocalStorage.setItem).toHaveBeenCalledWith('locale', 'pt')
+    })
+
+    it('should set locale to ar for ar-SA browser language', async () => {
+      const { init } = await import('@/i18n')
+      Object.defineProperty(globalThis, 'navigator', {
+        value: { language: 'ar-SA' },
+        writable: true,
+      })
+      init()
+      expect(mockLocalStorage.setItem).toHaveBeenCalledWith('locale', 'ar')
+    })
+
     it('should handle Chinese speaking locales correctly', async () => {
       const { init } = await import('@/i18n')
       const chineseLocales = ['zh', 'zh-CN', 'zh-TW', 'zh-HK']
@@ -122,6 +231,16 @@ describe('i18n Module', () => {
         init()
         expect(mockLocalStorage.setItem).toHaveBeenCalledWith('locale', 'zh')
       }
+    })
+
+    it('should default to en for unsupported locales', async () => {
+      const { init } = await import('@/i18n')
+      Object.defineProperty(globalThis, 'navigator', {
+        value: { language: 'fr-FR' },
+        writable: true,
+      })
+      init()
+      expect(mockLocalStorage.setItem).toHaveBeenCalledWith('locale', 'en')
     })
   })
 })

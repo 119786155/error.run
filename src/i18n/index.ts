@@ -2,37 +2,65 @@ import get from 'lodash/get'
 import { content } from './content'
 
 const STORAGE_KEY = 'locale'
-const LOCALE_ZH = 'zh'
-const LOCALE_EN = 'en'
 
-/*
-const localesSpeakEnglish = [
-  LOCALE_EN,
-  'en-AU',
-  'en-IN',
-  'en-GB',
-  'en-GB-oxendict',
-  'en-US',
-  'en-IE',
-  'en-CA',
-  'en-ZA',
-  'en-NZ',
-]
-*/
+export const SUPPORTED_LOCALES = ['zh', 'en', 'es', 'hi', 'ar', 'pt', 'ja', 'ko', 'ru', 'de'] as const
+export type Locale = (typeof SUPPORTED_LOCALES)[number]
 
-const localesSpeakChinese = [LOCALE_ZH, 'zh-CN', 'zh-TW', 'zh-HK']
-// const getLocale = () => localStorage.getItem(STORAGE_KEY)
-const setLocale = (locale: string) => localStorage.setItem(STORAGE_KEY, locale)
-const getBrowserCurrentLocale = () => {
-  const locle = navigator.language || LOCALE_EN
-  return localesSpeakChinese.includes(locle) ? LOCALE_ZH : LOCALE_EN
+const localeMap: Record<string, Locale> = {
+  zh: 'zh',
+  'zh-CN': 'zh',
+  'zh-TW': 'zh',
+  'zh-HK': 'zh',
+  en: 'en',
+  'en-AU': 'en',
+  'en-IN': 'en',
+  'en-GB': 'en',
+  'en-US': 'en',
+  'en-IE': 'en',
+  'en-CA': 'en',
+  'en-ZA': 'en',
+  'en-NZ': 'en',
+  es: 'es',
+  'es-ES': 'es',
+  'es-MX': 'es',
+  'es-AR': 'es',
+  hi: 'hi',
+  'hi-IN': 'hi',
+  ar: 'ar',
+  'ar-SA': 'ar',
+  'ar-AE': 'ar',
+  'ar-EG': 'ar',
+  pt: 'pt',
+  'pt-BR': 'pt',
+  'pt-PT': 'pt',
+  ja: 'ja',
+  'ja-JP': 'ja',
+  ko: 'ko',
+  'ko-KR': 'ko',
+  ru: 'ru',
+  'ru-RU': 'ru',
+  de: 'de',
+  'de-DE': 'de',
+  'de-AT': 'de',
+  'de-CH': 'de',
 }
 
-export const getContent = (path: string) => {
-  const map: Record<string, string> = get(content, path) || {}
-  const storageLocale = localStorage.getItem(STORAGE_KEY)
+const DEFAULT_LOCALE: Locale = 'en'
 
-  return storageLocale ? map?.[storageLocale] : ''
+const setLocale = (locale: string) => localStorage.setItem(STORAGE_KEY, locale)
+
+const getBrowserCurrentLocale = (): Locale => {
+  const browserLocale = navigator.language
+  const mappedLocale = localeMap[browserLocale]
+  return mappedLocale || DEFAULT_LOCALE
+}
+
+export const getContent = (path: string): string => {
+  const map: Record<string, string> = get(content, path) || {}
+  const storageLocale = localStorage.getItem(STORAGE_KEY) as Locale | null
+
+  const locale = storageLocale || getBrowserCurrentLocale()
+  return map?.[locale] || ''
 }
 
 export const init = () => setLocale(getBrowserCurrentLocale())
