@@ -19,9 +19,10 @@ type EditorProps = {
   placeholder?: string
   staticValue?: Value
   enableCollaboration?: boolean
+  'data-testid'?: string
 }
 
-export const Editor = ({ id, placeholder, staticValue, enableCollaboration }: EditorProps) => {
+export const Editor = ({ id, placeholder, staticValue, enableCollaboration, 'data-testid': dataTestId }: EditorProps) => {
   const mounted = useMounted()
 
   const asyncValue = async () => {
@@ -73,7 +74,7 @@ export const Editor = ({ id, placeholder, staticValue, enableCollaboration }: Ed
 
   return (
     <Plate editor={editor} onChange={onChange} readOnly={!!staticValue}>
-      <EditorContainer className="h-dvh">
+      <EditorContainer className="h-dvh" data-testid={dataTestId}>
         <MyPlateEditor placeholder={placeholder} />
       </EditorContainer>
     </Plate>

@@ -18,11 +18,12 @@ The skill runs the following steps:
 1. **Format code** - Runs `pnpm run format` to ensure code consistency
 2. **Security check** - Invokes security-check skill to scan for vulnerabilities
 3. **Run tests** - Runs `pnpm run test` to ensure code quality
-4. **Build project** - Runs `pnpm run build` to verify build success
-5. **Analyze changes** - Detects changed files and generates appropriate commit message
-6. **Update AI log** - Updates AI_LOG.md with current task information based on actual changes
-7. **Commit changes** - Commits changes with intelligent commit message
-8. **Push to remote** - Pushes changes to remote git repository
+4. **Check test coverage** - Invokes test-coverage-check skill to verify coverage metrics
+5. **Build project** - Runs `pnpm run build` to verify build success
+6. **Analyze changes** - Detects changed files and generates appropriate commit message
+7. **Update AI log** - Updates AI_LOG.md with current task information based on actual changes
+8. **Commit changes** - Commits changes with intelligent commit message
+9. **Push to remote** - Pushes changes to remote git repository
 
 ## Analyze Changes Process
 
@@ -76,10 +77,14 @@ npx trae run security-check
 log "=== Step 3: Running tests ==="
 pnpm run test
 
-log "=== Step 4: Building project ==="
+log "=== Step 4: Checking test coverage ==="
+# Invoke test-coverage-check skill to verify coverage metrics
+npx trae run test-coverage-check
+
+log "=== Step 5: Building project ==="
 pnpm run build
 
-log "=== Step 5: Analyzing changes ==="
+log "=== Step 6: Analyzing changes ==="
 
 # Get changed files with status
 CHANGED_FILES=$(git status --porcelain)
@@ -95,7 +100,7 @@ echo "$CHANGED_FILES"
 # Get git diff to understand changes
 git diff --stat
 
-log "\n=== Step 6: AI generates commit message ==="
+log "\n=== Step 7: AI generates commit message ==="
 
 log "Changed files and diff summary displayed above."
 log "AI assistant will analyze this information and generate a precise commit message."
@@ -105,11 +110,11 @@ log "AI assistant will analyze this information and generate a precise commit me
 # - Changed files analysis
 # - Conventional commits best practices
 
-log "=== Step 7: Committing changes ==="
+log "=== Step 8: Committing changes ==="
 git add -A
 git commit -m "chore: update changes"  # AI will replace this with precise message
 
-log "=== Step 8: Updating AI log ==="
+log "=== Step 9: Updating AI log ==="
 # Update AI_LOG.md with current task information based on actual changes
 
 # Get current date in YYYY-MM-DD format
@@ -146,7 +151,7 @@ if git status --porcelain | grep -q "AI_LOG.md"; then
     log "Added AI_LOG.md to git"
 fi
 
-log "=== Step 9: Pushing to remote ==="
+log "=== Step 10: Pushing to remote ==="
 git push
 
 log "=== Code submission completed successfully ==="

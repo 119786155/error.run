@@ -143,3 +143,11 @@ vite.config.ts.timestamp-*
 
 # others
 .r.json
+
+# Playwright E2E test results
+test-results/
+playwright-report/
+playwright/.cache/
+
+# Test assets
+test-assets/
