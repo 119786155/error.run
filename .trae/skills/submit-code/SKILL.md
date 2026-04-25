@@ -19,9 +19,16 @@ The skill runs the following steps:
 2. **Security check** - Invokes security-check skill to scan for vulnerabilities
 3. **Run tests** - Runs `pnpm run test` to ensure code quality
 4. **Build project** - Runs `pnpm run build` to verify build success
-5. **Analyze changes** - Detects changed files and generates appropriate commit message
-6. **Commit changes** - Commits changes with intelligent commit message
-7. **Push to remote** - Pushes changes to remote git repository
+5. **Code review** - Invokes code-reviewer skill to check for SOLID principle violations
+6. **Analyze changes** - Detects changed files and generates appropriate commit message
+7. **Commit changes** - Commits changes with intelligent commit message
+8. **Push to remote** - Pushes changes to remote git repository
+
+## Code Review Step
+
+After a successful build, the code-reviewer skill is invoked to analyze changes for SOLID principle violations. This ensures code quality and maintainability standards are met.
+
+If code review fails (critical issues found), the process will pause and prompt you to fix the issues before proceeding.
 
 ## Analyze Changes Process
 
@@ -78,7 +85,11 @@ pnpm run test
 log "=== Step 4: Building project ==="
 pnpm run build
 
-log "=== Step 5: Analyzing changes ==="
+log "=== Step 5: Running code review ==="
+# Invoke code-reviewer skill to check for SOLID principle violations
+npx trae run code-reviewer
+
+log "=== Step 6: Analyzing changes ==="
 
 # Get changed files with status
 CHANGED_FILES=$(git status --porcelain)
@@ -104,17 +115,20 @@ log "AI assistant will analyze this information and generate a precise commit me
 # - Changed files analysis
 # - Conventional commits best practices
 
-log "=== Step 6: Committing changes ==="
+log "=== Step 7: Committing changes ==="
 git add -A
 git commit -m "chore: update changes"  # AI will replace this with precise message
 
-log "=== Step 7: Pushing to remote ==="
+log "=== Step 8: Pushing to remote ==="
 git push
 
 log "=== Code submission completed successfully ==="
 ```
 
 ## Troubleshooting
+
+### Code review failures
+If code review identifies critical SOLID violations, review the findings and fix the issues before proceeding with submission.
 
 ### No changes to commit
 If you see "No changes to commit", it means there are no files modified or staged.
