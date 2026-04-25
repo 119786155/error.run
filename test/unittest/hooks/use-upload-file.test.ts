@@ -1,8 +1,8 @@
 import { act, renderHook } from '@testing-library/react'
 import { toast } from 'sonner'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { getErrorMessage, showErrorToast, useUploadFile } from '../../src/hooks/use-upload-file'
-import * as utils from '../../src/lib/utils'
+import { getErrorMessage, showErrorToast, useUploadFile } from '../../../src/hooks/use-upload-file'
+import * as utils from '../../../src/lib/utils'
 
 vi.mock('sonner', () => ({
   toast: {
@@ -10,7 +10,7 @@ vi.mock('sonner', () => ({
   },
 }))
 
-vi.mock('../../src/lib/utils', () => ({
+vi.mock('../../../src/lib/utils', () => ({
   getDataURL: vi.fn(),
 }))
 

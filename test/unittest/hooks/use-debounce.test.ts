@@ -1,6 +1,6 @@
 import { renderHook, waitFor } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { useDebounce } from '../../src/hooks/use-debounce'
+import { useDebounce } from '../../../src/hooks/use-debounce'
 
 describe('useDebounce', () => {
   it('should return initial value immediately', () => {

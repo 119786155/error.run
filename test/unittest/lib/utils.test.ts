@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { cn, getDataURL } from '../../src/lib/utils'
+import { cn, getDataURL } from '../../../src/lib/utils'
 
 describe('utils', () => {
   describe('cn', () => {

@@ -16,7 +16,7 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     setupFiles: './src/setupTests.ts',
-    include: ['test/**/*.test.ts', 'test/**/*.test.tsx'],
+    include: ['test/unittest/**/*.test.ts', 'test/unittest/**/*.test.tsx'],
     exclude: ['test/**/*.e2e.test.ts', 'test/**/*.e2e.test.tsx', 'node_modules'],
     coverage: {
       include: ['src/**/*.ts', 'src/**/*.tsx'],
@@ -31,8 +31,6 @@ export default defineConfig({
         'src/main.tsx',
         'src/tanstackRouteTree.gen.ts',
         'src/components/ui/**/*',
-        'src/components/pages/poem*',
-        'src/components/pages/room.tsx',
         'src/lib/uploadthing.ts',
       ],
     },

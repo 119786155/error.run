@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { getRandomCursor, ROOM_ID, SIGNALING } from '../../src/lib/yjs'
+import { getRandomCursor, ROOM_ID, SIGNALING } from '../../../src/lib/yjs'
 
 describe('yjs', () => {
   describe('getRandomCursor', () => {

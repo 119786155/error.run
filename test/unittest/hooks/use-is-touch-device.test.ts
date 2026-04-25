@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { useIsTouchDevice } from '../../src/hooks/use-is-touch-device'
+import { useIsTouchDevice } from '../../../src/hooks/use-is-touch-device'
 
 describe('useIsTouchDevice', () => {
   let addEventListenerSpy: ReturnType<typeof vi.spyOn>
