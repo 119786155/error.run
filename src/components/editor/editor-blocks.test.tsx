@@ -52,123 +52,91 @@ describe('Editor Blocks - BasicBlocksKit', () => {
     expect(hasPlugin(mockKit, 'h3')).toBe(true)
   })
 
-  it('should include BlockquotePlugin for blockquotes', () => {
+  it('should include BlockquotePlugin for quotes', () => {
     expect(hasPlugin(mockKit, 'blockquote')).toBe(true)
   })
 
-  it('should include HorizontalRulePlugin for horizontal rules', () => {
+  it('should include HrPlugin for horizontal rule', () => {
     expect(hasPlugin(mockKit, 'hr')).toBe(true)
   })
 
-  it('should include CalloutPlugin for callout blocks', () => {
+  it('should include CalloutPlugin for callouts', () => {
     expect(hasPlugin(mockKit, 'callout')).toBe(true)
   })
 
-  it('should include TrailingBlockPlugin', () => {
-    expect(hasPlugin(mockKit, 'trailingBlock')).toBe(true)
-  })
-})
-
-describe('Editor Blocks - TableKit', () => {
   it('should include TablePlugin for tables', () => {
     expect(hasPlugin(mockKit, 'table')).toBe(true)
-  })
-
-  it('should include TableRowPlugin for table rows', () => {
     expect(hasPlugin(mockKit, 'tr')).toBe(true)
-  })
-
-  it('should include TableCellPlugin for table cells', () => {
     expect(hasPlugin(mockKit, 'td')).toBe(true)
-  })
-
-  it('should include TableCellHeaderPlugin for table header cells', () => {
     expect(hasPlugin(mockKit, 'th')).toBe(true)
   })
-})
 
-describe('Editor Blocks - CodeBlockKit', () => {
   it('should include CodeBlockPlugin for code blocks', () => {
     expect(hasPlugin(mockKit, 'code_block')).toBe(true)
-  })
-
-  it('should include CodeLinePlugin for code lines', () => {
     expect(hasPlugin(mockKit, 'code_line')).toBe(true)
-  })
-
-  it('should include CodeSyntaxPlugin for syntax highlighting', () => {
     expect(hasPlugin(mockKit, 'code_syntax')).toBe(true)
   })
-})
 
-describe('Editor Blocks - ListKit', () => {
-  it('should include ListPlugin for list support', () => {
+  it('should include ListPlugin for lists', () => {
     expect(hasPlugin(mockKit, 'list')).toBe(true)
   })
-})
 
-describe('Editor Blocks - ToggleKit', () => {
-  it('should include TogglePlugin for collapsible content', () => {
+  it('should include TogglePlugin for toggles', () => {
     expect(hasPlugin(mockKit, 'toggle')).toBe(true)
   })
-})
 
-describe('Editor Blocks - MediaKit', () => {
-  it('should include ImagePlugin for images', () => {
+  it('should include MediaPlugins for media elements', () => {
     expect(hasPlugin(mockKit, 'img')).toBe(true)
-  })
-
-  it('should include AudioPlugin for audio', () => {
     expect(hasPlugin(mockKit, 'audio')).toBe(true)
-  })
-
-  it('should include VideoPlugin for video', () => {
     expect(hasPlugin(mockKit, 'video')).toBe(true)
-  })
-
-  it('should include MediaEmbedPlugin for media embeds', () => {
     expect(hasPlugin(mockKit, 'media_embed')).toBe(true)
-  })
-
-  it('should include PlaceholderPlugin for upload placeholders', () => {
     expect(hasPlugin(mockKit, 'placeholder')).toBe(true)
   })
-})
 
-describe('Editor Blocks - ColumnKit', () => {
-  it('should include ColumnPlugin for column groups', () => {
+  it('should include ColumnPlugin for columns', () => {
     expect(hasPlugin(mockKit, 'column')).toBe(true)
-  })
-
-  it('should include ColumnItemPlugin for column items', () => {
     expect(hasPlugin(mockKit, 'columnItem')).toBe(true)
   })
-})
 
-describe('Editor Blocks - MathKit', () => {
-  it('should include EquationPlugin for block math equations', () => {
+  it('should include EquationPlugin for equations', () => {
     expect(hasPlugin(mockKit, 'equation')).toBe(true)
-  })
-
-  it('should include InlineEquationPlugin for inline math', () => {
     expect(hasPlugin(mockKit, 'inlineEquation')).toBe(true)
   })
-})
 
-describe('Editor Blocks - ExcalidrawKit', () => {
-  it('should include ExcalidrawPlugin for drawings', () => {
+  it('should include ExcalidrawPlugin for excalidraw', () => {
     expect(hasPlugin(mockKit, 'excalidraw')).toBe(true)
   })
-})
 
-describe('Editor Blocks - DateKit', () => {
-  it('should include DatePlugin for date blocks', () => {
+  it('should include DatePlugin for dates', () => {
     expect(hasPlugin(mockKit, 'date')).toBe(true)
+  })
+
+  it('should include TrailingBlockPlugin for trailing block', () => {
+    expect(hasPlugin(mockKit, 'trailingBlock')).toBe(true)
+  })
+
+  it('should have exactly 28 block types', () => {
+    expect(mockKit).toHaveLength(28)
+  })
+
+  it('should have unique plugin keys', () => {
+    const keys = mockKit.map((plugin) => plugin.key)
+    const uniqueKeys = new Set(keys)
+    expect(uniqueKeys.size).toBe(keys.length)
   })
 })
 
-describe('Editor Blocks - Total Count', () => {
-  it('should have 28 block plugins in total', () => {
-    expect(mockKit.length).toBe(28)
+describe('Editor Blocks - Plugin Validation', () => {
+  it('should validate plugin keys', () => {
+    mockKit.forEach((plugin) => {
+      expect(typeof plugin.key).toBe('string')
+      expect(plugin.key.length).toBeGreaterThan(0)
+    })
+  })
+
+  it('should handle edge cases', () => {
+    expect(hasPlugin([], 'p')).toBe(false)
+    expect(hasPlugin(mockKit, '')).toBe(false)
+    expect(hasPlugin(mockKit, 'non-existent')).toBe(false)
   })
 })
