@@ -76,3 +76,4 @@
 - `feat(i18n): update write page description for all languages`
 - `chore: remove story and draw pages`
 - `feat: add AI_LOG.md auto-update functionality to submit-code skill`
+- `fix: improve write page test coverage and fix lodash import issue`

@@ -105,7 +105,11 @@ log "AI assistant will analyze this information and generate a precise commit me
 # - Changed files analysis
 # - Conventional commits best practices
 
-log "=== Step 7: Updating AI log ==="
+log "=== Step 7: Committing changes ==="
+git add -A
+git commit -m "chore: update changes"  # AI will replace this with precise message
+
+log "=== Step 8: Updating AI log ==="
 # Update AI_LOG.md with current task information based on actual changes
 
 # Get current date in YYYY-MM-DD format
@@ -141,10 +145,6 @@ if git status --porcelain | grep -q "AI_LOG.md"; then
     git add AI_LOG.md
     log "Added AI_LOG.md to git"
 fi
-
-log "=== Step 8: Committing changes ==="
-git add -A
-git commit -m "chore: update changes"  # AI will replace this with precise message
 
 log "=== Step 9: Pushing to remote ==="
 git push
