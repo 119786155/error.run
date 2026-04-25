@@ -74,3 +74,4 @@
 ### Git Commits
 - `feat(i18n): add support for 10 major languages including Spanish, Hindi, Arabic, Portuguese, Japanese, Korean, Russian, and German`
 - `feat(i18n): update write page description for all languages`
+- `chore: remove story and draw pages`
