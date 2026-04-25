@@ -77,7 +77,9 @@
 - `chore: remove story and draw pages`
 - `feat: add AI_LOG.md auto-update functionality to submit-code skill`
 - `fix: improve write page test coverage and fix lodash import issue`
-\n## 2026-04-26\n
-### Git Commits\n
+\n## 2026-04-26
+
+### Git Commits
 
 - `fix: remove any type assertion in uploadthing test`
+- `chore: add test coverage check skill and E2E tests`
