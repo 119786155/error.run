@@ -1,9 +1,8 @@
 import { render } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { getContent } from '@/i18n'
-import { Write } from './write'
+import { Write } from '../../../src/components/pages/write'
 
-// Mock dependencies
 vi.mock('@/i18n', () => ({
   getContent: vi.fn((key: string) => {
     if (key === 'editor.placeholder') {
@@ -13,7 +12,6 @@ vi.mock('@/i18n', () => ({
   }),
 }))
 
-// Test the Write component directly
 vi.mock('@/components/editor', () => ({
   Editor: vi.fn(() => <div data-testid="editor" />),
 }))

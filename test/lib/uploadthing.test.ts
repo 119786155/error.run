@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { ourFileRouter } from './uploadthing'
+import { ourFileRouter } from '../../src/lib/uploadthing'
 
 describe('uploadthing', () => {
   it('should have editorUploader endpoint', () => {

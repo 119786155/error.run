@@ -22,7 +22,13 @@ type EditorProps = {
   'data-testid'?: string
 }
 
-export const Editor = ({ id, placeholder, staticValue, enableCollaboration, 'data-testid': dataTestId }: EditorProps) => {
+export const Editor = ({
+  id,
+  placeholder,
+  staticValue,
+  enableCollaboration,
+  'data-testid': dataTestId,
+}: EditorProps) => {
   const mounted = useMounted()
 
   const asyncValue = async () => {

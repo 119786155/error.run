@@ -1,4 +1,4 @@
-import get from 'lodash/get'
+import { get } from 'lodash'
 import { content } from './content'
 
 const STORAGE_KEY = 'locale'
