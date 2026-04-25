@@ -20,7 +20,15 @@ describe('uploadthing', () => {
   })
 
   it('should return correct file metadata on upload complete', () => {
-    const mockFile = {
+    interface MockFile {
+      key: string
+      name: string
+      size: number
+      type: string
+      ufsUrl: string
+    }
+
+    const mockFile: MockFile = {
       key: 'test-key',
       name: 'test-file.png',
       size: 1024,
@@ -29,7 +37,7 @@ describe('uploadthing', () => {
     }
 
     const onUploadComplete = ourFileRouter.editorUploader.onUploadComplete
-    const result = onUploadComplete({ file: mockFile } as any)
+    const result = onUploadComplete({ file: mockFile })
 
     expect(result).toEqual({
       key: mockFile.key,
