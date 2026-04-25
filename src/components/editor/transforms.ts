@@ -70,6 +70,13 @@ export const insertBlock = (editor: PlateEditor, type: string, options: InsertBl
     const currentBlockType = getBlockType(currentNode)
     const isSameBlockType = type === currentBlockType
     if (upsert && isCurrentBlockEmpty && isSameBlockType) {
+      // For paragraph, insert a new paragraph block instead of returning
+      if (type === KEYS.p) {
+        editor.tf.insertNodes(editor.api.create.block({ type }), {
+          at: PathApi.next(path),
+          select: true,
+        })
+      }
       return
     }
     if (type in insertBlockMap) {
