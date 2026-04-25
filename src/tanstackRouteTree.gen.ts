@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WriteRouteImport } from './routes/write'
 import { Route as RoomRouteImport } from './routes/room'
-import { Route as DrawRouteImport } from './routes/draw'
 import { Route as IndexRouteImport } from './routes/index'
 
 const WriteRoute = WriteRouteImport.update({
@@ -24,11 +23,6 @@ const RoomRoute = RoomRouteImport.update({
   path: '/room',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DrawRoute = DrawRouteImport.update({
-  id: '/draw',
-  path: '/draw',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -37,34 +31,30 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/draw': typeof DrawRoute
   '/room': typeof RoomRoute
   '/write': typeof WriteRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/draw': typeof DrawRoute
   '/room': typeof RoomRoute
   '/write': typeof WriteRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/draw': typeof DrawRoute
   '/room': typeof RoomRoute
   '/write': typeof WriteRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/draw' | '/room' | '/write'
+  fullPaths: '/' | '/room' | '/write'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/draw' | '/room' | '/write'
-  id: '__root__' | '/' | '/draw' | '/room' | '/write'
+  to: '/' | '/room' | '/write'
+  id: '__root__' | '/' | '/room' | '/write'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DrawRoute: typeof DrawRoute
   RoomRoute: typeof RoomRoute
   WriteRoute: typeof WriteRoute
 }
@@ -85,13 +75,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RoomRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/draw': {
-      id: '/draw'
-      path: '/draw'
-      fullPath: '/draw'
-      preLoaderRoute: typeof DrawRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -104,7 +87,6 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DrawRoute: DrawRoute,
   RoomRoute: RoomRoute,
   WriteRoute: WriteRoute,
 }
