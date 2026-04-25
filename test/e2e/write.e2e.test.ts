@@ -169,46 +169,46 @@ test.describe('Code Block', () => {
 // ==================== LISTS ====================
 
 test.describe('Unordered List Block', () => {
-  test.skip('should add unordered list block', async ({ page }) => {
+  test('should add unordered list block', async ({ page }) => {
     await insertBlock(page, 'unordered')
-    const lists = page.locator('.slate-ul')
+    const lists = page.locator('ul')
     await expect(lists).toHaveCount(1)
   })
 
-  test.skip('should delete unordered list block', async ({ page }) => {
+  test('should delete unordered list block', async ({ page }) => {
     await insertBlock(page, 'unordered')
-    await deleteBlock(page, '.slate-ul')
-    const lists = page.locator('.slate-ul')
+    await deleteBlock(page, 'ul')
+    const lists = page.locator('ul')
     await expect(lists).toHaveCount(0)
   })
 })
 
 test.describe('Ordered List Block', () => {
-  test.skip('should add ordered list block', async ({ page }) => {
+  test('should add ordered list block', async ({ page }) => {
     await insertBlock(page, 'ordered')
-    const lists = page.locator('.slate-ol')
+    const lists = page.locator('ol')
     await expect(lists).toHaveCount(1)
   })
 
-  test.skip('should delete ordered list block', async ({ page }) => {
+  test('should delete ordered list block', async ({ page }) => {
     await insertBlock(page, 'ordered')
-    await deleteBlock(page, '.slate-ol')
-    const lists = page.locator('.slate-ol')
+    await deleteBlock(page, 'ol')
+    const lists = page.locator('ol')
     await expect(lists).toHaveCount(0)
   })
 })
 
 test.describe('Todo List Block', () => {
-  test.skip('should add todo list block', async ({ page }) => {
+  test('should add todo list block', async ({ page }) => {
     await insertBlock(page, 'todo')
-    const lists = page.locator('.slate-action_item')
+    const lists = page.locator('li')
     await expect(lists).toHaveCount(1)
   })
 
-  test.skip('should delete todo list block', async ({ page }) => {
+  test('should delete todo list block', async ({ page }) => {
     await insertBlock(page, 'todo')
-    await deleteBlock(page, '.slate-action_item')
-    const lists = page.locator('.slate-action_item')
+    await deleteBlock(page, 'li')
+    const lists = page.locator('li')
     await expect(lists).toHaveCount(0)
   })
 })
