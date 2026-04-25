@@ -145,10 +145,11 @@ else
     log "Commit message already in AI_LOG.md"
 fi
 
-# Add AI_LOG.md to git
+# Add AI_LOG.md to git and commit
 if git status --porcelain | grep -q "AI_LOG.md"; then
     git add AI_LOG.md
-    log "Added AI_LOG.md to git"
+    git commit -m "chore: update AI log"
+    log "Added AI_LOG.md to git and committed"
 fi
 
 log "=== Step 10: Pushing to remote ==="
