@@ -107,7 +107,39 @@ log "AI assistant will analyze this information and generate a precise commit me
 
 log "=== Step 7: Updating AI log ==="
 # Update AI_LOG.md with current task information based on actual changes
-# This step is performed by the AI assistant based on the conversation context and code changes
+
+# Get current date in YYYY-MM-DD format
+CURRENT_DATE=$(date '+%Y-%m-%d')
+
+# Check if AI_LOG.md exists, create if it doesn't
+if [ ! -f "AI_LOG.md" ]; then
+    echo "# AI Development Log\n" > AI_LOG.md
+fi
+
+# Check if current date section exists
+if ! grep -q "## $CURRENT_DATE" AI_LOG.md; then
+    # Add current date section
+    echo "\n## $CURRENT_DATE\n" >> AI_LOG.md
+    echo "### Git Commits\n" >> AI_LOG.md
+fi
+
+# Get the latest commit message
+LATEST_COMMIT_MSG=$(git log --oneline -1 | cut -d ' ' -f 2-)
+
+# Check if commit message is already in AI_LOG.md
+if ! grep -q "- \`$LATEST_COMMIT_MSG\`" AI_LOG.md; then
+    # Add commit message to AI_LOG.md
+    echo "- \`$LATEST_COMMIT_MSG\`" >> AI_LOG.md
+    log "Added commit message to AI_LOG.md"
+else
+    log "Commit message already in AI_LOG.md"
+fi
+
+# Add AI_LOG.md to git
+if git status --porcelain | grep -q "AI_LOG.md"; then
+    git add AI_LOG.md
+    log "Added AI_LOG.md to git"
+fi
 
 log "=== Step 8: Committing changes ==="
 git add -A
