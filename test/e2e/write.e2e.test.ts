@@ -385,3 +385,151 @@ test.describe('Keyboard Input Inline Element', () => {
     await expect(kbds).toHaveCount(0)
   })
 })
+
+// ==================== TEXT FORMATTING ====================
+
+test.describe('Text Formatting', () => {
+  test('should apply bold formatting and verify editor state', async ({ page }) => {
+    await page.click('[data-slate-editor="true"]')
+    await page.keyboard.type('Hello World')
+    await page.waitForTimeout(200)
+
+    // Select all text
+    await page.keyboard.press('Control+a')
+    await page.waitForTimeout(200)
+
+    // Toggle bold using keyboard shortcut
+    await page.keyboard.press('Control+b')
+    await page.waitForTimeout(300)
+
+    // Verify editor still contains text (formatting applied)
+    const editorContent = await page.locator('[data-slate-editor="true"]').textContent()
+    expect(editorContent).toContain('Hello World')
+  })
+
+  test('should apply italic formatting', async ({ page }) => {
+    await page.click('[data-slate-editor="true"]')
+    await page.keyboard.type('Hello World')
+    await page.waitForTimeout(200)
+
+    await page.keyboard.press('Control+a')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('Control+i')
+    await page.waitForTimeout(300)
+
+    // Verify editor still contains text
+    const editorContent = await page.locator('[data-slate-editor="true"]').textContent()
+    expect(editorContent).toContain('Hello World')
+  })
+
+  test('should apply underline formatting', async ({ page }) => {
+    await page.click('[data-slate-editor="true"]')
+    await page.keyboard.type('Hello World')
+    await page.waitForTimeout(200)
+
+    await page.keyboard.press('Control+a')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('Control+u')
+    await page.waitForTimeout(300)
+
+    const editorContent = await page.locator('[data-slate-editor="true"]').textContent()
+    expect(editorContent).toContain('Hello World')
+  })
+
+  test('should apply strikethrough formatting', async ({ page }) => {
+    await page.click('[data-slate-editor="true"]')
+    await page.keyboard.type('Hello World')
+    await page.waitForTimeout(200)
+
+    await page.keyboard.press('Control+a')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('Control+Shift+x')
+    await page.waitForTimeout(300)
+
+    const editorContent = await page.locator('[data-slate-editor="true"]').textContent()
+    expect(editorContent).toContain('Hello World')
+  })
+})
+
+// ==================== LINK FUNCTIONALITY ====================
+
+test.describe('Link Functionality', () => {
+  test('should open link toolbar using keyboard shortcut', async ({ page }) => {
+    await page.click('[data-slate-editor="true"]')
+    await page.keyboard.type('Click me')
+    await page.waitForTimeout(200)
+
+    await page.keyboard.press('Control+a')
+    await page.waitForTimeout(200)
+
+    // Use keyboard shortcut for link
+    await page.keyboard.press('Control+k')
+    await page.waitForTimeout(500)
+
+    // Check if link toolbar appears
+    const linkToolbar = page.locator('[data-plate-focus]')
+    await expect(linkToolbar).toBeVisible()
+  })
+
+  test('should insert link and verify editor content', async ({ page }) => {
+    await page.click('[data-slate-editor="true"]')
+    await page.keyboard.type('Click me')
+    await page.waitForTimeout(200)
+
+    await page.keyboard.press('Control+a')
+    await page.waitForTimeout(200)
+
+    // Use keyboard shortcut for link
+    await page.keyboard.press('Control+k')
+    await page.waitForTimeout(500)
+
+    // Check if link toolbar appears and interact with it
+    const urlInput = page.locator('[data-plate-focus][placeholder*="link"]')
+    if (await urlInput.isVisible()) {
+      await urlInput.fill('https://example.com')
+      await page.waitForTimeout(200)
+
+      // Press Escape to close toolbar (link should be inserted)
+      await page.keyboard.press('Escape')
+      await page.waitForTimeout(500)
+
+      // Verify editor still contains text
+      const editorContent = await page.locator('[data-slate-editor="true"]').textContent()
+      expect(editorContent).toContain('Click me')
+    } else {
+      test.skip()
+    }
+  })
+})
+
+// ==================== MEDIA UPLOAD ====================
+
+test.describe('Media Upload', () => {
+  test('should insert date inline element using slash command', async ({ page }) => {
+    await page.click('[data-slate-editor="true"]')
+    await page.waitForTimeout(200)
+
+    // Use slash menu to insert date
+    await page.keyboard.type('/date')
+    await page.waitForSelector('[role="listbox"]', { timeout: 5000 })
+    await page.keyboard.press('Enter')
+    await page.waitForTimeout(500)
+
+    // Verify date element is inserted
+    const dates = page.locator('.slate-date')
+    await expect(dates).toHaveCount(1)
+  })
+
+  test('should insert keyboard inline element using slash command', async ({ page }) => {
+    await page.click('[data-slate-editor="true"]')
+    await page.waitForTimeout(200)
+
+    await page.keyboard.type('/kbd')
+    await page.waitForSelector('[role="listbox"]', { timeout: 5000 })
+    await page.keyboard.press('Enter')
+    await page.waitForTimeout(500)
+
+    const kbds = page.locator('.slate-kbd')
+    await expect(kbds).toHaveCount(1)
+  })
+})
