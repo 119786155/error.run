@@ -502,6 +502,66 @@ test.describe('Link Functionality', () => {
   })
 })
 
+// ==================== THEME SWITCHING ====================
+
+test.describe('Theme Switching', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(`${BASE_URL}/write`)
+    await page.waitForSelector('[data-testid="editor"]')
+  })
+
+  test('should toggle from light to dark theme', async ({ page }) => {
+    const toggleButton = page.locator('[data-testid="theme-toggle"]').first()
+    await expect(toggleButton).toBeVisible()
+
+    // Initially light: html should NOT have 'dark' class
+    const initialHtmlClass = await page.locator('html').getAttribute('class')
+    expect(initialHtmlClass).not.toContain('dark')
+
+    // Click to toggle to dark
+    await toggleButton.click()
+    await page.waitForTimeout(500)
+
+    // Verify dark class is applied
+    const darkHtmlClass = await page.locator('html').getAttribute('class')
+    expect(darkHtmlClass).toContain('dark')
+  })
+
+  test('should toggle from dark to light theme', async ({ page }) => {
+    const toggleButton = page.locator('[data-testid="theme-toggle"]').first()
+    await expect(toggleButton).toBeVisible()
+
+    // Toggle to dark
+    await toggleButton.click()
+    await page.waitForTimeout(500)
+    expect(await page.locator('html').getAttribute('class')).toContain('dark')
+
+    // Toggle back to light
+    await toggleButton.click()
+    await page.waitForTimeout(500)
+
+    // Verify dark class is removed
+    const htmlClass = await page.locator('html').getAttribute('class')
+    expect(htmlClass).not.toContain('dark')
+  })
+
+  test('should persist theme preference after reload', async ({ page }) => {
+    const toggleButton = page.locator('[data-testid="theme-toggle"]').first()
+
+    // Toggle to dark
+    await toggleButton.click()
+    await page.waitForTimeout(500)
+
+    // Reload the page
+    await page.reload()
+    await page.waitForSelector('[data-testid="editor"]')
+
+    // Verify dark theme is still active
+    const htmlClass = await page.locator('html').getAttribute('class')
+    expect(htmlClass).toContain('dark')
+  })
+})
+
 // ==================== MEDIA UPLOAD ====================
 
 test.describe('Media Upload', () => {

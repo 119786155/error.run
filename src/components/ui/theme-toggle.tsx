@@ -9,7 +9,7 @@ export function ThemeToggle() {
   const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark')
 
   return (
-    <ToolbarButton onClick={toggleTheme} tooltip={getContent(`app.theme.${theme}`)}>
+    <ToolbarButton data-testid="theme-toggle" onClick={toggleTheme} tooltip={getContent(`app.theme.${theme}`)}>
       <SunMoon className="scale-100 rotate-0 transition-all dark:-rotate-180" />
     </ToolbarButton>
   )

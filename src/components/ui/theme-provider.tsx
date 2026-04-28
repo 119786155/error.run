@@ -20,32 +20,53 @@ const initialState: ThemeProviderState = {
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
 
-export function ThemeProvider({ children, defaultTheme = 'light', ...props }: ThemeProviderProps) {
-  const getCurrentTheme = () => (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+export function ThemeProvider({
+  children,
+  defaultTheme = 'light',
+  storageKey = 'theme',
+  ...props
+}: ThemeProviderProps) {
+  const getCurrentTheme = (): Theme => {
+    if (typeof window !== 'undefined' && localStorage.getItem(storageKey)) {
+      return localStorage.getItem(storageKey) as Theme
+    }
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  }
 
-  const [theme, setTheme] = useState<Theme>(getCurrentTheme())
+  const [theme, setThemeState] = useState<Theme>(getCurrentTheme())
 
-  const updateTheme = useCallback(() => {
-    const root = window.document.documentElement
+  const updateTheme = useCallback(
+    (newTheme: Theme) => {
+      const root = window.document.documentElement
+      root.classList.remove('light', 'dark')
+      root.classList.add(newTheme)
+      localStorage.setItem(storageKey, newTheme)
+    },
+    [storageKey],
+  )
 
-    root.classList.remove('light', 'dark')
-
-    root.classList.add(theme)
-  }, [theme])
-
-  let hasListener = false
+  const setTheme = useCallback(
+    (newTheme: Theme) => {
+      setThemeState(newTheme)
+      updateTheme(newTheme)
+    },
+    [updateTheme],
+  )
 
   useEffect(() => {
-    updateTheme()
+    updateTheme(theme)
+  }, [theme, updateTheme])
 
-    if (!hasListener) {
-      hasListener = true
-
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-        updateTheme()
-      })
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+    const handleChange = () => {
+      if (!localStorage.getItem(storageKey)) {
+        updateTheme(mediaQuery.matches ? 'dark' : 'light')
+      }
     }
-  }, [updateTheme, hasListener])
+    mediaQuery.addEventListener('change', handleChange)
+    return () => mediaQuery.removeEventListener('change', handleChange)
+  }, [storageKey, updateTheme])
 
   const value = {
     theme,
