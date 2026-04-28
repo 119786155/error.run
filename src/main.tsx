@@ -12,9 +12,11 @@ const router = createRouter({ routeTree })
 const rootElement = document.getElementById('root') as HTMLElement
 
 if (!rootElement.innerHTML) {
-  createRoot(rootElement).render(
+  const root = createRoot(rootElement)
+  root.render(
     <StrictMode>
       <RouterProvider router={router} />
     </StrictMode>,
   )
+  rootElement.ownerDocument.getElementById('loader')?.remove()
 }
