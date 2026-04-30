@@ -11,3 +11,22 @@ personal project for learning, practicing, and exploring
          Heart keeps
          One breath
 ```
+
+## Write
+
+```
+            Write
+
+         # Getting Started
+
+         This is a **minimal** markdown editor
+         with real-time preview and Export
+
+         > Tip: Use markdown syntax for formatting
+
+         `const greeting = "Hello, world!";`
+
+         - Lightweight and fast
+         - No tracking or ads
+         - Your data stays local
+```

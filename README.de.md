@@ -11,3 +11,23 @@ persönliches Projekt zum Lernen, Üben und Erkunden
          Das Herz bewahrt
          Ein Atemzug
 ```
+
+## Write
+
+```
+            Write
+
+         # Erste Schritte
+
+         Dies ist ein **minimalistischer**
+         Markdown-Editor mit Echtzeitvorschau
+         und Export
+
+         > Tipp: Markdown-Syntax zum Formatieren
+
+         `const greeting = "Hallo, Welt!";`
+
+         - Leicht und schnell
+         - Kein Tracking oder Werbung
+         - Ihre Daten bleiben lokal
+```

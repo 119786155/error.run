@@ -11,3 +11,22 @@ projeto pessoal para aprender, praticar e explorar
          O coração guarda
          Uma respiração
 ```
+
+## Write
+
+```
+            Write
+
+         # Começando
+
+         Este é um editor Markdown **minimalista**
+         com visualização em tempo real e Export
+
+         > Dica: Use sintaxe markdown
+
+         `const saudacao = "Olá, mundo!";`
+
+         - Leve e rápido
+         - Sem rastreamento ou anúncios
+         - Seus dados permanecem localmente
+```
