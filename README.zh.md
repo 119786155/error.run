@@ -1,5 +1,5 @@
 # error.run
-personal project for learning, practicing, and exploring
+个人项目，用于学习、练习和探索
 
 ## Poem
 
