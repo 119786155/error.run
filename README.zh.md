@@ -15,8 +15,6 @@ personal project for learning, practicing, and exploring
 ## Write
 
 ```
-            Write
-
          # 入门指南
 
          这是一个**简洁**的 Markdown 编辑器

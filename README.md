@@ -15,8 +15,6 @@ personal project for learning, practicing, and exploring
 ## Write
 
 ```
-            Write
-
          # Getting Started
 
          This is a **minimal** markdown editor

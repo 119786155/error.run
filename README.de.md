@@ -15,8 +15,6 @@ persönliches Projekt zum Lernen, Üben und Erkunden
 ## Write
 
 ```
-            Write
-
          # Erste Schritte
 
          Dies ist ein **minimalistischer**

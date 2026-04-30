@@ -15,8 +15,6 @@ proyecto personal para aprender, practicar y explorar
 ## Write
 
 ```
-            Write
-
          # Primeros Pasos
 
          Este es un editor Markdown **minimalista**
