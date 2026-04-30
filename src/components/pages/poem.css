@@ -30,17 +30,30 @@
   place-items: center;
   height: 100vh;
   text-align: center;
-  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+.poem-container * {
+  font-family:
+    var(--font-pixel-mono), "Noto Sans SC", "PingFang SC", "Microsoft YaHei",
+    sans-serif;
 }
 
 .poem-container h1 {
   font-size: 120%;
   font-weight: 700;
   margin-bottom: 2rem;
+  font-family:
+    var(--font-pixel), "Noto Sans SC", "PingFang SC", "Microsoft YaHei",
+    sans-serif;
 }
 
 .poem-container p {
   font-size: 100%;
   line-height: 2.5;
   margin: 0.5rem 0;
+}
+
+.poem-container h1:lang(zh),
+.poem-container p:lang(zh) {
+  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
 }
