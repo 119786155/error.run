@@ -114,6 +114,9 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --color-brand: var(--brand);
   --color-highlight: var(--highlight);
+
+  --font-pixel: "Press Start 2P", cursive;
+  --font-pixel-mono: "VT323", monospace;
 }
 
 @layer base {
@@ -122,5 +125,29 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family:
+      var(--font-pixel-mono), "PingFang SC", "Microsoft YaHei", "Noto Sans SC",
+      sans-serif;
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family:
+      var(--font-pixel), "PingFang SC", "Microsoft YaHei", "Noto Sans SC",
+      sans-serif;
+  }
+}
+
+[data-slate-editor="true"] {
+  font-family:
+    var(--font-pixel-mono), "Noto Sans SC", "PingFang SC", "Microsoft YaHei",
+    sans-serif;
+}
+
+[data-slate-editor="true"] *:lang(zh),
+[data-slate-editor="true"] *:lang(zh-CN) {
+  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
 }
