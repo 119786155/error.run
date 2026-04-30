@@ -4,7 +4,7 @@ proyecto personal para aprender, practicar y explorar
 ## Poem
 
 ```
-            POLVO
+         POLVO
 
          El viento pasa
          Sin rastro

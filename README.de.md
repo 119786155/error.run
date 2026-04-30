@@ -4,7 +4,7 @@ persönliches Projekt zum Lernen, Üben und Erkunden
 ## Poem
 
 ```
-            STAUB
+         STAUB
 
          Der Wind weht vorbei
          Keine Spur

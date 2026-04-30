@@ -4,7 +4,7 @@ personal project for learning, practicing, and exploring
 ## Poem
 
 ```
-            DUST
+         DUST
 
          Wind passes
          No trace
