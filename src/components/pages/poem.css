@@ -1,149 +1,64 @@
-@keyframes float-1 {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  25% {
-    transform: translate(30px, -40px) scale(1.05);
-  }
-  50% {
-    transform: translate(-20px, -60px) scale(0.95);
-  }
-  75% {
-    transform: translate(-40px, -20px) scale(1.02);
-  }
+.poem {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #fafbff;
 }
 
-@keyframes float-2 {
+.poem::before,
+.poem::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.12;
+  filter: blur(80px);
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  animation: float var(--d) ease-in-out infinite;
+  pointer-events: none;
+}
+
+.poem::before {
+  top: -10%;
+  left: -15%;
+  width: 80vw;
+  height: 80vw;
+  max-width: 800px;
+  max-height: 800px;
+  --d: 20s;
+  --c1: #818cf8;
+  --c2: #a78bfa;
+  --tx: 60px;
+  --ty: 80px;
+  --s: 1.08;
+}
+
+.poem::after {
+  bottom: -20%;
+  right: -10%;
+  width: 90vw;
+  height: 90vw;
+  max-width: 900px;
+  max-height: 900px;
+  --d: 25s;
+  --c1: #f472b6;
+  --c2: #fb7185;
+  --tx: -80px;
+  --ty: -60px;
+  --s: 1.1;
+}
+
+@keyframes float {
   0%,
   100% {
     transform: translate(0, 0) scale(1);
   }
   33% {
-    transform: translate(-50px, 30px) scale(1.08);
-  }
-  66% {
-    transform: translate(40px, 50px) scale(0.92);
+    transform: translate(var(--tx), var(--ty)) scale(var(--s));
   }
 }
 
-@keyframes float-3 {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  20% {
-    transform: translate(60px, 20px) scale(1.03);
-  }
-  40% {
-    transform: translate(30px, 60px) scale(0.97);
-  }
-  60% {
-    transform: translate(-30px, 40px) scale(1.06);
-  }
-  80% {
-    transform: translate(-50px, -20px) scale(0.99);
-  }
-}
-
-@keyframes float-4 {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  25% {
-    transform: translate(-40px, -50px) scale(1.04);
-  }
-  50% {
-    transform: translate(50px, -30px) scale(0.96);
-  }
-  75% {
-    transform: translate(20px, 40px) scale(1.07);
-  }
-}
-
-.poem-page {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #fafbff 0%, #f1f5f9 50%, #fafbff 100%);
-  overflow: hidden;
-}
-
-@media (prefers-color-scheme: dark) {
-  .poem-page {
-    background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
-  }
-}
-
-.poem-circles {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.poem-circle {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.1;
-  filter: blur(2px);
-}
-
-@media (prefers-color-scheme: dark) {
-  .poem-circle {
-    opacity: 0.25;
-    filter: blur(60px);
-  }
-}
-
-.poem-circle:nth-child(1) {
-  width: 360px;
-  height: 360px;
-  top: 10%;
-  left: 5%;
-  background: linear-gradient(135deg, #818cf8, #a78bfa);
-  animation: float-1 20s ease-in-out infinite;
-}
-
-@media (prefers-color-scheme: dark) {
-  .poem-circle:nth-child(1) {
-    background: linear-gradient(135deg, #a78bfa, #c4b5fd);
-  }
-}
-
-.poem-circle:nth-child(2) {
-  width: 450px;
-  height: 450px;
-  top: 45%;
-  left: 60%;
-  background: linear-gradient(135deg, #f472b6, #fb7185);
-  animation: float-2 25s ease-in-out infinite;
-}
-
-@media (prefers-color-scheme: dark) {
-  .poem-circle:nth-child(2) {
-    background: linear-gradient(135deg, #fbcfe8, #f9a8d4);
-  }
-}
-
-.poem-circle:nth-child(3) {
-  width: 300px;
-  height: 300px;
-  top: 55%;
-  left: 15%;
-  background: linear-gradient(135deg, #2dd4bf, #22d3ee);
-  animation: float-3 22s ease-in-out infinite;
-}
-
-@media (prefers-color-scheme: dark) {
-  .poem-circle:nth-child(3) {
-    background: linear-gradient(135deg, #a5f3fc, #67e8f9);
-  }
-}
-
-.poem-container {
+.poem__content {
   position: relative;
   z-index: 10;
   text-align: center;
@@ -151,35 +66,45 @@
   max-width: 600px;
 }
 
-.poem-container h1 {
+.poem__content h1 {
   font-size: 1.5rem;
   font-weight: 600;
   color: #1e293b;
   margin-bottom: 2rem;
   letter-spacing: 0.05em;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
-@media (prefers-color-scheme: dark) {
-  .poem-container h1 {
-    color: #f8fafc;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-  }
-}
-
-.poem-container p {
+.poem__content p {
   font-size: 1rem;
   line-height: 2.2;
   color: #64748b;
   margin: 0.75rem 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  .poem-container p {
-    color: #94a3b8;
-  }
+.poem__content footer {
+  margin-top: 3rem;
 }
 
-.poem-container footer {
-  margin-top: 3rem;
+@media (prefers-color-scheme: dark) {
+  .poem {
+    background: #000;
+  }
+  .poem::before,
+  .poem::after {
+    opacity: 0.15;
+  }
+  .poem::before {
+    --c1: #a78bfa;
+    --c2: #c4b5fd;
+  }
+  .poem::after {
+    --c1: #fbcfe8;
+    --c2: #f9a8d4;
+  }
+  .poem__content h1 {
+    color: #f8fafc;
+  }
+  .poem__content p {
+    color: #94a3b8;
+  }
 }
