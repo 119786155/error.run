@@ -41,6 +41,7 @@ export class Renderer {
 
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas
+    // biome-ignore lint/style/noNonNullAssertion: 2d context always available
     this.ctx = canvas.getContext('2d')!
     this.resize()
     window.addEventListener('resize', () => this.resize())
@@ -48,11 +49,12 @@ export class Renderer {
 
   resize(): void {
     const container = this.canvas.parentElement
+    // biome-ignore lint/style/noNonNullAssertion: container always exists when resize is called
     const rect = container!.getBoundingClientRect()
     this.canvas.width = this.width
     this.canvas.height = this.height
-    this.canvas.style.width = rect.width + 'px'
-    this.canvas.style.height = rect.height + 'px'
+    this.canvas.style.width = `${rect.width}px`
+    this.canvas.style.height = `${rect.height}px`
   }
 
   setCamera(x: number, y: number): void {

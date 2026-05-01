@@ -10,27 +10,39 @@ export const Jump = () => {
       const canvas = canvasRef.current
       if (!canvas) return
 
+      // biome-ignore lint/suspicious/noExplicitAny: dynamic import
       const { Renderer }: any = await import('@/components/pages/jump/game/renderer')
+      // biome-ignore lint/suspicious/noExplicitAny: dynamic import
       const { Player }: any = await import('@/components/pages/jump/game/player')
+      // biome-ignore lint/suspicious/noExplicitAny: dynamic import
       const { PlatformManager }: any = await import('@/components/pages/jump/game/platform')
+      // biome-ignore lint/suspicious/noExplicitAny: dynamic import
       const { CollectibleManager }: any = await import('@/components/pages/jump/game/collectibles')
+      // biome-ignore lint/suspicious/noExplicitAny: dynamic import
       const { EnemyManager }: any = await import('@/components/pages/jump/game/enemy')
+      // biome-ignore lint/suspicious/noExplicitAny: dynamic import
       const { audioManager }: any = await import('@/components/pages/jump/game/audio')
+      // biome-ignore lint/suspicious/noExplicitAny: dynamic import
       const { Utils }: any = await import('@/components/pages/jump/game/utils')
 
       class GameInstance {
         canvas: HTMLCanvasElement
+        // biome-ignore lint/suspicious/noExplicitAny: dynamic import
         renderer: any
+        // biome-ignore lint/suspicious/noExplicitAny: dynamic import
         player: any
+        // biome-ignore lint/suspicious/noExplicitAny: dynamic import
         platformManager: any
+        // biome-ignore lint/suspicious/noExplicitAny: dynamic import
         collectibleManager: any
+        // biome-ignore lint/suspicious/noExplicitAny: dynamic import
         enemyManager: any
 
         input = { left: false, right: false, jump: false }
         state: 'start' | 'playing' | 'paused' | 'gameover' = 'start'
         score = 0
         lives = 3
-        highScore = parseInt(localStorage.getItem('pixelJumpHighScore') || '0')
+        highScore = parseInt(localStorage.getItem('pixelJumpHighScore') || '0', 10)
         frame = 0
 
         constructor(canvas: HTMLCanvasElement) {
@@ -91,25 +103,43 @@ export const Jump = () => {
           }
 
           if (btnLeft) {
-            btnLeft.addEventListener('mousedown', () => (this.input.left = true))
-            btnLeft.addEventListener('mouseup', () => (this.input.left = false))
-            btnLeft.addEventListener('mouseleave', () => (this.input.left = false))
+            btnLeft.addEventListener('mousedown', () => {
+              this.input.left = true
+            })
+            btnLeft.addEventListener('mouseup', () => {
+              this.input.left = false
+            })
+            btnLeft.addEventListener('mouseleave', () => {
+              this.input.left = false
+            })
             btnLeft.addEventListener('touchstart', handleTouchStart('left'), { passive: false })
             btnLeft.addEventListener('touchend', handleTouchEnd('left'), { passive: false })
             btnLeft.addEventListener('touchcancel', handleTouchEnd('left'), { passive: false })
           }
           if (btnRight) {
-            btnRight.addEventListener('mousedown', () => (this.input.right = true))
-            btnRight.addEventListener('mouseup', () => (this.input.right = false))
-            btnRight.addEventListener('mouseleave', () => (this.input.right = false))
+            btnRight.addEventListener('mousedown', () => {
+              this.input.right = true
+            })
+            btnRight.addEventListener('mouseup', () => {
+              this.input.right = false
+            })
+            btnRight.addEventListener('mouseleave', () => {
+              this.input.right = false
+            })
             btnRight.addEventListener('touchstart', handleTouchStart('right'), { passive: false })
             btnRight.addEventListener('touchend', handleTouchEnd('right'), { passive: false })
             btnRight.addEventListener('touchcancel', handleTouchEnd('right'), { passive: false })
           }
           if (btnJump) {
-            btnJump.addEventListener('mousedown', () => (this.input.jump = true))
-            btnJump.addEventListener('mouseup', () => (this.input.jump = false))
-            btnJump.addEventListener('mouseleave', () => (this.input.jump = false))
+            btnJump.addEventListener('mousedown', () => {
+              this.input.jump = true
+            })
+            btnJump.addEventListener('mouseup', () => {
+              this.input.jump = false
+            })
+            btnJump.addEventListener('mouseleave', () => {
+              this.input.jump = false
+            })
             btnJump.addEventListener('touchstart', handleTouchStart('jump'), { passive: false })
             btnJump.addEventListener('touchend', handleTouchEnd('jump'), { passive: false })
             btnJump.addEventListener('touchcancel', handleTouchEnd('jump'), { passive: false })
@@ -190,7 +220,7 @@ export const Jump = () => {
           const livesEl = document.getElementById('lives-display')
           if (scoreEl) scoreEl.textContent = `${getContent('jump.ui.score')}: ${this.score}`
           if (highScoreEl) highScoreEl.textContent = `${getContent('jump.ui.highScore')}: ${this.highScore}`
-          if (livesEl) livesEl.textContent = `${getContent('jump.ui.lives')}: ` + '♥'.repeat(this.lives)
+          if (livesEl) livesEl.textContent = `${getContent('jump.ui.lives')}: ${'♥'.repeat(this.lives)}`
         }
 
         update() {
@@ -254,13 +284,18 @@ export const Jump = () => {
           }
 
           const allPlatforms = this.platformManager.platforms
+          // biome-ignore lint/suspicious/noExplicitAny: platform type unknown
           const lastSpawnedIndex = allPlatforms.findIndex((p: any) => p.x > this.player.x + 1000)
           if (lastSpawnedIndex > 0) {
             for (let i = lastSpawnedIndex - 1; i < lastSpawnedIndex + 2 && i < allPlatforms.length; i++) {
-              if (allPlatforms[i] && !(allPlatforms[i] as any).spawned) {
-                ;(allPlatforms[i] as any).spawned = true
-                this.collectibleManager.spawnForPlatform(allPlatforms[i])
-                this.enemyManager.spawnForPlatform(allPlatforms[i])
+              if (allPlatforms[i]) {
+                // biome-ignore lint/suspicious/noExplicitAny: platform spawned property
+                if (!(allPlatforms[i] as any).spawned) {
+                  // biome-ignore lint/suspicious/noExplicitAny: platform spawned property
+                  ;(allPlatforms[i] as any).spawned = true
+                  this.collectibleManager.spawnForPlatform(allPlatforms[i])
+                  this.enemyManager.spawnForPlatform(allPlatforms[i])
+                }
               }
             }
           }
@@ -303,6 +338,7 @@ export const Jump = () => {
       }
 
       const game = new GameInstance(canvas)
+      // biome-ignore lint/suspicious/noExplicitAny: debug global access
       ;(window as any).game = game
 
       document.getElementById('start-btn')?.addEventListener('click', () => game.start())
@@ -327,7 +363,7 @@ export const Jump = () => {
               <p>{getContent('jump.controls.jump')}</p>
               <p>{getContent('jump.controls.pause')}</p>
             </div>
-            <button id="start-btn" className="pixel-btn">
+            <button id="start-btn" type="button" className="pixel-btn">
               {getContent('jump.btn.start')}
             </button>
           </div>
@@ -338,7 +374,7 @@ export const Jump = () => {
           </div>
           <div id="pause-screen" className="screen">
             <h2>{getContent('jump.screen.pause.title')}</h2>
-            <button id="resume-btn" className="pixel-btn">
+            <button id="resume-btn" type="button" className="pixel-btn">
               {getContent('jump.btn.resume')}
             </button>
           </div>
@@ -346,21 +382,21 @@ export const Jump = () => {
             <h2>{getContent('jump.screen.gameover.title')}</h2>
             <p id="final-score">{getContent('jump.screen.gameover.finalScore')}: 0</p>
             <p id="final-high-score">{getContent('jump.ui.highScore')}: 0</p>
-            <button id="restart-btn" className="pixel-btn">
+            <button id="restart-btn" type="button" className="pixel-btn">
               {getContent('jump.btn.restart')}
             </button>
           </div>
         </div>
         <div id="mobile-controls">
           <div id="dpad">
-            <button id="btn-left" className="ctrl-btn">
+            <button id="btn-left" type="button" className="ctrl-btn">
               ←
             </button>
-            <button id="btn-right" className="ctrl-btn">
+            <button id="btn-right" type="button" className="ctrl-btn">
               →
             </button>
           </div>
-          <button id="btn-jump" className="ctrl-btn jump">
+          <button id="btn-jump" type="button" className="ctrl-btn jump">
             {getContent('jump.mobile.jump')}
           </button>
         </div>

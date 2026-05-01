@@ -8,9 +8,10 @@ class AudioManager {
   init(): void {
     if (this.initialized) return
     try {
+      // biome-ignore lint/suspicious/noExplicitAny: webkit prefix support
       this.ctx = new (window.AudioContext || (window as any).webkitAudioContext)()
       this.initialized = true
-    } catch (e) {
+    } catch (_e) {
       console.warn('Web Audio API not supported')
     }
   }

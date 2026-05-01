@@ -24,6 +24,7 @@ export class Player {
   invincible = false
   private invincibleTimer = 0
   private blinkTimer = 0
+  // biome-ignore lint/correctness/noUnusedPrivateClassMembers: frame counter used in update
   private frame = 0
   onPlatform: Platform | null = null
 
