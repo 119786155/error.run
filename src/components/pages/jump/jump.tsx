@@ -213,13 +213,9 @@ export const Jump = () => {
           const px = this.player.x
           const py = this.player.y
           const pw = this.player.width
-          const ph = this.player.height
 
           const outOfBounds =
-            px + pw < camX - halfWidth - 50 ||
-            px > camX + halfWidth + 50 ||
-            py + ph < camY - halfHeight - 50 ||
-            py > camY + halfHeight + 50
+            px + pw < camX - halfWidth - 50 || px > camX + halfWidth + 50 || py > camY + halfHeight + 50
 
           if (outOfBounds) {
             this.lives = 0
