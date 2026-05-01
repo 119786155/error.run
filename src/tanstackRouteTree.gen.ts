@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WriteRouteImport } from './routes/write'
 import { Route as RoomRouteImport } from './routes/room'
+import { Route as JumpRouteImport } from './routes/jump'
 import { Route as IndexRouteImport } from './routes/index'
 
 const WriteRoute = WriteRouteImport.update({
@@ -23,6 +24,11 @@ const RoomRoute = RoomRouteImport.update({
   path: '/room',
   getParentRoute: () => rootRouteImport,
 } as any)
+const JumpRoute = JumpRouteImport.update({
+  id: '/jump',
+  path: '/jump',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,30 +37,34 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/jump': typeof JumpRoute
   '/room': typeof RoomRoute
   '/write': typeof WriteRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/jump': typeof JumpRoute
   '/room': typeof RoomRoute
   '/write': typeof WriteRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/jump': typeof JumpRoute
   '/room': typeof RoomRoute
   '/write': typeof WriteRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/room' | '/write'
+  fullPaths: '/' | '/jump' | '/room' | '/write'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/room' | '/write'
-  id: '__root__' | '/' | '/room' | '/write'
+  to: '/' | '/jump' | '/room' | '/write'
+  id: '__root__' | '/' | '/jump' | '/room' | '/write'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  JumpRoute: typeof JumpRoute
   RoomRoute: typeof RoomRoute
   WriteRoute: typeof WriteRoute
 }
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RoomRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/jump': {
+      id: '/jump'
+      path: '/jump'
+      fullPath: '/jump'
+      preLoaderRoute: typeof JumpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  JumpRoute: JumpRoute,
   RoomRoute: RoomRoute,
   WriteRoute: WriteRoute,
 }
