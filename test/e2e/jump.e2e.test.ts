@@ -243,25 +243,6 @@ test.describe('Mobile Controls - Landscape Mode', () => {
       hasTouch: true,
     })
 
-    await context.addInitScript(() => {
-      Object.defineProperty(window, 'matchMedia', {
-        writable: true,
-        value: (query: string) => {
-          const isTouchQuery = query.includes('pointer: coarse') || query.includes('hover: none')
-          return {
-            matches: isTouchQuery,
-            media: query,
-            onchange: null,
-            addListener: () => {},
-            removeListener: () => {},
-            addEventListener: () => {},
-            removeEventListener: () => {},
-            dispatchEvent: () => false,
-          }
-        },
-      })
-    })
-
     const page = await context.newPage()
     await page.goto(`${BASE_URL}/jump`)
     await page.waitForSelector('#game-canvas')
@@ -288,25 +269,6 @@ test.describe('Mobile Controls - Landscape Mode', () => {
     const context = await browser.newContext({
       viewport: { width: 375, height: 667 },
       hasTouch: true,
-    })
-
-    await context.addInitScript(() => {
-      Object.defineProperty(window, 'matchMedia', {
-        writable: true,
-        value: (query: string) => {
-          const isTouchQuery = query.includes('pointer: coarse') || query.includes('hover: none')
-          return {
-            matches: isTouchQuery,
-            media: query,
-            onchange: null,
-            addListener: () => {},
-            removeListener: () => {},
-            addEventListener: () => {},
-            removeEventListener: () => {},
-            dispatchEvent: () => false,
-          }
-        },
-      })
     })
 
     const page = await context.newPage()

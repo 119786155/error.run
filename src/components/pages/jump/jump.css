@@ -23,6 +23,9 @@ body {
   align-items: center;
   background-color: #1a1a2e;
   overflow: hidden;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 #game-container {
@@ -31,6 +34,9 @@ body {
   height: 100%;
   background-color: #0f0f1a;
   image-rendering: pixelated;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 #game-canvas {
@@ -41,6 +47,9 @@ body {
   height: 100%;
   display: block;
   image-rendering: pixelated;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 #ui-layer {
@@ -267,6 +276,7 @@ h2 {
 
 @media (orientation: landscape) {
   #game-container #mobile-controls {
+    display: flex;
     bottom: 10px;
     padding: 0 10px;
   }
