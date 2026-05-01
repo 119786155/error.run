@@ -32,7 +32,7 @@ export default defineConfig({
         'src/tanstackRouteTree.gen.ts',
         'src/components/ui/**/*',
         'src/lib/uploadthing.ts',
-        'src/components/pages/jump/**/*',
+        'src/components/pages/**/*',
       ],
     },
     globals: true,
