@@ -39,6 +39,10 @@ const Separator = ({ className }: { className?: string }) => (
 export const FixedToolbarButtons = () => {
   return (
     <>
+      <ThemeToggle />
+
+      <Separator />
+
       <ModeToolbarButton />
 
       <Separator />
@@ -122,10 +126,6 @@ export const FixedToolbarButtons = () => {
       <IndentToolbarButton />
 
       <OutdentToolbarButton />
-
-      <Separator />
-
-      <ThemeToggle />
     </>
   )
 }
