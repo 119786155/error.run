@@ -202,6 +202,12 @@ test.describe('Score System', () => {
 test.describe('Mobile Controls', () => {
   test.beforeEach(async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 })
+    await page.emulateMedia({
+      features: [
+        { name: 'hover', value: 'none' },
+        { name: 'pointer', value: 'coarse' },
+      ],
+    })
     await page.locator('#start-btn').click()
     await page.waitForTimeout(300)
   })
@@ -224,6 +230,54 @@ test.describe('Mobile Controls', () => {
   test('should have jump button', async ({ page }) => {
     const jumpBtn = page.locator('#btn-jump')
     await expect(jumpBtn).toBeVisible()
+  })
+})
+
+test.describe('Mobile Controls - Landscape Mode', () => {
+  test('should show mobile controls when rotating to landscape mode (width > 768px)', async ({ browser }) => {
+    const context = await browser.newContext({
+      viewport: { width: 812, height: 375 },
+      hasTouch: true,
+    })
+
+    await context.addInitScript(() => {
+      Object.defineProperty(window, 'matchMedia', {
+        writable: true,
+        value: (query: string) => {
+          const isTouchQuery = query.includes('pointer: coarse') || query.includes('hover: none')
+          return {
+            matches: isTouchQuery,
+            media: query,
+            onchange: null,
+            addListener: () => {},
+            removeListener: () => {},
+            addEventListener: () => {},
+            removeEventListener: () => {},
+            dispatchEvent: () => false,
+          }
+        },
+      })
+    })
+
+    const page = await context.newPage()
+    await page.goto(`${BASE_URL}/jump`)
+    await page.waitForSelector('#game-canvas')
+    await page.locator('#start-btn').click()
+    await page.waitForTimeout(500)
+
+    const mobileControls = page.locator('#mobile-controls')
+    await expect(mobileControls).toBeVisible()
+
+    const leftBtn = page.locator('#btn-left')
+    await expect(leftBtn).toBeVisible()
+
+    const rightBtn = page.locator('#btn-right')
+    await expect(rightBtn).toBeVisible()
+
+    const jumpBtn = page.locator('#btn-jump')
+    await expect(jumpBtn).toBeVisible()
+
+    await context.close()
   })
 })
 

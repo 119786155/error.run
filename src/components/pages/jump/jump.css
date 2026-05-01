@@ -259,15 +259,8 @@ h2 {
   }
 }
 
-@media (min-width: 769px) {
-  #mobile-controls {
-    /* biome-ignore lint/complexity/noImportantStyles: intentional to override */
-    display: none !important;
-  }
-}
-
 @media (hover: none) and (pointer: coarse) {
-  #mobile-controls {
+  html #mobile-controls {
     display: flex;
   }
 }
