@@ -9,7 +9,7 @@
     "format": "biome check --write",
     "preview": "vite preview",
     "webrtc": "PORT=4444 node ./node_modules/y-webrtc/bin/server.js",
-    "test": "vitest",
+    "test": "vitest run",
     "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage",
     "e2e": "playwright test",
