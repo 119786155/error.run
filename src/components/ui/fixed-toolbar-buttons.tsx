@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Baseline,
   Bold,
@@ -11,7 +13,7 @@ import {
   Underline,
 } from 'lucide-react'
 import { KEYS } from 'platejs'
-import { AlignToolbarButton } from '@/components/ui/align-toolbar-button'
+
 import { EmojiToolbarButton } from '@/components/ui/emoji-toolbar-button'
 import { ExportToolbarButton } from '@/components/ui/export-toolbar-button'
 import { FontColorToolbarButton } from '@/components/ui/font-color-toolbar-button'
@@ -27,10 +29,12 @@ import { ModeToolbarButton } from '@/components/ui/mode-toolbar-button'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { ToolbarSeparator } from '@/components/ui/toolbar'
 import { TurnIntoToolbarButton } from '@/components/ui/turn-into-toolbar-button'
-// import { TutorialToolbarButton } from '@/components/ui/tutorial-toolbar-button'
 import { getContent } from '@/i18n'
+import { cn } from '@/lib/utils'
 
-const Separator = () => <ToolbarSeparator className="h-[20px]" />
+const Separator = ({ className }: { className?: string }) => (
+  <ToolbarSeparator className={cn('h-[20px] shrink-0', className)} />
+)
 
 export const FixedToolbarButtons = () => {
   return (
@@ -91,6 +95,8 @@ export const FixedToolbarButtons = () => {
         <Subscript />
       </MarkToolbarButton>
 
+      <Separator />
+
       <FontColorToolbarButton nodeType="color" tooltip={getContent('editor.txtcolor')}>
         <Baseline />
       </FontColorToolbarButton>
@@ -105,8 +111,6 @@ export const FixedToolbarButtons = () => {
 
       <MediaToolbarButton nodeType={KEYS.audio} />
 
-      {/* <MediaToolbarButton nodeType={KEYS.file} /> */}
-
       <MediaToolbarButton nodeType={KEYS.img} />
 
       <MediaToolbarButton nodeType={KEYS.video} />
@@ -115,8 +119,6 @@ export const FixedToolbarButtons = () => {
 
       <LineHeightToolbarButton />
 
-      <AlignToolbarButton />
-
       <IndentToolbarButton />
 
       <OutdentToolbarButton />
@@ -124,8 +126,6 @@ export const FixedToolbarButtons = () => {
       <Separator />
 
       <ThemeToggle />
-
-      {/*<TutorialToolbarButton />*/}
     </>
   )
 }

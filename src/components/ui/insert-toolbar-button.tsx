@@ -195,9 +195,49 @@ const groups: Group[] = [
 export function InsertToolbarButton(props: DropdownMenuProps) {
   const editor = useEditorRef()
   const [open, setOpen] = React.useState(false)
+  const touchRef = React.useRef<{ startX: number; startY: number; isTap: boolean }>({
+    startX: 0,
+    startY: 0,
+    isTap: true,
+  })
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchRef.current = {
+      startX: e.touches[0].clientX,
+      startY: e.touches[0].clientY,
+      isTap: true,
+    }
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    const dx = Math.abs(e.touches[0].clientX - touchRef.current.startX)
+    const dy = Math.abs(e.touches[0].clientY - touchRef.current.startY)
+    if (dx > 5 || dy > 5) {
+      touchRef.current.isTap = false
+    }
+  }
+
+  const handleTouchEnd = () => {
+    touchRef.current.isTap = true
+  }
+
   return (
-    <DropdownMenu open={open} onOpenChange={setOpen} modal={false} {...props}>
-      <DropdownMenuTrigger asChild>
+    <DropdownMenu
+      open={open}
+      onOpenChange={(newOpen) => {
+        if (touchRef.current.isTap) {
+          setOpen(newOpen)
+        }
+      }}
+      modal={false}
+      {...props}
+    >
+      <DropdownMenuTrigger
+        asChild
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <ToolbarButton pressed={open} tooltip={getContent('editor.insert')} isDropdown>
           <PlusIcon />
         </ToolbarButton>

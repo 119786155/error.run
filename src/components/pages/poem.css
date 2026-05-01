@@ -1,59 +1,184 @@
-@keyframes move {
+@keyframes float-1 {
+  0%,
   100% {
-    transform: translate3d(0, 0, 1px) rotate(360deg);
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(30px, -40px) scale(1.05);
+  }
+  50% {
+    transform: translate(-20px, -60px) scale(0.95);
+  }
+  75% {
+    transform: translate(-40px, -20px) scale(1.02);
   }
 }
 
-.background {
+@keyframes float-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-50px, 30px) scale(1.08);
+  }
+  66% {
+    transform: translate(40px, 50px) scale(0.92);
+  }
+}
+
+@keyframes float-3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  20% {
+    transform: translate(60px, 20px) scale(1.03);
+  }
+  40% {
+    transform: translate(30px, 60px) scale(0.97);
+  }
+  60% {
+    transform: translate(-30px, 40px) scale(1.06);
+  }
+  80% {
+    transform: translate(-50px, -20px) scale(0.99);
+  }
+}
+
+@keyframes float-4 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(-40px, -50px) scale(1.04);
+  }
+  50% {
+    transform: translate(50px, -30px) scale(0.96);
+  }
+  75% {
+    transform: translate(20px, 40px) scale(1.07);
+  }
+}
+
+.poem-page {
   position: fixed;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #fafbff 0%, #f1f5f9 50%, #fafbff 100%);
   overflow: hidden;
 }
 
-.dark .background {
-  background: #000;
-  color: white;
+@media (prefers-color-scheme: dark) {
+  .poem-page {
+    background: linear-gradient(135deg, #0c0f1a 0%, #111827 50%, #0c0f1a 100%);
+  }
 }
 
-.background span {
-  backface-visibility: hidden;
+.poem-circles {
   position: absolute;
-  animation: move;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
-.poem-container {
-  display: grid;
-  place-items: center;
-  height: 100vh;
-  text-align: center;
+  inset: 0;
+  pointer-events: none;
 }
 
-.poem-container * {
-  font-family:
-    var(--font-pixel-mono), "Noto Sans SC", "PingFang SC", "Microsoft YaHei",
-    sans-serif;
+.poem-circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+  filter: blur(2px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .poem-circle {
+    opacity: 0.18;
+  }
+}
+
+.poem-circle:nth-child(1) {
+  width: 360px;
+  height: 360px;
+  top: 10%;
+  left: 5%;
+  background: linear-gradient(135deg, #818cf8, #a78bfa);
+  animation: float-1 20s ease-in-out infinite;
+}
+
+@media (prefers-color-scheme: dark) {
+  .poem-circle:nth-child(1) {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  }
+}
+
+.poem-circle:nth-child(2) {
+  width: 450px;
+  height: 450px;
+  top: 45%;
+  left: 60%;
+  background: linear-gradient(135deg, #f472b6, #fb7185);
+  animation: float-2 25s ease-in-out infinite;
+}
+
+@media (prefers-color-scheme: dark) {
+  .poem-circle:nth-child(2) {
+    background: linear-gradient(135deg, #ec4899, #f43f5e);
+  }
+}
+
+.poem-circle:nth-child(3) {
+  width: 300px;
+  height: 300px;
+  top: 55%;
+  left: 15%;
+  background: linear-gradient(135deg, #2dd4bf, #22d3ee);
+  animation: float-3 22s ease-in-out infinite;
+}
+
+@media (prefers-color-scheme: dark) {
+  .poem-circle:nth-child(3) {
+    background: linear-gradient(135deg, #14b8a6, #06b6d4);
+  }
+}
+
+.poem-container {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 2rem;
+  max-width: 600px;
 }
 
 .poem-container h1 {
-  font-size: 120%;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
   margin-bottom: 2rem;
-  font-family:
-    var(--font-pixel), "Noto Sans SC", "PingFang SC", "Microsoft YaHei",
-    sans-serif;
+  letter-spacing: 0.05em;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+@media (prefers-color-scheme: dark) {
+  .poem-container h1 {
+    color: #f8fafc;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
 }
 
 .poem-container p {
-  font-size: 100%;
-  line-height: 2.5;
-  margin: 0.5rem 0;
+  font-size: 1rem;
+  line-height: 2.2;
+  color: #64748b;
+  margin: 0.75rem 0;
 }
 
-.poem-container h1:lang(zh),
-.poem-container p:lang(zh) {
-  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+@media (prefers-color-scheme: dark) {
+  .poem-container p {
+    color: #94a3b8;
+  }
+}
+
+.poem-container footer {
+  margin-top: 3rem;
 }

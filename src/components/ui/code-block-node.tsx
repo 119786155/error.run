@@ -28,8 +28,8 @@ export function CodeBlockElement(props: PlateElementProps<TCodeBlockElement>) {
       {...props}
     >
       <div className="relative rounded-md bg-muted/50">
-        <pre className="overflow-x-auto p-8 pr-4 font-[family-name:var(--font-pixel-mono)] text-sm leading-[normal] [tab-size:2] print:break-inside-avoid">
-          <code className="font-[family-name:var(--font-pixel-mono)]">{props.children}</code>
+        <pre className="overflow-x-auto p-8 pr-4 font-mono text-sm leading-[normal] [tab-size:2] print:break-inside-avoid">
+          <code className="font-mono">{props.children}</code>
         </pre>
 
         <div className="absolute top-1 right-1 z-10 flex gap-0.5 select-none" contentEditable={false}>

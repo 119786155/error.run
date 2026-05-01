@@ -87,6 +87,7 @@ export const Editor = React.forwardRef<HTMLDivElement, EditorProps>(
       <PlateContent
         ref={ref}
         className={cn(
+          'bg-background',
           editorVariants({
             disabled,
             focused,
@@ -105,7 +106,7 @@ export const Editor = React.forwardRef<HTMLDivElement, EditorProps>(
 Editor.displayName = 'Editor'
 
 export function EditorView({ className, variant, ...props }: PlateViewProps & VariantProps<typeof editorVariants>) {
-  return <PlateView {...props} className={cn(editorVariants({ variant }), className)} />
+  return <PlateView {...props} className={cn('bg-background', editorVariants({ variant }), className)} />
 }
 
 EditorView.displayName = 'EditorView'
