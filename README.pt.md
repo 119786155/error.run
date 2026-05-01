@@ -45,3 +45,19 @@ projeto pessoal para aprender, praticar e explorar
          - Resolução automática de conflitos com CRDTs
          - Sem cadastro, colaboração instantânea
 ```
+
+## Jump
+
+```
+         # Aventura de Salto de Pixels
+
+         Este é um **jogo de plataforma estilo retrô**
+         construído com HTML5 Canvas
+
+         > Dica: Colete moedas e evite inimigos!
+
+         - Plataformas geradas processualmente
+         - Dificuldade progressiva conforme você avança
+         - Gráficos de pixel art estilo retrô
+         - Controles touch para suporte mobile
+```

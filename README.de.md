@@ -46,3 +46,19 @@ persönliches Projekt zum Lernen, Üben und Erkunden
          - Automatische Konfliktlösung mit CRDTs
          - Keine Anmeldung, sofortige Zusammenarbeit
 ```
+
+## Jump
+
+```
+         # Pixel-Sprung-Abenteuer
+
+         Dies ist ein **Retro-Stil Plattformspiel**
+         gebaut mit HTML5 Canvas
+
+         > Tipp: Sammle Münzen und vermeide Feinde!
+
+         - Prozedural generierte Plattformen
+         - progressive Schwierigkeit beim Vorankommen
+         - Retro Pixel-Art-Grafik
+         - Touch-Steuerung für mobile Unterstützung
+```

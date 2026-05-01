@@ -43,3 +43,19 @@ personal project for learning, practicing, and exploring
          - Automatic conflict resolution with CRDTs
          - No sign-up required, instant collaboration
 ```
+
+## Jump
+
+```
+         # Pixel Jump Adventure
+
+         This is a **retro-style platformer game**
+         built with HTML5 Canvas
+
+         > Tip: Collect coins and avoid enemies!
+
+         - Procedurally generated platforms
+         - Progressive difficulty as you advance
+         - Retro pixel art graphics
+         - Touch controls for mobile support
+```

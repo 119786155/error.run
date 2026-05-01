@@ -45,3 +45,19 @@ proyecto personal para aprender, practicar y explorar
          - Resolución automática de conflictos con CRDTs
          - Sin registro, colaboración instantánea
 ```
+
+## Jump
+
+```
+         # Aventura de Salto de Píxeles
+
+         Este es un **juego de plataformas estilo retro**
+         construido con HTML5 Canvas
+
+         > Consejo: ¡Recolecta monedas y evita enemigos!
+
+         - Plataformas generadas procesalmente
+         - Dificultad progresiva a medida que avanzas
+         - Gráficos de píxeles estilo retro
+         - Controles táctiles para soporte móvil
+```
