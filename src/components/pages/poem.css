@@ -12,19 +12,24 @@
   position: absolute;
   border-radius: 50%;
   opacity: 0.12;
-  filter: blur(80px);
-  background: linear-gradient(135deg, var(--c1), var(--c2));
+  background: radial-gradient(
+    circle at 30% 30%,
+    var(--c1) 0%,
+    var(--c2) 50%,
+    transparent 100%
+  );
   animation: float var(--d) ease-in-out infinite;
   pointer-events: none;
+  will-change: transform;
 }
 
 .poem::before {
   top: -10%;
   left: -15%;
-  width: 80vw;
-  height: 80vw;
-  max-width: 800px;
-  max-height: 800px;
+  width: 40vw;
+  height: 40vw;
+  max-width: 400px;
+  max-height: 400px;
   --d: 20s;
   --c1: #818cf8;
   --c2: #a78bfa;
@@ -36,10 +41,10 @@
 .poem::after {
   bottom: -20%;
   right: -10%;
-  width: 90vw;
-  height: 90vw;
-  max-width: 900px;
-  max-height: 900px;
+  width: 45vw;
+  height: 45vw;
+  max-width: 450px;
+  max-height: 450px;
   --d: 25s;
   --c1: #f472b6;
   --c2: #fb7185;
@@ -94,12 +99,12 @@
     opacity: 0.15;
   }
   .poem::before {
-    --c1: #a78bfa;
-    --c2: #c4b5fd;
+    --c1: #c4b5fd;
+    --c2: #818cf8;
   }
   .poem::after {
-    --c1: #fbcfe8;
-    --c2: #f9a8d4;
+    --c1: #f472b6;
+    --c2: #fb7185;
   }
   .poem__content h1 {
     color: #f8fafc;

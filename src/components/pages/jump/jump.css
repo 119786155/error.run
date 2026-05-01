@@ -175,7 +175,7 @@ h2 {
   color: #c7c7d1;
 }
 
-#mobile-controls {
+#game-container #mobile-controls {
   position: absolute;
   bottom: env(safe-area-inset-bottom, 20px);
   left: 0;
@@ -254,19 +254,19 @@ h2 {
     font-size: 0.85rem;
   }
 
-  #mobile-controls {
+  #game-container #mobile-controls {
     display: flex;
   }
 }
 
 @media (hover: none) and (pointer: coarse) {
-  html #mobile-controls {
+  #game-container #mobile-controls {
     display: flex;
   }
 }
 
-@media (max-height: 500px) and (orientation: landscape) {
-  #mobile-controls {
+@media (orientation: landscape) {
+  #game-container #mobile-controls {
     bottom: 10px;
     padding: 0 10px;
   }

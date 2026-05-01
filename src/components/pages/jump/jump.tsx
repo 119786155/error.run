@@ -70,6 +70,11 @@ export const Jump = () => {
               case 'ArrowUp':
               case 'KeyW':
               case 'Space':
+                if (this.state === 'start' && pressed) {
+                  this.start()
+                  e.preventDefault()
+                  break
+                }
                 this.input.jump = pressed
                 e.preventDefault()
                 break
@@ -209,7 +214,7 @@ export const Jump = () => {
           }
           const finalScoreEl = document.getElementById('final-score')
           const finalHighScoreEl = document.getElementById('final-high-score')
-          if (finalScoreEl) finalScoreEl.textContent = `${getContent('jump.ui.score')}: ${this.score}`
+          if (finalScoreEl) finalScoreEl.textContent = `${getContent('jump.screen.gameover.finalScore')}: ${this.score}`
           if (finalHighScoreEl) finalHighScoreEl.textContent = `${getContent('jump.ui.highScore')}: ${this.highScore}`
           document.getElementById('gameover-screen')?.classList.add('active')
         }
@@ -233,8 +238,8 @@ export const Jump = () => {
 
           const targetCamX = this.player.x
           const targetCamY = this.player.y - 100
-          this.renderer.camera.x += (targetCamX - this.renderer.camera.x) * 0.1
-          this.renderer.camera.y += (targetCamY - this.renderer.camera.y) * 0.05
+          this.renderer.camera.x += (targetCamX - this.renderer.camera.x) * 0.2
+          this.renderer.camera.y += (targetCamY - this.renderer.camera.y) * 0.15
 
           const halfWidth = this.renderer.width / 2
           const halfHeight = this.renderer.height / 2
@@ -248,9 +253,18 @@ export const Jump = () => {
             px + pw < camX - halfWidth - 50 || px > camX + halfWidth + 50 || py > camY + halfHeight + 50
 
           if (outOfBounds) {
-            this.lives = 0
-            this.gameOver()
-            return
+            this.lives--
+            if (this.lives <= 0) {
+              this.gameOver()
+              return
+            }
+            // 重置玩家位置
+            this.player.x = Math.max(50, this.player.x - 200)
+            this.player.y = 300
+            this.player.vx = 0
+            this.player.vy = 0
+            this.renderer.camera.x = this.player.x
+            this.renderer.camera.y = this.player.y - 100
           }
 
           for (const collectible of this.collectibleManager.getCollectibles()) {
