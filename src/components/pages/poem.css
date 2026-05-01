@@ -12,12 +12,7 @@
   position: absolute;
   border-radius: 50%;
   opacity: 0.12;
-  background: radial-gradient(
-    circle at 30% 30%,
-    var(--c1) 0%,
-    var(--c2) 50%,
-    transparent 100%
-  );
+  background: var(--c1);
   animation: float var(--d) ease-in-out infinite;
   pointer-events: none;
   will-change: transform;
