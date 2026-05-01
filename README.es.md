@@ -28,3 +28,20 @@ proyecto personal para aprender, practicar y explorar
          - Sin seguimiento ni anuncios
          - Tus datos se guardan localmente
 ```
+
+## Room
+
+```
+         # Colaboración en Tiempo Real
+
+         Este es un **editor colaborativo**
+         impulsado por Yjs y WebRTC
+
+         > Consejo: Abre la misma URL en múltiples
+         > pestañas para colaborar
+
+         - Sincronización en tiempo real vía WebRTC P2P
+         - Seguimiento de cursor remoto con indicadores emoji
+         - Resolución automática de conflictos con CRDTs
+         - Sin registro, colaboración instantánea
+```

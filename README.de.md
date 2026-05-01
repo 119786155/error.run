@@ -29,3 +29,20 @@ persönliches Projekt zum Lernen, Üben und Erkunden
          - Kein Tracking oder Werbung
          - Ihre Daten bleiben lokal
 ```
+
+## Room
+
+```
+         # Echtzeit-Zusammenarbeit
+
+         Dies ist ein **Kollaborations-Editor**
+         angetrieben von Yjs und WebRTC
+
+         > Tipp: Öffne dieselbe URL in mehreren
+         > Tabs um zusammen zu arbeiten
+
+         - Echtzeit-Synchronisation über WebRTC P2P
+         - Remote-Cursor-Tracking mit Emoji-Indikatoren
+         - Automatische Konfliktlösung mit CRDTs
+         - Keine Anmeldung, sofortige Zusammenarbeit
+```

@@ -28,3 +28,18 @@ personal project for learning, practicing, and exploring
          - No tracking or ads
          - Your data stays local
 ```
+
+## Room
+
+```
+         # Real-time Collaboration
+
+         This is a **collaborative editor** powered by Yjs and WebRTC
+
+         > Tip: Open the same URL in multiple tabs to collaborate
+
+         - Real-time sync via WebRTC P2P
+         - Remote cursor tracking with emoji indicators
+         - Automatic conflict resolution with CRDTs
+         - No sign-up required, instant collaboration
+```
