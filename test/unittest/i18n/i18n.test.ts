@@ -94,6 +94,27 @@ describe('i18n Module', () => {
       init()
       expect(mockLocalStorage.setItem).toHaveBeenCalledWith('locale', 'zh')
     })
+
+    it('should use DEFAULT_LOCALE when browser locale is not supported', async () => {
+      const { init } = await import('../../../src/i18n')
+      Object.defineProperty(globalThis, 'navigator', {
+        value: { language: 'fr-FR' },
+        writable: true,
+      })
+      init()
+      expect(mockLocalStorage.setItem).toHaveBeenCalledWith('locale', 'en')
+    })
+
+    it('should use DEFAULT_LOCALE for unknown browser language', async () => {
+      const { getContent } = await import('../../../src/i18n')
+      mockLocalStorage.store = {}
+      Object.defineProperty(globalThis, 'navigator', {
+        value: { language: 'unknown-LANG' },
+        writable: true,
+      })
+      const result = getContent('editor.placeholder')
+      expect(result).toBe('Type something...')
+    })
   })
 
   describe('SUPPORTED_LOCALES', () => {
