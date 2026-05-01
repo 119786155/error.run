@@ -74,7 +74,7 @@
 
 @media (prefers-color-scheme: dark) {
   .poem-page {
-    background: linear-gradient(135deg, #0c0f1a 0%, #111827 50%, #0c0f1a 100%);
+    background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
   }
 }
 
@@ -93,7 +93,8 @@
 
 @media (prefers-color-scheme: dark) {
   .poem-circle {
-    opacity: 0.18;
+    opacity: 0.25;
+    filter: blur(60px);
   }
 }
 
@@ -108,7 +109,7 @@
 
 @media (prefers-color-scheme: dark) {
   .poem-circle:nth-child(1) {
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    background: linear-gradient(135deg, #a78bfa, #c4b5fd);
   }
 }
 
@@ -123,7 +124,7 @@
 
 @media (prefers-color-scheme: dark) {
   .poem-circle:nth-child(2) {
-    background: linear-gradient(135deg, #ec4899, #f43f5e);
+    background: linear-gradient(135deg, #fbcfe8, #f9a8d4);
   }
 }
 
@@ -138,7 +139,7 @@
 
 @media (prefers-color-scheme: dark) {
   .poem-circle:nth-child(3) {
-    background: linear-gradient(135deg, #14b8a6, #06b6d4);
+    background: linear-gradient(135deg, #a5f3fc, #67e8f9);
   }
 }
 
