@@ -179,8 +179,8 @@ export const Jump = () => {
           }
           const finalScoreEl = document.getElementById('final-score')
           const finalHighScoreEl = document.getElementById('final-high-score')
-          if (finalScoreEl) finalScoreEl.textContent = `${getContent('game.ui.score')}: ${this.score}`
-          if (finalHighScoreEl) finalHighScoreEl.textContent = `${getContent('game.ui.highScore')}: ${this.highScore}`
+          if (finalScoreEl) finalScoreEl.textContent = `${getContent('jump.ui.score')}: ${this.score}`
+          if (finalHighScoreEl) finalHighScoreEl.textContent = `${getContent('jump.ui.highScore')}: ${this.highScore}`
           document.getElementById('gameover-screen')?.classList.add('active')
         }
 
@@ -188,9 +188,9 @@ export const Jump = () => {
           const scoreEl = document.getElementById('score-display')
           const highScoreEl = document.getElementById('high-score-display')
           const livesEl = document.getElementById('lives-display')
-          if (scoreEl) scoreEl.textContent = `${getContent('game.ui.score')}: ${this.score}`
-          if (highScoreEl) highScoreEl.textContent = `${getContent('game.ui.highScore')}: ${this.highScore}`
-          if (livesEl) livesEl.textContent = `${getContent('game.ui.lives')}: ` + '♥'.repeat(this.lives)
+          if (scoreEl) scoreEl.textContent = `${getContent('jump.ui.score')}: ${this.score}`
+          if (highScoreEl) highScoreEl.textContent = `${getContent('jump.ui.highScore')}: ${this.highScore}`
+          if (livesEl) livesEl.textContent = `${getContent('jump.ui.lives')}: ` + '♥'.repeat(this.lives)
         }
 
         update() {
@@ -233,7 +233,7 @@ export const Jump = () => {
               this.score += 10
               audioManager.playCollect()
               this.renderer.addParticle(collectible.x + 8, collectible.y + 8, '#ffd93d', 5)
-              this.renderer.addFloatingText(collectible.x + 8, collectible.y, getContent('game.score.coin'))
+              this.renderer.addFloatingText(collectible.x + 8, collectible.y, getContent('jump.score.coin'))
             }
           }
 
@@ -245,7 +245,7 @@ export const Jump = () => {
                 this.score += 50
                 audioManager.playHit()
                 this.renderer.addParticle(enemy.x + 8, enemy.y + 8, '#e74c3c', 8)
-                this.renderer.addFloatingText(enemy.x + 8, enemy.y, getContent('game.score.enemy'), '#ff6b6b')
+                this.renderer.addFloatingText(enemy.x + 8, enemy.y, getContent('jump.score.enemy'), '#ff6b6b')
               } else if (this.player.takeDamage()) {
                 this.lives--
                 this.renderer.shake(10, 5)
@@ -323,35 +323,35 @@ export const Jump = () => {
         <canvas id="game-canvas" ref={canvasRef} />
         <div id="ui-layer">
           <div id="start-screen" className="screen active">
-            <h1>{getContent('game.title')}</h1>
-            <p className="subtitle">{getContent('game.subtitle')}</p>
+            <h1>{getContent('jump.title')}</h1>
+            <p className="subtitle">{getContent('jump.subtitle')}</p>
             <div className="controls-info">
-              <p>{getContent('game.controls.left')}</p>
-              <p>{getContent('game.controls.right')}</p>
-              <p>{getContent('game.controls.jump')}</p>
-              <p>{getContent('game.controls.pause')}</p>
+              <p>{getContent('jump.controls.left')}</p>
+              <p>{getContent('jump.controls.right')}</p>
+              <p>{getContent('jump.controls.jump')}</p>
+              <p>{getContent('jump.controls.pause')}</p>
             </div>
             <button id="start-btn" className="pixel-btn">
-              {getContent('game.btn.start')}
+              {getContent('jump.btn.start')}
             </button>
           </div>
           <div id="game-ui" className="screen">
-            <div id="score-display">{getContent('game.ui.score')}: 0</div>
-            <div id="high-score-display">{getContent('game.ui.highScore')}: 0</div>
-            <div id="lives-display">{getContent('game.ui.lives')}: ♥♥♥</div>
+            <div id="score-display">{getContent('jump.ui.score')}: 0</div>
+            <div id="high-score-display">{getContent('jump.ui.highScore')}: 0</div>
+            <div id="lives-display">{getContent('jump.ui.lives')}: ♥♥♥</div>
           </div>
           <div id="pause-screen" className="screen">
-            <h2>{getContent('game.screen.pause.title')}</h2>
+            <h2>{getContent('jump.screen.pause.title')}</h2>
             <button id="resume-btn" className="pixel-btn">
-              {getContent('game.btn.resume')}
+              {getContent('jump.btn.resume')}
             </button>
           </div>
           <div id="gameover-screen" className="screen">
-            <h2>{getContent('game.screen.gameover.title')}</h2>
-            <p id="final-score">{getContent('game.screen.gameover.finalScore')}: 0</p>
-            <p id="final-high-score">{getContent('game.ui.highScore')}: 0</p>
+            <h2>{getContent('jump.screen.gameover.title')}</h2>
+            <p id="final-score">{getContent('jump.screen.gameover.finalScore')}: 0</p>
+            <p id="final-high-score">{getContent('jump.ui.highScore')}: 0</p>
             <button id="restart-btn" className="pixel-btn">
-              {getContent('game.btn.restart')}
+              {getContent('jump.btn.restart')}
             </button>
           </div>
         </div>
@@ -365,7 +365,7 @@ export const Jump = () => {
             </button>
           </div>
           <button id="btn-jump" className="ctrl-btn jump">
-            {getContent('game.mobile.jump')}
+            {getContent('jump.mobile.jump')}
           </button>
         </div>
       </div>

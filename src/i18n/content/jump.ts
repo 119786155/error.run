@@ -1,4 +1,4 @@
-export const game = {
+export const jump = {
   title: {
     zh: '像素跳跃冒险',
     en: 'Pixel Jump Adventure',
