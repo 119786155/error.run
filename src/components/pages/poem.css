@@ -3,58 +3,33 @@
   inset: 0;
   display: grid;
   place-items: center;
-  background: #fafbff;
+  background: linear-gradient(
+    135deg,
+    #fef3e2 0%,
+    #fce7f3 25%,
+    #e0e7ff 50%,
+    #fef3e2 75%,
+    #fce7f3 100%
+  );
+  background-size: 400% 400%;
+  animation: bg-shift 25s ease infinite;
 }
 
-.poem::before,
-.poem::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.12;
-  background: var(--c1);
-  animation: float var(--d) ease-in-out infinite;
-  pointer-events: none;
-  will-change: transform;
-}
-
-.poem::before {
-  top: -10%;
-  left: -15%;
-  width: 80vw;
-  height: 80vw;
-  max-width: 800px;
-  max-height: 800px;
-  --d: 20s;
-  --c1: #818cf8;
-  --c2: #a78bfa;
-  --tx: 60px;
-  --ty: 80px;
-  --s: 1.08;
-}
-
-.poem::after {
-  bottom: -20%;
-  right: -10%;
-  width: 90vw;
-  height: 90vw;
-  max-width: 900px;
-  max-height: 900px;
-  --d: 25s;
-  --c1: #f472b6;
-  --c2: #fb7185;
-  --tx: -80px;
-  --ty: -60px;
-  --s: 1.1;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
+@keyframes bg-shift {
+  0% {
+    background-position: 0% 50%;
   }
-  33% {
-    transform: translate(var(--tx), var(--ty)) scale(var(--s));
+  25% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 50% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
@@ -85,26 +60,103 @@
   margin-top: 3rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  .poem {
-    background: #000;
-  }
-  .poem::before,
-  .poem::after {
-    opacity: 0.15;
-  }
-  .poem::before {
-    --c1: #c4b5fd;
-    --c2: #818cf8;
-  }
-  .poem::after {
-    --c1: #f472b6;
-    --c2: #fb7185;
-  }
-  .poem__content h1 {
-    color: #f8fafc;
-  }
-  .poem__content p {
-    color: #94a3b8;
-  }
+:is(.dark) .poem {
+  background: linear-gradient(
+    135deg,
+    #1e1b4b 0%,
+    #312e81 20%,
+    #4c1d95 40%,
+    #312e81 60%,
+    #1e1b4b 80%,
+    #312e81 100%
+  );
+  background-size: 400% 400%;
+  animation: bg-shift 25s ease infinite;
+}
+
+:is(.dark) .poem__content h1 {
+  color: #f8fafc;
+}
+
+:is(.dark) .poem__content p {
+  color: #94a3b8;
+}
+
+.poem-menu {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+}
+
+.poem-menu__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  color: #475569;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.poem-menu__nav {
+  position: absolute;
+  top: 52px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 140px;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.poem-menu__nav a,
+.poem-menu__nav button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  background: none;
+  color: #475569;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.poem-menu__nav a:hover,
+.poem-menu__nav button:hover,
+.poem-menu__nav a:focus,
+.poem-menu__nav button:focus {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+:is(.dark) .poem-menu__toggle {
+  background: rgba(30, 30, 46, 0.8);
+  color: #94a3b8;
+}
+
+:is(.dark) .poem-menu__nav {
+  background: rgba(30, 30, 46, 0.95);
+}
+
+:is(.dark) .poem-menu__nav a,
+:is(.dark) .poem-menu__nav button {
+  color: #94a3b8;
+}
+
+:is(.dark) .poem-menu__nav a:hover,
+:is(.dark) .poem-menu__nav button:hover,
+:is(.dark) .poem-menu__nav a:focus,
+:is(.dark) .poem-menu__nav button:focus {
+  background: rgba(255, 255, 255, 0.1);
 }
