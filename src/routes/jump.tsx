@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { Jump } from '@/components/pages/jump/jump'
+import { Jump } from '@/components/pages/games/jump/jump'
 import { getContent } from '@/i18n'
 
 export const Route = createFileRoute('/jump')({

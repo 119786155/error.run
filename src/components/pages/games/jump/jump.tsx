@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { getContent } from '@/i18n'
-import '@/components/pages/jump/jump.css'
+import '@/components/pages/games/jump/jump.css'
 
 export const Jump = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -11,19 +11,19 @@ export const Jump = () => {
       if (!canvas) return
 
       // biome-ignore lint/suspicious/noExplicitAny: dynamic import
-      const { Renderer }: any = await import('@/components/pages/jump/game/renderer')
+      const { Renderer }: any = await import('@/components/pages/games/jump/game/renderer')
       // biome-ignore lint/suspicious/noExplicitAny: dynamic import
-      const { Player }: any = await import('@/components/pages/jump/game/player')
+      const { Player }: any = await import('@/components/pages/games/jump/game/player')
       // biome-ignore lint/suspicious/noExplicitAny: dynamic import
-      const { PlatformManager }: any = await import('@/components/pages/jump/game/platform')
+      const { PlatformManager }: any = await import('@/components/pages/games/jump/game/platform')
       // biome-ignore lint/suspicious/noExplicitAny: dynamic import
-      const { CollectibleManager }: any = await import('@/components/pages/jump/game/collectibles')
+      const { CollectibleManager }: any = await import('@/components/pages/games/jump/game/collectibles')
       // biome-ignore lint/suspicious/noExplicitAny: dynamic import
-      const { EnemyManager }: any = await import('@/components/pages/jump/game/enemy')
+      const { EnemyManager }: any = await import('@/components/pages/games/jump/game/enemy')
       // biome-ignore lint/suspicious/noExplicitAny: dynamic import
-      const { audioManager }: any = await import('@/components/pages/jump/game/audio')
+      const { audioManager }: any = await import('@/components/pages/games/jump/game/audio')
       // biome-ignore lint/suspicious/noExplicitAny: dynamic import
-      const { Utils }: any = await import('@/components/pages/jump/game/utils')
+      const { Utils }: any = await import('@/components/pages/games/jump/game/utils')
 
       class GameInstance {
         canvas: HTMLCanvasElement
