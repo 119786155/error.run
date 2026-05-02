@@ -10,6 +10,9 @@ export const notFound = {
     ko: '앗! 페이지가 사라졌어요',
     ru: 'Упс! Эта страница заблудилась',
     de: 'Hoppla! Diese Seite ist verschwunden',
+    fr: "Oups! Cette page s'est perdue",
+    id: 'Ups! Halaman ini tersesat',
+    vi: 'Ôi! Trang này đã đi lạc',
   },
   message: {
     zh: '您访问的页面不存在或已被移动。',
@@ -22,6 +25,9 @@ export const notFound = {
     ko: '찾고 있는 페이지가 존재하지 않거나 이동되었습니다.',
     ru: 'Страница, которую вы ищете, не существует или была перемещена.',
     de: 'Die Seite, die du suchst, existiert nicht oder wurde verschoben.',
+    fr: "La page que vous recherchez n'existe pas ou a été déplacée.",
+    id: 'Halaman yang Anda cari tidak ada atau telah dipindahkan.',
+    vi: 'Trang bạn đang tìm kiếm không tồn tại hoặc đã được di chuyển.',
   },
   goHome: {
     zh: '返回首页',
@@ -34,6 +40,9 @@ export const notFound = {
     ko: '홈으로 가기',
     ru: 'На главную',
     de: 'Zur Startseite',
+    fr: "Retour à l'accueil",
+    id: 'Kembali ke beranda',
+    vi: 'Về trang chủ',
   },
   goBack: {
     zh: '返回上一页',
@@ -46,5 +55,8 @@ export const notFound = {
     ko: '뒤로 가기',
     ru: 'Назад',
     de: 'Zurück',
+    fr: 'Retour',
+    id: 'Kembali',
+    vi: 'Quay lại',
   },
 }

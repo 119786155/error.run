@@ -98,7 +98,7 @@ describe('i18n Module', () => {
     it('should use DEFAULT_LOCALE when browser locale is not supported', async () => {
       const { init } = await import('../../../src/i18n')
       Object.defineProperty(globalThis, 'navigator', {
-        value: { language: 'fr-FR' },
+        value: { language: 'zz-ZZ' },
         writable: true,
       })
       init()

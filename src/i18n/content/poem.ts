@@ -10,6 +10,9 @@ export const poem = {
     ko: '먼지',
     ru: 'Пыль',
     de: 'Staub',
+    fr: 'Poussière',
+    id: 'Debu',
+    vi: 'Bụi',
   },
   paragraph1: {
     zh: '风过',
@@ -22,6 +25,9 @@ export const poem = {
     ko: '바람이 지나간다',
     ru: 'Ветер проходит',
     de: 'Der Wind weht vorbei',
+    fr: 'Le vent passe',
+    id: 'Angin berlalu',
+    vi: 'Gió thổi qua',
   },
   paragraph2: {
     zh: '无痕',
@@ -34,6 +40,9 @@ export const poem = {
     ko: '자국 없음',
     ru: 'Без следа',
     de: 'Keine Spur',
+    fr: 'Sans trace',
+    id: 'Tanpa bekas',
+    vi: 'Không dấu vết',
   },
   paragraph3: {
     zh: '心留',
@@ -46,6 +55,9 @@ export const poem = {
     ko: '마음에 남다',
     ru: 'Сердце хранит',
     de: 'Das Herz bewahrt',
+    fr: 'Le cœur garde',
+    id: 'Hati menyimpan',
+    vi: 'Trái tim giữ lại',
   },
   paragraph4: {
     zh: '一声',
@@ -58,5 +70,8 @@ export const poem = {
     ko: '한 숨',
     ru: 'Один вздох',
     de: 'Ein Atemzug',
+    fr: 'Un souffle',
+    id: 'Satu napas',
+    vi: 'Một hơi thở',
   },
 }

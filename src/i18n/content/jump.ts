@@ -10,6 +10,9 @@ export const jump = {
     ko: '픽셀 점프 어드벤처',
     ru: 'Пиксельное Приключение',
     de: 'Pixel-Sprung-Abenteuer',
+    fr: 'Aventure de Saut de Pixels',
+    id: 'Petualangan Lompat Pixel',
+    vi: 'Phiêu lưu Nhảy Pixel',
   },
   subtitle: {
     zh: 'Pixel Jump Adventure',
@@ -22,6 +25,9 @@ export const jump = {
     ko: 'Pixel Jump Adventure',
     ru: 'Pixel Jump Adventure',
     de: 'Pixel Jump Adventure',
+    fr: 'Pixel Jump Adventure',
+    id: 'Pixel Jump Adventure',
+    vi: 'Pixel Jump Adventure',
   },
   controls: {
     left: {
@@ -35,6 +41,9 @@ export const jump = {
       ko: 'A / ← : 왼쪽으로 이동',
       ru: 'A / ← : Движение влево',
       de: 'A / ← : Nach links bewegen',
+      fr: 'A / ← : Aller à gauche',
+      id: 'A / ← : Bergerak kiri',
+      vi: 'A / ← : Di chuyển trái',
     },
     right: {
       zh: 'D / → : 向右移动',
@@ -47,6 +56,9 @@ export const jump = {
       ko: 'D / → : 오른쪽으로 이동',
       ru: 'D / → : Движение вправо',
       de: 'D / → : Nach rechts bewegen',
+      fr: 'D / → : Aller à droite',
+      id: 'D / → : Bergerak kanan',
+      vi: 'D / → : Di chuyển phải',
     },
     jump: {
       zh: 'W / ↑ / 空格 : 跳跃',
@@ -59,6 +71,9 @@ export const jump = {
       ko: 'W / ↑ / 스페이스 : 점프',
       ru: 'W / ↑ / Пробел : Прыжок',
       de: 'W / ↑ / Leertaste : Springen',
+      fr: 'W / ↑ / Espace : Sauter',
+      id: 'W / ↑ / Spasi : Lompat',
+      vi: 'W / ↑ / Dấu cách : Nhảy',
     },
     pause: {
       zh: 'P : 暂停游戏',
@@ -71,6 +86,9 @@ export const jump = {
       ko: 'P : 게임 일시정지',
       ru: 'P : Пауза игры',
       de: 'P : Spiel pausieren',
+      fr: 'P : Mettre en pause',
+      id: 'P : Jeda game',
+      vi: 'P : Tạm dừng trò chơi',
     },
   },
   btn: {
@@ -85,6 +103,9 @@ export const jump = {
       ko: '게임 시작',
       ru: 'Начать Игру',
       de: 'Spiel Starten',
+      fr: 'Commencer',
+      id: 'Mulai Game',
+      vi: 'Bắt đầu trò chơi',
     },
     resume: {
       zh: '继续游戏',
@@ -97,6 +118,9 @@ export const jump = {
       ko: '계속하기',
       ru: 'Продолжить',
       de: 'Fortsetzen',
+      fr: 'Reprendre',
+      id: 'Lanjutkan',
+      vi: 'Tiếp tục',
     },
     restart: {
       zh: '重新开始',
@@ -109,6 +133,9 @@ export const jump = {
       ko: '다시하기',
       ru: 'Играть Снова',
       de: 'Nochmal Spielen',
+      fr: 'Rejouer',
+      id: 'Main lagi',
+      vi: 'Chơi lại',
     },
   },
   ui: {
@@ -123,6 +150,9 @@ export const jump = {
       ko: '점수',
       ru: 'Счёт',
       de: 'Punktzahl',
+      fr: 'Score',
+      id: 'Skor',
+      vi: 'Điểm',
     },
     highScore: {
       zh: '最高分',
@@ -135,6 +165,9 @@ export const jump = {
       ko: '최고 점수',
       ru: 'Рекорд',
       de: 'Highscore',
+      fr: 'Meilleur Score',
+      id: 'Skor Tertinggi',
+      vi: 'Điểm Cao Nhất',
     },
     lives: {
       zh: '生命',
@@ -147,6 +180,9 @@ export const jump = {
       ko: '라이프',
       ru: 'Жизни',
       de: 'Leben',
+      fr: 'Vies',
+      id: 'Nyawa',
+      vi: 'Mạng',
     },
   },
   screen: {
@@ -162,6 +198,9 @@ export const jump = {
         ko: '일시정지',
         ru: 'Игра Приостановлена',
         de: 'Spiel Pausiert',
+        fr: 'Jeu en Pause',
+        id: 'Game Dijeda',
+        vi: 'Trò Chơi Tạm Dừng',
       },
     },
     gameover: {
@@ -176,6 +215,9 @@ export const jump = {
         ko: '게임오버',
         ru: 'Конец Игры',
         de: 'Spiel Vorbei',
+        fr: 'Fin de Partie',
+        id: 'Game Over',
+        vi: 'Kết Thúc Trò Chơi',
       },
       finalScore: {
         zh: '最终分数',
@@ -188,6 +230,9 @@ export const jump = {
         ko: '최종 점수',
         ru: 'Итоговый Счёт',
         de: 'Endpunktzahl',
+        fr: 'Score Final',
+        id: 'Skor Akhir',
+        vi: 'Điểm Cuối Cùng',
       },
     },
   },
@@ -203,6 +248,9 @@ export const jump = {
       ko: '+10',
       ru: '+10',
       de: '+10',
+      fr: '+10',
+      id: '+10',
+      vi: '+10',
     },
     enemy: {
       zh: '+50',
@@ -215,6 +263,9 @@ export const jump = {
       ko: '+50',
       ru: '+50',
       de: '+50',
+      fr: '+50',
+      id: '+50',
+      vi: '+50',
     },
   },
   mobile: {
@@ -229,6 +280,9 @@ export const jump = {
       ko: '점프',
       ru: 'ПРЫЖ',
       de: 'SPRUNG',
+      fr: 'SAUT',
+      id: 'LOMPAT',
+      vi: 'NHẢY',
     },
   },
 }

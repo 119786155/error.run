@@ -10,6 +10,9 @@ export const model = {
     ko: '데이터베이스를 열지 못했습니다',
     ru: 'Не удалось открыть базу данных',
     de: 'Datenbank konnte nicht geöffnet werden',
+    fr: "Échec de l'ouverture de la base de données",
+    id: 'Gagal membuka basis data',
+    vi: 'Không thể mở cơ sở dữ liệu',
   },
   read_failed: {
     zh: '读取失败',
@@ -22,6 +25,9 @@ export const model = {
     ko: '읽기 실패',
     ru: 'Ошибка чтения',
     de: 'Lesen fehlgeschlagen',
+    fr: 'Échec de la lecture',
+    id: 'Gagal membaca',
+    vi: 'Đọc thất bại',
   },
   write_failed: {
     zh: '写入失败',
@@ -34,6 +40,9 @@ export const model = {
     ko: '쓰기 실패',
     ru: 'Ошибка записи',
     de: 'Schreiben fehlgeschlagen',
+    fr: "Échec de l'écriture",
+    id: 'Gagal menulis',
+    vi: 'Ghi thất bại',
   },
   delete_failed: {
     zh: '删除失败',
@@ -46,5 +55,8 @@ export const model = {
     ko: '삭제 실패',
     ru: 'Ошибка удаления',
     de: 'Löschen fehlgeschlagen',
+    fr: 'Échec de la suppression',
+    id: 'Gagal menghapus',
+    vi: 'Xóa thất bại',
   },
 }

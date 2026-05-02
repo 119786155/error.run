@@ -3,7 +3,7 @@ import { content } from './content'
 
 const STORAGE_KEY = 'locale'
 
-export const SUPPORTED_LOCALES = ['zh', 'en', 'es', 'hi', 'ar', 'pt', 'ja', 'ko', 'ru', 'de'] as const
+export const SUPPORTED_LOCALES = ['zh', 'en', 'es', 'hi', 'ar', 'pt', 'ja', 'ko', 'ru', 'de', 'fr', 'id', 'vi'] as const
 export type Locale = (typeof SUPPORTED_LOCALES)[number]
 
 const localeMap: Record<string, Locale> = {
@@ -43,6 +43,14 @@ const localeMap: Record<string, Locale> = {
   'de-DE': 'de',
   'de-AT': 'de',
   'de-CH': 'de',
+  fr: 'fr',
+  'fr-FR': 'fr',
+  'fr-CA': 'fr',
+  'fr-BE': 'fr',
+  id: 'id',
+  'id-ID': 'id',
+  vi: 'vi',
+  'vi-VN': 'vi',
 }
 
 const DEFAULT_LOCALE: Locale = 'en'

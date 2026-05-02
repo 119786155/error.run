@@ -11,6 +11,9 @@ export const editor = {
       ko: '읽기 전용',
       ru: 'Только просмотр',
       de: 'Nur lesen',
+      fr: 'Lecture seule',
+      id: 'Hanya lihat',
+      vi: 'Chỉ xem',
     },
     editing: {
       zh: '编辑',
@@ -23,6 +26,9 @@ export const editor = {
       ko: '편집 중',
       ru: 'Редактирование',
       de: 'Bearbeiten',
+      fr: 'Édition',
+      id: 'Mengedit',
+      vi: 'Đang chỉnh sửa',
     },
   },
   placeholder: {
@@ -36,6 +42,9 @@ export const editor = {
     ko: '무언가를 입력하세요...',
     ru: 'Напишите что-нибудь...',
     de: 'Schreiben Sie etwas...',
+    fr: 'Tapez quelque chose...',
+    id: 'Ketik sesuatu...',
+    vi: 'Nhập gì đó...',
   },
   insert: {
     zh: '插入',
@@ -48,6 +57,9 @@ export const editor = {
     ko: '삽입',
     ru: 'Вставить',
     de: 'Einfügen',
+    fr: 'Insérer',
+    id: 'Sisipkan',
+    vi: 'Chèn',
   },
   export: {
     zh: '导出',
@@ -60,6 +72,9 @@ export const editor = {
     ko: '내보내기',
     ru: 'Экспорт',
     de: 'Exportieren',
+    fr: 'Exporter',
+    id: 'Ekspor',
+    vi: 'Xuất',
   },
   import: {
     zh: '导入',
@@ -72,6 +87,9 @@ export const editor = {
     ko: '가져오기',
     ru: 'Импорт',
     de: 'Importieren',
+    fr: 'Importer',
+    id: 'Impor',
+    vi: 'Nhập',
   },
   bgcolor: {
     zh: '背景色',
@@ -84,6 +102,9 @@ export const editor = {
     ko: '배경색',
     ru: 'цвет фона',
     de: 'Hintergrundfarbe',
+    fr: 'Couleur de fond',
+    id: 'Warna latar belakang',
+    vi: 'Màu nền',
   },
   txtcolor: {
     zh: '字色',
@@ -96,6 +117,9 @@ export const editor = {
     ko: '글자색',
     ru: 'цвет текста',
     de: 'Textfarbe',
+    fr: 'Couleur du texte',
+    id: 'Warna teks',
+    vi: 'Màu chữ',
   },
   underline: {
     zh: '下划线',
@@ -108,6 +132,9 @@ export const editor = {
     ko: '밑줄',
     ru: 'Подчёркивание',
     de: 'Unterstrichen',
+    fr: 'Souligné',
+    id: 'Garis bawah',
+    vi: 'Gạch chân',
   },
   strikethrough: {
     zh: '删除线',
@@ -120,6 +147,9 @@ export const editor = {
     ko: '취소선',
     ru: 'Зачёркнутый',
     de: 'Durchgestrichen',
+    fr: 'Barré',
+    id: 'Coret',
+    vi: 'Gạch ngang',
   },
   highlight: {
     zh: '高亮',
@@ -132,6 +162,9 @@ export const editor = {
     ko: '하이라이트',
     ru: 'Выделение',
     de: 'Hervorhebung',
+    fr: 'Surlignage',
+    id: 'Sorot',
+    vi: 'Đánh dấu',
   },
   italic: {
     zh: '斜体',
@@ -144,6 +177,9 @@ export const editor = {
     ko: '이탤릭',
     ru: 'Курсив',
     de: 'Kursiv',
+    fr: 'Italique',
+    id: 'Miring',
+    vi: 'Nghiêng',
   },
   bold: {
     zh: '加粗',
@@ -156,6 +192,9 @@ export const editor = {
     ko: '굵게',
     ru: 'Жирный',
     de: 'Fett',
+    fr: 'Gras',
+    id: 'Tebal',
+    vi: 'Đậm',
   },
   quote: {
     zh: '引用',
@@ -168,6 +207,9 @@ export const editor = {
     ko: '인용',
     ru: 'Цитата',
     de: 'Zitat',
+    fr: 'Citation',
+    id: 'Kutipan',
+    vi: 'Trích dẫn',
   },
   code: {
     zh: '代码',
@@ -180,6 +222,9 @@ export const editor = {
     ko: '코드',
     ru: 'Код',
     de: 'Code',
+    fr: 'Code',
+    id: 'Kode',
+    vi: 'Mã',
   },
   kbd: {
     zh: '键盘按键',
@@ -192,6 +237,9 @@ export const editor = {
     ko: '키보드 입력',
     ru: 'Ввод с клавиатуры',
     de: 'Tastatureingabe',
+    fr: 'Entrée clavier',
+    id: 'Input keyboard',
+    vi: 'Đầu vào bàn phím',
   },
   superscript: {
     zh: '上标',
@@ -204,6 +252,9 @@ export const editor = {
     ko: '위 첨자',
     ru: 'Надстрочный',
     de: 'Hochgestellt',
+    fr: 'Exposant',
+    id: 'Superscript',
+    vi: 'Chỉ số trên',
   },
   subscript: {
     zh: '下标',
@@ -216,6 +267,9 @@ export const editor = {
     ko: '아래 첨자',
     ru: 'Подстрочный',
     de: 'Tiefgestellt',
+    fr: 'Indice',
+    id: 'Subscript',
+    vi: 'Chỉ số dưới',
   },
   h1: {
     zh: '一级标题',
@@ -228,6 +282,9 @@ export const editor = {
     ko: '제목 1',
     ru: 'Заголовок 1',
     de: 'Überschrift 1',
+    fr: 'Titre 1',
+    id: 'Heading 1',
+    vi: 'Tiêu đề 1',
   },
   h2: {
     zh: '二级标题',
@@ -240,6 +297,9 @@ export const editor = {
     ko: '제목 2',
     ru: 'Заголовок 2',
     de: 'Überschrift 2',
+    fr: 'Titre 2',
+    id: 'Heading 2',
+    vi: 'Tiêu đề 2',
   },
   h3: {
     zh: '三级标题',
@@ -252,6 +312,9 @@ export const editor = {
     ko: '제목 3',
     ru: 'Заголовок 3',
     de: 'Überschrift 3',
+    fr: 'Titre 3',
+    id: 'Heading 3',
+    vi: 'Tiêu đề 3',
   },
   callout: {
     zh: '标注',
@@ -264,6 +327,9 @@ export const editor = {
     ko: '콜아웃',
     ru: 'Выноска',
     de: 'Hinweis',
+    fr: 'Encadré',
+    id: 'Callout',
+    vi: 'Ghi chú',
   },
   table: {
     zh: '表格',
@@ -276,6 +342,9 @@ export const editor = {
     ko: '표',
     ru: 'Таблица',
     de: 'Tabelle',
+    fr: 'Tableau',
+    id: 'Tabel',
+    vi: 'Bảng',
   },
   codeblock: {
     zh: '代码块',
@@ -288,6 +357,9 @@ export const editor = {
     ko: '코드 블록',
     ru: 'Блок кода',
     de: 'Codeblock',
+    fr: 'Bloc de code',
+    id: 'Blok kode',
+    vi: 'Khối mã',
   },
   type: {
     blocks: {
@@ -301,6 +373,9 @@ export const editor = {
       ko: '블록',
       ru: 'Блоки',
       de: 'Blöcke',
+      fr: 'Blocs',
+      id: 'Blok',
+      vi: 'Khối',
     },
     lists: {
       zh: '列表',
@@ -313,6 +388,9 @@ export const editor = {
       ko: '목록',
       ru: 'Списки',
       de: 'Listen',
+      fr: 'Listes',
+      id: 'Daftar',
+      vi: 'Danh sách',
     },
     inline: {
       zh: '行内元素',
@@ -325,6 +403,9 @@ export const editor = {
       ko: '인라인',
       ru: 'Строковый',
       de: 'Inline',
+      fr: 'En ligne',
+      id: 'Sebaris',
+      vi: 'Trong dòng',
     },
     advancedblocks: {
       zh: '高级块元素',
@@ -337,6 +418,9 @@ export const editor = {
       ko: '고급 블록',
       ru: 'Продвинутые блоки',
       de: 'Erweiterte Blöcke',
+      fr: 'Blocs avancés',
+      id: 'Blok lanjutan',
+      vi: 'Khối nâng cao',
     },
   },
   undo: {
@@ -350,6 +434,9 @@ export const editor = {
     ko: '실행 취소',
     ru: 'Отменить',
     de: 'Rückgängig',
+    fr: 'Annuler',
+    id: 'Urungkan',
+    vi: 'Hoàn tác',
   },
   redo: {
     zh: '重做',
@@ -362,6 +449,9 @@ export const editor = {
     ko: '다시 실행',
     ru: 'Повторить',
     de: 'Wiederholen',
+    fr: 'Rétablir',
+    id: 'Ulangi',
+    vi: 'Làm lại',
   },
   emoji: {
     zh: '表情',
@@ -374,6 +464,9 @@ export const editor = {
     ko: '이모지',
     ru: 'Эмодзи',
     de: 'Emoji',
+    fr: 'Emoji',
+    id: 'Emoji',
+    vi: 'Emoji',
   },
   exportFile: {
     html: {
@@ -387,6 +480,9 @@ export const editor = {
       ko: 'HTML로 내보내기',
       ru: 'Экспорт в HTML',
       de: 'Als HTML exportieren',
+      fr: 'Exporter en HTML',
+      id: 'Ekspor sebagai HTML',
+      vi: 'Xuất ra HTML',
     },
     pdf: {
       zh: '导出为 PDF',
@@ -399,6 +495,9 @@ export const editor = {
       ko: 'PDF로 내보내기',
       ru: 'Экспорт в PDF',
       de: 'Als PDF exportieren',
+      fr: 'Exporter en PDF',
+      id: 'Ekspor sebagai PDF',
+      vi: 'Xuất ra PDF',
     },
     img: {
       zh: '导出为图片',
@@ -411,6 +510,9 @@ export const editor = {
       ko: '이미지로 내보내기',
       ru: 'Экспорт в изображение',
       de: 'Als Bild exportieren',
+      fr: 'Exporter en image',
+      id: 'Ekspor sebagai gambar',
+      vi: 'Xuất ra hình ảnh',
     },
     md: {
       zh: '导出为 Markdown',
@@ -423,6 +525,9 @@ export const editor = {
       ko: 'Markdown으로 내보내기',
       ru: 'Экспорт в Markdown',
       de: 'Als Markdown exportieren',
+      fr: 'Exporter en Markdown',
+      id: 'Ekspor sebagai Markdown',
+      vi: 'Xuất ra Markdown',
     },
     json: {
       zh: '导出为 JSON',
@@ -435,6 +540,9 @@ export const editor = {
       ko: 'JSON으로 내보내기',
       ru: 'Экспорт в JSON',
       de: 'Als JSON exportieren',
+      fr: 'Exporter en JSON',
+      id: 'Ekspor sebagai JSON',
+      vi: 'Xuất ra JSON',
     },
   },
   importFile: {
@@ -449,6 +557,9 @@ export const editor = {
       ko: 'HTML에서 가져오기',
       ru: 'Импорт из HTML',
       de: 'Aus HTML importieren',
+      fr: 'Importer depuis HTML',
+      id: 'Impor dari HTML',
+      vi: 'Nhập từ HTML',
     },
     md: {
       zh: '从 Markdown 导入',
@@ -461,6 +572,9 @@ export const editor = {
       ko: 'Markdown에서 가져오기',
       ru: 'Импорт из Markdown',
       de: 'Aus Markdown importieren',
+      fr: 'Importer depuis Markdown',
+      id: 'Impor dari Markdown',
+      vi: 'Nhập từ Markdown',
     },
     json: {
       zh: '从 JSON 导入',
@@ -473,6 +587,9 @@ export const editor = {
       ko: 'JSON에서 가져오기',
       ru: 'Импорт из JSON',
       de: 'Aus JSON importieren',
+      fr: 'Importer depuis JSON',
+      id: 'Impor dari JSON',
+      vi: 'Nhập từ JSON',
     },
   },
   list: {
@@ -487,6 +604,9 @@ export const editor = {
       ko: '순서 있는 목록',
       ru: 'Нумерованный список',
       de: 'Geordnete Liste',
+      fr: 'Liste ordonnée',
+      id: 'Daftar berurut',
+      vi: 'Danh sách có thứ tự',
     },
     unordered: {
       zh: '无序列表',
@@ -499,6 +619,9 @@ export const editor = {
       ko: '순서 없는 목록',
       ru: 'Маркированный список',
       de: 'Ungeordnete Liste',
+      fr: 'Liste non ordonnée',
+      id: 'Daftar tak berurut',
+      vi: 'Danh sách không thứ tự',
     },
     toggle: {
       zh: '可收起列表',
@@ -511,6 +634,9 @@ export const editor = {
       ko: '토글 목록',
       ru: 'Сворачиваемый список',
       de: 'Umschaltliste',
+      fr: 'Liste dépliable',
+      id: 'Daftar bisa diciutkan',
+      vi: 'Danh sách thu gọn',
     },
     todo: {
       zh: '待办事项',
@@ -523,6 +649,9 @@ export const editor = {
       ko: '할 일',
       ru: 'Задача',
       de: 'Aufgabe',
+      fr: 'À faire',
+      id: 'Daftar tugas',
+      vi: 'Việc cần làm',
     },
   },
   indent: {
@@ -536,6 +665,9 @@ export const editor = {
     ko: '들여쓰기',
     ru: 'Отступ',
     de: 'Einzug',
+    fr: 'Augmenter le retrait',
+    id: 'Tabulasi',
+    vi: 'Thụt lề',
   },
   outdent: {
     zh: '取消缩进',
@@ -548,6 +680,9 @@ export const editor = {
     ko: '내어쓰기',
     ru: 'Убрать отступ',
     de: 'Ausrücken',
+    fr: 'Diminuer le retrait',
+    id: 'Hapus tabulasi',
+    vi: 'Bỏ thụt lề',
   },
   lineheight: {
     zh: '行高',
@@ -560,6 +695,9 @@ export const editor = {
     ko: '줄 높이',
     ru: 'Высота строки',
     de: 'Zeilenhöhe',
+    fr: 'Hauteur de ligne',
+    id: 'Tinggi baris',
+    vi: 'Chiều cao dòng',
   },
   link: {
     zh: '链接',
@@ -572,6 +710,9 @@ export const editor = {
     ko: '링크',
     ru: 'Ссылка',
     de: 'Link',
+    fr: 'Lien',
+    id: 'Tautan',
+    vi: 'Liên kết',
   },
   equation: {
     zh: '公式',
@@ -584,6 +725,9 @@ export const editor = {
     ko: '방정식',
     ru: 'Уравнение',
     de: 'Gleichung',
+    fr: 'Équation',
+    id: 'Persamaan',
+    vi: 'Phương trình',
   },
   inlineequation: {
     zh: '行内公式',
@@ -596,6 +740,9 @@ export const editor = {
     ko: '인라인 수식',
     ru: 'Строковое уравнение',
     de: 'Inline-Gleichung',
+    fr: 'Équation en ligne',
+    id: 'Persamaan sebaris',
+    vi: 'Phương trình trong dòng',
   },
   columns: {
     zh: '布局：3列',
@@ -608,6 +755,9 @@ export const editor = {
     ko: '3열',
     ru: '3 колонки',
     de: '3 Spalten',
+    fr: '3 Colonnes',
+    id: '3 Kolom',
+    vi: '3 Cột',
   },
   date: {
     zh: '日期',
@@ -620,6 +770,9 @@ export const editor = {
     ko: '날짜',
     ru: 'Дата',
     de: 'Datum',
+    fr: 'Date',
+    id: 'Tanggal',
+    vi: 'Ngày',
   },
   excalidraw: {
     zh: '白板',
@@ -632,6 +785,9 @@ export const editor = {
     ko: '화이트보드',
     ru: 'Доска',
     de: 'Whiteboard',
+    fr: 'Tableau blanc',
+    id: 'Papan tulis',
+    vi: 'Bảng trắng',
   },
   toc: {
     zh: '目录',
@@ -644,6 +800,9 @@ export const editor = {
     ko: '목차',
     ru: 'Оглавление',
     de: 'Inhaltsverzeichnis',
+    fr: 'Table des matières',
+    id: 'Daftar isi',
+    vi: 'Mục lục',
   },
   paragraph: {
     zh: '段落',
@@ -656,6 +815,9 @@ export const editor = {
     ko: '단락',
     ru: 'Абзац',
     de: 'Absatz',
+    fr: 'Paragraphe',
+    id: 'Paragraf',
+    vi: 'Đoạn văn',
   },
   divider: {
     zh: '分隔线',
@@ -668,6 +830,9 @@ export const editor = {
     ko: '구분선',
     ru: 'Разделитель',
     de: 'Trennlinie',
+    fr: 'Séparateur',
+    id: 'Pembagi',
+    vi: 'Đường phân cách',
   },
   delete: {
     zh: '删除',
@@ -680,6 +845,9 @@ export const editor = {
     ko: '삭제',
     ru: 'Удалить',
     de: 'Löschen',
+    fr: 'Supprimer',
+    id: 'Hapus',
+    vi: 'Xóa',
   },
   duplicate: {
     zh: '复制',
@@ -692,6 +860,9 @@ export const editor = {
     ko: '복제',
     ru: 'Дублировать',
     de: 'Duplizieren',
+    fr: 'Dupliquer',
+    id: 'Gandakan',
+    vi: 'Sao chép',
   },
   turninto: {
     zh: '转换为',
@@ -704,6 +875,9 @@ export const editor = {
     ko: '변환',
     ru: 'Превратить в',
     de: 'Umwandeln in',
+    fr: 'Transformer en',
+    id: 'Ubah menjadi',
+    vi: 'Chuyển thành',
   },
   align: {
     zh: '对齐',
@@ -716,6 +890,9 @@ export const editor = {
     ko: '정렬',
     ru: 'Выровнять',
     de: 'Ausrichten',
+    fr: 'Aligner',
+    id: 'Ratakan',
+    vi: 'Căn chỉnh',
   },
   alignleft: {
     zh: '左对齐',
@@ -728,6 +905,9 @@ export const editor = {
     ko: '왼쪽 정렬',
     ru: 'По левому',
     de: 'Links',
+    fr: 'Gauche',
+    id: 'Kiri',
+    vi: 'Trái',
   },
   alignright: {
     zh: '右对齐',
@@ -740,6 +920,9 @@ export const editor = {
     ko: '오른쪽 정렬',
     ru: 'По правому',
     de: 'Rechts',
+    fr: 'Droite',
+    id: 'Kanan',
+    vi: 'Phải',
   },
   aligncenter: {
     zh: '居中对齐',
@@ -752,6 +935,9 @@ export const editor = {
     ko: '가운데 정렬',
     ru: 'По центру',
     de: 'Zentriert',
+    fr: 'Centre',
+    id: 'Tengah',
+    vi: 'Giữa',
   },
   alignjustify: {
     zh: '两端对齐',
@@ -764,6 +950,9 @@ export const editor = {
     ko: '양쪽 정렬',
     ru: 'По ширине',
     de: 'Blocksatz',
+    fr: 'Justifier',
+    id: 'Rata kanan-kiri',
+    vi: 'Căn đều',
   },
   upload: {
     local: {
@@ -777,6 +966,9 @@ export const editor = {
       ko: '컴퓨터에서 업로드',
       ru: 'Загрузить с компьютера',
       de: 'Vom Computer hochladen',
+      fr: "Télécharger depuis l'ordinateur",
+      id: 'Unggah dari komputer',
+      vi: 'Tải lên từ máy tính',
     },
     url: {
       zh: '插入URL',
@@ -789,6 +981,9 @@ export const editor = {
       ko: 'URL로 삽입',
       ru: 'Вставить по URL',
       de: 'Über URL einfügen',
+      fr: 'Insérer via URL',
+      id: 'Sisipkan lewat URL',
+      vi: 'Chèn qua URL',
     },
     audio: {
       zh: '插入音频',
@@ -801,6 +996,9 @@ export const editor = {
       ko: '오디오 삽입',
       ru: 'Вставить аудио',
       de: 'Audio einfügen',
+      fr: 'Insérer audio',
+      id: 'Sisipkan audio',
+      vi: 'Chèn âm thanh',
     },
     file: {
       zh: '插入文件',
@@ -813,6 +1011,9 @@ export const editor = {
       ko: '파일 삽입',
       ru: 'Вставить файл',
       de: 'Datei einfügen',
+      fr: 'Insérer fichier',
+      id: 'Sisipkan file',
+      vi: 'Chèn tệp',
     },
     image: {
       zh: '插入图片',
@@ -825,6 +1026,9 @@ export const editor = {
       ko: '이미지 삽입',
       ru: 'Вставить изображение',
       de: 'Bild einfügen',
+      fr: 'Insérer image',
+      id: 'Sisipkan gambar',
+      vi: 'Chèn hình ảnh',
     },
     video: {
       zh: '插入视频',
@@ -837,6 +1041,9 @@ export const editor = {
       ko: '비디오 삽입',
       ru: 'Вставить видео',
       de: 'Video einfügen',
+      fr: 'Insérer vidéo',
+      id: 'Sisipkan video',
+      vi: 'Chèn video',
     },
     unknownError: {
       zh: '出问题啦，请稍后再试试',
@@ -849,6 +1056,9 @@ export const editor = {
       ko: '문제가 발생했습니다. 나중에 다시 시도해 주세요.',
       ru: 'Что-то пошло не так, пожалуйста, попробуйте позже.',
       de: 'Etwas ist schiefgelaufen, bitte versuchen Sie es später erneut.',
+      fr: "Une erreur s'est produite, veuillez réessayer plus tard.",
+      id: 'Terjadi kesalahan, silakan coba lagi nanti.',
+      vi: 'Đã xảy ra lỗi, vui lòng thử lại sau.',
     },
   },
   editlink: {
@@ -862,6 +1072,9 @@ export const editor = {
     ko: '링크 편집',
     ru: 'Редактировать ссылку',
     de: 'Link bearbeiten',
+    fr: 'Modifier le lien',
+    id: 'Edit tautan',
+    vi: 'Sửa liên kết',
   },
   caption: {
     zh: '设置标题',
@@ -874,5 +1087,8 @@ export const editor = {
     ko: '캡션',
     ru: 'Подпись',
     de: 'Beschriftung',
+    fr: 'Légende',
+    id: 'Keterangan',
+    vi: 'Chú thích',
   },
 }

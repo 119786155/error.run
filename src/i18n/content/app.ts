@@ -11,6 +11,9 @@ export const app = {
       ko: '라이트',
       ru: 'Светлая',
       de: 'Hell',
+      fr: 'Clair',
+      id: 'Terang',
+      vi: 'Sáng',
     },
     dark: {
       zh: '深色',
@@ -23,6 +26,9 @@ export const app = {
       ko: '다크',
       ru: 'Тёмная',
       de: 'Dunkel',
+      fr: 'Sombre',
+      id: 'Gelap',
+      vi: 'Tối',
     },
   },
   pages: {
@@ -38,6 +44,9 @@ export const app = {
         ko: '글쓰기',
         ru: 'Напишите что-нибудь',
         de: 'Schreiben Sie etwas',
+        fr: 'Écrivez quelque chose',
+        id: 'Tulis sesuatu',
+        vi: 'Viết gì đó',
       },
       desc: {
         zh: '本地优先的富文本编辑器，支持实时保存、Markdown 语法、多媒体嵌入和协作编辑。你的数据存储在本地，安全可靠。',
@@ -50,6 +59,9 @@ export const app = {
         ko: '로컬 우선 리치 텍스트 편집기로 실시간 저장, 마크다운 지원, 멀티미디어 삽입 및 협업 편집을 지원합니다. 데이터는 로컬에 저장되어 안전하고 신뢰할 수 있습니다.',
         ru: 'Редактор с приоритетом локального хранения, поддерживающий реaltime сохранение, Markdown, вставку мультимедиа и совместное редактирование. Ваши данные хранятся локально, безопасно и надежно.',
         de: 'Lokaler Rich-Text-Editor mit Echtzeitspeicherung, Markdown-Unterstützung, Multimedia-Einbettung und kollaborativer Bearbeitung. Ihre Daten werden lokal gespeichert, sicher und zuverlässig.',
+        fr: 'Éditeur de texte enrichi local-first avec sauvegarde en temps réel, support Markdown, insertion multimedia et édition collaborative. Vos données sont stockées localement, sécurisées et fiables.',
+        id: 'Editor teks kaya lokal-dahulu dengan penyimpanan waktu nyata, dukungan Markdown, penyematan multimedia, dan pengeditan kolaboratif. Data Anda disimpan secara lokal, aman dan andal.',
+        vi: 'Trình chỉnh sửa văn bản giàu tính năng ưu tiên cục bộ với lưu thời gian thực, hỗ trợ Markdown, nhúng đa phương tiện và chỉnh sửa cộng tác. Dữ liệu của bạn được lưu trữ cục bộ, an toàn và đáng tin cậy.',
       },
     },
     room: {
@@ -64,6 +76,9 @@ export const app = {
         ko: '협업',
         ru: 'Сотрудничество',
         de: 'Zusammenarbeit',
+        fr: 'Collaboration',
+        id: 'Kolaborasi',
+        vi: 'Cộng tác',
       },
       desc: {
         zh: '协作',
@@ -76,6 +91,9 @@ export const app = {
         ko: '협업',
         ru: 'Сотрудничество',
         de: 'Zusammenarbeit',
+        fr: 'Collaboration',
+        id: 'Kolaborasi',
+        vi: 'Cộng tác',
       },
     },
     jump: {
@@ -90,6 +108,9 @@ export const app = {
         ko: '픽셀 점프 어드벤처',
         ru: 'Пиксельное Приключение с Прыжками',
         de: 'Pixel-Sprung-Abenteuer',
+        fr: 'Aventure de Saut de Pixels',
+        id: 'Petualangan Lompat Pixel',
+        vi: 'Phiêu lưu Nhảy Pixel',
       },
       desc: {
         zh: '一个简单好玩的像素风格跳跃游戏',
@@ -102,6 +123,9 @@ export const app = {
         ko: '간단하고 재미있는 픽셀 스타일 점프 게임',
         ru: 'Простая и увлекательная игра-прыжок в пиксельном стиле',
         de: 'Ein einfaches und unterhaltsames Pixel-Stil-Sprungspiel',
+        fr: 'Un jeu de saut simple et amusant en style pixel',
+        id: 'Game lompat sederhana dan seru dengan gaya pixel',
+        vi: 'Một trò chơi nhảy đơn giản và vui với phong cách pixel',
       },
     },
   },
@@ -116,6 +140,9 @@ export const app = {
     ko: '작은 노트',
     ru: 'Маленькая записная книжка',
     de: 'Kleines Notizbuch',
+    fr: 'Petit Carnet',
+    id: 'Buku Catatan Kecil',
+    vi: 'Sổ Ghi Chép Nhỏ',
   },
   desc: {
     zh: '学习、实践、记录',
@@ -128,5 +155,8 @@ export const app = {
     ko: '배우고 실천하고 기록하다',
     ru: 'Учитесь, практикуйтесь и записывайте',
     de: 'Lernen, üben und aufzeichnen',
+    fr: 'Apprendre, pratiquer et enregistrer',
+    id: 'Belajar, berlatih, dan mencatat',
+    vi: 'Học, thực hành và ghi chép',
   },
 }
