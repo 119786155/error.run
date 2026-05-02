@@ -104,19 +104,19 @@
 
 .animated-bg .fixed-toolbar,
 .animated-bg [class*="editor"] {
-  background: transparent !important;
+  background: transparent;
 }
 
 .animated-bg #toolbar-container,
 .animated-bg [id*="toolbar"],
 .animated-bg [data-testid="write-page"] [class*="bg-"] {
-  background: transparent !important;
-  backdrop-filter: none !important;
+  background: transparent;
+  backdrop-filter: none;
 }
 
 .animated-bg [role="toolbar"] button:hover,
 .animated-bg [role="toolbar"] [aria-checked="true"] {
-  background: transparent !important;
+  background: transparent;
 }
 
 @keyframes bg-shift {
