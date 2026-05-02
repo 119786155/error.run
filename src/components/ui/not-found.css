@@ -19,8 +19,12 @@
   animation: float 3s ease-in-out infinite;
 }
 
-.not-found__cat {
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+.not-found__monster {
+  color: #3d3d3d;
+}
+
+:is(.dark) .not-found__monster {
+  color: #e0e0e0;
 }
 
 @keyframes float {
@@ -43,43 +47,88 @@
   }
 }
 
-@keyframes blink {
-  0%,
-  90%,
-  100% {
-    transform: scaleY(1);
-  }
-  95% {
-    transform: scaleY(0.1);
-  }
-}
-
-@keyframes think {
+@keyframes antennaBounce {
   0%,
   100% {
-    opacity: 1;
     transform: translateY(0);
   }
   50% {
-    opacity: 0.5;
     transform: translateY(-5px);
   }
 }
 
-.not-found__cat .not-found__thought {
-  animation: think 2s ease-in-out infinite;
+@keyframes eyeTwitch {
+  0%,
+  90%,
+  100% {
+    transform: rotate(0deg);
+  }
+  92% {
+    transform: rotate(5deg);
+  }
+  94% {
+    transform: rotate(-5deg);
+  }
+  96% {
+    transform: rotate(3deg);
+  }
+  98% {
+    transform: rotate(-3deg);
+  }
 }
 
-.not-found__cat .not-found__thought-dot {
-  animation: think 2s ease-in-out infinite;
+@keyframes mouthWiggle {
+  0%,
+  100% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(1.1);
+  }
 }
 
-.not-found__cat .not-found__thought-dot:nth-child(2) {
+@keyframes fangBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(2px);
+  }
+}
+
+.not-found__antenna-ball {
+  animation: antennaBounce 1.5s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+.not-found__antenna-ball:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.not-found__eye-left,
+.not-found__eye-right {
+  animation: eyeTwitch 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.not-found__eye-right {
+  animation-delay: 0.5s;
+}
+
+.not-found__mouth {
+  animation: mouthWiggle 2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.not-found__fang-left,
+.not-found__fang-right {
+  animation: fangBounce 1s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.not-found__fang-right {
   animation-delay: 0.2s;
-}
-
-.not-found__cat .not-found__thought-dot:nth-child(3) {
-  animation-delay: 0.4s;
 }
 
 .not-found__title {

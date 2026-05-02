@@ -12,46 +12,66 @@ export function NotFound() {
           viewBox="0 0 200 200"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="not-found__cat"
+          className="not-found__monster"
           role="img"
-          aria-label="Cute cat 404 illustration"
+          aria-label="Cute mischievous monster 404 illustration"
         >
-          <circle cx="100" cy="100" r="80" fill="#FFE5D9" />
-          <ellipse cx="65" cy="85" rx="12" ry="14" fill="white" />
-          <ellipse cx="135" cy="85" rx="12" ry="14" fill="white" />
-          <ellipse cx="65" cy="85" rx="6" ry="8" fill="#3D3D3D" />
-          <ellipse cx="135" cy="85" rx="6" ry="8" fill="#3D3D3D" />
-          <ellipse cx="67" cy="83" rx="2" ry="3" fill="white" />
-          <ellipse cx="137" cy="83" rx="2" ry="3" fill="white" />
-          <ellipse cx="100" cy="105" rx="8" ry="6" fill="#FFB4A2" />
-          <path d="M92 115 Q100 125 108 115" stroke="#3D3D3D" strokeWidth="3" strokeLinecap="round" fill="none" />
-          <line x1="55" y1="95" x2="30" y2="90" stroke="#3D3D3D" strokeWidth="2" strokeLinecap="round" />
-          <line x1="55" y1="100" x2="30" y2="100" stroke="#3D3D3D" strokeWidth="2" strokeLinecap="round" />
-          <line x1="55" y1="105" x2="30" y2="110" stroke="#3D3D3D" strokeWidth="2" strokeLinecap="round" />
-          <line x1="145" y1="95" x2="170" y2="90" stroke="#3D3D3D" strokeWidth="2" strokeLinecap="round" />
-          <line x1="145" y1="100" x2="170" y2="100" stroke="#3D3D3D" strokeWidth="2" strokeLinecap="round" />
-          <line x1="145" y1="105" x2="170" y2="110" stroke="#3D3D3D" strokeWidth="2" strokeLinecap="round" />
-          <path d="M25 55 Q35 20 50 50" fill="#FFE5D9" stroke="#3D3D3D" strokeWidth="2" />
-          <path d="M35 45 Q40 30 48 48" fill="#FFB4A2" />
-          <path d="M175 55 Q165 20 150 50" fill="#FFE5D9" stroke="#3D3D3D" strokeWidth="2" />
-          <path d="M165 45 Q160 30 152 48" fill="#FFB4A2" />
-          <circle cx="75" cy="115" rx="15" ry="8" fill="#FFCAD4" opacity="0.6" />
-          <circle cx="125" cy="115" rx="15" ry="8" fill="#FFCAD4" opacity="0.6" />
+          <circle cx="100" cy="100" r="75" stroke="currentColor" strokeWidth="3" />
+
+          <line x1="70" y1="35" x2="70" y2="15" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+          <line x1="130" y1="35" x2="130" y2="15" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+
+          <circle cx="70" cy="10" r="6" stroke="currentColor" strokeWidth="2" className="not-found__antenna-ball" />
+          <circle cx="130" cy="10" r="6" stroke="currentColor" strokeWidth="2" className="not-found__antenna-ball" />
+
+          <g className="not-found__eye-left">
+            <line x1="65" y1="75" x2="85" y2="95" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+            <line x1="85" y1="75" x2="65" y2="95" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+          </g>
+
+          <g className="not-found__eye-right">
+            <line x1="115" y1="75" x2="135" y2="95" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+            <line x1="135" y1="75" x2="115" y2="95" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+          </g>
+
           <path
-            d="M140 60 Q155 55 165 65"
-            stroke="#3D3D3D"
+            d="M70 130 Q100 155 130 130"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+            fill="none"
+            className="not-found__mouth"
+          />
+
+          <path d="M75 140 Q100 152 125 140" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
+
+          <path
+            d="M85 125 Q88 132 92 125"
+            stroke="currentColor"
             strokeWidth="2"
             strokeLinecap="round"
             fill="none"
-            className="not-found__thought"
+            className="not-found__fang-left"
           />
-          <circle cx="170" cy="55" r="5" fill="#3D3D3D" className="not-found__thought-dot" />
-          <circle cx="180" cy="48" r="3" fill="#3D3D3D" className="not-found__thought-dot" />
-          <text x="100" y="170" textAnchor="middle" fontSize="24" fontWeight="bold" fill="#3D3D3D">
+          <path
+            d="M115 125 Q112 132 108 125"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            fill="none"
+            className="not-found__fang-right"
+          />
+
+          <text
+            x="100"
+            y="185"
+            textAnchor="middle"
+            fontSize="28"
+            fontWeight="bold"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          >
             404
-          </text>
-          <text x="100" y="190" textAnchor="middle" fontSize="12" fill="#888">
-            Page not found
           </text>
         </svg>
       </div>

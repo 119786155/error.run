@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sofa-icon lucide-sofa"><path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3"/><path d="M2 16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z"/><path d="M4 18v2"/><path d="M20 18v2"/><path d="M12 4v9"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="9" />
+  <line x1="8" y1="5" x2="8" y2="2" />
+  <line x1="16" y1="5" x2="16" y2="2" />
+  <circle cx="8" cy="1.5" r="1" />
+  <circle cx="16" cy="1.5" r="1" />
+  <path d="M8 10 L10 12 M10 10 L8 12" />
+  <path d="M14 10 L16 12 M16 10 L14 12" />
+  <path d="M9 15 Q12 18 15 15" />
+  <path d="M10 16 Q12 17 14 16" stroke-width="1" />
+</svg>
