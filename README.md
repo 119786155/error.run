@@ -15,6 +15,11 @@ personal project for learning, practicing, and exploring
 - [Français](docs/README.fr.md)
 - [Bahasa Indonesia](docs/README.id.md)
 - [Tiếng Việt](docs/README.vi.md)
+- [Türkçe](docs/README.tr.md)
+- [Nederlands](docs/README.nl.md)
+- [Polski](docs/README.pl.md)
+- [ไทย](docs/README.th.md)
+- [Українська](docs/README.uk.md)
 
 ## Poem
 

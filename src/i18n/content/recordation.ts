@@ -13,6 +13,11 @@ export const recordation = {
     fr: import.meta.env.VITE_PSR_FR,
     id: import.meta.env.VITE_PSR_ID,
     vi: import.meta.env.VITE_PSR_VI,
+    tr: import.meta.env.VITE_PSR_TR,
+    nl: import.meta.env.VITE_PSR_NL,
+    pl: import.meta.env.VITE_PSR_PL,
+    th: import.meta.env.VITE_PSR_TH,
+    uk: import.meta.env.VITE_PSR_UK,
   },
   icp: {
     zh: import.meta.env.VITE_ICP_ZH,
@@ -28,5 +33,10 @@ export const recordation = {
     fr: import.meta.env.VITE_ICP_FR,
     id: import.meta.env.VITE_ICP_ID,
     vi: import.meta.env.VITE_ICP_VI,
+    tr: import.meta.env.VITE_ICP_TR,
+    nl: import.meta.env.VITE_ICP_NL,
+    pl: import.meta.env.VITE_ICP_PL,
+    th: import.meta.env.VITE_ICP_TH,
+    uk: import.meta.env.VITE_ICP_UK,
   },
 }
