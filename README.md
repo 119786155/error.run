@@ -79,3 +79,19 @@ personal project for learning, practicing, and exploring
          - Retro pixel art graphics
          - Touch controls for mobile support
 ```
+
+## /story
+
+```
+         # Text Adventure
+
+         This is an **interactive text adventure game**
+         with branching storylines and choices
+
+         > Tip: Make choices carefully - they matter!
+
+         - Branching narrative with multiple endings
+         - 18 language support
+         - Beautiful gradient design
+         - Mobile-friendly responsive layout
+```

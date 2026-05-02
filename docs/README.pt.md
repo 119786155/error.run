@@ -61,3 +61,20 @@ projeto pessoal para aprender, praticar e explorar
          - Gráficos de pixel art estilo retrô
          - Controles touch para suporte mobile
 ```
+
+
+## /story
+
+```
+         # Aventura de Texto
+
+         Este é um **jogo de aventura de texto interativo**
+         com tramas ramificadas e escolhas
+
+         > Dica: Faça escolhas com cuidado - elas importam!
+
+         - Narrativa ramificada com múltiplos finais
+         - Suporte para 18 idiomas
+         - Belo design de gradiente
+         - Layout responsive amigável para dispositivos móveis
+```

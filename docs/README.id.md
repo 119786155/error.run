@@ -61,3 +61,19 @@ proyek pribadi untuk belajar, berlatih, dan menjelajah
          - Grafik pixel art gaya retro
          - Kontrol sentuh untuk dukungan seluler
 ```
+
+## /story
+
+```
+         # Petualangan Teks
+
+         Ini adalah **game petualangan teks interaktif**
+         dengan alur cerita bercabang dan pilihan
+
+         > Tip: Buat pilihan dengan hati-hati - itu penting!
+
+         - Narasi bercabang dengan beberapa akhiran
+         - Dukungan 18 bahasa
+         - Desain gradien yang indah
+         - Tata letak responsif ramah seluler
+```

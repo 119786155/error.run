@@ -61,3 +61,19 @@ projet personnel pour apprendre, pratiquer et explorer
          - Graphismes pixel art rétro
          - Contrôles tactiles pour support mobile
 ```
+
+## /story
+
+```
+         # Aventure Textuelle
+
+         Ceci est un **jeu d'aventure textuel interactif**
+         avec des histoires ramifiées et des choix
+
+         > Conseil: Faites des choix avec attention - ils importent!
+
+         - Narration ramifiée avec plusieurs fins
+         - Prise en charge de 18 langues
+         - Beau design de gradient
+         - Mise en page responsive conviviale pour mobile
+```

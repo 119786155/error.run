@@ -62,3 +62,20 @@ persönliches Projekt zum Lernen, Üben und Erkunden
          - Retro Pixel-Art-Grafik
          - Touch-Steuerung für mobile Unterstützung
 ```
+
+
+## /story
+
+```
+         # Textabenteuer
+
+         Dies ist ein **interaktives Textabenteuerspiel**
+         mit verzweigten Handlungen und Entscheidungen
+
+         > Tipp: Treffe Entscheidungen sorgfältig - sie zählen!
+
+         - Verzweigte Geschichte mit mehreren Enden
+         - 18 Sprachen-Unterstützung
+         - Schöner Gradient-Design
+         - Mobiler-freundliches responsives Layout
+```

@@ -61,3 +61,20 @@ proyecto personal para aprender, practicar y explorar
          - Gráficos de píxeles estilo retro
          - Controles táctiles para soporte móvil
 ```
+
+
+## /story
+
+```
+         # Aventura de Texto
+
+         Este es un **juego de aventura de texto interactivo**
+         con tramas ramificadas y elecciones
+
+         > Consejo: Haz elecciones cuidadosamente - ¡importan!
+
+         - Narrativa ramificada con múltiples finales
+         - Soporte para 18 idiomas
+         - Hermoso diseño de degradado
+         - Diseño responsive amigable para móviles
+```

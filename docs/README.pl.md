@@ -60,3 +60,19 @@ osobisty projekt do nauki, ćwiczeń i eksploracji
          - Grafika w stylu pixel-art
          - Sterowanie dotykowe dla obsługi mobilnej
 ```
+
+## /story
+
+```
+         # Przygoda Tekstowa
+
+         To jest **interaktywna gra przygodowa tekstowa**
+         z rozgałęzionymi liniami fabuły i wyborami
+
+         > Porada: Podejmuj wybory starannie - one mają znaczenie!
+
+         - Rozgałęzioną historię z wieloma zakończeniami
+         - Obsługa 18 języków
+         - Piękny projekt z gradientem
+         - Responsywny układ przyjazny dla telefonów
+```

@@ -60,3 +60,19 @@
          - Retro piksel sanat grafikleri
          - Mobil destek için dokunmatik kontroller
 ```
+
+## /story
+
+```
+         # Metin Macerası
+
+         Bu, dallanan hikaye satırları ve seçenekleriyle
+         bir **etkileşimli metin macera oyunudur**
+
+         > İpucu: Seçimleri dikkatlice yapın - önemli!
+
+         - Birden fazla sonu olan dallanan anlatı
+         - 18 dil desteği
+         - Güzel degrade tasarımı
+         - Mobil dostu duyarlı düzen
+```

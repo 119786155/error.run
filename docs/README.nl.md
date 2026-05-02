@@ -60,3 +60,19 @@ persoonlijk project voor leren, oefenen en verkennen
          - Retro pixelkunstafbeeldingen
          - Aanraakbesturing voor mobiele ondersteuning
 ```
+
+## /story
+
+```
+         # Tekstavontuur
+
+         Dit is een **interactief tekstavontuurspel**
+         met vertakkende verhaallijnen en keuzes
+
+         > Tip: Maak keuzes zorgvuldig - ze doen ertoe!
+
+         - Vertakkende verhaal met meerdere eindes
+         - Ondersteuning voor 18 talen
+         - Mooi verloopontwerp
+         - Mobielvriendelijke responsieve lay-out
+```

@@ -61,3 +61,19 @@ dự án cá nhân để học tập, thực hành và khám phá
          - Đồ họa pixel art phong cách retro
          - Điều khiển cảm ứng cho hỗ trợ di động
 ```
+
+## /story
+
+```
+         # Phiêu lưu Văn bản
+
+         Đây là một **trò chơi phiêu lưu văn bản tương tác**
+         với cốt truyện phân nhánh và lựa chọn
+
+         > Mẹo: Hãy lựa chọn cẩn thận - chúng quan trọng!
+
+         - Tường thuật phân nhánh với nhiều kết thúc
+         - Hỗ trợ 18 ngôn ngữ
+         - Thiết kế dải màu đẹp
+         - Bố cục phản hồi thân thiện với di động
+```
