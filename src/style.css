@@ -85,3 +85,68 @@
     @apply bg-background text-foreground;
   }
 }
+
+.animated-bg {
+  position: fixed;
+  inset: 0;
+  overflow: visible;
+  background: linear-gradient(
+    135deg,
+    #fef3e2 0%,
+    #fce7f3 25%,
+    #e0e7ff 50%,
+    #fef3e2 75%,
+    #fce7f3 100%
+  );
+  background-size: 400% 400%;
+  animation: bg-shift 40s ease infinite;
+}
+
+.animated-bg .fixed-toolbar,
+.animated-bg [class*="editor"] {
+  background: transparent !important;
+}
+
+.animated-bg #toolbar-container,
+.animated-bg [id*="toolbar"],
+.animated-bg [data-testid="write-page"] [class*="bg-"] {
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+
+.animated-bg [role="toolbar"] button:hover,
+.animated-bg [role="toolbar"] [aria-checked="true"] {
+  background: transparent !important;
+}
+
+@keyframes bg-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 50% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+:is(.dark) .animated-bg {
+  background: linear-gradient(
+    135deg,
+    #1e1b4b 0%,
+    #312e81 20%,
+    #4c1d95 40%,
+    #312e81 60%,
+    #1e1b4b 80%,
+    #312e81 100%
+  );
+  background-size: 400% 400%;
+  animation: bg-shift 40s ease infinite;
+}

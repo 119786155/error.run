@@ -1,5 +1,4 @@
 import { Footer } from '@/components/footer'
-import { PoemMenu } from '@/components/ui/poem-menu'
 import { getContent } from '@/i18n'
 import '@/components/pages/poem.css'
 
@@ -11,7 +10,6 @@ export const Poem = () => {
 
   return (
     <div className="poem">
-      <PoemMenu />
       <div className="poem__content">
         <h1>{getContent('poem.title')}</h1>
         {paragraphs}
