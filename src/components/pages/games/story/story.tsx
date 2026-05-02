@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { getContent } from '@/i18n'
 import '@/components/pages/games/story/story.css'
 
@@ -45,15 +45,11 @@ export const Story = () => {
     },
     treasure: {
       text: 'story.nodes.treasure.text',
-      choices: [
-        { text: 'story.nodes.treasure.choice1', next: 'start' },
-      ],
+      choices: [{ text: 'story.nodes.treasure.choice1', next: 'start' }],
     },
     quest: {
       text: 'story.nodes.quest.text',
-      choices: [
-        { text: 'story.nodes.quest.choice1', next: 'start' },
-      ],
+      choices: [{ text: 'story.nodes.quest.choice1', next: 'start' }],
     },
   }
 
@@ -86,18 +82,11 @@ export const Story = () => {
         </div>
 
         <div className="story-content">
-          <div className="story-text">
-            {getContent(currentStory.text)}
-          </div>
+          <div className="story-text">{getContent(currentStory.text)}</div>
 
           <div className="story-choices">
-            {currentStory.choices.map((choice, index) => (
-              <button
-                key={index}
-                type="button"
-                className="choice-btn"
-                onClick={() => handleChoice(choice.next)}
-              >
+            {currentStory.choices.map((choice) => (
+              <button key={choice.text} type="button" className="choice-btn" onClick={() => handleChoice(choice.next)}>
                 {getContent(choice.text)}
               </button>
             ))}

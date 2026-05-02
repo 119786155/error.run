@@ -13,12 +13,3 @@ export const Route = createFileRoute('/story')({
     }
   },
 })
-import { createFileRoute } from '@tanstack/react-router'
-
-export const Route = createFileRoute('/story')({
-  component: RouteComponent,
-})
-
-function RouteComponent() {
-  return <div>Hello "/story"!</div>
-}

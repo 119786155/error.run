@@ -200,7 +200,7 @@ export const app = {
         ko: '대화형 텍스트 어드벤처 게임',
         ru: 'Интерактивная текстовая игра-пригода',
         de: 'Ein interaktives Textabenteuerspiel',
-        fr: 'Un jeu d\'aventure textuel interactif',
+        fr: "Un jeu d'aventure textuel interactif",
         id: 'Game petualangan teks interaktif',
         vi: 'Một trò chơi phiêu lưu văn bản tương tác',
         tr: 'Etkileşimli bir metin macera oyunu',
