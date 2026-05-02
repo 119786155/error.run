@@ -1,7 +1,7 @@
 # error.run
 dự án cá nhân để học tập, thực hành và khám phá
 
-## Poem
+## /
 
 ```
          BỤI
@@ -12,7 +12,7 @@ dự án cá nhân để học tập, thực hành và khám phá
          Một hơi thở
 ```
 
-## Write
+## /write
 
 ```
          # Bắt Đầu
@@ -29,7 +29,7 @@ dự án cá nhân để học tập, thực hành và khám phá
          - Dữ liệu của bạn được lưu trữ cục bộ
 ```
 
-## Room
+## /room
 
 ```
          # Cộng Tác Thời Gian Thực
@@ -46,7 +46,7 @@ dự án cá nhân để học tập, thực hành và khám phá
          - Không cần đăng ký, cộng tác tức thì
 ```
 
-## Jump
+## /jump
 
 ```
          # Phiêu Lưu Nhảy Pixel

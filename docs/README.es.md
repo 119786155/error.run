@@ -1,7 +1,7 @@
 # error.run
 proyecto personal para aprender, practicar y explorar
 
-## Poem
+## /
 
 ```
          POLVO
@@ -12,7 +12,7 @@ proyecto personal para aprender, practicar y explorar
          Una respiración
 ```
 
-## Write
+## /write
 
 ```
          # Primeros Pasos
@@ -29,7 +29,7 @@ proyecto personal para aprender, practicar y explorar
          - Tus datos se guardan localmente
 ```
 
-## Room
+## /room
 
 ```
          # Colaboración en Tiempo Real
@@ -46,7 +46,7 @@ proyecto personal para aprender, practicar y explorar
          - Sin registro, colaboración instantánea
 ```
 
-## Jump
+## /jump
 
 ```
          # Aventura de Salto de Píxeles

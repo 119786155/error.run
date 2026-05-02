@@ -1,7 +1,7 @@
 # error.run
 persönliches Projekt zum Lernen, Üben und Erkunden
 
-## Poem
+## /
 
 ```
          STAUB
@@ -12,7 +12,7 @@ persönliches Projekt zum Lernen, Üben und Erkunden
          Ein Atemzug
 ```
 
-## Write
+## /write
 
 ```
          # Erste Schritte
@@ -30,7 +30,7 @@ persönliches Projekt zum Lernen, Üben und Erkunden
          - Ihre Daten bleiben lokal
 ```
 
-## Room
+## /room
 
 ```
          # Echtzeit-Zusammenarbeit
@@ -47,7 +47,7 @@ persönliches Projekt zum Lernen, Üben und Erkunden
          - Keine Anmeldung, sofortige Zusammenarbeit
 ```
 
-## Jump
+## /jump
 
 ```
          # Pixel-Sprung-Abenteuer

@@ -21,7 +21,7 @@ personal project for learning, practicing, and exploring
 - [ไทย](docs/README.th.md)
 - [Українська](docs/README.uk.md)
 
-## Poem
+## /
 
 ```
          DUST
@@ -32,7 +32,7 @@ personal project for learning, practicing, and exploring
          One breath
 ```
 
-## Write
+## /write
 
 ```
          # Getting Started
@@ -49,7 +49,7 @@ personal project for learning, practicing, and exploring
          - Your data stays local
 ```
 
-## Room
+## /room
 
 ```
          # Real-time Collaboration
@@ -64,7 +64,7 @@ personal project for learning, practicing, and exploring
          - No sign-up required, instant collaboration
 ```
 
-## Jump
+## /jump
 
 ```
          # Pixel Jump Adventure

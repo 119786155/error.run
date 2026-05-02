@@ -1,7 +1,7 @@
 # error.run
 proyek pribadi untuk belajar, berlatih, dan menjelajah
 
-## Poem
+## /
 
 ```
          DEBU
@@ -12,7 +12,7 @@ proyek pribadi untuk belajar, berlatih, dan menjelajah
          Satu napas
 ```
 
-## Write
+## /write
 
 ```
          # Memulai
@@ -29,7 +29,7 @@ proyek pribadi untuk belajar, berlatih, dan menjelajah
          - Data Anda tetap lokal
 ```
 
-## Room
+## /room
 
 ```
          # Kolaborasi Waktu Nyata
@@ -46,7 +46,7 @@ proyek pribadi untuk belajar, berlatih, dan menjelajah
          - Tidak perlu mendaftar, kolaborasi instan
 ```
 
-## Jump
+## /jump
 
 ```
          # Petualangan Lompat Pixel

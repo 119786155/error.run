@@ -1,7 +1,7 @@
 # error.run
 osobisty projekt do nauki, ćwiczeń i eksploracji
 
-## Poem
+## /
 
 ```
          Pył
@@ -12,7 +12,7 @@ osobisty projekt do nauki, ćwiczeń i eksploracji
          Jeden oddech
 ```
 
-## Write
+## /write
 
 ```
          # Pierwsze kroki
@@ -29,7 +29,7 @@ osobisty projekt do nauki, ćwiczeń i eksploracji
          - Twoje dane pozostają lokalnie
 ```
 
-## Room
+## /room
 
 ```
          # Współpraca w czasie rzeczywistym
@@ -45,7 +45,7 @@ osobisty projekt do nauki, ćwiczeń i eksploracji
          - Bez rejestracji, natychmiastowa współpraca
 ```
 
-## Jump
+## /jump
 
 ```
          # Pixelowa Przygoda ze Skakaniem

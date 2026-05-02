@@ -1,7 +1,7 @@
 # error.run
 persoonlijk project voor leren, oefenen en verkennen
 
-## Poem
+## /
 
 ```
          Stof
@@ -12,7 +12,7 @@ persoonlijk project voor leren, oefenen en verkennen
          Eén ademtocht
 ```
 
-## Write
+## /write
 
 ```
          # Aan de slag
@@ -29,7 +29,7 @@ persoonlijk project voor leren, oefenen en verkennen
          - Uw gegevens blijven lokaal
 ```
 
-## Room
+## /room
 
 ```
          # Real-time Samenwerking
@@ -45,7 +45,7 @@ persoonlijk project voor leren, oefenen en verkennen
          - Geen aanmelding vereist, onmiddellijke samenwerking
 ```
 
-## Jump
+## /jump
 
 ```
          # Pixel Sprong Avontuur

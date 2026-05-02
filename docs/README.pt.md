@@ -1,7 +1,7 @@
 # error.run
 projeto pessoal para aprender, praticar e explorar
 
-## Poem
+## /
 
 ```
          POEIRA
@@ -12,7 +12,7 @@ projeto pessoal para aprender, praticar e explorar
          Uma respiração
 ```
 
-## Write
+## /write
 
 ```
          # Começando
@@ -29,7 +29,7 @@ projeto pessoal para aprender, praticar e explorar
          - Seus dados permanecem localmente
 ```
 
-## Room
+## /room
 
 ```
          # Colaboração em Tempo Real
@@ -46,7 +46,7 @@ projeto pessoal para aprender, praticar e explorar
          - Sem cadastro, colaboração instantânea
 ```
 
-## Jump
+## /jump
 
 ```
          # Aventura de Salto de Pixels

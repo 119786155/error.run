@@ -1,7 +1,7 @@
 # error.run
 öğrenme, alıştırma ve keşif için kişisel proje
 
-## Poem
+## /
 
 ```
          Toz
@@ -12,7 +12,7 @@
          Bir nefes
 ```
 
-## Write
+## /write
 
 ```
          # Başlarken
@@ -29,7 +29,7 @@
          - Verileriniz yerel kalır
 ```
 
-## Room
+## /room
 
 ```
          # Gerçek Zamanlı İşbirliği
@@ -45,7 +45,7 @@
          - Kayıt gerektirmez, anlık işbirliği
 ```
 
-## Jump
+## /jump
 
 ```
          # Piksel Zıplama Macerası
