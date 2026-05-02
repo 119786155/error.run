@@ -107,34 +107,65 @@ export const Jump = () => {
             if (key === 'right') btnRight?.classList.remove('active')
           }
 
-          if (btnLeft) {
-            btnLeft.addEventListener('mousedown', () => {
-              this.input.left = true
+          const setupSwipeButton = (
+            btn: HTMLElement | null,
+            direction: 'left' | 'right',
+            oppositeDirection: 'left' | 'right',
+          ) => {
+            if (!btn) return
+            let startX = 0
+            const swipeThreshold = 30
+
+            const handleStart = (e: TouchEvent) => {
+              startX = e.touches[0].clientX
+              this.input[direction] = true
+              btn.classList.add('active')
+            }
+
+            const handleMove = (e: TouchEvent) => {
+              const currentX = e.touches[0].clientX
+              const deltaX = currentX - startX
+              if (direction === 'left' && deltaX > swipeThreshold) {
+                this.input[direction] = false
+                this.input[oppositeDirection] = true
+                btn.classList.remove('active')
+                if (btnRight) btnRight.classList.add('active')
+              } else if (direction === 'right' && deltaX < -swipeThreshold) {
+                this.input[direction] = false
+                this.input[oppositeDirection] = true
+                btn.classList.remove('active')
+                if (btnLeft) btnLeft.classList.add('active')
+              }
+            }
+
+            const handleEnd = () => {
+              this.input[direction] = false
+              this.input[oppositeDirection] = false
+              btn.classList.remove('active')
+              if (btnRight) btnRight.classList.remove('active')
+              if (btnLeft) btnLeft.classList.remove('active')
+            }
+
+            btn.addEventListener('mousedown', () => {
+              this.input[direction] = true
+              btn.classList.add('active')
             })
-            btnLeft.addEventListener('mouseup', () => {
-              this.input.left = false
+            btn.addEventListener('mouseup', () => {
+              this.input[direction] = false
+              btn.classList.remove('active')
             })
-            btnLeft.addEventListener('mouseleave', () => {
-              this.input.left = false
+            btn.addEventListener('mouseleave', () => {
+              this.input[direction] = false
+              btn.classList.remove('active')
             })
-            btnLeft.addEventListener('touchstart', handleTouchStart('left'), { passive: false })
-            btnLeft.addEventListener('touchend', handleTouchEnd('left'), { passive: false })
-            btnLeft.addEventListener('touchcancel', handleTouchEnd('left'), { passive: false })
+            btn.addEventListener('touchstart', handleStart, { passive: false })
+            btn.addEventListener('touchmove', handleMove, { passive: false })
+            btn.addEventListener('touchend', handleEnd, { passive: false })
+            btn.addEventListener('touchcancel', handleEnd, { passive: false })
           }
-          if (btnRight) {
-            btnRight.addEventListener('mousedown', () => {
-              this.input.right = true
-            })
-            btnRight.addEventListener('mouseup', () => {
-              this.input.right = false
-            })
-            btnRight.addEventListener('mouseleave', () => {
-              this.input.right = false
-            })
-            btnRight.addEventListener('touchstart', handleTouchStart('right'), { passive: false })
-            btnRight.addEventListener('touchend', handleTouchEnd('right'), { passive: false })
-            btnRight.addEventListener('touchcancel', handleTouchEnd('right'), { passive: false })
-          }
+
+          setupSwipeButton(btnLeft, 'left', 'right')
+          setupSwipeButton(btnRight, 'right', 'left')
           if (btnJump) {
             btnJump.addEventListener('mousedown', () => {
               this.input.jump = true
@@ -403,11 +434,39 @@ export const Jump = () => {
         </div>
         <div id="mobile-controls">
           <div id="dpad">
-            <button id="btn-left" type="button" className="ctrl-btn">
-              ←
+            <button id="btn-left" type="button" className="ctrl-btn swipe-btn">
+              <span className="swipe-icon">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  role="img"
+                  aria-label="Previous"
+                >
+                  <path d="M19 12H5M12 19l-7-7 7-7" className="arrow-main" />
+                  <path d="M19 12H5M12 5l-7 7 7 7" className="arrow-hint" />
+                </svg>
+              </span>
             </button>
-            <button id="btn-right" type="button" className="ctrl-btn">
-              →
+            <button id="btn-right" type="button" className="ctrl-btn swipe-btn">
+              <span className="swipe-icon">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  role="img"
+                  aria-label="Next"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" className="arrow-main" />
+                  <path d="M5 12h14M12 19l7-7-7-7" className="arrow-hint" />
+                </svg>
+              </span>
             </button>
           </div>
           <button id="btn-jump" type="button" className="ctrl-btn jump">
