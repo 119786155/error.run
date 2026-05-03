@@ -1,3 +1,5 @@
+import * as fs from 'node:fs'
+import * as path from 'node:path'
 import type { Page } from '@playwright/test'
 import { expect, test } from '@playwright/test'
 
@@ -521,5 +523,66 @@ test.describe('Media Upload', () => {
     await page.waitForTimeout(500)
     const kbds = page.locator('.slate-kbd')
     await expect(kbds).toHaveCount(1)
+  })
+})
+
+// ==================== IMPORT/EXPORT ====================
+
+test.describe('Import JSON', () => {
+  test('should import JSON file with excalidraw content without error', async ({ page }) => {
+    const consoleErrors: string[] = []
+    const consoleWarnings: string[] = []
+
+    page.on('console', (msg) => {
+      if (msg.type() === 'error') {
+        consoleErrors.push(msg.text())
+      } else if (msg.type() === 'warning') {
+        consoleWarnings.push(msg.text())
+      }
+    })
+
+    await page.goto(`${BASE_URL}/write`)
+    await page.waitForSelector('[data-testid="editor"]')
+
+    const __dirname = path.dirname(new URL(import.meta.url).pathname).replace(/^\/([A-Za-z])\//, '$1:/')
+    const jsonFilePath = path.join(__dirname, '../../test/fixtures/1.json')
+    const jsonContent = fs.readFileSync(jsonFilePath, 'utf-8')
+
+    await page.evaluate((json: string) => {
+      const event = new CustomEvent('import-json-test', { detail: json })
+      document.dispatchEvent(event)
+    }, jsonContent)
+
+    await page.waitForTimeout(3000)
+
+    if (consoleErrors.length > 0) {
+      console.log('=== Console Errors ===')
+      consoleErrors.forEach((err, index) => {
+        console.log(`${index + 1}. ${err}`)
+      })
+    }
+
+    if (consoleWarnings.length > 0) {
+      console.log('=== Console Warnings ===')
+      consoleWarnings.forEach((warn, index) => {
+        console.log(`${index + 1}. ${warn}`)
+      })
+    }
+
+    const excalidrawElements = page.locator('.slate-excalidraw')
+    const excalidrawCount = await excalidrawElements.count()
+    console.log(`Excalidraw elements found: ${excalidrawCount}`)
+
+    const hasErrors = consoleErrors.some(
+      (err) =>
+        err.includes('excalidraw') ||
+        err.includes('Cannot read') ||
+        err.includes('undefined') ||
+        err.includes('is not a function') ||
+        err.includes('TypeError'),
+    )
+
+    expect(hasErrors).toBe(false)
+    expect(excalidrawCount).toBeGreaterThan(0)
   })
 })

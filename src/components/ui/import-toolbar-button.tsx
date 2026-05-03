@@ -19,6 +19,11 @@ import { ToolbarButton } from './toolbar'
 
 type ImportType = 'html' | 'markdown' | 'json'
 
+interface JsonNode {
+  type?: string
+  data?: { state?: { collaborators?: unknown } }
+}
+
 export function ImportToolbarButton(props: DropdownMenuProps) {
   const editor = useEditorRef()
   const [open, setOpen] = React.useState(false)
@@ -38,11 +43,38 @@ export function ImportToolbarButton(props: DropdownMenuProps) {
     }
 
     if (type === 'json') {
-      return JSON.parse(text)
+      const data = JSON.parse(text)
+      data.forEach((node: JsonNode) => {
+        if (node.type === 'excalidraw' && node.data && node.data.state) {
+          if (node.data.state.collaborators && !Array.isArray(node.data.state.collaborators)) {
+            node.data.state.collaborators = []
+          }
+        }
+      })
+      return data
     }
 
     return []
   }
+
+  const importJsonContent = (text: string) => {
+    const nodes = getFileNodes(text, 'json')
+    editor.tf.insertNodes(nodes)
+  }
+
+  React.useEffect(() => {
+    const handleImportTest = (event: Event) => {
+      const json = (event as CustomEvent).detail
+      if (json) {
+        importJsonContent(json)
+      }
+    }
+
+    document.addEventListener('import-json-test', handleImportTest)
+    return () => {
+      document.removeEventListener('import-json-test', handleImportTest)
+    }
+  }, [])
 
   const { openFilePicker: openMdFilePicker } = useFilePicker({
     accept: ['.md', '.mdx'],
