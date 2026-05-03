@@ -15,7 +15,7 @@ export default defineConfig({
   plugins: [react()],
   test: {
     environment: 'jsdom',
-    setupFiles: './src/setupTests.ts',
+    setupFiles: './test/setupTests.ts',
     include: ['test/unittest/**/*.test.ts', 'test/unittest/**/*.test.tsx'],
     exclude: ['test/**/*.e2e.test.ts', 'test/**/*.e2e.test.tsx', 'node_modules'],
     coverage: {
