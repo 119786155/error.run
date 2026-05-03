@@ -73,7 +73,7 @@ export const Story = () => {
   const currentStory = storyNodes[currentNode as keyof typeof storyNodes]
 
   return (
-    <div className="story-wrapper animated-bg">
+    <div className="story-wrapper">
       <div className="story-container">
         <div className="story-header">
           <h1>{getContent('story.title')}</h1>

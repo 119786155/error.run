@@ -13,7 +13,7 @@ export const Poem = () => {
   })
 
   return (
-    <div className="poem animated-bg">
+    <div className="poem">
       <div className="poem__theme-toggle">
         <Button variant="ghost" size="icon" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
           <SunMoon className="scale-100 rotate-0 transition-all dark:-rotate-180" />

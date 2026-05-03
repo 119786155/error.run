@@ -12,34 +12,21 @@ test('write page loads and editor initializes', async ({ page }) => {
   expect(await page.isVisible('[data-testid="editor"]')).toBe(true)
 })
 
-// Helper function to open slash menu and insert a block
 async function insertBlock(page: Page, searchText: string) {
-  // Click on the editor to focus
   await page.click('[data-slate-editor="true"]')
-  // Type slash to open the menu
   await page.keyboard.type('/')
-  // Wait for the combobox popover to appear
   await page.waitForSelector('[role="listbox"]', { timeout: 5000 })
-  // Type to search for the block
   await page.keyboard.type(searchText)
-  // Wait a bit for filtering
   await page.waitForTimeout(300)
-  // Press Enter to select the first option
   await page.keyboard.press('Enter')
-  // Wait for the block to be inserted
   await page.waitForTimeout(500)
 }
 
-// Helper function to select a block and delete it using keyboard shortcut
 async function deleteBlock(page: Page, selector: string) {
-  // Click on the block to select it
   await page.click(selector)
-  // Wait for selection
   await page.waitForTimeout(200)
-  // Select all content in the block
   await page.keyboard.press('Control+a')
   await page.waitForTimeout(100)
-  // Press Delete to remove the block
   await page.keyboard.press('Delete')
   await page.waitForTimeout(200)
 }
@@ -50,7 +37,7 @@ test.describe('Paragraph Block', () => {
   test('should add paragraph block', async ({ page }) => {
     await insertBlock(page, 'paragraph')
     const paragraphs = page.locator('.slate-p')
-    await expect(paragraphs).toHaveCount(2) // default + inserted
+    await expect(paragraphs).toHaveCount(2)
   })
 
   test('should delete paragraph block', async ({ page }) => {
@@ -269,7 +256,6 @@ test.describe('Equation Block', () => {
 
   test('should delete equation block', async ({ page }) => {
     await insertBlock(page, 'equation')
-    // Equation block has contentEditable=false, so we need to position cursor before it and press Delete twice
     await page.click('[data-slate-editor="true"]')
     await page.waitForTimeout(200)
     await page.keyboard.press('ArrowDown')
@@ -278,7 +264,6 @@ test.describe('Equation Block', () => {
     await page.waitForTimeout(200)
     await page.keyboard.press('End')
     await page.waitForTimeout(200)
-    // First Delete removes the empty paragraph, second Delete removes the equation
     await page.keyboard.press('Delete')
     await page.waitForTimeout(200)
     await page.keyboard.press('Delete')
@@ -297,7 +282,6 @@ test.describe('Excalidraw Block', () => {
 
   test('should delete excalidraw block', async ({ page }) => {
     await insertBlock(page, 'whiteboard')
-    // Excalidraw block has contentEditable=false, so we need to position cursor before it and press Delete twice
     await page.click('[data-slate-editor="true"]')
     await page.waitForTimeout(200)
     await page.keyboard.press('ArrowDown')
@@ -306,7 +290,6 @@ test.describe('Excalidraw Block', () => {
     await page.waitForTimeout(200)
     await page.keyboard.press('End')
     await page.waitForTimeout(200)
-    // First Delete removes the empty paragraph, second Delete removes the excalidraw
     await page.keyboard.press('Delete')
     await page.waitForTimeout(200)
     await page.keyboard.press('Delete')
@@ -339,7 +322,6 @@ test.describe('Date Inline Element', () => {
     await page.waitForTimeout(300)
     await page.keyboard.press('Enter')
     await page.waitForTimeout(500)
-    // Date inline element needs special handling: focus editor, go to end, press Backspace twice
     await page.click('[data-slate-editor="true"]')
     await page.waitForTimeout(200)
     await page.keyboard.press('End')
@@ -374,7 +356,6 @@ test.describe('Keyboard Input Inline Element', () => {
     await page.waitForTimeout(300)
     await page.keyboard.press('Enter')
     await page.waitForTimeout(500)
-    // KBD inline element needs special handling: focus editor, go to end, press Delete
     await page.click('[data-slate-editor="true"]')
     await page.waitForTimeout(200)
     await page.keyboard.press('End')
@@ -393,16 +374,10 @@ test.describe('Text Formatting', () => {
     await page.click('[data-slate-editor="true"]')
     await page.keyboard.type('Hello World')
     await page.waitForTimeout(200)
-
-    // Select all text
     await page.keyboard.press('Control+a')
     await page.waitForTimeout(200)
-
-    // Toggle bold using keyboard shortcut
     await page.keyboard.press('Control+b')
     await page.waitForTimeout(300)
-
-    // Verify editor still contains text (formatting applied)
     const editorContent = await page.locator('[data-slate-editor="true"]').textContent()
     expect(editorContent).toContain('Hello World')
   })
@@ -411,13 +386,10 @@ test.describe('Text Formatting', () => {
     await page.click('[data-slate-editor="true"]')
     await page.keyboard.type('Hello World')
     await page.waitForTimeout(200)
-
     await page.keyboard.press('Control+a')
     await page.waitForTimeout(200)
     await page.keyboard.press('Control+i')
     await page.waitForTimeout(300)
-
-    // Verify editor still contains text
     const editorContent = await page.locator('[data-slate-editor="true"]').textContent()
     expect(editorContent).toContain('Hello World')
   })
@@ -426,12 +398,10 @@ test.describe('Text Formatting', () => {
     await page.click('[data-slate-editor="true"]')
     await page.keyboard.type('Hello World')
     await page.waitForTimeout(200)
-
     await page.keyboard.press('Control+a')
     await page.waitForTimeout(200)
     await page.keyboard.press('Control+u')
     await page.waitForTimeout(300)
-
     const editorContent = await page.locator('[data-slate-editor="true"]').textContent()
     expect(editorContent).toContain('Hello World')
   })
@@ -440,12 +410,10 @@ test.describe('Text Formatting', () => {
     await page.click('[data-slate-editor="true"]')
     await page.keyboard.type('Hello World')
     await page.waitForTimeout(200)
-
     await page.keyboard.press('Control+a')
     await page.waitForTimeout(200)
     await page.keyboard.press('Control+Shift+x')
     await page.waitForTimeout(300)
-
     const editorContent = await page.locator('[data-slate-editor="true"]').textContent()
     expect(editorContent).toContain('Hello World')
   })
@@ -458,15 +426,10 @@ test.describe('Link Functionality', () => {
     await page.click('[data-slate-editor="true"]')
     await page.keyboard.type('Click me')
     await page.waitForTimeout(200)
-
     await page.keyboard.press('Control+a')
     await page.waitForTimeout(200)
-
-    // Use keyboard shortcut for link
     await page.keyboard.press('Control+k')
     await page.waitForTimeout(500)
-
-    // Check if link toolbar appears
     const linkToolbar = page.locator('[data-plate-focus]')
     await expect(linkToolbar).toBeVisible()
   })
@@ -475,25 +438,16 @@ test.describe('Link Functionality', () => {
     await page.click('[data-slate-editor="true"]')
     await page.keyboard.type('Click me')
     await page.waitForTimeout(200)
-
     await page.keyboard.press('Control+a')
     await page.waitForTimeout(200)
-
-    // Use keyboard shortcut for link
     await page.keyboard.press('Control+k')
     await page.waitForTimeout(500)
-
-    // Check if link toolbar appears and interact with it
     const urlInput = page.locator('[data-plate-focus][placeholder*="link"]')
     if (await urlInput.isVisible()) {
       await urlInput.fill('https://example.com')
       await page.waitForTimeout(200)
-
-      // Press Escape to close toolbar (link should be inserted)
       await page.keyboard.press('Escape')
       await page.waitForTimeout(500)
-
-      // Verify editor still contains text
       const editorContent = await page.locator('[data-slate-editor="true"]').textContent()
       expect(editorContent).toContain('Click me')
     } else {
@@ -513,16 +467,10 @@ test.describe('Theme Switching', () => {
   test('should toggle from light to dark theme', async ({ page }) => {
     const toggleButton = page.locator('[data-testid="theme-toggle"]').first()
     await expect(toggleButton).toBeVisible()
-
-    // Initially light: html should NOT have 'dark' class
     const initialHtmlClass = await page.locator('html').getAttribute('class')
     expect(initialHtmlClass).not.toContain('dark')
-
-    // Click to toggle to dark
     await toggleButton.click()
     await page.waitForTimeout(500)
-
-    // Verify dark class is applied
     const darkHtmlClass = await page.locator('html').getAttribute('class')
     expect(darkHtmlClass).toContain('dark')
   })
@@ -530,33 +478,21 @@ test.describe('Theme Switching', () => {
   test('should toggle from dark to light theme', async ({ page }) => {
     const toggleButton = page.locator('[data-testid="theme-toggle"]').first()
     await expect(toggleButton).toBeVisible()
-
-    // Toggle to dark
     await toggleButton.click()
     await page.waitForTimeout(500)
     expect(await page.locator('html').getAttribute('class')).toContain('dark')
-
-    // Toggle back to light
     await toggleButton.click()
     await page.waitForTimeout(500)
-
-    // Verify dark class is removed
     const htmlClass = await page.locator('html').getAttribute('class')
     expect(htmlClass).not.toContain('dark')
   })
 
   test('should persist theme preference after reload', async ({ page }) => {
     const toggleButton = page.locator('[data-testid="theme-toggle"]').first()
-
-    // Toggle to dark
     await toggleButton.click()
     await page.waitForTimeout(500)
-
-    // Reload the page
     await page.reload()
     await page.waitForSelector('[data-testid="editor"]')
-
-    // Verify dark theme is still active
     const htmlClass = await page.locator('html').getAttribute('class')
     expect(htmlClass).toContain('dark')
   })
@@ -568,14 +504,10 @@ test.describe('Media Upload', () => {
   test('should insert date inline element using slash command', async ({ page }) => {
     await page.click('[data-slate-editor="true"]')
     await page.waitForTimeout(200)
-
-    // Use slash menu to insert date
     await page.keyboard.type('/date')
     await page.waitForSelector('[role="listbox"]', { timeout: 5000 })
     await page.keyboard.press('Enter')
     await page.waitForTimeout(500)
-
-    // Verify date element is inserted
     const dates = page.locator('.slate-date')
     await expect(dates).toHaveCount(1)
   })
@@ -583,12 +515,10 @@ test.describe('Media Upload', () => {
   test('should insert keyboard inline element using slash command', async ({ page }) => {
     await page.click('[data-slate-editor="true"]')
     await page.waitForTimeout(200)
-
     await page.keyboard.type('/kbd')
     await page.waitForSelector('[role="listbox"]', { timeout: 5000 })
     await page.keyboard.press('Enter')
     await page.waitForTimeout(500)
-
     const kbds = page.locator('.slate-kbd')
     await expect(kbds).toHaveCount(1)
   })
