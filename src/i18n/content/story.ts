@@ -1,460 +1,208 @@
 export const story = {
   title: {
-    zh: '文字冒险',
-    en: 'Text Adventure',
-    es: 'Aventura de Texto',
-    hi: 'पाठ साहसिक',
-    ar: 'مغامرة نصية',
-    pt: 'Aventura de Texto',
-    ja: 'テキストアドベンチャー',
-    ko: '텍스트 어드벤처',
-    ru: 'Текстовая Пригода',
-    de: 'Textabenteuer',
-    fr: 'Aventure Textuelle',
-    id: 'Petualangan Teks',
-    vi: 'Phiêu lưu Văn bản',
-    tr: 'Metin Macerası',
-    nl: 'Tekstavontuur',
-    pl: 'Przygoda Tekstowa',
-    th: 'ผจญภัยข้อความ',
-    uk: 'Текстова пригода',
+    zh: '雾林寻踪',
   },
   subtitle: {
-    zh: '一个互动式文字冒险游戏',
-    en: 'An interactive text adventure game',
-    es: 'Un juego de aventura de texto interactivo',
-    hi: 'एक इंटरएक्टिव पाठ साहसिक खेल',
-    ar: 'لعبة مغامرة نصية تفاعلية',
-    pt: 'Um jogo de aventura de texto interativo',
-    ja: 'インタラクティブなテキストアドベンチャーゲーム',
-    ko: '대화형 텍스트 어드벤처 게임',
-    ru: 'Интерактивная текстовая игра-пригода',
-    de: 'Ein interaktives Textabenteuerspiel',
-    fr: "Un jeu d'aventure textuel interactif",
-    id: 'Game petualangan teks interaktif',
-    vi: 'Một trò chơi phiêu lưu văn bản tương tác',
-    tr: 'Etkileşimli bir metin macera oyunu',
-    nl: 'Een interactief tekstavontuurspel',
-    pl: 'Interaktywna gra przygodowa tekstowa',
-    th: 'เกมผจญภัยข้อความแบบโต้ตอบ',
-    uk: 'Інтерактивна текстова гра-пригода',
-  },
-  nodes: {
-    start: {
-      text: {
-        zh: '你站在一个神秘的十字路口。前方是一片茂密的森林，右边是一个宁静的村庄。你将选择哪条路？',
-        en: 'You stand at a mysterious crossroads. Ahead is a dense forest, to the right is a peaceful village. Which path will you choose?',
-        es: 'Estás en una encrucijada misteriosa. Adelante hay un bosque denso, a la derecha hay un pueblo tranquilo. ¿Qué camino elegirás?',
-        hi: 'आप एक रहस्यमय चौराहे पर खड़े हैं। आगे एक घना जंगल है, दाईं ओर एक शांतिपूर्ण गांव है। आप कौन सा रास्ता चुनेंगे?',
-        ar: 'أنت تقف عند تقاطع غامض. أمامك غابة كثيفة، إلى اليمين قرية هادئة. أي طريق ستختار؟',
-        pt: 'Você está em uma encruzilhada misteriosa. À frente uma floresta densa, à direita uma aldeia pacífica. Qual caminho você escolherá?',
-        ja: 'あなたは不思議な交差点に立っています。前方は豊かな森、右は静かな村です。どの道を選びますか？',
-        ko: '당신은 신비로운 교차로에 서 있습니다. 앞은 울창한 숲, 오른쪽은 평화로운 마을입니다. 어느 길을 선택하시겠습니까?',
-        ru: 'Вы стоите на загадочном перекрестке. Впереди густой лес, справа тихая деревня. Какой путь вы выберете?',
-        de: 'Du stehst an einem mysteriösen Kreuzweg. Vor dir ein dichter Wald, rechts ein friedliches Dorf. Welchen Weg wählst du?',
-        fr: 'Vous vous trouvez à un carrefour mystérieux. Devant vous une forêt dense, à droite un village paisible. Quel chemin allez-vous choisir?',
-        id: 'Anda berdiri di persimpangan jalan misterius. Di depan hutan lebat, sebelah kanan desa yang damai. Jalan mana yang akan Anda pilih?',
-        vi: 'Bạn đang đứng ở ngã tư bí ẩn. Phía trước là rừng rậm, bên phải là làng yên bình. Bạn sẽ chọn con đường nào?',
-        tr: 'Gizemli bir kavşakta duruyorsunuz. Önünüzde yoğun bir orman, sağınızda huzurlu bir köy var. Hangi yolu seçeceksiniz?',
-        nl: 'Je staat op een mysterieuze kruising. Voor je een dicht bos, rechts een vredig dorp. Welk pad kies je?',
-        pl: 'Stoisz na tajemniczym skrzyżowaniu. Przed tobą gęsty las, po prawej spokojna wieś. Którą ścieżkę wybierzesz?',
-        th: 'คุณกำลังยืนอยู่ที่ทางแยกลึกลับ ข้างหน้าเป็นป่าใหญ่ ขวามือเป็นหมู่บ้านที่เงียบสงบ คุณจะเลือกทางไหน?',
-        uk: 'Ви стоїте на загадковому перехресті. Перед вами густий ліс, справа тиха село. Який шлях ви оберете?',
-      },
-      choice1: {
-        zh: '走进森林',
-        en: 'Enter the forest',
-        es: 'Entrar al bosque',
-        hi: 'जंगल में प्रवेश करें',
-        ar: 'الدخول إلى الغابة',
-        pt: 'Entrar na floresta',
-        ja: '森に入る',
-        ko: '숲에 들어가다',
-        ru: 'Войти в лес',
-        de: 'Den Wald betreten',
-        fr: 'Entrer dans la forêt',
-        id: 'Masuk ke hutan',
-        vi: 'Đi vào rừng',
-        tr: 'Ormana gir',
-        nl: 'Het bos ingaan',
-        pl: 'Wejdź do lasu',
-        th: 'เข้าไปในป่า',
-        uk: 'Увійти в ліс',
-      },
-      choice2: {
-        zh: '前往村庄',
-        en: 'Go to the village',
-        es: 'Ir al pueblo',
-        hi: 'गांव जाएं',
-        ar: 'الذهاب إلى القرية',
-        pt: 'Ir à aldeia',
-        ja: '村に行く',
-        ko: '마을에 가다',
-        ru: 'Пойти в деревню',
-        de: 'Zum Dorf gehen',
-        fr: 'Aller au village',
-        id: 'Pergi ke desa',
-        vi: 'Đi đến làng',
-        tr: 'Köye git',
-        nl: 'Naar het dorp gaan',
-        pl: 'Idź do wsi',
-        th: 'ไปที่หมู่บ้าน',
-        uk: 'Піти в село',
-      },
-    },
-    forest: {
-      text: {
-        zh: '你踏入了茂密的森林。阳光透过树叶洒下斑驳的光影，空气中弥漫着花香。远处似乎有一个洞穴的入口...',
-        en: 'You step into the dense forest. Sunlight filters through the leaves in dappled patterns, and the air is filled with the scent of flowers. There seems to be a cave entrance in the distance...',
-        es: 'Te adentras en el denso bosque. La luz del sol se filtra a través de las hojas en patrones moteados, y el aire está lleno del aroma de las flores. Parece haber una entrada a una cueva en la distancia...',
-        hi: 'आप घने जंगल में प्रवेश करते हैं। सूर्य का प्रकाश पत्तियों के माध्यम से धुंधले पैटर्न में गुजरता है, और हवा फूलों की सुगंध से भरी हुई है। दूरी में एक गुफा का प्रवेश द्वार लगता है...',
-        ar: 'تدخل الغابة الكثيفة. يضوء الشمس من خلال الأوراق في أنماط مرققة، ويملأ الهواء برائحة الأزهار. يبدو أن هناك مدخل للكهف في المسافة...',
-        pt: 'Você entra na floresta densa. A luz do sol filtra pelas folhas em padrões salpicados, e o ar está cheio do perfume das flores. Parece haver uma entrada de caverna à distância...',
-        ja: 'あなたは豊かな森に足を踏み入れます。太陽の光が葉を通して斑紋のパターンでフィルタリングされ、空気は花の香りでいっぱいです。遠くには洞窟の入口があるようです...',
-        ko: '당신은 울창한 숲에 발을 들입니다. 햇살이 잎을 통해 얼룩진 패턴으로 필터링되고, 공기는 꽃향기로 가득합니다. 먼 곳에 동굴 입구가 있는 것 같습니다...',
-        ru: 'Вы входите в густой лес. Солнечный свет фильтруется через листья в пятнистых узорах, и воздух наполнен ароматом цветов. Кажется, есть вход в пещеру на расстоянии...',
-        de: 'Du trittst in den dichten Wald. Sonnenlicht filtert durch die Blätter in getupften Mustern, und die Luft ist gefüllt mit dem Duft von Blumen. Es scheint eine Höhlenöffnung in der Ferne zu geben...',
-        fr: "Vous entrez dans la forêt dense. La lumière du soleil filtre à travers les feuilles en motifs tachetés, et l'air est empli de l'odeur des fleurs. Il semble y avoir une entrée de grotte au loin...",
-        id: 'Anda memasuki hutan lebat. Cahaya matahari menyaring melalui daun dalam pola bintik-bintik, dan udara penuh dengan aroma bunga. Sepertinya ada pintu masuk gua di kejauhan...',
-        vi: 'Bạn bước vào rừng rậm. Ánh mặt trời lọc qua lá thành những đốm sáng, và không khí tràn ngập hương hoa. Có vẻ có một lối vào hang ở xa...',
-        tr: 'Yoğun ormana girdiniz. Güneş ışığı yapraklardan geçerek lekeli desenler oluşturur ve hava çiçek kokusuyla dolar. Uzakta bir mağara girişi görünüyor gibi...',
-        nl: 'Je stapt het dichte bos in. Zonlicht filtert door de bladeren in gevlekte patronen en de lucht is gevuld met de geur van bloemen. Er lijkt een grotingang in de verte te zijn...',
-        pl: 'Wchodzisz w gęsty las. Słońce przesącza się przez liście w plamkowanych wzorach, a powietrze jest wypełnione zapachem kwiatów. Wydaje się, że w oddali jest wejście do jaskini...',
-        th: 'คุณก้าวเข้าไปในป่าใหญ่ แสงแดดส่องผ่านใบไม้เป็นรอยเปื้อน อากาศเต็มไปด้วยกลิ่นดอกไม้ ดูเหมือนจะมีทางเข้าไปยังถ้ำในระยะไกล...',
-        uk: 'Ви входите в густий ліс. Сонячне світло фільтрується через листя в плямистій картині, а повітря наповнене ароматом квітів. Здається, на відстані є вхід у печеру...',
-      },
-      choice1: {
-        zh: '返回路口',
-        en: 'Return to crossroads',
-        es: 'Regresar a la encrucijada',
-        hi: 'चौराहे पर लौटें',
-        ar: 'العودة إلى التقاطع',
-        pt: 'Voltar à encruzilhada',
-        ja: '交差点に戻る',
-        ko: '교차로로 돌아가다',
-        ru: 'Вернуться к перекрестку',
-        de: 'Zurück zum Kreuzweg',
-        fr: 'Revenir au carrefour',
-        id: 'Kembali ke persimpangan',
-        vi: 'Quay lại ngã tư',
-        tr: 'Kavşağa dön',
-        nl: 'Terug naar de kruising',
-        pl: 'Wróć do skrzyżowania',
-        th: 'กลับไปที่ทางแยก',
-        uk: 'Повернутися до перехресту',
-      },
-      choice2: {
-        zh: '探索洞穴',
-        en: 'Explore the cave',
-        es: 'Explorar la cueva',
-        hi: 'गुफा का पता लगाएं',
-        ar: 'استكشاف الكهف',
-        pt: 'Explorar a caverna',
-        ja: '洞窟を探索する',
-        ko: '동굴을 탐험하다',
-        ru: 'Исследовать пещеру',
-        de: 'Die Höhle erkunden',
-        fr: 'Explorer la grotte',
-        id: 'Jelajahi gua',
-        vi: 'Khám phá hang',
-        tr: 'Mağarayı keşfet',
-        nl: 'De grot verkennen',
-        pl: 'Eksploruj jaskinię',
-        th: 'สำรวจถ้ำ',
-        uk: 'Дослідити печеру',
-      },
-    },
-    village: {
-      text: {
-        zh: '你来到了宁静的村庄。村民们友好地向你打招呼，空气中飘来面包店的香气。村里的酒馆看起来很热闹...',
-        en: 'You arrive at the peaceful village. Villagers greet you warmly, and the aroma from the bakery fills the air. The village tavern looks lively...',
-        es: 'Llegas al pueblo tranquilo. Los aldeanos te saludan cálidamente, y el aroma de la panadería llena el aire. La taberna del pueblo se ve animada...',
-        hi: 'आप शांतिपूर्ण गांव में पहुंचते हैं। गांववाले आपको उत्साहपूर्वक नमस्कार करते हैं, और बेकरी की सुगंध हवा में भर जाती है। गांव की टैवर्न जीवंत दिखती है...',
-        ar: 'تصل إلى القرية الهادئة. ي salutك أهل القرية بحارة، ويرحب بكم رائحة المخبز في الهواء. تبدو الطاوحة الحيوية...',
-        pt: 'Você chega à aldeia pacífica. Os aldeões o cumprimentam calorosamente, e o aroma da padaria enche o ar. A taberna da aldeia parece animada...',
-        ja: 'あなたは静かな村に到着します。村民たちは暖かく挨拶し、ベーカリーの香りが空気に充満します。村の酒場は活気があるようです...',
-        ko: '당신은 평화로운 마을에 도착합니다. 마을 사람들은 따뜻하게 인사하고, 베이커리의 향기가 공기를 채웁니다. 마을 주점은 활기찬 것 같습니다...',
-        ru: 'Вы приезжаете в тихую деревню. Деревенцы приветствуют вас тепло, и аромат из пекарни наполняет воздух. Деревенская таверна выглядит живой...',
-        de: 'Du kommst im friedlichen Dorf an. Die Dorfbewohner begrüßen dich herzlich, und der Duft von der Bäckerei erfüllt die Luft. Die Dorfkneipe sieht lebendig aus...',
-        fr: "Vous arrivez dans le village paisible. Les villageois vous accueillent chaleureusement, et l'odeur de la boulangerie remplit l'air. La taverne du village semble animée...",
-        id: 'Anda tiba di desa yang damai. Warga desa menyambut Anda hangat, dan aroma dari toko roti mengisi udara. Warung desa terlihat hidup...',
-        vi: 'Bạn đến làng yên bình. Người dân làng chào bạn nhiệt tình, và hương thơm từ tiệm bánh mì tràn ngập không khí. Quán rượu làng có vẻ sôi động...',
-        tr: 'Huzurlu köye varırsınız. Köylüler sizi sıcak bir şekilde karşılar ve fırından gelen koku havayı doldurur. Köy meyhanesi canlı görünüyor...',
-        nl: 'Je komt aan in het vredige dorp. De dorpelingen begroeten je warm, en de geur van de bakkerij vult de lucht. De dorpsherberg ziet er levendig uit...',
-        pl: 'Przybywasz do spokojnej wsi. wieśniacy witają cię gorąco, a zapach z piekarni wypełnia powietrze. wieśna tawerna wydaje się żywa...',
-        th: 'คุณมาถึงหมู่บ้านที่เงียบสงบ ชาวบ้านทักทายคุณอย่างอบอุ่น และกลิ่นจากร้านขนมปังเต็มไปด้วยอากาศ โรงเหล้าในหมู่บ้านดูเหมือนจะมีชีวิตชีวา...',
-        uk: 'Ви приїжджаєте в тихе село. Селяні тепло вітають вас, а аромат з пекарні наповнює повітря. Селянська таверна виглядає жвавою...',
-      },
-      choice1: {
-        zh: '返回路口',
-        en: 'Return to crossroads',
-        es: 'Regresar a la encrucijada',
-        hi: 'चौराहे पर लौटें',
-        ar: 'العودة إلى التقاطع',
-        pt: 'Voltar à encruzilhada',
-        ja: '交差点に戻る',
-        ko: '교차로로 돌아가다',
-        ru: 'Вернуться к перекрестку',
-        de: 'Zurück zum Kreuzweg',
-        fr: 'Revenir au carrefour',
-        id: 'Kembali ke persimpangan',
-        vi: 'Quay lại ngã tư',
-        tr: 'Kavşağa dön',
-        nl: 'Terug naar de kruising',
-        pl: 'Wróć do skrzyżowania',
-        th: 'กลับไปที่ทางแยก',
-        uk: 'Повернутися до перехресту',
-      },
-      choice2: {
-        zh: '进入酒馆',
-        en: 'Enter the tavern',
-        es: 'Entrar a la taberna',
-        hi: 'टैवर्न में प्रवेश करें',
-        ar: 'الدخول إلى الطاوحة',
-        pt: 'Entrar na taberna',
-        ja: '酒場に入る',
-        ko: '주점에 들어가다',
-        ru: 'Войти в таверну',
-        de: 'Die Kneipe betreten',
-        fr: 'Entrer dans la taverne',
-        id: 'Masuk ke warung',
-        vi: 'Vào quán rượu',
-        tr: 'Meyhaneye gir',
-        nl: 'De herberg ingaan',
-        pl: 'Wejdź do tawerny',
-        th: 'เข้าไปในโรงเหล้า',
-        uk: 'Увійти в таверну',
-      },
-    },
-    cave: {
-      text: {
-        zh: '你小心翼翼地走进洞穴。洞穴内部闪烁着神秘的光芒，地面上散落着闪闪发光的宝石。你找到了传说中的宝藏！',
-        en: 'You carefully enter the cave. The cave interior glows with mysterious light, and sparkling gems are scattered on the ground. You have found the legendary treasure!',
-        es: 'Te adentras cuidadosamente en la cueva. El interior de la cueva brilla con una luz misteriosa, y joyas brillantes están esparcidas por el suelo. ¡Has encontrado el tesoro legendario!',
-        hi: 'आप सावधानी से गुफा में प्रवेश करते हैं। गुफा का भीतर रहस्यमय प्रकाश से चमकता है, और चमकते हुए रत्न जमीन पर बिखरे हुए हैं। आपने पौराणिक खजाना पाया है!',
-        ar: 'تدخل الكهف بحذر. يتوهج داخله بضوء غامض، وتناثر الجواهر اللامعة على الأرض. لقد وجدت الكنز الأسطوري!',
-        pt: 'Você entra na caverna cuidadosamente. O interior da caverna brilha com luz misteriosa, e gemas brilhantes estão espalhadas pelo chão. Você encontrou o tesouro lendário!',
-        ja: 'あなたは注意深く洞窟に入ります。洞窟の内部は神秘的な光で輝き、地面にはキラキラした宝石が散らばっています。あなたは伝説の宝を見つけました！',
-        ko: '당신은 조심스럽게 동굴에 들어갑니다. 동굴 내부는 신비로운 빛으로 빛나고, 땅에는 반짝이는 보석이 흩어져 있습니다. 당신은 전설의 보물을 찾았습니다!',
-        ru: 'Вы осторожно входите в пещеру. Внутри пещеры светится таинственным светом, а на земле разбросаны мерцающие драгоценности. Вы нашли легендарный клад!',
-        de: 'Du betrittst die Höhle vorsichtig. Das Innere der Höhle leuchtet mit geheimnisvollem Licht, und funkelnde Juwelen sind auf dem Boden verteilt. Du hast den legendären Schatz gefunden!',
-        fr: "Vous entrez dans la grotte avec précaution. L'intérieur de la grotte brille d'une lumière mystérieuse, et des pierres précieuses étincelantes sont éparpillées sur le sol. Vous avez trouvé le trésor légendaire!",
-        id: 'Anda memasuki gua dengan hati-hati. Bagian dalam gua bersinar dengan cahaya misterius, dan permata berkilau tersebar di lantai. Anda telah menemukan harta legendaris!',
-        vi: 'Bạn cẩn thận bước vào hang. Bên trong hang phát sáng với ánh sáng bí ẩn, và những viên ngọc sáng rực rỡ rải rác trên mặt đất. Bạn đã tìm thấy kho báu huyền thoại!',
-        tr: 'Mağaraya dikkatlice giriyorsunuz. Mağaranın içi gizemli bir ışıkla parlıyor ve zemin üzerinde parlayan mücevherler dağılmış. Efsanevi hazineyi buldunuz!',
-        nl: 'Je gaat voorzichtig de grot in. Het grotinterieur gloeit met mysterieus licht, en sprankelende edelstenen liggen verspreid op de grond. Je hebt de legendarische schat gevonden!',
-        pl: 'Wchodzisz ostrożnie do jaskini. Wnętrze jaskini świeci tajemniczym światłem, a błyszczące klejnoty są rozrzucane na ziemi. Znalazłeś legendarny skarb!',
-        th: 'คุณเข้าไปในถ้ำอย่างระมัดระวัง ภายในถ้ำส่องสว่างด้วยแสงลึกลับ และอัญมณีเกลาเกลี้ยกระจัดกระจายอยู่บนพื้น คุณได้พบสมบัติที่มีชื่อเสียงแล้ว!',
-        uk: 'Ви обережно входите в печеру. Внутрішня частина печери сяє таємничим світлом, а на землі розкидані блискучі коштовності. Ви знайшли легендарний скарб!',
-      },
-      choice1: {
-        zh: '带着宝藏返回',
-        en: 'Return with treasure',
-        es: 'Regresar con el tesoro',
-        hi: 'खजाने के साथ लौटें',
-        ar: 'العودة مع الكنز',
-        pt: 'Voltar com o tesouro',
-        ja: '宝物と共に戻る',
-        ko: '보물과 함께 돌아가다',
-        ru: 'Вернуться с сокровищем',
-        de: 'Mit dem Schatz zurückkehren',
-        fr: 'Revenir avec le trésor',
-        id: 'Kembali dengan harta',
-        vi: 'Quay về với kho báu',
-        tr: 'Hazineyle dön',
-        nl: 'Terug met de schat',
-        pl: 'Wróć z skarbem',
-        th: 'กลับไปพร้อมกับสมบัติ',
-        uk: 'Повернутися із скарбом',
-      },
-    },
-    tavern: {
-      text: {
-        zh: '酒馆里充满了欢声笑语。一位神秘的旅行者正在讲述远方王国的传说。他邀请你一起去完成一项重要的任务！',
-        en: 'The tavern is filled with laughter and chatter. A mysterious traveler is telling tales of a distant kingdom. He invites you to join him on an important quest!',
-        es: 'La taberna está llena de risas y charlas. Un viajero misterioso está contando historias de un reino distante. ¡Te invita a unirte a él en una búsqueda importante!',
-        hi: 'टैवर्न हंसी और बातचीत से भरी हुई है। एक रहस्यमय यात्री दूर के राज्य की कहानियां सुना रहा है। वह आपको एक महत्वपूर्ण खोज में शामिल होने के लिए आमंत्रित करता है!',
-        ar: 'الطاوحة مليئة بالضحك والمحادثات. يروي مسافر غامض قصصًا عن مملكة بعيدة. يدعوك للانضمام إليه في مهمة مهمة!',
-        pt: 'A taberna está cheia de risadas e conversas. Um viajante misterioso está contando histórias de um reino distante. Ele convida você para se juntar a ele em uma busca importante!',
-        ja: '酒場は笑い声とおしゃべりでいっぱいです。神秘的な旅人が遠い王国の物語を語っています。彼はあなたに重要なクエストに参加することを誘っています！',
-        ko: '주점은 웃음소리와 수다로 가득합니다. 신비로운 여행자가 먼 왕국의 이야기를 들려주고 있습니다. 그는 당신에게 중요한 퀘스트에 참여하도록 초대하고 있습니다!',
-        ru: 'Таверна наполнена смехом и разговорами. Таинственный путешественник рассказывает истории о далеком королевстве. Он приглашает вас присоединиться к нему в важном квесте!',
-        de: 'Die Kneipe ist gefüllt mit Lachen und Geplauder. Ein mysteriöser Reisender erzählt Geschichten von einem fernen Königreich. Er lädt dich ein, ihm auf einer wichtigen Quest beizutreten!',
-        fr: "La taverne est remplie de rires et de discussions. Un voyageur mystérieux raconte des histoires d'un royaume lointain. Il vous invite à le rejoindre dans une quête importante!",
-        id: 'Warung diisi dengan tawa dan percakapan. Seorang pengelana misterius sedang menceritakan kisah tentang kerajaan jauh. Dia mengajak Anda bergabung dengannya dalam pencarian penting!',
-        vi: 'Quán rượu tràn ngập tiếng cười và chuyện trò. Một người du khách bí ẩn đang kể chuyện về một vương quốc xa xôi. Anh ấy mời bạn tham gia cùng anh ấy vào một nhiệm vụ quan trọng!',
-        tr: 'Meyhane kahkahalar ve sohbetlerle dolu. Gizemli bir gezgin uzak bir krallığın hikayelerini anlatıyor. Sizi önemli bir görevde kendisine katılmaya davet ediyor!',
-        nl: 'De herberg is gevuld met gelach en gepraat. Een mysterieuze reiziger vertelt verhalen over een ver koninkrijk. Hij nodigt je uit om met hem mee te gaan op een belangrijke queeste!',
-        pl: 'Tawerna jest wypełniona śmiechem i rozmowami. Tajemniczy podróżnik opowiada historie o dalekim królestwie. Zaprasza cię do przyłączenia się do niego w ważnym poszukiwaniu!',
-        th: 'โรงเหล้าเต็มไปด้วยเสียงหัวเราะและการสนทนา นักเดินทางที่ลึกลับกำลังเล่าเรื่องราวเกี่ยวกับอาณาจักรที่อยู่ไกลเขาเชิญคุณให้เข้าร่วมกับเขาในภารกิจสำคัญ!',
-        uk: 'Таверна наповнена сміхом і розмовами. Таємничий подорожній розповідає історії про далеке королівство. Він запрошує вас приєднатися до нього у важливому квесті!',
-      },
-      choice1: {
-        zh: '接受任务',
-        en: 'Accept the quest',
-        es: 'Aceptar la búsqueda',
-        hi: 'खोज स्वीकार करें',
-        ar: 'قبول المهمة',
-        pt: 'Aceitar a busca',
-        ja: 'クエストを受ける',
-        ko: '퀘스트를 받다',
-        ru: 'Принять квест',
-        de: 'Die Quest annehmen',
-        fr: 'Accepter la quête',
-        id: 'Terima pencarian',
-        vi: 'Chấp nhận nhiệm vụ',
-        tr: 'Görevi kabul et',
-        nl: 'De queeste accepteren',
-        pl: 'Przyjmij poszukiwanie',
-        th: 'ยอมรับภารกิจ',
-        uk: 'Прийняти квест',
-      },
-    },
-    treasure: {
-      text: {
-        zh: '恭喜！你成功完成了冒险！带着珍贵的宝藏，你成为了传说中的英雄。这是一个令人难忘的旅程！',
-        en: 'Congratulations! You have successfully completed your adventure! With the precious treasure, you have become a legendary hero. It was an unforgettable journey!',
-        es: '¡Felicidades! ¡Has completado tu aventura con éxito! Con el tesoro precioso, te has convertido en un héroe legendario. ¡Fue un viaje inolvidable!',
-        hi: 'बधाई! आपने अपनी साहसिक यात्रा सफलतापूर्वक पूरी कर ली है! कीमती खजाने के साथ, आप एक पौराणिक नायक बन गए हैं। यह एक अविस्मरणीय यात्रा थी!',
-        ar: 'تهانينا! لقد أكملت مغامرتك بنجاح! مع الكنز الثمين، أصبحت بطلًا أسطوريًا. لقد كانت رحلة لا تُنسى!',
-        pt: 'Parabéns! Você completou sua aventura com sucesso! Com o tesouro precioso, você se tornou um herói lendário. Foi uma jornada inesquecível!',
-        ja: 'おめでとう！あなたは冒険を成功裏に完了しました！貴重な宝物と共に、あなたは伝説のヒーローになりました。忘れられない旅でした！',
-        ko: '축하합니다! 당신은 모험을 성공적으로 완료했습니다! 귀중한 보물과 함께, 당신은 전설의 영웅이 되었습니다. 잊지 못할 여행이었습니다!',
-        ru: 'Поздравляем! Вы успешно завершили свою пригоду! С драгоценным кладом вы стали легендарным героем. Это было незабываемое путешествие!',
-        de: 'Herzlichen Glückwunsch! Du hast dein Abenteuer erfolgreich abgeschlossen! Mit dem kostbaren Schatz bist du zu einem legendären Helden geworden. Es war eine unvergessliche Reise!',
-        fr: "Félicitations! Vous avez terminé votre aventure avec succès! Avec le précieux trésor, vous êtes devenu un héros légendaire. C'était un voyage inoubliable!",
-        id: 'Selamat! Anda telah berhasil menyelesaikan petualangan Anda! Dengan harta berharga, Anda telah menjadi pahlawan legendaris. Itu adalah perjalanan yang tak terlupakan!',
-        vi: 'Chúc mừng! Bạn đã hoàn thành cuộc phiêu lưu của mình thành công! Với kho báu quý giá, bạn đã trở thành một anh hùng huyền thoại. Đó là một cuộc hành trình không thể nào quên!',
-        tr: 'Tebrikler! Maceranızı başarıyla tamamladınız! Değerli hazineyle efsanevi bir kahraman oldunuz. Unutulmaz bir yolculuktu!',
-        nl: 'Gefeliciteerd! Je hebt je avontuur succesvol afgerond! Met de kostbare schat ben je een legendarische held geworden. Het was een onvergetelijke reis!',
-        pl: 'Gratulacje! Udało ci się pomyślnie zakończyć swoją przygodę! Z cennym skarbem stałeś się legendarnym bohaterem. To była niezapomniana podróż!',
-        th: 'ขอแสดงความยินดี! คุณได้สำเร็จการผจญภัยของคุณแล้ว! ด้วยสมบัติที่มีค่า คุณได้กลายเป็นฮีโร่ที่มีชื่อเสียงแล้ว มันเป็นการเดินทางที่ไม่ลืมเลือน!',
-        uk: 'Вітаємо! Ви успішно завершили свою пригоду! З цінним скарбом ви стали легендарним героєм. Це була незабутня подорож!',
-      },
-      choice1: {
-        zh: '开始新的冒险',
-        en: 'Start a new adventure',
-        es: 'Empezar una nueva aventura',
-        hi: 'नई साहसिक यात्रा शुरू करें',
-        ar: 'بدء مغامرة جديدة',
-        pt: 'Começar uma nova aventura',
-        ja: '新しい冒険を始める',
-        ko: '새로운 모험을 시작하다',
-        ru: 'Начать новую пригоду',
-        de: 'Ein neues Abenteuer beginnen',
-        fr: 'Commencer une nouvelle aventure',
-        id: 'Mulai petualangan baru',
-        vi: 'Bắt đầu cuộc phiêu lưu mới',
-        tr: 'Yeni bir macera başlat',
-        nl: 'Een nieuw avontuur beginnen',
-        pl: 'Zacznij nową przygodę',
-        th: 'เริ่มการผจญภัยใหม่',
-        uk: 'Почати нову пригоду',
-      },
-    },
-    quest: {
-      text: {
-        zh: '太棒了！你接受了神秘旅行者的任务。你们一起踏上了寻找失落王国的征程。这将是一个充满挑战和发现的伟大冒险！',
-        en: "Wonderful! You have accepted the mysterious traveler's quest. Together you set off on a journey to find the lost kingdom. This will be a great adventure full of challenges and discoveries!",
-        es: '¡Maravilloso! Has aceptado la búsqueda del viajero misterioso. Juntos parten en un viaje para encontrar el reino perdido. ¡Esta será una gran aventura llena de desafíos y descubrimientos!',
-        hi: 'अद्भुत! आपने रहस्यमय यात्री की खोज स्वीकार कर ली है। साथ में आप खोए हुए राज्य को खोजने की यात्रा पर निकलते हैं। यह चुनौतियों और खोजों से भरा एक महान साहसिक यात्रा होगा!',
-        ar: 'رائع! لقد قبلت مهمة المسافر الغامض. معًا تنطلق في رحلة للعثور على المملكة المفقودة. ستكون هذه مغامرة رائعة مليئة بالتحديات والاكتشافات!',
-        pt: 'Maravilhoso! Você aceitou a busca do viajante misterioso. Juntos partem em uma jornada para encontrar o reino perdido. Esta será uma grande aventura cheia de desafios e descobertas!',
-        ja: '素晴らしい！あなたは神秘的な旅人のクエストを受けました。一緒に失われた王国を探す旅に出発します。これは挑戦と発見に満ちた素晴らしい冒険になるでしょう！',
-        ko: '훌륭합니다! 당신은 신비로운 여행자의 퀘스트를 받았습니다. 함께 잃어버린 왕국을 찾는 여정에 출발합니다. 이것은 도전과 발견으로 가득한 위대한 모험이 될 것입니다!',
-        ru: 'Замечательно! Вы приняли квест таинственного путешественника. Вместе вы отправляетесь в путешествие в поисках потерянного королевства. Это будет великая пригода, полная вызовов и открытий!',
-        de: 'Wunderbar! Du hast die Quest des mysteriösen Reisenden angenommen. Gemeinsam macht ihr euch auf den Weg, das verlorene Königreich zu finden. Das wird ein großartiges Abenteuer voller Herausforderungen und Entdeckungen!',
-        fr: 'Merveilleux! Vous avez accepté la quête du voyageur mystérieux. Ensemble vous partez en voyage pour trouver le royaume perdu. Ce sera une grande aventure pleine de défis et de découvertes!',
-        id: 'Luar biasa! Anda telah menerima pencarian pengelana misterius. Bersama-sama Anda berangkat dalam perjalanan untuk menemukan kerajaan yang hilang. Ini akan menjadi petualangan hebat yang penuh dengan tantangan dan penemuan!',
-        vi: 'Tuyệt vời! Bạn đã chấp nhận nhiệm vụ của người du khách bí ẩn. Cùng nhau bạn khởi hành trên một hành trình để tìm kiếm vương quốc đã mất. Đây sẽ là một cuộc phiêu lưu tuyệt vời đầy thử thách và khám phá!',
-        tr: 'Harika! Gizemli gezginin görevini kabul ettiniz. Birlikte kayıp krallığı bulmak için bir yolculuğa çıkıyorsunuz. Bu, zorluklar ve keşiflerle dolu harika bir macera olacak!',
-        nl: 'Fantastisch! Je hebt de queeste van de mysterieuze reiziger geaccepteerd. Samen vertrek je op een reis om het verloren koninkrijk te vinden. Dit wordt een geweldig avontuur vol uitdagingen en ontdekkingen!',
-        pl: 'Wspaniale! Przyjąłeś poszukiwanie tajemniczego podróżnika. Wspólnie wyruszasz w podróż, aby znaleźć utracone królestwo. To będzie wspaniała przygoda pełna wyzwań i odkryć!',
-        th: 'ยอดเยี่ยม! คุณได้ยอมรับภารกิจของนักเดินทางที่ลึกลับแล้ว คุณพร้อมกันออกเดินทางเพื่อค้นหาอาณาจักรที่สูญหาย นี่จะเป็นการผจญภัยที่ยอดเยี่ยมเต็มไปด้วยความท้าทายและการค้นพบ!',
-        uk: 'Чудово! Ви прийняли квест таємничого подорожнього. Разом ви відправляєтеся в подорож, щоб знайти втрачене королівство. Це буде чудова пригода, повна викликів та відкриттів!',
-      },
-      choice1: {
-        zh: '开始新的冒险',
-        en: 'Start a new adventure',
-        es: 'Empezar una nueva aventura',
-        hi: 'नई साहसिक यात्रा शुरू करें',
-        ar: 'بدء مغامرة جديدة',
-        pt: 'Começar uma nova aventura',
-        ja: '新しい冒険を始める',
-        ko: '새로운 모험을 시작하다',
-        ru: 'Начать новую пригоду',
-        de: 'Ein neues Abenteuer beginnen',
-        fr: 'Commencer une nouvelle aventure',
-        id: 'Mulai petualangan baru',
-        vi: 'Bắt đầu cuộc phiêu lưu mới',
-        tr: 'Yeni bir macera başlat',
-        nl: 'Een nieuw avontuur beginnen',
-        pl: 'Zacznij nową przygodę',
-        th: 'เริ่มการผจญภัยใหม่',
-        uk: 'Почати нову пригоду',
-      },
-    },
+    zh: '一个关于记忆与迷失的故事',
   },
   btn: {
     back: {
-      zh: '返回',
-      en: 'Go Back',
-      es: 'Volver',
-      hi: 'वापस जाएं',
-      ar: 'العودة',
-      pt: 'Voltar',
-      ja: '戻る',
-      ko: '돌아가기',
-      ru: 'Назад',
-      de: 'Zurück',
-      fr: 'Retourner',
-      id: 'Kembali',
-      vi: 'Quay lại',
-      tr: 'Geri',
-      nl: 'Terug',
-      pl: 'Wróć',
-      th: 'กลับ',
-      uk: 'Назад',
+      zh: '后退',
     },
     restart: {
       zh: '重新开始',
-      en: 'Restart',
-      es: 'Reiniciar',
-      hi: 'फिर से शुरू करें',
-      ar: 'إعادة تشغيل',
-      pt: 'Reiniciar',
-      ja: '最初から',
-      ko: '다시 시작',
-      ru: 'Начать заново',
-      de: 'Neu starten',
-      fr: 'Recommencer',
-      id: 'Mulai ulang',
-      vi: 'Bắt đầu lại',
-      tr: 'Yeniden başlat',
-      nl: 'Opnieuw starten',
-      pl: 'Uruchom ponownie',
-      th: 'เริ่มใหม่',
-      uk: 'Почати заново',
     },
   },
   progress: {
-    zh: '步数',
-    en: 'Steps',
-    es: 'Pasos',
-    hi: 'कदम',
-    ar: 'خطوات',
-    pt: 'Passos',
-    ja: '歩数',
-    ko: '걸음 수',
-    ru: 'Шаги',
-    de: 'Schritte',
-    fr: 'Pas',
-    id: 'Langkah',
-    vi: 'Bước',
-    tr: 'Adım',
-    nl: 'Stappen',
-    pl: 'Kroki',
-    th: 'ขั้นตอน',
-    uk: 'Кроки',
+    zh: '进度',
+  },
+  choice: {
+    restart: {
+      zh: '重新开始',
+    },
+    linYe: {
+      zh: '林野',
+    },
+    suWan: {
+      zh: '苏晚',
+    },
+    stayObserve: {
+      zh: '原地不动，观察',
+    },
+    goForward: {
+      zh: '主动上前',
+    },
+    takeCopper: {
+      zh: '悄悄拿取铜片',
+    },
+    giveUpCopper: {
+      zh: '放弃铜片',
+    },
+    healFirst: {
+      zh: '先解毒治疗',
+    },
+    ignoreWound: {
+      zh: '不顾伤口',
+    },
+    helpNow: {
+      zh: '立刻救助',
+    },
+    observeFirst: {
+      zh: '先观察',
+    },
+    goTogether: {
+      zh: '结伴同行',
+    },
+    goAlone: {
+      zh: '独自前往',
+    },
+    sneakAway: {
+      zh: '悄悄离开',
+    },
+    stopThem: {
+      zh: '阻止恶行',
+    },
+  },
+  start: {
+    zh: `你在一片弥漫着白雾的古老森林边缘醒来，头痛欲裂，身上只带着一件单薄的外套和口袋里的半块面包。记忆碎片中，只有一个模糊的执念——找到森林深处的"星落小屋"，那里藏着你失去的记忆，也藏着逃离这片雾林的秘密。
+
+在你醒来的不远处，有两条路通向雾林深处，而路边站着两个神色各异的人，似乎都在等你做出选择——他们将成为你这段旅程的主角，带着你走向不同的命运。
+
+请选择你的角色：
+
+1. 林野：二十岁的猎人，身手矫健，熟悉森林习性，口袋里藏着一把小巧的猎刀，性格冷静谨慎，擅长观察细节。选择他，你将凭借敏锐的直觉避开森林的陷阱，却可能因过于谨慎而错过关键线索。
+
+2. 苏晚：十八岁的草药师，懂草药辨识，能利用林间植物疗伤、解毒，性格温柔却有韧性，随身带着一个小小的药囊。选择她，你将能应对林间的伤病危机，却可能因心软而陷入他人的圈套。
+
+（请做出选择：输入"1"选择林野，输入"2"选择苏晚）`,
+  },
+  linYe_intro: {
+    zh: `你选择成为林野，握紧口袋里的猎刀，目光警惕地扫过周围的白雾。你知道雾林里不仅有迷路的风险，还有隐藏的野兽和未知的陷阱。你毅然踏上了左边那条相对狭窄、草木更茂密的路——你判断，茂密的植被能隐藏身形，也能留下更多过往行人的痕迹。
+
+走了大约半个时辰，白雾越来越浓，能见度不足三尺。突然，你听到前方传来轻微的"咔嚓"声，像是树枝被踩断的声音，紧接着，一阵低沉的低吼从雾中传来。你立刻停下脚步，握紧猎刀，身体紧绷。
+
+此时，你有两个选择：
+
+A. 原地不动，屏住呼吸，观察声音来源，等待对方离开（利用猎人的隐蔽技巧，规避正面冲突）
+
+B. 主动上前，循着声音走去，趁对方未发现自己，先下手为强（凭借身手优势，主动掌控局面）
+
+（请做出选择：输入"A"或"B"）`,
+  },
+  linYe_A: {
+    zh: `你屏住呼吸，贴着树干站定，目光死死锁定声音传来的方向。片刻后，一只体型不大的灰狼从雾中走出，它的腿似乎受了伤，走路一瘸一拐，嘴里叼着一只兔子。它并未发现你，慢慢走到一旁的石头边，放下兔子开始进食。
+
+你松了口气，正准备悄悄绕开它，却发现灰狼身边的石头上，放着一枚刻着星星图案的铜片——那正是你记忆中，星落小屋的标志。你犹豫了，铜片就在眼前，但上前去拿，很可能会惊动灰狼。
+
+此时，你有两个选择：
+
+A1. 悄悄上前，快速拿起铜片，然后立刻撤离（冒险获取线索，尽快离开现场）
+
+A2. 放弃铜片，继续往前走，不冒不必要的风险（优先保证安全，寻找其他线索）
+
+（请做出选择：输入"A1"或"A2"）`,
+  },
+  linYe_A1: {
+    zh: `你放轻脚步，趁着灰狼低头进食的间隙，快速上前拿起铜片，转身就往树林深处跑。灰狼被惊动，发出一声低吼，却因腿部受伤，无法追上你。你跑了一段路，确认安全后，停下脚步观察手中的铜片——铜片背面刻着一段模糊的文字："星落于溪，雾散于桥"。
+
+你顺着文字的提示，寻找林间的溪流，一路上凭借猎人的敏锐，避开了多处陷阱。最终，你在溪流尽头找到了一座石桥，石桥对面，正是那座藏在雾中的星落小屋。你推开小屋的门，里面放着一本日记，日记里记录着你失去的记忆——你曾是守护雾林的猎人，因一场意外失去记忆，而星落小屋，正是你曾经的家。
+
+你找回了记忆，也找到了逃离雾林的路，最终带着日记，走出了雾林，开始了新的生活。【结局：圆满回归】`,
+  },
+  linYe_A2: {
+    zh: `你放弃了铜片，继续往前走，白雾越来越浓，你渐渐失去了方向。你凭借经验辨别方向，却发现周围的树木长得一模一样，无论怎么走，都像是在原地打转。不知不觉，天色暗了下来，林间的温度越来越低，你的体力也渐渐不支。
+
+你靠在树干上，拿出口袋里的半块面包，勉强吃了几口，却发现自己的视线开始模糊——你不小心误食了林间的有毒浆果，身体渐渐失去力气。最终，你倒在雾中，再也没有醒来，成为了雾林的一部分。【结局：迷失消亡】`,
+  },
+  linYe_B: {
+    zh: `你握紧猎刀，主动上前，循着声音慢慢靠近。雾中，你看到一只灰狼正低头啃食猎物，它的体型比你想象中更大，皮毛呈灰黑色，眼神凶狠。你没有犹豫，趁它不注意，猛地扑了上去，猎刀对准它的后背刺去。
+
+灰狼吃痛，猛地转身，一口咬向你的手臂。你忍着疼痛，用力将猎刀往它的要害刺去，最终，灰狼倒在地上，没了气息。你看着手臂上的伤口，鲜血直流，虽然猎人的本能让你快速包扎了伤口，但伤口还是隐隐作痛。
+
+你在灰狼的巢穴里，发现了一枚刻着星星图案的铜片，还有一张残缺的地图，地图上标记着星落小屋的位置，但大部分区域都被磨损，无法辨认。此时，你的手臂越来越痛，视线也开始有些模糊——灰狼的牙齿可能带有毒素。
+
+此时，你有两个选择：
+
+B1. 先寻找林间的解毒草药，处理伤口，再根据地图寻找星落小屋（优先治疗伤口，避免毒素扩散）
+
+B2. 不顾伤口疼痛，凭借地图的残缺线索，尽快寻找星落小屋（优先寻找目标，赌自己能撑到目的地）
+
+（请做出选择：输入"B1"或"B2"）`,
+  },
+  linYe_B1: {
+    zh: `你强忍着疼痛，开始在周围寻找解毒的草药。作为猎人，你知道几种常见的解毒植物，很快，你找到了一株"清毒草"，将其嚼碎后，敷在伤口上，又吞下几片叶子。过了半个时辰，伤口的疼痛渐渐缓解，毒素也得到了控制。
+
+你凭借残缺的地图，结合自己对森林的了解，慢慢摸索着前进。途中，你遇到了一位迷路的老人，老人告诉你，他曾去过星落小屋，愿意带你前往。在老人的指引下，你顺利找到了星落小屋，找回了自己的记忆，也治愈了伤口。最终，你和老人一起走出了雾林，收获了友谊与新生。【结局：绝境逢生】`,
+  },
+  linYe_B2: {
+    zh: `你不顾伤口的疼痛，拿着残缺的地图，拼命往前赶路。毒素渐渐扩散，你的脚步越来越沉重，视线也越来越模糊，好几次都差点掉进陷阱。你凭着一股执念，终于看到了星落小屋的轮廓，可就在你快要走到小屋门口时，身体再也支撑不住，倒在了地上。
+
+你看着近在咫尺的小屋，却再也没有力气推开那扇门，最终，毒素彻底蔓延全身，你永远地停在了距离真相一步之遥的地方。【结局：功亏一篑】`,
+  },
+  suWan_intro: {
+    zh: `你选择成为苏晚，握紧随身的药囊，温柔却坚定地望向雾林深处。你从小跟着师父学习草药，对林间的植物了如指掌，你知道，雾林里的每一株植物，都可能是疗伤的良药，也可能是致命的毒药。你选择了右边那条相对宽阔、有溪流声的路——你判断，有溪流的地方，不仅能获得水源，还可能有更多可利用的草药。
+
+走了大约一个时辰，你听到前方传来微弱的呼救声，声音纤细，像是一位女子的声音。你心中一紧，加快脚步往前走，穿过浓雾，你看到一位穿着蓝色衣裙的女子，被困在一个陷阱里，腿被树枝划伤，鲜血染红了裙摆，神色十分慌张。
+
+此时，你有两个选择：
+
+C. 立刻上前，查看女子的伤势，用草药为她疗伤，然后想办法将她从陷阱里救出来（秉持草药师的善良，优先救助他人）
+
+D. 犹豫片刻，先观察周围的环境，确认没有危险后，再决定是否救助（保持谨慎，避免陷入陷阱）
+
+（请做出选择：输入"C"或"D"）`,
+  },
+  suWan_C: {
+    zh: `你立刻上前，趴在陷阱边，轻声安慰道："别害怕，我是草药师，我来帮你。"你先从药囊里拿出干净的布条，小心翼翼地为女子包扎伤口，又拿出一株"止血草"，嚼碎后敷在伤口上，止血止痛。女子渐渐平静下来，告诉你她叫阿瑶，是为了寻找失踪的妹妹，才走进雾林，不小心掉进了陷阱。
+
+你四处寻找工具，发现陷阱旁边有一根粗壮的树枝，你用力将树枝伸到陷阱里，让阿瑶抓住，慢慢将她拉了上来。阿瑶十分感激你，告诉你她在掉进陷阱前，看到过一座刻着星星图案的小屋，就在溪流的上游，还说那座小屋里，有一位神秘的老人，或许能帮你找回记忆。
+
+此时，你有两个选择：
+
+C1. 和阿瑶一起，前往溪流上游，寻找星落小屋，同时帮阿瑶寻找她的妹妹（结伴同行，互相帮助）
+
+C2. 告别阿瑶，独自前往星落小屋，专注于找回自己的记忆（独自前行，避免分心）
+
+（请做出选择：输入"C1"或"C2"）`,
+  },
+  suWan_C1: {
+    zh: `你答应和阿瑶一起前行，一路上，你为她疗伤，她为你指引方向，两人互相扶持，渐渐走出了浓雾最浓的区域。在溪流上游，你们果然找到了星落小屋，小屋里的老人，正是阿瑶的爷爷，也是守护雾林记忆的人。
+
+老人告诉了你失去记忆的真相——你曾是他的徒弟，因一场草药事故失去记忆，而阿瑶的妹妹，其实是被你不小心误伤，藏在了小屋的密室里（并未受伤，只是受到惊吓）。你向阿瑶道歉，阿瑶原谅了你，你也找回了自己的记忆，学会了更加谨慎地对待草药。最终，你和阿瑶一起，带着她的妹妹，走出了雾林，一起开了一家小小的草药铺，温暖度日。【结局：温暖相伴】`,
+  },
+  suWan_C2: {
+    zh: `你告别了阿瑶，独自前往溪流上游，凭借对草药的了解，避开了林间的有毒植物，顺利找到了星落小屋。小屋里的老人，正是你的师父，他看到你，十分欣慰，告诉你，你因一场草药试验失败，失去了记忆，他一直在等你回来。
+
+师父为你喝下了特制的草药，你渐渐找回了所有的记忆——你是一位天赋异禀的草药师，一直致力于研究能治愈各种伤病的草药。师父将你的草药笔记交给你，告诉你，雾林里的草药，既能救人，也能伤人，唯有心怀敬畏，才能用好它们。你接过笔记，告别师父，走出了雾林，用自己的医术，帮助了很多人，成为了一位有名的草药师。【结局：孤身圆满】`,
+  },
+  suWan_D: {
+    zh: `你犹豫了片刻，没有立刻上前，而是先绕着陷阱周围观察了一圈。你发现，陷阱旁边的草丛里，有一些人为布置的痕迹，不像是天然形成的陷阱，更像是有人故意设下的圈套，引诱路人前来救助。你心中警惕，决定再观察一会儿，看看是否有异常。
+
+果然，没过多久，你看到雾中走出两个穿着黑衣的人，他们低声交谈着，说"又有一个上钩的了"。你立刻躲到树干后面，屏住呼吸，不敢出声。黑衣人们走到陷阱边，对着里面的女子说："别装了，赶紧出来，看看这次能不能骗到一个能帮我们找到星落小屋的人。"
+
+你才知道，女子和黑衣人们是一伙的，他们设下陷阱，就是为了利用路人的善良，找到星落小屋，夺取里面的秘密。此时，你有两个选择：
+
+D1. 悄悄离开，换一条路，避开他们，独自寻找星落小屋（避开圈套，专注于自己的目标）
+
+D2. 暗中观察，趁他们不注意，破坏他们的圈套，阻止他们夺取星落小屋的秘密（心怀正义，阻止恶行）
+
+（请做出选择：输入"D1"或"D2"）`,
+  },
+  suWan_D1: {
+    zh: `你悄悄离开，换了一条小路，避开了黑衣人和女子的圈套。一路上，你凭借对草药的了解，顺利避开了各种危险，也找到了不少有用的草药。在雾林的深处，你终于找到了星落小屋，找回了自己的记忆，也发现了小屋里面的秘密——星落小屋藏着雾林的守护之力，一旦被恶人夺取，雾林将会消失。
+
+你没有惊动任何人，悄悄记下守护雾林的方法，然后走出了雾林。之后，你每年都会回到雾林，默默守护着这片曾经困住你的地方，也守护着里面的秘密，一生平安顺遂。【结局：平安顺遂】`,
+  },
+  suWan_D2: {
+    zh: `你决定阻止他们的恶行，悄悄从药囊里拿出一些能让人昏迷的草药，磨成粉末，趁着黑衣人们不注意，悄悄撒到他们身边的空气中。黑衣人们吸入草药粉末后，渐渐昏迷过去，女子见状，吓得想要逃跑，被你拦住。
+
+你劝说女子回头，告诉她夺取星落小屋的秘密，会给雾林带来灾难，但女子不听，反而趁你不注意，拿起地上的树枝，狠狠砸向你的后背。你受伤倒地，却还是用尽最后一丝力气，将昏迷草药的解药撒到了周围——你不想伤害任何人，只是想阻止他们。
+
+女子见你倒下，没有再停留，独自前往星落小屋，却因为不懂雾林的规则，被小屋的守护之力反噬，永远被困在了雾林里。而你，因为伤势过重，再加上没有及时治疗，渐渐失去了气息，用自己的生命，守护了雾林的秘密。【结局：正义牺牲】`,
+  },
+  end: {
+    zh: `不同的选择，造就不同的命运。你可以重新开始游戏，选择不同的角色和选项，解锁更多结局哦～
+
+（注：文档部分内容可能由 AI 生成）`,
   },
 }

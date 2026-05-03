@@ -1,57 +1,56 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getContent } from '@/i18n'
 import '@/components/pages/games/story/story.css'
+import { storyNodes } from '@/components/pages/games/story/story-data'
 
 export const Story = () => {
   const [currentNode, setCurrentNode] = useState('start')
   const [history, setHistory] = useState<string[]>([])
+  const [displayText, setDisplayText] = useState('')
+  const [isTyping, setIsTyping] = useState(false)
+  const [showChoices, setShowChoices] = useState(false)
+  const [choiceIndex, setChoiceIndex] = useState(0)
 
-  // 故事节点数据结构
-  const storyNodes = {
-    start: {
-      text: 'story.nodes.start.text',
-      choices: [
-        { text: 'story.nodes.start.choice1', next: 'forest' },
-        { text: 'story.nodes.start.choice2', next: 'village' },
-      ],
-    },
-    forest: {
-      text: 'story.nodes.forest.text',
-      choices: [
-        { text: 'story.nodes.forest.choice1', next: 'start' },
-        { text: 'story.nodes.forest.choice2', next: 'cave' },
-      ],
-    },
-    village: {
-      text: 'story.nodes.village.text',
-      choices: [
-        { text: 'story.nodes.village.choice1', next: 'start' },
-        { text: 'story.nodes.village.choice2', next: 'tavern' },
-      ],
-    },
-    cave: {
-      text: 'story.nodes.cave.text',
-      choices: [
-        { text: 'story.nodes.cave.choice1', next: 'forest' },
-        { text: 'story.nodes.cave.choice2', next: 'treasure' },
-      ],
-    },
-    tavern: {
-      text: 'story.nodes.tavern.text',
-      choices: [
-        { text: 'story.nodes.tavern.choice1', next: 'village' },
-        { text: 'story.nodes.tavern.choice2', next: 'quest' },
-      ],
-    },
-    treasure: {
-      text: 'story.nodes.treasure.text',
-      choices: [{ text: 'story.nodes.treasure.choice1', next: 'start' }],
-    },
-    quest: {
-      text: 'story.nodes.quest.text',
-      choices: [{ text: 'story.nodes.quest.choice1', next: 'start' }],
-    },
+  const startTyping = (text: string) => {
+    setDisplayText('')
+    setIsTyping(true)
+    setShowChoices(false)
+    setChoiceIndex(0)
+    let index = 0
+    const timer = setInterval(() => {
+      if (index < text.length) {
+        setDisplayText(text.slice(0, index + 1))
+        index++
+      } else {
+        clearInterval(timer)
+        setIsTyping(false)
+        setShowChoices(true)
+      }
+    }, 30)
+    return () => clearInterval(timer)
   }
+
+  useEffect(() => {
+    const currentStory = storyNodes[currentNode as keyof typeof storyNodes]
+    const text = getContent(currentStory.text)
+    startTyping(text)
+  }, [currentNode])
+
+  useEffect(() => {
+    if (showChoices) {
+      const currentStory = storyNodes[currentNode as keyof typeof storyNodes]
+      let index = 0
+      const timer = setInterval(() => {
+        if (index < currentStory.choices.length) {
+          setChoiceIndex(index + 1)
+          index++
+        } else {
+          clearInterval(timer)
+        }
+      }, 200)
+      return () => clearInterval(timer)
+    }
+  }, [showChoices, currentNode])
 
   const handleChoice = (nextNode: string) => {
     setHistory([...history, currentNode])
@@ -74,7 +73,7 @@ export const Story = () => {
   const currentStory = storyNodes[currentNode as keyof typeof storyNodes]
 
   return (
-    <div className="story-wrapper">
+    <div className="story-wrapper animated-bg">
       <div className="story-container">
         <div className="story-header">
           <h1>{getContent('story.title')}</h1>
@@ -82,11 +81,20 @@ export const Story = () => {
         </div>
 
         <div className="story-content">
-          <div className="story-text">{getContent(currentStory.text)}</div>
+          <div className="story-text">
+            {displayText}
+            <span className="cursor"></span>
+          </div>
 
           <div className="story-choices">
-            {currentStory.choices.map((choice) => (
-              <button key={choice.text} type="button" className="choice-btn" onClick={() => handleChoice(choice.next)}>
+            {currentStory.choices.map((choice, index) => (
+              <button
+                key={choice.text}
+                type="button"
+                className={`choice-btn ${index < choiceIndex ? 'visible' : ''}`}
+                onClick={() => handleChoice(choice.next)}
+                disabled={isTyping || index >= choiceIndex}
+              >
                 {getContent(choice.text)}
               </button>
             ))}

@@ -1,36 +1,17 @@
 .poem {
   position: fixed;
   inset: 0;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(
-    135deg,
-    #fef3e2 0%,
-    #fce7f3 25%,
-    #e0e7ff 50%,
-    #fef3e2 75%,
-    #fce7f3 100%
-  );
-  background-size: 400% 400%;
-  animation: bg-shift 25s ease infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes bg-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-  25% {
-    background-position: 100% 0%;
-  }
-  50% {
-    background-position: 100% 100%;
-  }
-  75% {
-    background-position: 50% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+.poem__theme-toggle {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 50;
 }
 
 .poem__content {
@@ -44,7 +25,7 @@
 .poem__content h1 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1e293b;
+  color: var(--foreground);
   margin-bottom: 2rem;
   letter-spacing: 0.05em;
 }
@@ -52,32 +33,10 @@
 .poem__content p {
   font-size: 1rem;
   line-height: 2.2;
-  color: #64748b;
+  color: var(--muted-foreground);
   margin: 0.75rem 0;
 }
 
 .poem__content footer {
   margin-top: 3rem;
-}
-
-:is(.dark) .poem {
-  background: linear-gradient(
-    135deg,
-    #1e1b4b 0%,
-    #312e81 20%,
-    #4c1d95 40%,
-    #312e81 60%,
-    #1e1b4b 80%,
-    #312e81 100%
-  );
-  background-size: 400% 400%;
-  animation: bg-shift 25s ease infinite;
-}
-
-:is(.dark) .poem__content h1 {
-  color: #f8fafc;
-}
-
-:is(.dark) .poem__content p {
-  color: #94a3b8;
 }

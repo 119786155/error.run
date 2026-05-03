@@ -7,7 +7,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
   overflow-y: auto;
 }
 
@@ -26,31 +25,50 @@
 
 .story-header h1 {
   font-size: 2.5rem;
-  color: #ffd93d;
-  text-shadow: 4px 4px 0 #8b4513;
+  color: var(--foreground);
   margin-bottom: 0.5rem;
   letter-spacing: 4px;
 }
 
 .story-header .subtitle {
   font-size: 1rem;
-  color: #4ecdc4;
+  color: var(--muted-foreground);
   letter-spacing: 2px;
 }
 
 .story-content {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 3px solid #4a4a6a;
-  padding: 2rem;
-  border-radius: 12px;
+  background-color: transparent;
+  padding: 2rem 0;
 }
 
 .story-text {
   font-size: 1.2rem;
   line-height: 1.8;
-  color: #c7c7d1;
+  color: var(--foreground);
   margin-bottom: 2rem;
   text-align: left;
+  font-family: "Courier New", monospace;
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1.2em;
+  background-color: var(--foreground);
+  margin-left: 2px;
+  animation: blink 1s infinite;
+  vertical-align: bottom;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
 }
 
 .story-choices {
@@ -60,26 +78,40 @@
 }
 
 .choice-btn {
-  background-color: rgba(78, 205, 196, 0.2);
-  color: #4ecdc4;
-  border: 2px solid #4ecdc4;
+  background-color: transparent;
+  color: var(--foreground);
+  border: 1px solid var(--border);
   padding: 1rem 2rem;
   font-size: 1rem;
   font-family: "Courier New", monospace;
   cursor: pointer;
   text-align: left;
-  transition: all 0.2s;
-  border-radius: 8px;
+  border-radius: 4px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  pointer-events: none;
 }
 
-.choice-btn:hover {
-  background-color: rgba(78, 205, 196, 0.3);
+.choice-btn.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.choice-btn.visible:hover {
+  background-color: var(--muted);
   transform: translateX(8px);
-  box-shadow: 0 0 20px rgba(78, 205, 196, 0.3);
 }
 
-.choice-btn:active {
+.choice-btn.visible:active {
   transform: translateX(4px);
+}
+
+.choice-btn:disabled {
+  cursor: not-allowed;
 }
 
 .story-controls {
@@ -89,9 +121,9 @@
 }
 
 .control-btn {
-  background-color: #ff6b6b;
-  color: #fff;
-  border: 3px solid #8b0000;
+  background-color: transparent;
+  color: var(--foreground);
+  border: 1px solid var(--border);
   padding: 10px 24px;
   font-size: 1rem;
   font-family: "Courier New", monospace;
@@ -99,24 +131,21 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   transition: all 0.2s;
-  box-shadow: 3px 3px 0 #8b0000;
-  border-radius: 6px;
+  border-radius: 4px;
 }
 
 .control-btn:hover {
-  background-color: #ff8585;
+  background-color: var(--muted);
   transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0 #8b0000;
 }
 
 .control-btn:active {
-  transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0 #8b0000;
+  transform: translate(0, 0);
 }
 
 .story-progress {
   text-align: center;
-  color: #888;
+  color: var(--muted-foreground);
   font-size: 0.9rem;
   letter-spacing: 2px;
 }
@@ -141,7 +170,7 @@
   }
 
   .story-content {
-    padding: 1.5rem;
+    padding: 1.5rem 0;
   }
 }
 
