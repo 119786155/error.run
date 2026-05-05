@@ -16,7 +16,10 @@ import {
 import { getContent } from '@/i18n'
 import { ToolbarButton } from './toolbar'
 
-export function LineHeightToolbarButton(props: DropdownMenuProps) {
+export function LineHeightToolbarButton({
+  'data-testid': dataTestId,
+  ...props
+}: DropdownMenuProps & { 'data-testid'?: string }) {
   const editor = useEditorRef()
   const { defaultNodeValue, validNodeValues: values = [] } = editor.getInjectProps(LineHeightPlugin)
 
@@ -30,7 +33,7 @@ export function LineHeightToolbarButton(props: DropdownMenuProps) {
   return (
     <DropdownMenu open={open} onOpenChange={setOpen} modal={false} {...props}>
       <DropdownMenuTrigger asChild>
-        <ToolbarButton pressed={open} tooltip={getContent('editor.lineheight')} isDropdown>
+        <ToolbarButton pressed={open} tooltip={getContent('editor.lineheight')} isDropdown data-testid={dataTestId}>
           <WrapText />
         </ToolbarButton>
       </DropdownMenuTrigger>

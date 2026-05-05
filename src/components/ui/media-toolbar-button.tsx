@@ -64,7 +64,11 @@ const MEDIA_CONFIG: Record<
   },
 }
 
-export function MediaToolbarButton({ nodeType, ...props }: DropdownMenuProps & { nodeType: string }) {
+export function MediaToolbarButton({
+  nodeType,
+  'data-testid': dataTestId,
+  ...props
+}: DropdownMenuProps & { nodeType: string; 'data-testid'?: string }) {
   const currentConfig = MEDIA_CONFIG[nodeType]
 
   const editor = useEditorRef()
@@ -93,6 +97,7 @@ export function MediaToolbarButton({ nodeType, ...props }: DropdownMenuProps & {
         }}
         pressed={open}
         tooltip={currentConfig.tooltip}
+        data-testid={dataTestId}
       >
         {currentConfig.icon}
 

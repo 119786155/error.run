@@ -26,16 +26,23 @@ import { cn } from '@/lib/utils'
 
 export function EmojiToolbarButton({
   options,
+  'data-testid': dataTestId,
   ...props
 }: {
   options?: EmojiDropdownMenuOptions
-} & React.ComponentPropsWithoutRef<typeof ToolbarButton>) {
+} & React.ComponentPropsWithoutRef<typeof ToolbarButton> & { 'data-testid'?: string }) {
   const { emojiPickerState, isOpen, setIsOpen } = useEmojiDropdownMenuState(options)
 
   return (
     <EmojiPopover
       control={
-        <ToolbarButton pressed={isOpen} tooltip={getContent('editor.emoji')} isDropdown {...props}>
+        <ToolbarButton
+          pressed={isOpen}
+          tooltip={getContent('editor.emoji')}
+          isDropdown
+          data-testid={dataTestId}
+          {...props}
+        >
           <SmileIcon />
         </ToolbarButton>
       }

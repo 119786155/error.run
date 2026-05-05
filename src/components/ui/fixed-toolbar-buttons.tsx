@@ -39,93 +39,105 @@ const Separator = ({ className }: { className?: string }) => (
 export const FixedToolbarButtons = () => {
   return (
     <>
-      <ThemeToggle />
+      <ThemeToggle data-testid="toolbar-theme-toggle" />
 
       <Separator />
 
-      <ModeToolbarButton />
+      <ModeToolbarButton data-testid="toolbar-mode-toggle" />
 
       <Separator />
 
-      <UndoToolbarButton />
+      <UndoToolbarButton data-testid="toolbar-undo" />
 
-      <RedoToolbarButton />
-
-      <Separator />
-
-      <ExportToolbarButton />
-
-      <ImportToolbarButton />
+      <RedoToolbarButton data-testid="toolbar-redo" />
 
       <Separator />
 
-      <InsertToolbarButton />
+      <ExportToolbarButton data-testid="toolbar-export" />
 
-      <TurnIntoToolbarButton />
+      <ImportToolbarButton data-testid="toolbar-import" />
+
+      <Separator />
+
+      <InsertToolbarButton data-testid="toolbar-insert" />
+
+      <TurnIntoToolbarButton data-testid="toolbar-turn-into" />
 
       <FontSizeToolbarButton />
 
       <Separator />
 
-      <MarkToolbarButton nodeType="bold" tooltip={getContent('editor.bold')}>
+      <MarkToolbarButton nodeType="bold" tooltip={getContent('editor.bold')} data-testid="toolbar-bold">
         <Bold />
       </MarkToolbarButton>
 
-      <MarkToolbarButton nodeType="italic" tooltip={getContent('editor.italic')}>
+      <MarkToolbarButton nodeType="italic" tooltip={getContent('editor.italic')} data-testid="toolbar-italic">
         <Italic />
       </MarkToolbarButton>
 
-      <MarkToolbarButton nodeType="underline" tooltip={getContent('editor.underline')}>
+      <MarkToolbarButton nodeType="underline" tooltip={getContent('editor.underline')} data-testid="toolbar-underline">
         <Underline />
       </MarkToolbarButton>
 
-      <MarkToolbarButton nodeType="strikethrough" tooltip={getContent('editor.strikethrough')}>
+      <MarkToolbarButton
+        nodeType="strikethrough"
+        tooltip={getContent('editor.strikethrough')}
+        data-testid="toolbar-strikethrough"
+      >
         <Strikethrough />
       </MarkToolbarButton>
 
-      <MarkToolbarButton nodeType="code" tooltip={getContent('editor.code')}>
+      <MarkToolbarButton nodeType="code" tooltip={getContent('editor.code')} data-testid="toolbar-code">
         <Code />
       </MarkToolbarButton>
 
-      <MarkToolbarButton nodeType="kbd" tooltip={getContent('editor.kbd')}>
+      <MarkToolbarButton nodeType="kbd" tooltip={getContent('editor.kbd')} data-testid="toolbar-kbd">
         <Keyboard />
       </MarkToolbarButton>
 
-      <MarkToolbarButton nodeType="superscript" tooltip={getContent('editor.superscript')}>
+      <MarkToolbarButton
+        nodeType="superscript"
+        tooltip={getContent('editor.superscript')}
+        data-testid="toolbar-superscript"
+      >
         <Superscript />
       </MarkToolbarButton>
 
-      <MarkToolbarButton nodeType="subscript" tooltip={getContent('editor.subscript')}>
+      <MarkToolbarButton nodeType="subscript" tooltip={getContent('editor.subscript')} data-testid="toolbar-subscript">
         <Subscript />
       </MarkToolbarButton>
 
       <Separator />
 
-      <FontColorToolbarButton nodeType="color" tooltip={getContent('editor.txtcolor')}>
+      <FontColorToolbarButton nodeType="color" tooltip={getContent('editor.txtcolor')} data-testid="toolbar-font-color">
         <Baseline />
       </FontColorToolbarButton>
 
-      <FontColorToolbarButton nodeType="backgroundColor" tooltip={getContent('editor.bgcolor')}>
+      <FontColorToolbarButton
+        nodeType="backgroundColor"
+        tooltip={getContent('editor.bgcolor')}
+        data-testid="toolbar-bg-color"
+      >
         <PaintBucket />
       </FontColorToolbarButton>
 
-      <EmojiToolbarButton />
+      <EmojiToolbarButton data-testid="toolbar-emoji" />
 
       <Separator />
 
-      <MediaToolbarButton nodeType={KEYS.audio} />
+      <MediaToolbarButton nodeType={KEYS.audio} data-testid="toolbar-media-audio" />
 
-      <MediaToolbarButton nodeType={KEYS.img} />
+      <MediaToolbarButton nodeType={KEYS.img} data-testid="toolbar-media-image" />
 
-      <MediaToolbarButton nodeType={KEYS.video} />
+      <MediaToolbarButton nodeType={KEYS.video} data-testid="toolbar-media-video" />
 
       <Separator />
 
-      <LineHeightToolbarButton />
+      <LineHeightToolbarButton data-testid="toolbar-line-height" />
 
-      <IndentToolbarButton />
+      <IndentToolbarButton data-testid="toolbar-indent" />
 
-      <OutdentToolbarButton />
+      <OutdentToolbarButton data-testid="toolbar-outdent" />
     </>
   )
 }

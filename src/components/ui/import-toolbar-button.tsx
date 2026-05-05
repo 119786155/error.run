@@ -24,7 +24,10 @@ interface JsonNode {
   data?: { state?: { collaborators?: unknown } }
 }
 
-export function ImportToolbarButton(props: DropdownMenuProps) {
+export function ImportToolbarButton({
+  'data-testid': dataTestId,
+  ...props
+}: DropdownMenuProps & { 'data-testid'?: string }) {
   const editor = useEditorRef()
   const [open, setOpen] = React.useState(false)
 
@@ -143,7 +146,7 @@ export function ImportToolbarButton(props: DropdownMenuProps) {
   return (
     <DropdownMenu open={open} onOpenChange={setOpen} modal={false} {...props}>
       <DropdownMenuTrigger asChild>
-        <ToolbarButton pressed={open} tooltip={getContent('editor.import')} isDropdown>
+        <ToolbarButton pressed={open} tooltip={getContent('editor.import')} isDropdown data-testid={dataTestId}>
           <ArrowUpToLineIcon className="size-4" />
         </ToolbarButton>
       </DropdownMenuTrigger>

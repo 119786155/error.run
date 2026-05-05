@@ -98,7 +98,10 @@ export const turnIntoItems = [
   },
 ]
 
-export function TurnIntoToolbarButton(props: DropdownMenuProps) {
+export function TurnIntoToolbarButton({
+  'data-testid': dataTestId,
+  ...props
+}: DropdownMenuProps & { 'data-testid'?: string }) {
   const editor = useEditorRef()
   const [open, setOpen] = React.useState(false)
 
@@ -119,6 +122,7 @@ export function TurnIntoToolbarButton(props: DropdownMenuProps) {
           pressed={open}
           tooltip={getContent('editor.turninto')}
           isDropdown
+          data-testid={dataTestId}
         >
           {selectedItem.label}
         </ToolbarButton>

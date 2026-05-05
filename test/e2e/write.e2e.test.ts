@@ -743,3 +743,397 @@ test.describe('Block Splitting', () => {
     await expect(paragraphs).toHaveCount(2)
   })
 })
+
+// ==================== 完整工具栏按钮测试 ====================
+
+async function typeTextAndSelect(page: Page, text: string) {
+  await page.click('[data-slate-editor="true"]')
+  await page.keyboard.type(text)
+  await page.waitForTimeout(200)
+  await page.keyboard.press('Control+a')
+  await page.waitForTimeout(200)
+}
+
+test.describe('Toolbar: Undo/Redo Buttons', () => {
+  test('should undo text using toolbar undo button', async ({ page }) => {
+    await page.click('[data-slate-editor="true"]')
+    await page.keyboard.type('Test content')
+    await page.waitForTimeout(200)
+
+    const undoButton = page.locator('[data-testid="toolbar-undo"]')
+    await expect(undoButton).toBeVisible()
+    await undoButton.click()
+    await page.waitForTimeout(300)
+
+    const editorContent = await page.locator('[data-slate-editor="true"]').textContent()
+    expect(editorContent).not.toContain('Test content')
+  })
+
+  test('should redo using toolbar redo button', async ({ page }) => {
+    await page.click('[data-slate-editor="true"]')
+    await page.keyboard.type('Test content')
+    await page.waitForTimeout(200)
+
+    const undoButton = page.locator('[data-testid="toolbar-undo"]')
+    const redoButton = page.locator('[data-testid="toolbar-redo"]')
+
+    await undoButton.click()
+    await page.waitForTimeout(300)
+
+    await redoButton.click()
+    await page.waitForTimeout(300)
+
+    const editorContent = await page.locator('[data-slate-editor="true"]').textContent()
+    expect(editorContent).toContain('Test content')
+  })
+})
+
+test.describe('Toolbar: Mode Toggle Button', () => {
+  test('should toggle between edit and view mode', async ({ page }) => {
+    const modeButton = page.locator('[data-testid="toolbar-mode-toggle"]')
+    await expect(modeButton).toBeVisible()
+
+    await modeButton.click()
+    await page.waitForTimeout(200)
+
+    await page.click('[data-slate-editor="true"]')
+    await page.waitForTimeout(200)
+
+    await modeButton.click()
+    await page.waitForTimeout(200)
+  })
+})
+
+test.describe('Toolbar: Text Formatting Buttons', () => {
+  test('should apply bold using toolbar button', async ({ page }) => {
+    await typeTextAndSelect(page, 'Bold text')
+
+    const boldButton = page.locator('[data-testid="toolbar-bold"]')
+    await expect(boldButton).toBeVisible()
+    await boldButton.click()
+    await page.waitForTimeout(300)
+
+    const editorContent = await page.locator('[data-slate-editor="true"]').textContent()
+    expect(editorContent).toContain('Bold text')
+  })
+
+  test('should apply italic using toolbar button', async ({ page }) => {
+    await typeTextAndSelect(page, 'Italic text')
+
+    const italicButton = page.locator('[data-testid="toolbar-italic"]')
+    await expect(italicButton).toBeVisible()
+    await italicButton.click()
+    await page.waitForTimeout(300)
+
+    const editorContent = await page.locator('[data-slate-editor="true"]').textContent()
+    expect(editorContent).toContain('Italic text')
+  })
+
+  test('should apply underline using toolbar button', async ({ page }) => {
+    await typeTextAndSelect(page, 'Underline text')
+
+    const underlineButton = page.locator('[data-testid="toolbar-underline"]')
+    await expect(underlineButton).toBeVisible()
+    await underlineButton.click()
+    await page.waitForTimeout(300)
+
+    const editorContent = await page.locator('[data-slate-editor="true"]').textContent()
+    expect(editorContent).toContain('Underline text')
+  })
+
+  test('should apply strikethrough using toolbar button', async ({ page }) => {
+    await typeTextAndSelect(page, 'Strikethrough text')
+
+    const strikethroughButton = page.locator('[data-testid="toolbar-strikethrough"]')
+    await expect(strikethroughButton).toBeVisible()
+    await strikethroughButton.click()
+    await page.waitForTimeout(300)
+
+    const editorContent = await page.locator('[data-slate-editor="true"]').textContent()
+    expect(editorContent).toContain('Strikethrough text')
+  })
+
+  test('should apply inline code using toolbar button', async ({ page }) => {
+    await typeTextAndSelect(page, 'Code text')
+
+    const codeButton = page.locator('[data-testid="toolbar-code"]')
+    await expect(codeButton).toBeVisible()
+    await codeButton.click()
+    await page.waitForTimeout(300)
+
+    const editorContent = await page.locator('[data-slate-editor="true"]').textContent()
+    expect(editorContent).toContain('Code text')
+  })
+
+  test('should apply keyboard mark using toolbar button', async ({ page }) => {
+    await typeTextAndSelect(page, 'Keyboard text')
+
+    const kbdButton = page.locator('[data-testid="toolbar-kbd"]')
+    await expect(kbdButton).toBeVisible()
+    await kbdButton.click()
+    await page.waitForTimeout(300)
+
+    const editorContent = await page.locator('[data-slate-editor="true"]').textContent()
+    expect(editorContent).toContain('Keyboard text')
+  })
+
+  test('should apply superscript using toolbar button', async ({ page }) => {
+    await typeTextAndSelect(page, 'Superscript text')
+
+    const superscriptButton = page.locator('[data-testid="toolbar-superscript"]')
+    await expect(superscriptButton).toBeVisible()
+    await superscriptButton.click()
+    await page.waitForTimeout(300)
+
+    const editorContent = await page.locator('[data-slate-editor="true"]').textContent()
+    expect(editorContent).toContain('Superscript text')
+  })
+
+  test('should apply subscript using toolbar button', async ({ page }) => {
+    await typeTextAndSelect(page, 'Subscript text')
+
+    const subscriptButton = page.locator('[data-testid="toolbar-subscript"]')
+    await expect(subscriptButton).toBeVisible()
+    await subscriptButton.click()
+    await page.waitForTimeout(300)
+
+    const editorContent = await page.locator('[data-slate-editor="true"]').textContent()
+    expect(editorContent).toContain('Subscript text')
+  })
+})
+
+test.describe('Toolbar: Font Color & Background Color', () => {
+  test('should open font color dropdown', async ({ page }) => {
+    await typeTextAndSelect(page, 'Colored text')
+
+    const colorButton = page.locator('[data-testid="toolbar-font-color"]')
+    await expect(colorButton).toBeVisible()
+    await colorButton.click()
+    await page.waitForTimeout(300)
+
+    const dropdown = page.locator('[role="menu"]')
+    await expect(dropdown).toBeVisible()
+
+    await page.keyboard.press('Escape')
+    await page.waitForTimeout(200)
+  })
+
+  test('should open background color dropdown', async ({ page }) => {
+    await typeTextAndSelect(page, 'Highlighted text')
+
+    const bgColorButton = page.locator('[data-testid="toolbar-bg-color"]')
+    await expect(bgColorButton).toBeVisible()
+    await bgColorButton.click()
+    await page.waitForTimeout(300)
+
+    const dropdown = page.locator('[role="menu"]')
+    await expect(dropdown).toBeVisible()
+
+    await page.keyboard.press('Escape')
+    await page.waitForTimeout(200)
+  })
+})
+
+test.describe('Toolbar: Font Size', () => {
+  test('should decrease font size using minus button', async ({ page }) => {
+    await typeTextAndSelect(page, 'Smaller text')
+
+    const minusButton = page.locator('[data-testid="toolbar-font-size-minus"]')
+    await expect(minusButton).toBeVisible()
+    await minusButton.click()
+    await page.waitForTimeout(200)
+
+    const editorContent = await page.locator('[data-slate-editor="true"]').textContent()
+    expect(editorContent).toContain('Smaller text')
+  })
+
+  test('should increase font size using plus button', async ({ page }) => {
+    await typeTextAndSelect(page, 'Bigger text')
+
+    const plusButton = page.locator('[data-testid="toolbar-font-size-plus"]')
+    await expect(plusButton).toBeVisible()
+    await plusButton.click()
+    await page.waitForTimeout(200)
+
+    const editorContent = await page.locator('[data-slate-editor="true"]').textContent()
+    expect(editorContent).toContain('Bigger text')
+  })
+
+  test('should open font size dropdown', async ({ page }) => {
+    await page.click('[data-slate-editor="true"]')
+    await page.waitForTimeout(200)
+
+    const fontSizeInput = page.locator('[data-testid="toolbar-font-size-input"]')
+    await expect(fontSizeInput).toBeVisible()
+    await fontSizeInput.click()
+    await page.waitForTimeout(300)
+
+    const popover = page.locator('[role="dialog"]')
+    await expect(popover).toBeVisible()
+
+    await page.keyboard.press('Escape')
+    await page.waitForTimeout(200)
+  })
+})
+
+test.describe('Toolbar: Line Height', () => {
+  test('should open line height dropdown', async ({ page }) => {
+    await page.click('[data-slate-editor="true"]')
+    await page.waitForTimeout(200)
+
+    const lineHeightButton = page.locator('[data-testid="toolbar-line-height"]')
+    await expect(lineHeightButton).toBeVisible()
+    await lineHeightButton.click()
+    await page.waitForTimeout(300)
+
+    const dropdown = page.locator('[role="menu"]')
+    await expect(dropdown).toBeVisible()
+
+    await page.keyboard.press('Escape')
+    await page.waitForTimeout(200)
+  })
+})
+
+test.describe('Toolbar: Indent & Outdent', () => {
+  test('should indent block using toolbar button', async ({ page }) => {
+    await insertBlock(page, 'paragraph')
+    await page.waitForTimeout(200)
+
+    const indentButton = page.locator('[data-testid="toolbar-indent"]')
+    await expect(indentButton).toBeVisible()
+    await indentButton.click()
+    await page.waitForTimeout(200)
+  })
+
+  test('should outdent block using toolbar button', async ({ page }) => {
+    await insertBlock(page, 'paragraph')
+    await page.waitForTimeout(200)
+
+    const indentButton = page.locator('[data-testid="toolbar-indent"]')
+    const outdentButton = page.locator('[data-testid="toolbar-outdent"]')
+
+    await indentButton.click()
+    await page.waitForTimeout(200)
+
+    await outdentButton.click()
+    await page.waitForTimeout(200)
+  })
+})
+
+test.describe('Toolbar: Emoji Button', () => {
+  test('should open emoji picker', async ({ page }) => {
+    await page.click('[data-slate-editor="true"]')
+    await page.waitForTimeout(200)
+
+    const emojiButton = page.locator('[data-testid="toolbar-emoji"]')
+    await expect(emojiButton).toBeVisible()
+    await emojiButton.click()
+    await page.waitForTimeout(300)
+
+    await page.keyboard.press('Escape')
+    await page.waitForTimeout(200)
+  })
+})
+
+test.describe('Toolbar: Media Buttons', () => {
+  test('should open audio media button', async ({ page }) => {
+    await page.click('[data-slate-editor="true"]')
+    await page.waitForTimeout(200)
+
+    const audioButton = page.locator('[data-testid="toolbar-media-audio"]')
+    await expect(audioButton).toBeVisible()
+    await audioButton.click()
+    await page.waitForTimeout(300)
+
+    await page.keyboard.press('Escape')
+    await page.waitForTimeout(200)
+  })
+
+  test('should open image media button', async ({ page }) => {
+    await page.click('[data-slate-editor="true"]')
+    await page.waitForTimeout(200)
+
+    const imageButton = page.locator('[data-testid="toolbar-media-image"]')
+    await expect(imageButton).toBeVisible()
+    await imageButton.click()
+    await page.waitForTimeout(300)
+
+    await page.keyboard.press('Escape')
+    await page.waitForTimeout(200)
+  })
+
+  test('should open video media button', async ({ page }) => {
+    await page.click('[data-slate-editor="true"]')
+    await page.waitForTimeout(200)
+
+    const videoButton = page.locator('[data-testid="toolbar-media-video"]')
+    await expect(videoButton).toBeVisible()
+    await videoButton.click()
+    await page.waitForTimeout(300)
+
+    await page.keyboard.press('Escape')
+    await page.waitForTimeout(200)
+  })
+})
+
+test.describe('Toolbar: Insert & Turn Into', () => {
+  test('should open insert dropdown', async ({ page }) => {
+    await page.click('[data-slate-editor="true"]')
+    await page.waitForTimeout(200)
+
+    const insertButton = page.locator('[data-testid="toolbar-insert"]')
+    await expect(insertButton).toBeVisible()
+    await insertButton.click()
+    await page.waitForTimeout(300)
+
+    const dropdown = page.locator('[role="menu"]')
+    await expect(dropdown).toBeVisible()
+
+    await page.keyboard.press('Escape')
+    await page.waitForTimeout(200)
+  })
+
+  test('should open turn into dropdown', async ({ page }) => {
+    await page.click('[data-slate-editor="true"]')
+    await page.waitForTimeout(200)
+
+    const turnIntoButton = page.locator('[data-testid="toolbar-turn-into"]')
+    await expect(turnIntoButton).toBeVisible()
+    await turnIntoButton.click()
+    await page.waitForTimeout(300)
+
+    const dropdown = page.locator('[role="menu"]')
+    await expect(dropdown).toBeVisible()
+
+    await page.keyboard.press('Escape')
+    await page.waitForTimeout(200)
+  })
+})
+
+test.describe('Toolbar: Export & Import Buttons', () => {
+  test('should open export dropdown', async ({ page }) => {
+    await page.click('[data-slate-editor="true"]')
+    await page.waitForTimeout(200)
+
+    const exportButton = page.locator('[data-testid="toolbar-export"]')
+    await expect(exportButton).toBeVisible()
+    await exportButton.click()
+    await page.waitForTimeout(300)
+
+    await page.keyboard.press('Escape')
+    await page.waitForTimeout(200)
+  })
+
+  test('should open import dropdown', async ({ page }) => {
+    await page.click('[data-slate-editor="true"]')
+    await page.waitForTimeout(200)
+
+    const importButton = page.locator('[data-testid="toolbar-import"]')
+    await expect(importButton).toBeVisible()
+    await importButton.click()
+    await page.waitForTimeout(300)
+
+    await page.keyboard.press('Escape')
+    await page.waitForTimeout(200)
+  })
+})

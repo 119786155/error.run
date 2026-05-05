@@ -192,7 +192,10 @@ const groups: Group[] = [
   },
 ]
 
-export function InsertToolbarButton(props: DropdownMenuProps) {
+export function InsertToolbarButton({
+  'data-testid': dataTestId,
+  ...props
+}: DropdownMenuProps & { 'data-testid'?: string }) {
   const editor = useEditorRef()
   const [open, setOpen] = React.useState(false)
   const touchRef = React.useRef<{ startX: number; startY: number; isTap: boolean }>({
@@ -238,7 +241,7 @@ export function InsertToolbarButton(props: DropdownMenuProps) {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <ToolbarButton pressed={open} tooltip={getContent('editor.insert')} isDropdown>
+        <ToolbarButton pressed={open} tooltip={getContent('editor.insert')} isDropdown data-testid={dataTestId}>
           <PlusIcon />
         </ToolbarButton>
       </DropdownMenuTrigger>

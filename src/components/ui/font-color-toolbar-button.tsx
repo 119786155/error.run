@@ -18,10 +18,12 @@ export function FontColorToolbarButton({
   children,
   nodeType,
   tooltip,
+  'data-testid': dataTestId,
+  ...props
 }: {
   nodeType: string
   tooltip?: string
-} & DropdownMenuProps) {
+} & DropdownMenuProps & { 'data-testid'?: string }) {
   const editor = useEditorRef()
 
   const selectionDefined = useEditorSelector((editor) => !!editor.selection, [])
@@ -86,9 +88,10 @@ export function FontColorToolbarButton({
         setOpen(value)
       }}
       modal={false}
+      {...props}
     >
       <DropdownMenuTrigger asChild>
-        <ToolbarButton pressed={open} tooltip={tooltip}>
+        <ToolbarButton pressed={open} tooltip={tooltip} data-testid={dataTestId}>
           {children}
         </ToolbarButton>
       </DropdownMenuTrigger>
