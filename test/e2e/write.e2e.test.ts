@@ -678,3 +678,68 @@ test.describe('Import Markdown', () => {
     expect(hasErrors).toBe(false)
   })
 })
+
+// ==================== BASIC EDITING ====================
+
+test.describe('Undo/Redo', () => {
+  test('should undo text input', async ({ page }) => {
+    await page.click('[data-slate-editor="true"]')
+    await page.keyboard.type('Hello World')
+    await page.waitForTimeout(200)
+    const editorContent = await page.locator('[data-slate-editor="true"]').textContent()
+    expect(editorContent).toContain('Hello World')
+
+    await page.keyboard.press('Control+z')
+    await page.waitForTimeout(300)
+  })
+
+  test('should redo after undo', async ({ page }) => {
+    await page.click('[data-slate-editor="true"]')
+    await page.keyboard.type('Hello World')
+    await page.waitForTimeout(200)
+
+    await page.keyboard.press('Control+z')
+    await page.waitForTimeout(300)
+
+    await page.keyboard.press('Control+Shift+z')
+    await page.waitForTimeout(300)
+  })
+
+  test('should undo block insertion', async ({ page }) => {
+    await insertBlock(page, 'heading 1')
+    await page.waitForTimeout(200)
+    let headings = page.locator('.slate-h1')
+    await expect(headings).toHaveCount(1)
+
+    await page.keyboard.press('Control+z')
+    await page.waitForTimeout(300)
+    headings = page.locator('.slate-h1')
+    await expect(headings).toHaveCount(0)
+  })
+})
+
+test.describe('Text Input', () => {
+  test('should type text into editor', async ({ page }) => {
+    await page.click('[data-slate-editor="true"]')
+    await page.keyboard.type('Test text input')
+    await page.waitForTimeout(200)
+
+    const editorContent = await page.locator('[data-slate-editor="true"]').textContent()
+    expect(editorContent).toContain('Test text input')
+  })
+})
+
+test.describe('Block Splitting', () => {
+  test('should split paragraph block with Enter key', async ({ page }) => {
+    await page.click('[data-slate-editor="true"]')
+    await page.keyboard.type('First part')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('Enter')
+    await page.waitForTimeout(200)
+    await page.keyboard.type('Second part')
+    await page.waitForTimeout(200)
+
+    const paragraphs = page.locator('.slate-p')
+    await expect(paragraphs).toHaveCount(2)
+  })
+})
