@@ -1,79 +1,13 @@
 # error.run
-proyek pribadi untuk belajar, berlatih, dan menjelajah
+proyek pribadi untuk belajar, berlatih, dan menjelajahi
 
 ## /
 
 ```
-         DEBU
+         Debu
 
          Angin berlalu
          Tanpa bekas
          Hati menyimpan
          Satu napas
-```
-
-## /write
-
-```
-         # Memulai
-
-         Ini adalah editor Markdown **minimalis**
-         dengan pratinjau waktu nyata dan Export
-
-         > Tip: Gunakan sintaks markdown untuk pemformatan
-
-         `const salam = "Halo, dunia!";`
-
-         - Ringan dan cepat
-         - Tanpa pelacakan atau iklan
-         - Data Anda tetap lokal
-```
-
-## /room
-
-```
-         # Kolaborasi Waktu Nyata
-
-         Ini adalah **editor kolaboratif**
-         didukung oleh Yjs dan WebRTC
-
-         > Tip: Buka URL yang sama di banyak
-         > tab untuk berkolaborasi
-
-         - Sinkronisasi waktu nyata melalui WebRTC P2P
-         - Pelacakan kursur jarak jauh dengan indikator emoji
-         - Resolusi konflik otomatis dengan CRDTs
-         - Tidak perlu mendaftar, kolaborasi instan
-```
-
-## /jump
-
-```
-         # Petualangan Lompat Pixel
-
-         Ini adalah **permainan platform gaya retro**
-         dibangun dengan HTML5 Canvas
-
-         > Tip: Kumpulkan koin dan hindari musuh!
-
-         - Platform yang dihasilkan secara prosedural
-         - Kesulitan progresif saat Anda maju
-         - Grafik pixel art gaya retro
-         - Kontrol sentuh untuk dukungan seluler
-```
-
-## /story
-
-```
-         # Petualangan Teks
-
-         Ini adalah **game petualangan teks interaktif**
-         dengan alur cerita bercabang dan pilihan
-
-         > Tip: Buat pilihan dengan hati-hati - itu penting!
-
-         - Narasi bercabang dengan beberapa akhiran
-         - Dukungan 18 bahasa
-         - Desain gradien yang indah
-         - Tata letak responsif ramah seluler
 ```
