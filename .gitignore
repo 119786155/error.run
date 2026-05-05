@@ -151,7 +151,6 @@ playwright-report/
 # Trae IDE
 .trae/
 playwright/.cache/
-test/fixtures/
 
 # Test assets
 test-assets/

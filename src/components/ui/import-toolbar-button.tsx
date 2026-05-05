@@ -62,17 +62,45 @@ export function ImportToolbarButton(props: DropdownMenuProps) {
     editor.tf.insertNodes(nodes)
   }
 
+  const importHtmlContent = (text: string) => {
+    const nodes = getFileNodes(text, 'html')
+    editor.tf.insertNodes(nodes)
+  }
+
+  const importMarkdownContent = (text: string) => {
+    const nodes = getFileNodes(text, 'markdown')
+    editor.tf.insertNodes(nodes)
+  }
+
   React.useEffect(() => {
-    const handleImportTest = (event: Event) => {
+    const handleImportJsonTest = (event: Event) => {
       const json = (event as CustomEvent).detail
       if (json) {
         importJsonContent(json)
       }
     }
 
-    document.addEventListener('import-json-test', handleImportTest)
+    const handleImportHtmlTest = (event: Event) => {
+      const html = (event as CustomEvent).detail
+      if (html) {
+        importHtmlContent(html)
+      }
+    }
+
+    const handleImportMarkdownTest = (event: Event) => {
+      const markdown = (event as CustomEvent).detail
+      if (markdown) {
+        importMarkdownContent(markdown)
+      }
+    }
+
+    document.addEventListener('import-json-test', handleImportJsonTest)
+    document.addEventListener('import-html-test', handleImportHtmlTest)
+    document.addEventListener('import-markdown-test', handleImportMarkdownTest)
     return () => {
-      document.removeEventListener('import-json-test', handleImportTest)
+      document.removeEventListener('import-json-test', handleImportJsonTest)
+      document.removeEventListener('import-html-test', handleImportHtmlTest)
+      document.removeEventListener('import-markdown-test', handleImportMarkdownTest)
     }
   }, [])
 

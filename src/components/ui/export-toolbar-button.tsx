@@ -28,31 +28,6 @@ export function ExportToolbarButton(props: DropdownMenuProps) {
 
   const getName = (suffix: string) => `${dayjs().format('YYYY-MM-DD')}.${suffix}`
 
-  const getCanvas = async () => {
-    const { default: html2canvas } = await import('html2canvas-pro')
-
-    const style = document.createElement('style')
-    document.head.append(style)
-
-    const canvas = await html2canvas(editor.api.toDOMNode(editor) as HTMLElement, {
-      onclone: (document: Document) => {
-        const editorElement = document.querySelector('[contenteditable="true"]')
-        if (editorElement) {
-          Array.from(editorElement.querySelectorAll('*')).forEach((element) => {
-            const existingStyle = element.getAttribute('style') || ''
-            element.setAttribute(
-              'style',
-              `${existingStyle}; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important`,
-            )
-          })
-        }
-      },
-    })
-    style.remove()
-
-    return canvas
-  }
-
   const downloadFile = async (url: string, filename: string) => {
     const response = await fetch(url)
 
@@ -68,30 +43,6 @@ export function ExportToolbarButton(props: DropdownMenuProps) {
 
     // Clean up the blob URL
     window.URL.revokeObjectURL(blobUrl)
-  }
-
-  const exportToPdf = async () => {
-    const canvas = await getCanvas()
-
-    const PDFLib = await import('pdf-lib')
-    const pdfDoc = await PDFLib.PDFDocument.create()
-    const page = pdfDoc.addPage([canvas.width, canvas.height])
-    const imageEmbed = await pdfDoc.embedPng(canvas.toDataURL('PNG'))
-    const { height, width } = imageEmbed.scale(1)
-    page.drawImage(imageEmbed, {
-      height,
-      width,
-      x: 0,
-      y: 0,
-    })
-    const pdfBase64 = await pdfDoc.saveAsBase64({ dataUri: true })
-
-    await downloadFile(pdfBase64, getName('pdf'))
-  }
-
-  const exportToImage = async () => {
-    const canvas = await getCanvas()
-    await downloadFile(canvas.toDataURL('image/png'), getName('png'))
   }
 
   const exportToMarkDown = async () => {
@@ -163,8 +114,6 @@ export function ExportToolbarButton(props: DropdownMenuProps) {
       <DropdownMenuContent align="start">
         <DropdownMenuGroup>
           <DropdownMenuItem onSelect={exportToHtml}>{getContent('editor.exportFile.html')}</DropdownMenuItem>
-          <DropdownMenuItem onSelect={exportToPdf}>{getContent('editor.exportFile.pdf')}</DropdownMenuItem>
-          <DropdownMenuItem onSelect={exportToImage}>{getContent('editor.exportFile.img')}</DropdownMenuItem>
           <DropdownMenuItem onSelect={exportToMarkDown}>{getContent('editor.exportFile.md')}</DropdownMenuItem>
           <DropdownMenuItem onSelect={exportToJson}>{getContent('editor.exportFile.json')}</DropdownMenuItem>
         </DropdownMenuGroup>

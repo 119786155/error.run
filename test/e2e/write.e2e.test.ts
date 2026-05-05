@@ -545,7 +545,7 @@ test.describe('Import JSON', () => {
     await page.waitForSelector('[data-testid="editor"]')
 
     const __dirname = path.dirname(new URL(import.meta.url).pathname).replace(/^\/([A-Za-z])\//, '$1:/')
-    const jsonFilePath = path.join(__dirname, '../../test/fixtures/1.json')
+    const jsonFilePath = path.join(__dirname, '../../test/fixtures/excalidraw-test-data.json')
     const jsonContent = fs.readFileSync(jsonFilePath, 'utf-8')
 
     await page.evaluate((json: string) => {
@@ -584,5 +584,97 @@ test.describe('Import JSON', () => {
 
     expect(hasErrors).toBe(false)
     expect(excalidrawCount).toBeGreaterThan(0)
+  })
+})
+
+test.describe('Import HTML', () => {
+  test('should import HTML file without error', async ({ page }) => {
+    const consoleErrors: string[] = []
+    const consoleWarnings: string[] = []
+
+    page.on('console', (msg) => {
+      if (msg.type() === 'error') {
+        consoleErrors.push(msg.text())
+      } else if (msg.type() === 'warning') {
+        consoleWarnings.push(msg.text())
+      }
+    })
+
+    await page.goto(`${BASE_URL}/write`)
+    await page.waitForSelector('[data-testid="editor"]')
+
+    const __dirname = path.dirname(new URL(import.meta.url).pathname).replace(/^\/([A-Za-z])\//, '$1:/')
+    const htmlFilePath = path.join(__dirname, '../../test/fixtures/test.html')
+    const htmlContent = fs.readFileSync(htmlFilePath, 'utf-8')
+
+    await page.evaluate((html: string) => {
+      const event = new CustomEvent('import-html-test', { detail: html })
+      document.dispatchEvent(event)
+    }, htmlContent)
+
+    await page.waitForTimeout(3000)
+
+    if (consoleErrors.length > 0) {
+      console.log('=== Console Errors ===')
+      consoleErrors.forEach((err, index) => {
+        console.log(`${index + 1}. ${err}`)
+      })
+    }
+
+    if (consoleWarnings.length > 0) {
+      console.log('=== Console Warnings ===')
+      consoleWarnings.forEach((warn, index) => {
+        console.log(`${index + 1}. ${warn}`)
+      })
+    }
+
+    const hasErrors = consoleErrors.length > 0
+    expect(hasErrors).toBe(false)
+  })
+})
+
+test.describe('Import Markdown', () => {
+  test('should import Markdown file without error', async ({ page }) => {
+    const consoleErrors: string[] = []
+    const consoleWarnings: string[] = []
+
+    page.on('console', (msg) => {
+      if (msg.type() === 'error') {
+        consoleErrors.push(msg.text())
+      } else if (msg.type() === 'warning') {
+        consoleWarnings.push(msg.text())
+      }
+    })
+
+    await page.goto(`${BASE_URL}/write`)
+    await page.waitForSelector('[data-testid="editor"]')
+
+    const __dirname = path.dirname(new URL(import.meta.url).pathname).replace(/^\/([A-Za-z])\//, '$1:/')
+    const mdFilePath = path.join(__dirname, '../../test/fixtures/test.md')
+    const mdContent = fs.readFileSync(mdFilePath, 'utf-8')
+
+    await page.evaluate((markdown: string) => {
+      const event = new CustomEvent('import-markdown-test', { detail: markdown })
+      document.dispatchEvent(event)
+    }, mdContent)
+
+    await page.waitForTimeout(3000)
+
+    if (consoleErrors.length > 0) {
+      console.log('=== Console Errors ===')
+      consoleErrors.forEach((err, index) => {
+        console.log(`${index + 1}. ${err}`)
+      })
+    }
+
+    if (consoleWarnings.length > 0) {
+      console.log('=== Console Warnings ===')
+      consoleWarnings.forEach((warn, index) => {
+        console.log(`${index + 1}. ${warn}`)
+      })
+    }
+
+    const hasErrors = consoleErrors.length > 0
+    expect(hasErrors).toBe(false)
   })
 })
