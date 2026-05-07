@@ -22,7 +22,6 @@ The skill runs the following steps:
 5. **Code review** - Invokes code-reviewer skill to check for SOLID principle violations
 6. **Analyze changes** - Detects changed files and generates appropriate commit message
 7. **Commit changes** - Commits changes with intelligent commit message
-8. **Push to remote** - Pushes changes to remote git repository
 
 ## Code Review Step
 
@@ -118,9 +117,6 @@ log "AI assistant will analyze this information and generate a precise commit me
 log "=== Step 7: Committing changes ==="
 git add -A
 git commit -m "chore: update changes"  # AI will replace this with precise message
-
-log "=== Step 8: Pushing to remote ==="
-git push
 
 log "=== Code submission completed successfully ==="
 ```
