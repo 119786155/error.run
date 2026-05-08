@@ -105,14 +105,73 @@ describe('i18n Module', () => {
       expect(mockLocalStorage.setItem).toHaveBeenCalledWith('locale', 'en')
     })
 
-    it('should use DEFAULT_LOCALE for unknown browser language', async () => {
+    it('should use DEFAULT_LOCALE for unknown base language', async () => {
       const { getContent } = await import('../../../src/i18n')
       mockLocalStorage.store = {}
       Object.defineProperty(globalThis, 'navigator', {
-        value: { language: 'unknown-LANG' },
+        value: { language: 'zz-ZZ' },
         writable: true,
       })
       const result = getContent('editor.placeholder')
+      expect(result).toBe('Type something...')
+    })
+  })
+
+  describe('base language fallback', () => {
+    it('should fallback to base language for unlisted Spanish region variants', async () => {
+      const { getContent } = await import('../../../src/i18n')
+      mockLocalStorage.store = {}
+      Object.defineProperty(globalThis, 'navigator', {
+        value: { language: 'es-CL' },
+        writable: true,
+      })
+      const result = getContent('editor.placeholder')
+      expect(result).toBe('Escribe algo...')
+    })
+
+    it('should fallback to base language for unlisted Portuguese variant', async () => {
+      const { getContent } = await import('../../../src/i18n')
+      mockLocalStorage.store = {}
+      Object.defineProperty(globalThis, 'navigator', {
+        value: { language: 'pt-AO' },
+        writable: true,
+      })
+      const result = getContent('editor.placeholder')
+      expect(result).toBe('Digite algo...')
+    })
+
+    it('should fallback to base language for Simplified Chinese', async () => {
+      const { getContent } = await import('../../../src/i18n')
+      mockLocalStorage.store = {}
+      Object.defineProperty(globalThis, 'navigator', {
+        value: { language: 'zh-Hans' },
+        writable: true,
+      })
+      const result = getContent('editor.placeholder')
+      expect(result).toBe('写一写...')
+    })
+
+    it('should use stored locale when browser locale matches via base fallback', async () => {
+      const { getContent } = await import('../../../src/i18n')
+      mockLocalStorage.store = { locale: 'ja' }
+      Object.defineProperty(globalThis, 'navigator', {
+        value: { language: 'es-CL' },
+        writable: true,
+      })
+      const result = getContent('editor.placeholder')
+      expect(result).toBe('何か書いてください...')
+    })
+
+    it('should init to en when both region and base language are unknown', async () => {
+      const { init, getContent } = await import('../../../src/i18n')
+      mockLocalStorage.store = { locale: 'zh' }
+      Object.defineProperty(globalThis, 'navigator', {
+        value: { language: 'zz-ZZ' },
+        writable: true,
+      })
+      init()
+      const result = getContent('editor.placeholder')
+      expect(mockLocalStorage.store['locale']).toBe('en')
       expect(result).toBe('Type something...')
     })
   })

@@ -90,7 +90,11 @@ const setLocale = (locale: string) => localStorage.setItem(STORAGE_KEY, locale)
 const getBrowserCurrentLocale = (): Locale => {
   const browserLocale = navigator.language
   const mappedLocale = localeMap[browserLocale]
-  return mappedLocale || DEFAULT_LOCALE
+  if (mappedLocale) {
+    return mappedLocale
+  }
+  const baseLocale = browserLocale.split('-')[0]
+  return localeMap[baseLocale] || DEFAULT_LOCALE
 }
 
 export const getContent = (path: string): string => {
