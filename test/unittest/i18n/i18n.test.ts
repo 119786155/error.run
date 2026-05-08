@@ -171,7 +171,7 @@ describe('i18n Module', () => {
       })
       init()
       const result = getContent('editor.placeholder')
-      expect(mockLocalStorage.store['locale']).toBe('en')
+      expect(mockLocalStorage.store.locale).toBe('en')
       expect(result).toBe('Type something...')
     })
   })
