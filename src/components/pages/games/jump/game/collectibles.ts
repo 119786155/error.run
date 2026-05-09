@@ -10,6 +10,10 @@ export class Collectible {
   height = 16
   collected = false
   private floatOffset = 0
+
+  getFloatOffset(): number {
+    return this.floatOffset
+  }
   private frame = 0
 
   constructor(x: number, y: number, type: CollectibleType = 'coin') {

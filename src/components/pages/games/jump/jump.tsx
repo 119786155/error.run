@@ -10,19 +10,14 @@ export const Jump = () => {
     if (!canvas) return
 
     ;(async () => {
-      const [
-        { Renderer },
-        { Player },
-        { PlatformManager },
-        { CollectibleManager },
-        { EnemyManager },
-      ] = await Promise.all([
-        import('./game/renderer'),
-        import('./game/player'),
-        import('./game/platform'),
-        import('./game/collectibles'),
-        import('./game/enemy'),
-      ])
+      const [{ Renderer }, { Player }, { PlatformManager }, { CollectibleManager }, { EnemyManager }] =
+        await Promise.all([
+          import('./game/renderer'),
+          import('./game/player'),
+          import('./game/platform'),
+          import('./game/collectibles'),
+          import('./game/enemy'),
+        ])
 
       const game = new GameEngine(canvas, { Renderer, Player, PlatformManager, CollectibleManager, EnemyManager })
       game.initInput()

@@ -1,10 +1,10 @@
 import { audioManager } from './audio'
-import { Utils } from './utils'
-import type { Renderer } from './renderer'
-import type { Player } from './player'
-import type { PlatformManager } from './platform'
 import type { CollectibleManager } from './collectibles'
 import type { EnemyManager } from './enemy'
+import type { PlatformManager } from './platform'
+import type { Player } from './player'
+import type { Renderer } from './renderer'
+import { Utils } from './utils'
 
 type Platform = ReturnType<PlatformManager['getPlatforms']>[number]
 
@@ -154,7 +154,7 @@ export class GameEngine {
     this.renderer.camera.x += (targetCamX - this.renderer.camera.x) * 0.2
     this.renderer.camera.y += (targetCamY - this.renderer.camera.y) * 0.15
 
-    this.handleOutOfBounds(targetCamX, targetCamY)
+    this.handleOutOfBounds(targetCamX)
     this.handleCollectibles()
     this.handleEnemies()
     this.handleSpawns()
@@ -255,7 +255,7 @@ export class GameEngine {
       this.renderer.drawPlatform(platform.x, platform.y, platform.width, platform.height, platform.type)
     }
     for (const collectible of this.collectibleManager.getCollectibles()) {
-      this.renderer.drawCoin(collectible.x, collectible.y + collectible.floatOffset, this.frame)
+      this.renderer.drawCoin(collectible.x, collectible.y + collectible.getFloatOffset(), this.frame)
     }
     for (const enemy of this.enemyManager.getEnemies()) {
       this.renderer.drawEnemy(enemy.x, enemy.y, enemy.width, enemy.height, enemy.type)
@@ -274,7 +274,7 @@ export class GameEngine {
     this.renderer.renderParticles()
   }
 
-  private loop = () => {
+  loop = () => {
     this.update()
     this.render()
     this.animFrameId = requestAnimationFrame(this.loop)
@@ -282,7 +282,7 @@ export class GameEngine {
 
   // ---- input ----
 
-  private initInput() {
+  initInput() {
     const handleKey = (e: KeyboardEvent, pressed: boolean) => {
       switch (e.code) {
         case 'ArrowLeft':
@@ -320,9 +320,9 @@ export class GameEngine {
     const setTouchInput = (key: 'left' | 'right' | 'jump', value: boolean) => {
       this.input[key] = value
       const btnMap: Record<string, HTMLElement | null> = {
-        jump: btnJump!,
-        left: btnLeft!,
-        right: btnRight!,
+        jump: btnJump ?? null,
+        left: btnLeft ?? null,
+        right: btnRight ?? null,
       }
       const btn = btnMap[key]
       if (btn) {
@@ -377,23 +377,39 @@ export class GameEngine {
       btn.addEventListener('pointercancel', handleEnd)
       btn.addEventListener('pointerleave', handleEnd)
 
-      btn.addEventListener('touchstart', (e) => {
-        e.preventDefault()
-        startX = e.touches[0].clientX
-        handleStart()
-      }, { passive: false })
-      btn.addEventListener('touchmove', (e) => {
-        e.preventDefault()
-        handleMove(e)
-      }, { passive: false })
-      btn.addEventListener('touchend', (e) => {
-        e.preventDefault()
-        handleEnd()
-      }, { passive: false })
-      btn.addEventListener('touchcancel', (e) => {
-        e.preventDefault()
-        handleEnd()
-      }, { passive: false })
+      btn.addEventListener(
+        'touchstart',
+        (e) => {
+          e.preventDefault()
+          startX = e.touches[0].clientX
+          handleStart()
+        },
+        { passive: false },
+      )
+      btn.addEventListener(
+        'touchmove',
+        (e) => {
+          e.preventDefault()
+          handleMove(e)
+        },
+        { passive: false },
+      )
+      btn.addEventListener(
+        'touchend',
+        (e) => {
+          e.preventDefault()
+          handleEnd()
+        },
+        { passive: false },
+      )
+      btn.addEventListener(
+        'touchcancel',
+        (e) => {
+          e.preventDefault()
+          handleEnd()
+        },
+        { passive: false },
+      )
     }
 
     setupSwipeButton(btnLeft, 'left', 'right')
@@ -404,18 +420,30 @@ export class GameEngine {
       btnJump.addEventListener('pointerup', () => setTouchInput('jump', false))
       btnJump.addEventListener('pointercancel', () => setTouchInput('jump', false))
       btnJump.addEventListener('pointerleave', () => setTouchInput('jump', false))
-      btnJump.addEventListener('touchstart', (e) => {
-        e.preventDefault()
-        setTouchInput('jump', true)
-      }, { passive: false })
-      btnJump.addEventListener('touchend', (e) => {
-        e.preventDefault()
-        setTouchInput('jump', false)
-      }, { passive: false })
-      btnJump.addEventListener('touchcancel', (e) => {
-        e.preventDefault()
-        setTouchInput('jump', false)
-      }, { passive: false })
+      btnJump.addEventListener(
+        'touchstart',
+        (e) => {
+          e.preventDefault()
+          setTouchInput('jump', true)
+        },
+        { passive: false },
+      )
+      btnJump.addEventListener(
+        'touchend',
+        (e) => {
+          e.preventDefault()
+          setTouchInput('jump', false)
+        },
+        { passive: false },
+      )
+      btnJump.addEventListener(
+        'touchcancel',
+        (e) => {
+          e.preventDefault()
+          setTouchInput('jump', false)
+        },
+        { passive: false },
+      )
     }
 
     this.canvas?.addEventListener(

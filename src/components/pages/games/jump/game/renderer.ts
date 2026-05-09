@@ -50,7 +50,16 @@ export class Renderer {
 
   resize(): void {
     const container = this.canvas.parentElement
-    const rect = container!.getBoundingClientRect()
+    const rect = container?.getBoundingClientRect() ?? {
+      width: this.width,
+      height: this.height,
+      left: 0,
+      top: 0,
+      right: 0,
+      bottom: 0,
+      x: 0,
+      y: 0,
+    }
     this.dpr = window.devicePixelRatio || 1
     this.canvas.width = this.width * this.dpr
     this.canvas.height = this.height * this.dpr
