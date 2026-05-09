@@ -59,6 +59,7 @@ export class Enemy {
 export class EnemyManager {
   enemies: Enemy[] = []
   private spawnChance = 0.3
+  private readonly viewMargin = 1000
 
   init(): void {
     this.enemies = []
@@ -90,11 +91,11 @@ export class EnemyManager {
       }
     }
 
-    this.enemies = this.enemies.filter((e) => e.alive && e.x > -1000)
+    this.enemies = this.enemies.filter((e) => e.alive && e.x > -this.viewMargin)
   }
 
   getEnemies(): Enemy[] {
-    return this.enemies.filter((e) => e.alive)
+    return this.enemies
   }
 
   reset(): void {

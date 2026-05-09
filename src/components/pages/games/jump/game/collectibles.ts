@@ -40,6 +40,7 @@ export class Collectible {
 export class CollectibleManager {
   collectibles: Collectible[] = []
   private spawnChance = 0.6
+  private readonly viewMargin = 1000
 
   init(): void {
     this.collectibles = []
@@ -63,7 +64,7 @@ export class CollectibleManager {
       c.update()
     }
 
-    this.collectibles = this.collectibles.filter((c) => !c.collected && c.x > -1000)
+    this.collectibles = this.collectibles.filter((c) => !c.collected && c.x > -this.viewMargin)
   }
 
   getCollectibles(): Collectible[] {

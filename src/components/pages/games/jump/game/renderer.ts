@@ -32,6 +32,7 @@ export class Renderer {
   private ctx: CanvasRenderingContext2D
   readonly width = 800
   readonly height = 600
+  private dpr = 1
   camera: Camera = { x: 0, y: 0 }
   private shakeTimer = 0
   private shakeIntensity = 0
@@ -49,12 +50,13 @@ export class Renderer {
 
   resize(): void {
     const container = this.canvas.parentElement
-    // biome-ignore lint/style/noNonNullAssertion: container always exists when resize is called
     const rect = container!.getBoundingClientRect()
-    this.canvas.width = this.width
-    this.canvas.height = this.height
+    this.dpr = window.devicePixelRatio || 1
+    this.canvas.width = this.width * this.dpr
+    this.canvas.height = this.height * this.dpr
     this.canvas.style.width = `${rect.width}px`
     this.canvas.style.height = `${rect.height}px`
+    this.ctx.scale(this.dpr, this.dpr)
   }
 
   setCamera(x: number, y: number): void {

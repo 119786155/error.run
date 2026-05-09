@@ -94,8 +94,9 @@ export class PlatformManager {
   }
 
   private generatePlatform(): void {
-    const gap = Utils.randomInt(this.gapMin, this.gapMax - this.difficulty * 5)
-    const width = Utils.randomInt(Math.max(50, this.platformWidthMin - this.difficulty * 5), this.platformWidthMax)
+    const clampedDifficulty = Math.min(this.difficulty, 12)
+    const gap = Utils.randomInt(Math.max(10, this.gapMin - clampedDifficulty * 5), this.gapMax)
+    const width = Utils.randomInt(Math.max(50, this.platformWidthMin - clampedDifficulty * 5), this.platformWidthMax)
     const height = 20
 
     const lastY = this.platforms.length > 0 ? this.platforms[this.platforms.length - 1].y : 400

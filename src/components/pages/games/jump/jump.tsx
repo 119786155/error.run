@@ -1,409 +1,41 @@
 import { useEffect, useRef } from 'react'
-import { getContent } from '@/i18n'
 import '@/components/pages/games/jump/jump.css'
+import { GameEngine } from './game/gameEngine'
 
 export const Jump = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
-    const initGame = async () => {
-      const canvas = canvasRef.current
-      if (!canvas) return
+    const canvas = canvasRef.current
+    if (!canvas) return
 
-      // biome-ignore lint/suspicious/noExplicitAny: dynamic import
-      const { Renderer }: any = await import('@/components/pages/games/jump/game/renderer')
-      // biome-ignore lint/suspicious/noExplicitAny: dynamic import
-      const { Player }: any = await import('@/components/pages/games/jump/game/player')
-      // biome-ignore lint/suspicious/noExplicitAny: dynamic import
-      const { PlatformManager }: any = await import('@/components/pages/games/jump/game/platform')
-      // biome-ignore lint/suspicious/noExplicitAny: dynamic import
-      const { CollectibleManager }: any = await import('@/components/pages/games/jump/game/collectibles')
-      // biome-ignore lint/suspicious/noExplicitAny: dynamic import
-      const { EnemyManager }: any = await import('@/components/pages/games/jump/game/enemy')
-      // biome-ignore lint/suspicious/noExplicitAny: dynamic import
-      const { audioManager }: any = await import('@/components/pages/games/jump/game/audio')
-      // biome-ignore lint/suspicious/noExplicitAny: dynamic import
-      const { Utils }: any = await import('@/components/pages/games/jump/game/utils')
+    ;(async () => {
+      const [
+        { Renderer },
+        { Player },
+        { PlatformManager },
+        { CollectibleManager },
+        { EnemyManager },
+      ] = await Promise.all([
+        import('./game/renderer'),
+        import('./game/player'),
+        import('./game/platform'),
+        import('./game/collectibles'),
+        import('./game/enemy'),
+      ])
 
-      class GameInstance {
-        canvas: HTMLCanvasElement
-        // biome-ignore lint/suspicious/noExplicitAny: dynamic import
-        renderer: any
-        // biome-ignore lint/suspicious/noExplicitAny: dynamic import
-        player: any
-        // biome-ignore lint/suspicious/noExplicitAny: dynamic import
-        platformManager: any
-        // biome-ignore lint/suspicious/noExplicitAny: dynamic import
-        collectibleManager: any
-        // biome-ignore lint/suspicious/noExplicitAny: dynamic import
-        enemyManager: any
-
-        input = { left: false, right: false, jump: false }
-        state: 'start' | 'playing' | 'paused' | 'gameover' = 'start'
-        score = 0
-        lives = 3
-        highScore = parseInt(localStorage.getItem('pixelJumpHighScore') || '0', 10)
-        frame = 0
-        outOfBoundsActive = false
-
-        constructor(canvas: HTMLCanvasElement) {
-          this.canvas = canvas
-          this.renderer = new Renderer(canvas)
-          this.player = new Player()
-          this.platformManager = new PlatformManager()
-          this.collectibleManager = new CollectibleManager()
-          this.enemyManager = new EnemyManager()
-          this.initInput()
-          this.loop()
-        }
-
-        initInput() {
-          const handleKey = (e: KeyboardEvent, pressed: boolean) => {
-            switch (e.code) {
-              case 'ArrowLeft':
-              case 'KeyA':
-                this.input.left = pressed
-                break
-              case 'ArrowRight':
-              case 'KeyD':
-                this.input.right = pressed
-                break
-              case 'ArrowUp':
-              case 'KeyW':
-              case 'Space':
-                if (this.state === 'start' && pressed) {
-                  this.start()
-                  e.preventDefault()
-                  break
-                }
-                this.input.jump = pressed
-                e.preventDefault()
-                break
-              case 'KeyP':
-                if (this.state === 'playing' && pressed) this.pause()
-                else if (this.state === 'paused' && pressed) this.resume()
-                break
-            }
-          }
-          document.addEventListener('keydown', (e) => handleKey(e, true))
-          document.addEventListener('keyup', (e) => handleKey(e, false))
-
-          const btnLeft = document.getElementById('btn-left')
-          const btnRight = document.getElementById('btn-right')
-          const btnJump = document.getElementById('btn-jump')
-
-          const handleTouchStart = (key: 'left' | 'right' | 'jump') => (e: TouchEvent) => {
-            e.preventDefault()
-            this.input[key] = true
-            if (key === 'jump') btnJump?.classList.add('active')
-            if (key === 'left') btnLeft?.classList.add('active')
-            if (key === 'right') btnRight?.classList.add('active')
-          }
-
-          const handleTouchEnd = (key: 'left' | 'right' | 'jump') => (e: TouchEvent) => {
-            e.preventDefault()
-            this.input[key] = false
-            if (key === 'jump') btnJump?.classList.remove('active')
-            if (key === 'left') btnLeft?.classList.remove('active')
-            if (key === 'right') btnRight?.classList.remove('active')
-          }
-
-          const setupSwipeButton = (
-            btn: HTMLElement | null,
-            direction: 'left' | 'right',
-            oppositeDirection: 'left' | 'right',
-          ) => {
-            if (!btn) return
-            let startX = 0
-            const swipeThreshold = 30
-
-            const handleStart = (e: TouchEvent) => {
-              startX = e.touches[0].clientX
-              this.input[direction] = true
-              btn.classList.add('active')
-            }
-
-            const handleMove = (e: TouchEvent) => {
-              const currentX = e.touches[0].clientX
-              const deltaX = currentX - startX
-              if (direction === 'left' && deltaX > swipeThreshold) {
-                this.input[direction] = false
-                this.input[oppositeDirection] = true
-                btn.classList.remove('active')
-                if (btnRight) btnRight.classList.add('active')
-              } else if (direction === 'right' && deltaX < -swipeThreshold) {
-                this.input[direction] = false
-                this.input[oppositeDirection] = true
-                btn.classList.remove('active')
-                if (btnLeft) btnLeft.classList.add('active')
-              }
-            }
-
-            const handleEnd = () => {
-              this.input[direction] = false
-              this.input[oppositeDirection] = false
-              btn.classList.remove('active')
-              if (btnRight) btnRight.classList.remove('active')
-              if (btnLeft) btnLeft.classList.remove('active')
-            }
-
-            btn.addEventListener('mousedown', () => {
-              this.input[direction] = true
-              btn.classList.add('active')
-            })
-            btn.addEventListener('mouseup', () => {
-              this.input[direction] = false
-              btn.classList.remove('active')
-            })
-            btn.addEventListener('mouseleave', () => {
-              this.input[direction] = false
-              btn.classList.remove('active')
-            })
-            btn.addEventListener('touchstart', handleStart, { passive: false })
-            btn.addEventListener('touchmove', handleMove, { passive: false })
-            btn.addEventListener('touchend', handleEnd, { passive: false })
-            btn.addEventListener('touchcancel', handleEnd, { passive: false })
-          }
-
-          setupSwipeButton(btnLeft, 'left', 'right')
-          setupSwipeButton(btnRight, 'right', 'left')
-          if (btnJump) {
-            btnJump.addEventListener('mousedown', () => {
-              this.input.jump = true
-            })
-            btnJump.addEventListener('mouseup', () => {
-              this.input.jump = false
-            })
-            btnJump.addEventListener('mouseleave', () => {
-              this.input.jump = false
-            })
-            btnJump.addEventListener('touchstart', handleTouchStart('jump'), { passive: false })
-            btnJump.addEventListener('touchend', handleTouchEnd('jump'), { passive: false })
-            btnJump.addEventListener('touchcancel', handleTouchEnd('jump'), { passive: false })
-          }
-
-          canvas?.addEventListener(
-            'touchstart',
-            (e) => {
-              e.preventDefault()
-              if (this.state === 'start') {
-                game.start()
-              } else if (this.state === 'playing' && this.player.grounded) {
-                this.input.jump = true
-              }
-            },
-            { passive: false },
-          )
-
-          canvas?.addEventListener(
-            'touchend',
-            (e) => {
-              e.preventDefault()
-              this.input.jump = false
-            },
-            { passive: false },
-          )
-        }
-
-        start() {
-          audioManager.init()
-          this.state = 'playing'
-          this.score = 0
-          this.lives = 3
-          this.frame = 0
-          this.player.reset()
-          this.platformManager.init()
-          this.collectibleManager.init()
-          this.enemyManager.init()
-          this.renderer.camera.x = this.player.x
-          this.renderer.camera.y = this.player.y - 100
-          for (const platform of this.platformManager.getPlatforms()) {
-            this.collectibleManager.spawnForPlatform(platform)
-            this.enemyManager.spawnForPlatform(platform)
-          }
-          this.updateUI()
-          document.getElementById('start-screen')?.classList.remove('active')
-          document.getElementById('gameover-screen')?.classList.remove('active')
-          document.getElementById('game-ui')?.classList.add('active')
-        }
-
-        pause() {
-          this.state = 'paused'
-          document.getElementById('pause-screen')?.classList.add('active')
-        }
-
-        resume() {
-          this.state = 'playing'
-          document.getElementById('pause-screen')?.classList.remove('active')
-        }
-
-        gameOver() {
-          this.state = 'gameover'
-          audioManager.playGameOver()
-          if (this.score > this.highScore) {
-            this.highScore = this.score
-            localStorage.setItem('pixelJumpHighScore', String(this.highScore))
-          }
-          const finalScoreEl = document.getElementById('final-score')
-          const finalHighScoreEl = document.getElementById('final-high-score')
-          if (finalScoreEl) finalScoreEl.textContent = `${getContent('jump.screen.gameover.finalScore')}: ${this.score}`
-          if (finalHighScoreEl) finalHighScoreEl.textContent = `${getContent('jump.ui.highScore')}: ${this.highScore}`
-          document.getElementById('gameover-screen')?.classList.add('active')
-        }
-
-        updateUI() {
-          const scoreEl = document.getElementById('score-display')
-          const highScoreEl = document.getElementById('high-score-display')
-          const livesEl = document.getElementById('lives-display')
-          if (scoreEl) scoreEl.textContent = `${getContent('jump.ui.score')}: ${this.score}`
-          if (highScoreEl) highScoreEl.textContent = `${getContent('jump.ui.highScore')}: ${this.highScore}`
-          if (livesEl) livesEl.textContent = `${getContent('jump.ui.lives')}: ${'♥'.repeat(this.lives)}`
-        }
-
-        update() {
-          if (this.state !== 'playing') return
-          this.frame++
-          this.platformManager.update(this.player.x)
-          this.collectibleManager.update()
-          this.enemyManager.update()
-          this.player.update(this.input, this.platformManager.getPlatforms())
-
-          const targetCamX = this.player.x
-          const targetCamY = this.player.y - 100
-          this.renderer.camera.x += (targetCamX - this.renderer.camera.x) * 0.2
-          this.renderer.camera.y += (targetCamY - this.renderer.camera.y) * 0.15
-
-          const halfWidth = this.renderer.width / 2
-          const halfHeight = this.renderer.height / 2
-          const camX = this.renderer.camera.x
-          const camY = this.renderer.camera.y
-          const px = this.player.x
-          const py = this.player.y
-          const pw = this.player.width
-
-          // Account for camera lag when checking out-of-bounds.
-          // x-axis: expand boundary ahead based on camera lag to prevent false forward deaths
-          // y-axis: use camera position + max possible lag as margin for falling deaths
-          const camLagX = targetCamX - camX
-          const maxLagY = 100 / 0.15
-
-          const inBounds =
-            px + pw >= camX - halfWidth - 50 + camLagX &&
-            px <= camX + halfWidth + 50 &&
-            py <= camY + halfHeight + 50 + maxLagY
-
-          if (inBounds) {
-            this.outOfBoundsActive = false
-          } else if (!this.outOfBoundsActive) {
-            this.outOfBoundsActive = true
-            this.lives--
-            this.outOfBoundsActive = false
-            if (this.lives <= 0) {
-              this.gameOver()
-              return
-            }
-            this.player.x = Math.max(50, this.player.x - 200)
-            this.player.y = 300
-            this.player.vx = 0
-            this.player.vy = 0
-            this.renderer.camera.x = this.player.x
-            this.renderer.camera.y = this.player.y - 100
-          }
-
-          for (const collectible of this.collectibleManager.getCollectibles()) {
-            if (Utils.checkRectCollision(this.player.getBounds(), collectible.getBounds())) {
-              collectible.collect()
-              this.score += 10
-              audioManager.playCollect()
-              this.renderer.addParticle(collectible.x + 8, collectible.y + 8, '#ffd93d', 5)
-              this.renderer.addFloatingText(collectible.x + 8, collectible.y, getContent('jump.score.coin'))
-            }
-          }
-
-          for (const enemy of this.enemyManager.getEnemies()) {
-            if (Utils.checkRectCollision(this.player.getBounds(), enemy.getBounds())) {
-              if (this.player.vy > 0 && this.player.y + this.player.height < enemy.y + enemy.height / 2) {
-                enemy.die()
-                this.player.vy = -8
-                this.score += 50
-                audioManager.playHit()
-                this.renderer.addParticle(enemy.x + 8, enemy.y + 8, '#e74c3c', 8)
-                this.renderer.addFloatingText(enemy.x + 8, enemy.y, getContent('jump.score.enemy'), '#ff6b6b')
-              } else if (this.player.takeDamage()) {
-                this.lives--
-                this.renderer.shake(10, 5)
-                if (this.lives <= 0) {
-                  this.gameOver()
-                  return
-                }
-              }
-            }
-          }
-
-          const allPlatforms = this.platformManager.platforms
-          // biome-ignore lint/suspicious/noExplicitAny: platform type unknown
-          const lastSpawnedIndex = allPlatforms.findIndex((p: any) => p.x > this.player.x + 1000)
-          if (lastSpawnedIndex > 0) {
-            for (let i = lastSpawnedIndex - 1; i < lastSpawnedIndex + 2 && i < allPlatforms.length; i++) {
-              if (allPlatforms[i]) {
-                // biome-ignore lint/suspicious/noExplicitAny: platform spawned property
-                if (!(allPlatforms[i] as any).spawned) {
-                  // biome-ignore lint/suspicious/noExplicitAny: platform spawned property
-                  ;(allPlatforms[i] as any).spawned = true
-                  this.collectibleManager.spawnForPlatform(allPlatforms[i])
-                  this.enemyManager.spawnForPlatform(allPlatforms[i])
-                }
-              }
-            }
-          }
-
-          this.score = Math.max(this.score, Math.floor(this.player.x / 10))
-          this.updateUI()
-        }
-
-        render() {
-          this.renderer.clear()
-          this.renderer.drawBackground(this.player.x)
-          for (const platform of this.platformManager.getPlatforms()) {
-            this.renderer.drawPlatform(platform.x, platform.y, platform.width, platform.height, platform.type)
-          }
-          for (const collectible of this.collectibleManager.getCollectibles()) {
-            this.renderer.drawCoin(collectible.x, collectible.y + collectible.floatOffset, this.frame)
-          }
-          for (const enemy of this.enemyManager.getEnemies()) {
-            this.renderer.drawEnemy(enemy.x, enemy.y, enemy.width, enemy.height, enemy.type)
-          }
-          if (this.player.isVisible()) {
-            this.renderer.drawPixelCharacter(
-              this.player.x,
-              this.player.y,
-              this.player.width,
-              this.player.height,
-              this.player.color,
-              this.player.facing,
-            )
-          }
-          this.renderer.updateParticles()
-          this.renderer.renderParticles()
-        }
-
-        loop = () => {
-          this.update()
-          this.render()
-          requestAnimationFrame(this.loop)
-        }
-      }
-
-      const game = new GameInstance(canvas)
-      // biome-ignore lint/suspicious/noExplicitAny: debug global access
-      ;(window as any).game = game
+      const game = new GameEngine(canvas, { Renderer, Player, PlatformManager, CollectibleManager, EnemyManager })
+      game.initInput()
+      game.loop()
 
       document.getElementById('start-btn')?.addEventListener('click', () => game.start())
       document.getElementById('restart-btn')?.addEventListener('click', () => game.start())
       document.getElementById('resume-btn')?.addEventListener('click', () => game.resume())
-    }
 
-    initGame()
+      return () => {
+        game.destroy()
+      }
+    })()
   }, [])
 
   return (
@@ -412,35 +44,34 @@ export const Jump = () => {
         <canvas id="game-canvas" ref={canvasRef} />
         <div id="ui-layer">
           <div id="start-screen" className="screen active">
-            <h1>{getContent('jump.title')}</h1>
-            <p className="subtitle">{getContent('jump.subtitle')}</p>
+            <h1>Pixel Jump Adventure</h1>
             <div className="controls-info">
-              <p>{getContent('jump.controls.left')}</p>
-              <p>{getContent('jump.controls.right')}</p>
-              <p>{getContent('jump.controls.jump')}</p>
-              <p>{getContent('jump.controls.pause')}</p>
+              <p>A / ← : Move left</p>
+              <p>D / → : Move right</p>
+              <p>W / ↑ / Space : Jump</p>
+              <p>P : Pause game</p>
             </div>
             <button id="start-btn" type="button" className="pixel-btn">
-              {getContent('jump.btn.start')}
+              Start Game
             </button>
           </div>
           <div id="game-ui" className="screen">
-            <div id="score-display">{getContent('jump.ui.score')}: 0</div>
-            <div id="high-score-display">{getContent('jump.ui.highScore')}: 0</div>
-            <div id="lives-display">{getContent('jump.ui.lives')}: ♥♥♥</div>
+            <div id="score-display">Score: 0</div>
+            <div id="high-score-display">High Score: 0</div>
+            <div id="lives-display">Lives: ♥♥♥</div>
           </div>
           <div id="pause-screen" className="screen">
-            <h2>{getContent('jump.screen.pause.title')}</h2>
+            <h2>Game Paused</h2>
             <button id="resume-btn" type="button" className="pixel-btn">
-              {getContent('jump.btn.resume')}
+              Resume
             </button>
           </div>
           <div id="gameover-screen" className="screen">
-            <h2>{getContent('jump.screen.gameover.title')}</h2>
-            <p id="final-score">{getContent('jump.screen.gameover.finalScore')}: 0</p>
-            <p id="final-high-score">{getContent('jump.ui.highScore')}: 0</p>
+            <h2>Game Over</h2>
+            <p id="final-score">Final Score: 0</p>
+            <p id="final-high-score">High Score: 0</p>
             <button id="restart-btn" type="button" className="pixel-btn">
-              {getContent('jump.btn.restart')}
+              Play Again
             </button>
           </div>
         </div>
@@ -482,7 +113,7 @@ export const Jump = () => {
             </button>
           </div>
           <button id="btn-jump" type="button" className="ctrl-btn jump">
-            {getContent('jump.mobile.jump')}
+            JUMP
           </button>
         </div>
       </div>
