@@ -202,19 +202,72 @@ export class Renderer {
     this.ctx.scale(facing, 1)
     this.ctx.translate(-width / 2, -height / 2)
 
+    // Claude crab (小螃蟹) - pixel art style
+    // Eye stalks
     this.ctx.fillStyle = color
-    this.ctx.fillRect(4, 4, 8, 10)
-
-    this.ctx.fillRect(3, 0, 10, 6)
-
+    this.ctx.fillRect(4, 0, 2, 3)
+    this.ctx.fillRect(10, 0, 2, 3)
     this.ctx.fillStyle = '#fff'
-    this.ctx.fillRect(10, 2, 2, 2)
-    this.ctx.fillStyle = '#000'
-    this.ctx.fillRect(11, 2, 1, 2)
+    this.ctx.fillRect(4, 0, 2, 2)
+    this.ctx.fillRect(10, 0, 2, 2)
+    this.ctx.fillStyle = '#1a1a2e'
+    this.ctx.fillRect(5, 0, 1, 1)
+    this.ctx.fillRect(11, 0, 1, 1)
 
+    // Main body (carapace)
     this.ctx.fillStyle = color
-    this.ctx.fillRect(4, 14, 3, 4)
-    this.ctx.fillRect(9, 14, 3, 4)
+    this.ctx.fillRect(1, 3, 14, 8)
+
+    // Carapace highlight
+    this.ctx.fillStyle = Utils.lightenColor(color, 30)
+    this.ctx.fillRect(3, 3, 10, 2)
+
+    // Carapace center detail
+    this.ctx.fillStyle = Utils.darkenColor(color, 20)
+    this.ctx.fillRect(5, 6, 6, 1)
+
+    // Front edge (claw attachment area)
+    this.ctx.fillStyle = Utils.darkenColor(color, 10)
+    this.ctx.fillRect(1, 8, 14, 3)
+
+    // Claws (pinchers) - left claw
+    this.ctx.fillStyle = '#e74c3c'
+    this.ctx.fillRect(-2, 2, 4, 4)
+    this.ctx.fillRect(-3, 2, 2, 2)
+    this.ctx.fillRect(-3, 3, 2, 2)
+    // Left claw pincer teeth
+    this.ctx.fillRect(-3, 4, 2, 2)
+    this.ctx.fillRect(-1, 5, 2, 1)
+
+    // Claws - right claw
+    this.ctx.fillStyle = '#e74c3c'
+    this.ctx.fillRect(14, 2, 4, 4)
+    this.ctx.fillRect(17, 2, 2, 2)
+    this.ctx.fillRect(17, 3, 2, 2)
+    // Right claw pincer teeth
+    this.ctx.fillRect(17, 4, 2, 2)
+    this.ctx.fillRect(15, 5, 2, 1)
+
+    // Claws inner (lighter)
+    this.ctx.fillStyle = '#c0392b'
+    this.ctx.fillRect(0, 4, 1, 2)
+    this.ctx.fillRect(15, 4, 1, 2)
+
+    // Legs (bottom)
+    this.ctx.fillStyle = Utils.darkenColor(color, 30)
+    // Left legs
+    this.ctx.fillRect(2, 11, 3, 2)
+    this.ctx.fillRect(1, 13, 3, 2)
+    this.ctx.fillRect(4, 11, 2, 2)
+    // Right legs
+    this.ctx.fillRect(11, 11, 3, 2)
+    this.ctx.fillRect(12, 13, 3, 2)
+    this.ctx.fillRect(10, 11, 2, 2)
+
+    // Mouth/mandible (small smile)
+    this.ctx.fillStyle = Utils.darkenColor(color, 20)
+    this.ctx.fillRect(6, 9, 4, 1)
+    this.ctx.fillRect(7, 8, 2, 1)
 
     this.ctx.restore()
   }

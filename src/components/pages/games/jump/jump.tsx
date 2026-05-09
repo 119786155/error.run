@@ -44,6 +44,7 @@ export const Jump = () => {
         lives = 3
         highScore = parseInt(localStorage.getItem('pixelJumpHighScore') || '0', 10)
         frame = 0
+        outOfBoundsActive = false
 
         constructor(canvas: HTMLCanvasElement) {
           this.canvas = canvas
@@ -280,16 +281,27 @@ export const Jump = () => {
           const py = this.player.y
           const pw = this.player.width
 
-          const outOfBounds =
-            px + pw < camX - halfWidth - 50 || px > camX + halfWidth + 50 || py > camY + halfHeight + 50
+          // Account for camera lag when checking out-of-bounds.
+          // x-axis: expand boundary ahead based on camera lag to prevent false forward deaths
+          // y-axis: use camera position + max possible lag as margin for falling deaths
+          const camLagX = targetCamX - camX
+          const maxLagY = 100 / 0.15
 
-          if (outOfBounds) {
+          const inBounds =
+            px + pw >= camX - halfWidth - 50 + camLagX &&
+            px <= camX + halfWidth + 50 &&
+            py <= camY + halfHeight + 50 + maxLagY
+
+          if (inBounds) {
+            this.outOfBoundsActive = false
+          } else if (!this.outOfBoundsActive) {
+            this.outOfBoundsActive = true
             this.lives--
+            this.outOfBoundsActive = false
             if (this.lives <= 0) {
               this.gameOver()
               return
             }
-            // 重置玩家位置
             this.player.x = Math.max(50, this.player.x - 200)
             this.player.y = 300
             this.player.vx = 0
