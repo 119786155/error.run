@@ -10,9 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WriteRouteImport } from './routes/write'
-import { Route as StoryRouteImport } from './routes/story'
 import { Route as RoomRouteImport } from './routes/room'
-import { Route as JumpRouteImport } from './routes/jump'
 import { Route as IndexRouteImport } from './routes/index'
 
 const WriteRoute = WriteRouteImport.update({
@@ -20,19 +18,9 @@ const WriteRoute = WriteRouteImport.update({
   path: '/write',
   getParentRoute: () => rootRouteImport,
 } as any)
-const StoryRoute = StoryRouteImport.update({
-  id: '/story',
-  path: '/story',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const RoomRoute = RoomRouteImport.update({
   id: '/room',
   path: '/room',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const JumpRoute = JumpRouteImport.update({
-  id: '/jump',
-  path: '/jump',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -43,39 +31,31 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/jump': typeof JumpRoute
   '/room': typeof RoomRoute
-  '/story': typeof StoryRoute
   '/write': typeof WriteRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/jump': typeof JumpRoute
   '/room': typeof RoomRoute
-  '/story': typeof StoryRoute
   '/write': typeof WriteRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/jump': typeof JumpRoute
   '/room': typeof RoomRoute
-  '/story': typeof StoryRoute
   '/write': typeof WriteRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/jump' | '/room' | '/story' | '/write'
+  fullPaths: '/' | '/room' | '/write'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/jump' | '/room' | '/story' | '/write'
-  id: '__root__' | '/' | '/jump' | '/room' | '/story' | '/write'
+  to: '/' | '/room' | '/write'
+  id: '__root__' | '/' | '/room' | '/write'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  JumpRoute: typeof JumpRoute
   RoomRoute: typeof RoomRoute
-  StoryRoute: typeof StoryRoute
   WriteRoute: typeof WriteRoute
 }
 
@@ -88,25 +68,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WriteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/story': {
-      id: '/story'
-      path: '/story'
-      fullPath: '/story'
-      preLoaderRoute: typeof StoryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/room': {
       id: '/room'
       path: '/room'
       fullPath: '/room'
       preLoaderRoute: typeof RoomRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/jump': {
-      id: '/jump'
-      path: '/jump'
-      fullPath: '/jump'
-      preLoaderRoute: typeof JumpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -121,9 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  JumpRoute: JumpRoute,
   RoomRoute: RoomRoute,
-  StoryRoute: StoryRoute,
   WriteRoute: WriteRoute,
 }
 export const routeTree = rootRouteImport
