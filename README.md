@@ -3,16 +3,14 @@ personal project for learning, practicing, and exploring
 
 ## Languages
 
-- [فارسی](docs/README.fa.md)
+- [中文](docs/README.zh.md)
 - [한국어](docs/README.ko.md)
 - [हिन्दी](docs/README.hi.md)
-- [العربية](docs/README.ar.md)
 - [русский](docs/README.ru.md)
 - [Deutsch](docs/README.de.md)
 - [Español](docs/README.es.md)
 - [Português](docs/README.pt.md)
 - [日本語](docs/README.ja.md)
-- [中文](docs/README.zh.md)
 - [Français](docs/README.fr.md)
 - [Bahasa Indonesia](docs/README.id.md)
 - [Tiếng Việt](docs/README.vi.md)
@@ -21,6 +19,8 @@ personal project for learning, practicing, and exploring
 - [Polski](docs/README.pl.md)
 - [ไทย](docs/README.th.md)
 - [Українська](docs/README.uk.md)
+- [فارسی](docs/README.fa.md)
+- [العربية](docs/README.ar.md)
 
 ## /
 
