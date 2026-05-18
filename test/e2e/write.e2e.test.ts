@@ -191,48 +191,6 @@ test.describe('Link Functionality', () => {
   })
 })
 
-// ==================== THEME SWITCHING ====================
-
-test.describe('Theme Switching', () => {
-  test('should toggle from light to dark theme', async ({ page }) => {
-    const toggleButton = page.locator('[data-testid="theme-toggle"]').first()
-    await expect(toggleButton).toBeVisible()
-
-    const initialHtmlClass = await page.locator('html').getAttribute('class')
-    expect(initialHtmlClass).not.toContain('dark')
-
-    await toggleButton.click()
-    await page.waitForFunction(() => document.documentElement.classList.contains('dark'), null, { timeout: 3000 })
-
-    const darkHtmlClass = await page.locator('html').getAttribute('class')
-    expect(darkHtmlClass).toContain('dark')
-  })
-
-  test('should toggle from dark to light theme', async ({ page }) => {
-    const toggleButton = page.locator('[data-testid="theme-toggle"]').first()
-    await expect(toggleButton).toBeVisible()
-
-    await toggleButton.click()
-    await page.waitForFunction(() => document.documentElement.classList.contains('dark'), null, { timeout: 3000 })
-    expect(await page.locator('html').getAttribute('class')).toContain('dark')
-
-    await toggleButton.click()
-    await page.waitForFunction(() => !document.documentElement.classList.contains('dark'), null, { timeout: 3000 })
-    expect(await page.locator('html').getAttribute('class')).not.toContain('dark')
-  })
-
-  test('should persist theme preference after reload', async ({ page }) => {
-    const toggleButton = page.locator('[data-testid="theme-toggle"]').first()
-    await toggleButton.click()
-    await page.waitForFunction(() => document.documentElement.classList.contains('dark'), null, { timeout: 3000 })
-
-    await page.reload()
-    await page.waitForSelector('[data-testid="editor"]')
-    await page.waitForFunction(() => document.documentElement.classList.contains('dark'), null, { timeout: 3000 })
-    expect(await page.locator('html').getAttribute('class')).toContain('dark')
-  })
-})
-
 // ==================== MEDIA UPLOAD ====================
 
 test.describe('Media Upload via Slash Command', () => {

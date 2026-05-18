@@ -7,13 +7,6 @@
   justify-content: center;
 }
 
-.poem__theme-toggle {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  z-index: 50;
-}
-
 .poem__content {
   position: relative;
   z-index: 10;

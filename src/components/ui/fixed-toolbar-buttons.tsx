@@ -26,7 +26,6 @@ import { LineHeightToolbarButton } from '@/components/ui/line-height-toolbar-but
 import { MarkToolbarButton } from '@/components/ui/mark-toolbar-button'
 import { MediaToolbarButton } from '@/components/ui/media-toolbar-button'
 import { ModeToolbarButton } from '@/components/ui/mode-toolbar-button'
-import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { ToolbarSeparator } from '@/components/ui/toolbar'
 import { TurnIntoToolbarButton } from '@/components/ui/turn-into-toolbar-button'
 import { getContent } from '@/i18n'
@@ -39,10 +38,6 @@ const Separator = ({ className }: { className?: string }) => (
 export const FixedToolbarButtons = () => {
   return (
     <>
-      <ThemeToggle data-testid="toolbar-theme-toggle" />
-
-      <Separator />
-
       <ModeToolbarButton data-testid="toolbar-mode-toggle" />
 
       <Separator />

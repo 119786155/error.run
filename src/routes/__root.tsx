@@ -11,7 +11,7 @@ const RootLayout = () => {
   }, [])
 
   return (
-    <ThemeProvider storageKey="theme">
+    <ThemeProvider>
       <HeadContent />
       <Outlet />
     </ThemeProvider>

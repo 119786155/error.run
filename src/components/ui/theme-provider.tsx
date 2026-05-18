@@ -4,8 +4,6 @@ type Theme = 'dark' | 'light'
 
 type ThemeProviderProps = {
   children: React.ReactNode
-  defaultTheme?: Theme
-  storageKey?: string
 }
 
 type ThemeProviderState = {
@@ -20,30 +18,21 @@ const initialState: ThemeProviderState = {
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
 
-export function ThemeProvider({
-  children,
-  defaultTheme = 'light',
-  storageKey = 'theme',
-  ...props
-}: ThemeProviderProps) {
+export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
   const getCurrentTheme = (): Theme => {
-    if (typeof window !== 'undefined' && localStorage.getItem(storageKey)) {
-      return localStorage.getItem(storageKey) as Theme
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark'
     }
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    return 'light'
   }
 
   const [theme, setThemeState] = useState<Theme>(getCurrentTheme())
 
-  const updateTheme = useCallback(
-    (newTheme: Theme) => {
-      const root = window.document.documentElement
-      root.classList.remove('light', 'dark')
-      root.classList.add(newTheme)
-      localStorage.setItem(storageKey, newTheme)
-    },
-    [storageKey],
-  )
+  const updateTheme = useCallback((newTheme: Theme) => {
+    const root = window.document.documentElement
+    root.classList.remove('light', 'dark')
+    root.classList.add(newTheme)
+  }, [])
 
   const setTheme = useCallback(
     (newTheme: Theme) => {
@@ -60,13 +49,11 @@ export function ThemeProvider({
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
     const handleChange = () => {
-      if (!localStorage.getItem(storageKey)) {
-        updateTheme(mediaQuery.matches ? 'dark' : 'light')
-      }
+      updateTheme(mediaQuery.matches ? 'dark' : 'light')
     }
     mediaQuery.addEventListener('change', handleChange)
     return () => mediaQuery.removeEventListener('change', handleChange)
-  }, [storageKey, updateTheme])
+  }, [updateTheme])
 
   const value = {
     theme,
