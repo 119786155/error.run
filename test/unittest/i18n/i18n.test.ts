@@ -184,6 +184,21 @@ describe('i18n Module', () => {
       expect(SUPPORTED_LOCALES).toBeDefined()
       expect(Array.isArray(SUPPORTED_LOCALES)).toBe(true)
     })
+
+    it('RTL_LOCALES should only contain ar and fa', async () => {
+      const { RTL_LOCALES, SUPPORTED_LOCALES } = await import('../../../src/i18n')
+      expect(RTL_LOCALES).toBeDefined()
+      expect(RTL_LOCALES instanceof Set).toBe(true)
+      // ar and fa are the only RTL languages
+      expect(RTL_LOCALES.has('ar')).toBe(true)
+      expect(RTL_LOCALES.has('fa')).toBe(true)
+      // All other languages should not be RTL
+      for (const locale of SUPPORTED_LOCALES) {
+        if (locale !== 'ar' && locale !== 'fa') {
+          expect(RTL_LOCALES.has(locale)).toBe(false)
+        }
+      }
+    })
   })
 
   describe('i18n consistency - content locale coverage', () => {

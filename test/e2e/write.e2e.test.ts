@@ -640,3 +640,87 @@ test('write page renders with error boundary', async ({ page }) => {
   // Error boundary should NOT be showing on normal load
   await expect(page.locator('[data-testid="error-boundary-fallback"]')).not.toBeVisible()
 })
+
+// ==================== RTL (RIGHT-TO-LEFT) WRITING ====================
+
+test.describe('RTL Writing Support', () => {
+  test.describe('Arabic (ar)', () => {
+    test.use({ locale: 'ar-SA' })
+
+    test('should set html dir to rtl', async ({ page }) => {
+      const dir = await page.locator('html').getAttribute('dir')
+      expect(dir).toBe('rtl')
+    })
+
+    test('should type Arabic text and display correctly', async ({ page }) => {
+      await focusEditor(page)
+      await page.keyboard.type('مرحبا بالعالم')
+      await expect(page.locator(EDITOR_SELECTOR)).toContainText('مرحبا بالعالم')
+    })
+
+    test('should type Arabic text and split paragraph with Enter', async ({ page }) => {
+      await focusEditor(page)
+      await page.keyboard.type('السطر الأول')
+      await page.keyboard.press('Enter')
+      await page.keyboard.type('السطر الثاني')
+      await expect(page.locator('.slate-p')).toHaveCount(2)
+      await expect(page.locator(EDITOR_SELECTOR)).toContainText('السطر الأول')
+      await expect(page.locator(EDITOR_SELECTOR)).toContainText('السطر الثاني')
+    })
+
+    test('should apply bold formatting to Arabic text', async ({ page }) => {
+      await typeAndSelectAll(page, 'نص عربي')
+      await page.keyboard.press('Control+b')
+      await expect(page.locator(EDITOR_SELECTOR)).toContainText('نص عربي')
+    })
+  })
+
+  test.describe('Persian (fa)', () => {
+    test.use({ locale: 'fa-IR' })
+
+    test('should set html dir to rtl', async ({ page }) => {
+      const dir = await page.locator('html').getAttribute('dir')
+      expect(dir).toBe('rtl')
+    })
+
+    test('should type Persian text and display correctly', async ({ page }) => {
+      await focusEditor(page)
+      await page.keyboard.type('سلام دنیا')
+      await expect(page.locator(EDITOR_SELECTOR)).toContainText('سلام دنیا')
+    })
+
+    test('should type Persian text and split paragraph with Enter', async ({ page }) => {
+      await focusEditor(page)
+      await page.keyboard.type('خط اول')
+      await page.keyboard.press('Enter')
+      await page.keyboard.type('خط دوم')
+      await expect(page.locator('.slate-p')).toHaveCount(2)
+      await expect(page.locator(EDITOR_SELECTOR)).toContainText('خط اول')
+      await expect(page.locator(EDITOR_SELECTOR)).toContainText('خط دوم')
+    })
+
+    test('should apply bold formatting to Persian text', async ({ page }) => {
+      await typeAndSelectAll(page, 'متن فارسی')
+      await page.keyboard.press('Control+b')
+      await expect(page.locator(EDITOR_SELECTOR)).toContainText('متن فارسی')
+    })
+  })
+
+  test.describe('English (ltr - control)', () => {
+    test.use({ locale: 'en-US' })
+
+    test('should set html dir to ltr', async ({ page }) => {
+      const dir = await page.locator('html').getAttribute('dir')
+      expect(dir).toBe('ltr')
+    })
+  })
+
+  test.describe('Non-RTL locale (zh)', () => {
+    test.use({ locale: 'zh-CN' })
+
+    test('should set html dir to ltr', async ({ page }) => {
+      const dir = await page.locator('html').getAttribute('dir')
+      expect(dir).toBe('ltr')
+    })
+  })
+})

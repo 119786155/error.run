@@ -100,6 +100,8 @@ const getBrowserCurrentLocale = (): Locale => {
   return localeMap[baseLocale] || DEFAULT_LOCALE
 }
 
+export const RTL_LOCALES = new Set<Locale>(['ar', 'fa'])
+
 export const getContent = (path: string): string => {
   const map: Record<string, string> = get(content, path) || {}
   const storageLocale = localStorage.getItem(STORAGE_KEY) as Locale | null
