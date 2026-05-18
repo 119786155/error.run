@@ -202,11 +202,7 @@ describe('i18n Module', () => {
   })
 
   describe('i18n consistency - content locale coverage', () => {
-    const checkCoverage = (
-      obj: Record<string, unknown>,
-      supported: readonly string[],
-      path = '',
-    ): string[] => {
+    const checkCoverage = (obj: Record<string, unknown>, supported: readonly string[], path = ''): string[] => {
       const issues: string[] = []
       if (typeof obj !== 'object' || obj === null) return issues
 
