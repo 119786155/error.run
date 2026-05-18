@@ -1,8 +1,9 @@
 # error.run
-personal project for learning, practicing, and exploring
+پروژه شخصی برای یادگیری، تمرین و کاوش
 
-## Languages
+## زبان‌ها
 
+- [English](../README.md)
 - [فارسی](docs/README.fa.md)
 - [한국어](docs/README.ko.md)
 - [हिन्दी](docs/README.hi.md)
@@ -25,10 +26,10 @@ personal project for learning, practicing, and exploring
 ## /
 
 ```
-         DUST
+         گرد
 
-         Wind passes
-         No trace
-         Heart keeps
-         One breath
+         باد می‌گذرد
+         بی‌اثر
+         دل نگه می‌دارد
+         یک نفس
 ```

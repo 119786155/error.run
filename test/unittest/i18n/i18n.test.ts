@@ -1,3 +1,5 @@
+import { existsSync, readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 const mockLocalStorage = {
@@ -181,6 +183,126 @@ describe('i18n Module', () => {
       const { SUPPORTED_LOCALES } = await import('../../../src/i18n')
       expect(SUPPORTED_LOCALES).toBeDefined()
       expect(Array.isArray(SUPPORTED_LOCALES)).toBe(true)
+    })
+  })
+
+  describe('i18n consistency - content locale coverage', () => {
+    const checkCoverage = (
+      obj: Record<string, unknown>,
+      supported: readonly string[],
+      path = '',
+    ): string[] => {
+      const issues: string[] = []
+      if (typeof obj !== 'object' || obj === null) return issues
+
+      // A locale leaf is an object whose keys are all 2-letter locale codes
+      const keys = Object.keys(obj)
+      if (keys.length > 0 && keys.every((k) => /^[a-z]{2}$/.test(k))) {
+        const missing = supported.filter((l) => !(l in obj))
+        if (missing.length > 0) {
+          issues.push(`${path}: missing [${missing.join(', ')}]`)
+        }
+        const extra = keys.filter((k) => !supported.includes(k))
+        if (extra.length > 0) {
+          issues.push(`${path}: unexpected [${extra.join(', ')}]`)
+        }
+        return issues
+      }
+
+      for (const key of keys) {
+        issues.push(
+          ...checkCoverage(
+            (obj as Record<string, Record<string, unknown>>)[key],
+            supported,
+            path ? `${path}.${key}` : key,
+          ),
+        )
+      }
+      return issues
+    }
+
+    it('app.ts: all keys have all SUPPORTED_LOCALES', async () => {
+      const { SUPPORTED_LOCALES } = await import('../../../src/i18n')
+      const { app } = await import('../../../src/i18n/content/app')
+      expect(checkCoverage(app, SUPPORTED_LOCALES)).toEqual([])
+    })
+
+    it('model.ts: all keys have all SUPPORTED_LOCALES', async () => {
+      const { SUPPORTED_LOCALES } = await import('../../../src/i18n')
+      const { model } = await import('../../../src/i18n/content/model')
+      expect(checkCoverage(model, SUPPORTED_LOCALES)).toEqual([])
+    })
+
+    it('not-found.ts: all keys have all SUPPORTED_LOCALES', async () => {
+      const { SUPPORTED_LOCALES } = await import('../../../src/i18n')
+      const { notFound } = await import('../../../src/i18n/content/not-found')
+      expect(checkCoverage(notFound, SUPPORTED_LOCALES)).toEqual([])
+    })
+
+    it('poem.ts: all keys have all SUPPORTED_LOCALES', async () => {
+      const { SUPPORTED_LOCALES } = await import('../../../src/i18n')
+      const { poem } = await import('../../../src/i18n/content/poem')
+      expect(checkCoverage(poem, SUPPORTED_LOCALES)).toEqual([])
+    })
+
+    it('recordation.ts: all keys have all SUPPORTED_LOCALES', async () => {
+      const { SUPPORTED_LOCALES } = await import('../../../src/i18n')
+      const { recordation } = await import('../../../src/i18n/content/recordation')
+      expect(checkCoverage(recordation, SUPPORTED_LOCALES)).toEqual([])
+    })
+
+    it('editor.ts: all keys have all SUPPORTED_LOCALES', async () => {
+      const { SUPPORTED_LOCALES } = await import('../../../src/i18n')
+      const { editor } = await import('../../../src/i18n/content/editor')
+      expect(checkCoverage(editor, SUPPORTED_LOCALES)).toEqual([])
+    })
+  })
+
+  describe('i18n consistency - .env recordation variables', () => {
+    it('should have VITE_PSR and VITE_ICP for every supported locale', async () => {
+      const { SUPPORTED_LOCALES } = await import('../../../src/i18n')
+      const envPath = resolve(__dirname, '../../../test/fixtures/.env.example')
+      const envContent = readFileSync(envPath, 'utf-8')
+      const missing: string[] = []
+      for (const locale of SUPPORTED_LOCALES) {
+        const upper = locale.toUpperCase()
+        if (!new RegExp(`VITE_PSR_${upper}=`).test(envContent)) {
+          missing.push(`VITE_PSR_${upper}`)
+        }
+        if (!new RegExp(`VITE_ICP_${upper}=`).test(envContent)) {
+          missing.push(`VITE_ICP_${upper}`)
+        }
+      }
+      expect(missing).toEqual([])
+    })
+  })
+
+  describe('i18n consistency - README language links', () => {
+    it('should have a link for every supported locale except en', async () => {
+      const { SUPPORTED_LOCALES } = await import('../../../src/i18n')
+      const readmePath = resolve(__dirname, '../../../README.md')
+      const readmeContent = readFileSync(readmePath, 'utf-8')
+      const missing: string[] = []
+      for (const locale of SUPPORTED_LOCALES) {
+        if (locale === 'en') continue
+        if (!readmeContent.includes(`docs/README.${locale}.md`)) {
+          missing.push(locale)
+        }
+      }
+      expect(missing).toEqual([])
+    })
+
+    it('should have a translated README file for every locale except en', async () => {
+      const { SUPPORTED_LOCALES } = await import('../../../src/i18n')
+      const missing: string[] = []
+      for (const locale of SUPPORTED_LOCALES) {
+        if (locale === 'en') continue
+        const readmePath = resolve(__dirname, `../../../docs/README.${locale}.md`)
+        if (!existsSync(readmePath)) {
+          missing.push(locale)
+        }
+      }
+      expect(missing).toEqual([])
     })
   })
 })
