@@ -74,9 +74,7 @@ log "=== Step 1: Running format ==="
 pnpm run format
 
 log "=== Step 2: Running security check ==="
-# Invoke security-check skill to scan for vulnerabilities
-# This will check for password leaks, API key leaks, and other security issues
-npx trae run security-check
+# invoke security-check skill
 
 log "=== Step 3: Running tests ==="
 pnpm run test
@@ -85,8 +83,7 @@ log "=== Step 4: Building project ==="
 pnpm run build
 
 log "=== Step 5: Running code review ==="
-# Invoke code-reviewer skill to check for SOLID principle violations
-npx trae run code-reviewer
+# invoke code-reviewer skill
 
 log "=== Step 6: Analyzing changes ==="
 
